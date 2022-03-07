@@ -3,6 +3,7 @@ export * from "./atoms/Panel"
 export * from "./atoms/Button"
 export * from "./atoms/Container"
 export * from "./atoms/Filters"
+export * from "./atoms/Heading"
 
 // Export organisms
 export * from "./organisms/Header"

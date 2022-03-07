@@ -1,32 +1,19 @@
-import React from "react";
-import cn from "classnames";
-import PropTypes from "prop-types";
-import styles from "./heading.module.scss";
+import React from "react"
+import cn from "classnames"
+import PropTypes from "prop-types"
+import styles from "./heading.module.scss"
 
-const Heading = ({ children, tag, className }) => {
-  className =
-    styles.heading && className ? cn(styles.heading, className) : null;
+export const Heading = ({ level, styles: userStyles, ...rest }) => {
+  const Component = `h${level}`
+  const classes = cn(styles.heading, userStyles)
 
-  return (
-    children &&
-    React.createElement(
-      tag,
-      {
-        className,
-      },
-      children
-    )
-  );
-};
-
-export default Heading;
+  return <Component className={classes} {...rest} />
+}
 
 Heading.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.node, PropTypes.string]).isRequired,
-  className: PropTypes.string,
-  tag: PropTypes.oneOf(["div", "p", "h1", "h2", "h3", "h4", "h5", "h6"]),
-};
+  level: PropTypes.oneOf([1, 2, 3, 4, 5, 6]),
+}
 
 Heading.defaultProps = {
-  tag: "div",
-};
+  level: 1,
+}

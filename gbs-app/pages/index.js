@@ -1,5 +1,5 @@
 // Components
-import { Sidebar, Panel, Page } from "../components"
+import { Sidebar, Panel, Page, Heading } from "../components"
 
 // import displayComponents from "../functions/wordpress/displayComponents"
 // import pagesComponentList from "../components/blocks/pages"
@@ -19,7 +19,9 @@ const Home = () => {
               <div>
                 <div className="section_left">
                   <div className="section_left--header">
-                    <h1 className="h1--primary">Variables</h1>
+                    <Heading level={1} styles="h1--primary">
+                      Variables
+                    </Heading>
                   </div>
                   <div className="section_panel section_panel--left">
                     <Panel />
@@ -27,7 +29,9 @@ const Home = () => {
                 </div>
                 <div className="section_right">
                   <div className="section_right--header">
-                    <h1 className="h1--primary">Results</h1>
+                    <Heading level={1} styles="h1--primary">
+                      Results
+                    </Heading>
                   </div>
                   <div className="section_panel section_panel--right">
                     <Panel />
