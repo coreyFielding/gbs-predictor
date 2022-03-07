@@ -1,5 +1,5 @@
 // Components
-import { Header, Footer, Sidebar, Panel, Page } from "../components"
+import { Sidebar, Panel, Page } from "../components"
 
 // import displayComponents from "../functions/wordpress/displayComponents"
 // import pagesComponentList from "../components/blocks/pages"
