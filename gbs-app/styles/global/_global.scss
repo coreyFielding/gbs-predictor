@@ -2,11 +2,11 @@
 
 html,
 body {
-  position: fixed;
+  min-height: 100%;
   width: 100%;
   background-color: $gbsGreenDark;
+  position: fixed;
 }
-
 *,
 *::before,
 *::after {
@@ -59,7 +59,8 @@ section {
       padding: 10px;
     }
 
-    &_left, &_right {
+    &_left,
+    &_right {
       &--header {
         margin-top: 10px;
       }

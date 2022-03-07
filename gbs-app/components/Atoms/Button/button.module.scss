@@ -1,0 +1,14 @@
+.button {
+  color: #28282a;
+  text-decoration: none;
+
+  &:hover,
+  &:focus,
+  &:active:not([disabled]) {
+    text-decoration: underline;
+  }
+  &.primary {
+  }
+  &.secondary {
+  }
+}

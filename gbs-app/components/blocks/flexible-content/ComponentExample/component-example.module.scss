@@ -1,0 +1,9 @@
+@import "../../../../styles/global/mixins";
+
+.componentExample {
+  height: calc(100vh - 200px);
+  display: block;
+  padding: 20px 15px;
+  text-align: center;
+  border-bottom: 2px dashed #ddd;
+}
