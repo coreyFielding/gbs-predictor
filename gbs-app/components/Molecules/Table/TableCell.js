@@ -1,8 +1,8 @@
 export const TableData = ({ children, styles: userStyles }) => (
   <td>{children}</td>
 )
-export const TableTextCell = () => {
-  return <></>
+export const TableTextCell = ({ text }) => {
+  return <TableData>{text}</TableData>
 }
 
 const CellComponent = ({ children }) => {
