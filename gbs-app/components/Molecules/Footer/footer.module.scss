@@ -1,0 +1,14 @@
+@import "../../../styles/global/colours";
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 320px;
+  height: 70px;
+  width: calc(100vw - 320px - 30px);
+}
+
+.break {
+  border-top: 1px solid $background;
+  margin-bottom: 25px;
+}

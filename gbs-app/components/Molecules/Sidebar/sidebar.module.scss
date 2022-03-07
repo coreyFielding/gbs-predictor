@@ -1,0 +1,59 @@
+@import "../../../styles/global/colours";
+
+.sidebar {
+  position: relative;
+  width: 300px;
+  height: 100vh;
+  padding: 0 0px 0 20px;
+  background-color: $background;
+
+  // &_inner {
+
+  // }
+
+  &_tab {
+    position: relative;
+    height: 136px;
+    background-color: $gbsGreenDark;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+
+    &:after {
+      content: "";
+      position: absolute;
+      background-color: $background;
+      bottom: -136px;
+      right: 0;
+      height: 100%;
+      width: 25px;
+      border-top-right-radius: 25px;
+      box-shadow: 0 -25px 0 $gbsGreenDark;
+    }
+
+    &:nth-of-type(2) {
+      background-color: $gbsGreen;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      border-bottom-left-radius: 20px;
+
+      &:after {
+        content: "";
+        position: absolute;
+        background-color: $background;
+        bottom: -136px;
+        right: 0;
+        height: 100%;
+        width: 25px;
+        border-top-right-radius: 25px;
+        box-shadow: 0 -25px 0 $gbsGreen;
+      }
+    }
+  }
+
+  &_socials {
+    position: fixed;
+    bottom: 0;
+    height: 85px;
+    width: 180px;
+  }
+}

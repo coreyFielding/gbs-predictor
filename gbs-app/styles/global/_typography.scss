@@ -20,6 +20,16 @@ span {
   line-height: 21px;
 }
 
+.span--heading {
+  color: $gbsGreenDark;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 30px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
 .span--label {
   color: #254933;
   font-size: 12px;
