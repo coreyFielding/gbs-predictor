@@ -16,7 +16,9 @@ export const TableRow = ({ children, styles: userStyles, ...props }) => {
   )
 }
 
-export const TableBody = ({ children, ...props }) => <tbody>{children}</tbody>
+export const TableBody = ({ children, ...props }) => (
+  <tbody className={styles.tableBody}>{children}</tbody>
+)
 
 const TableComponent = ({ children, styles: userStyles, ...props }) => {
   return (
@@ -28,7 +30,7 @@ const TableComponent = ({ children, styles: userStyles, ...props }) => {
 
 TableComponent.Row = TableRow
 TableComponent.Body = TableBody
-TableComponent.Header = TableHeading
+TableComponent.Heading = TableHeading
 TableComponent.Cell = TableCell
 
 export const Table = TableComponent

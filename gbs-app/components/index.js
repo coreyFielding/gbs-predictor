@@ -4,6 +4,7 @@ export * from "./atoms/Button"
 export * from "./atoms/Container"
 export * from "./atoms/Filters"
 export * from "./atoms/Heading"
+export * from "./atoms/Image"
 
 // Export organisms
 export * from "./organisms/Header"

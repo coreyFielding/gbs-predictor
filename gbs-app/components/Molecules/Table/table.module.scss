@@ -1,0 +1,40 @@
+@import "../../../styles/global/colours";
+
+.table {
+  width: 100%;
+}
+
+.tableHead {
+  position: relative;
+  height: 67px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 67px;
+  border-bottom: 1px solid $gbsGreen;
+}
+
+.tableBody {
+  width: 100%;
+}
+
+.tableRow {
+  height: 38px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 38px;
+
+  > tr {
+    &:first-of-type {
+      padding-left: 0;
+    }
+  }
+  > tr {
+    &:last-of-type {
+      padding-right: 0;
+    }
+  }
+}
+
+.tableData {
+  padding: 5px 10px 5px 10px;
+}

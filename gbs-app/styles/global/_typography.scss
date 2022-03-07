@@ -1,5 +1,6 @@
 h1,
 h2,
+p,
 span {
   margin: 0;
   padding: 0;
@@ -28,6 +29,23 @@ span {
   line-height: 30px;
   letter-spacing: 0em;
   text-align: left;
+}
+
+.span--tableHeading {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 30px;
+  color: $gbsGreenDark;
+}
+
+.span--tableCell {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 38px;
+  text-align: right;
+  color: $gbsGreenDark;
 }
 
 .span--label {
