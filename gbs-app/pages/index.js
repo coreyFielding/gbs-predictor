@@ -1,9 +1,12 @@
 // Components
-import { Sidebar, Panel, Table, Page, Heading } from "../components"
+import { Sidebar, Panel, Table, Page, Heading, Accordion } from "../components"
 
 // import displayComponents from "../functions/wordpress/displayComponents"
 // import pagesComponentList from "../components/blocks/pages"
 // import getAllPages from "../lib/wordpress/pages/getAllPages";
+
+// Styles
+import accordionStyles from "../components/molecules/Accordion/accordion.module.scss"
 
 //* Example component data which would normally be fetched from an API call
 // import { exampleComponentData } from "../lib/wordpress/pages/exampleComponentData"
@@ -24,7 +27,82 @@ const Home = () => {
                     </Heading>
                   </div>
                   <div className="section_panel section_panel--left">
-                    <Panel />
+                    <Panel>
+                      <Accordion initial={1}>
+                        <Accordion.Item index={1} label="Event form">
+                          <Table>
+                            <Table.Body>
+                              <Table.Row className={accordionStyles.row}>
+                                <Table.Cell className={accordionStyles.cell}>
+                                  <span className="span--accordionItem">
+                                    OWGR
+                                  </span>
+                                </Table.Cell>
+                                <Table.Cell className={accordionStyles.cell}>
+                                  <span className="span--tableCell">5</span>
+                                </Table.Cell>
+                              </Table.Row>
+                              <Table.Row className={accordionStyles.row}>
+                                <Table.Cell className={accordionStyles.cell}>
+                                  <span className="span--accordionItem">
+                                    Last Tournament
+                                  </span>
+                                </Table.Cell>
+                                <Table.Cell className={accordionStyles.cell}>
+                                  <span className="span--tableCell">5</span>
+                                </Table.Cell>
+                              </Table.Row>
+                              <Table.Row className={accordionStyles.row}>
+                                <Table.Cell className={accordionStyles.cell}>
+                                  <span className="span--accordionItem">
+                                    Last But 1 Tournament
+                                  </span>
+                                </Table.Cell>
+                                <Table.Cell className={accordionStyles.cell}>
+                                  <span className="span--tableCell">5</span>
+                                </Table.Cell>
+                              </Table.Row>
+                            </Table.Body>
+                          </Table>
+                        </Accordion.Item>
+                        <Accordion.Item index={2} label="Current form">
+                          <Table>
+                            <Table.Body>
+                              <Table.Row className={accordionStyles.row}>
+                                <Table.Cell className={accordionStyles.cell}>
+                                  <span className="span--accordionItem">
+                                    OWGR
+                                  </span>
+                                </Table.Cell>
+                                <Table.Cell className={accordionStyles.cell}>
+                                  <span className="span--tableCell">5</span>
+                                </Table.Cell>
+                              </Table.Row>
+                              <Table.Row className={accordionStyles.row}>
+                                <Table.Cell className={accordionStyles.cell}>
+                                  <span className="span--accordionItem">
+                                    Last Tournament
+                                  </span>
+                                </Table.Cell>
+                                <Table.Cell className={accordionStyles.cell}>
+                                  <span className="span--tableCell">5</span>
+                                </Table.Cell>
+                              </Table.Row>
+                              <Table.Row className={accordionStyles.row}>
+                                <Table.Cell className={accordionStyles.cell}>
+                                  <span className="span--accordionItem">
+                                    Last But 1 Tournament
+                                  </span>
+                                </Table.Cell>
+                                <Table.Cell className={accordionStyles.cell}>
+                                  <span className="span--tableCell">5</span>
+                                </Table.Cell>
+                              </Table.Row>
+                            </Table.Body>
+                          </Table>
+                        </Accordion.Item>
+                      </Accordion>
+                    </Panel>
                   </div>
                 </div>
                 <div className="section_right">

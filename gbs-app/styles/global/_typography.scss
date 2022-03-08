@@ -1,5 +1,6 @@
 h1,
 h2,
+h6,
 p,
 span {
   margin: 0;
@@ -29,6 +30,20 @@ span {
   line-height: 30px;
   letter-spacing: 0em;
   text-align: left;
+}
+
+.span--accordionHeading {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 30px;
+  color: $gbsGreenDark;
+}
+
+.span--accordionItem {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 30px;
+  color: $gbsGreenDark;
 }
 
 .span--tableHeading {
