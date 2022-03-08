@@ -1,5 +1,13 @@
 // Components
-import { Sidebar, Panel, Table, Page, Heading, Accordion } from "../components"
+import {
+  Sidebar,
+  Panel,
+  Table,
+  Page,
+  Heading,
+  Accordion,
+  Filter,
+} from "../components"
 
 // import displayComponents from "../functions/wordpress/displayComponents"
 // import pagesComponentList from "../components/blocks/pages"
@@ -106,6 +114,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="section_right">
+                  {/* <Filter.Toggle label="DraftKings" /> */}
                   <div className="section_right--header">
                     <Heading level={1} styles="h1--primary">
                       Results
