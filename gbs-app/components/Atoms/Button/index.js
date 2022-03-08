@@ -3,8 +3,13 @@ import Link from "next/link"
 import PropTypes from "prop-types"
 import styles from "./button.module.scss"
 
-const Button = ({ children, className, type, url, urlExternal }) => {
-  const classes = cn(styles.button, type, className)
+export const ButtonPill = ({
+  children,
+  url,
+  urlExternal,
+  styles: userStyles,
+}) => {
+  const classes = cn(styles.button, styles.pill, userStyles)
 
   if (url) {
     return urlExternal ? (
@@ -21,7 +26,11 @@ const Button = ({ children, className, type, url, urlExternal }) => {
   }
 }
 
-export default Button
+const ButtonComponent = ({}) => <></>
+
+ButtonComponent.Pill = ButtonPill
+
+export const Button = ButtonComponent
 
 Button.propTypes = {
   children: PropTypes.string.isRequired,

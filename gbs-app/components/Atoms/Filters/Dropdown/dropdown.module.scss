@@ -1,0 +1,20 @@
+@import "../../../../styles/global/colours";
+
+.select {
+  position: relative;
+  padding: 5px 10px;
+  border: 1px solid $gbsGreen;
+  cursor: pointer;
+  line-height: 1.1;
+  position: relative;
+  font-size: 12px;
+  background-color: $gbsGreenDark;
+  //   background-image: url("../../../../public/images/icons/toggle.svg");
+  background-repeat: no-repeat, repeat;
+  background-position: right 0.7em top 50%, 0 0;
+  border-radius: 12px;
+}
+
+.option {
+  color: $gbsGreen;
+}

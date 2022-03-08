@@ -1,7 +1,14 @@
 @import "../../../../styles/global/colours";
 
+.toggle {
+  margin: auto;
+  vertical-align: middle;
+  height: 100%;
+}
+
 .label {
   padding-right: 5px;
+  width: 67px;
   font-size: 12px;
   font-weight: 600;
   color: $gbsGreen;
@@ -16,7 +23,15 @@
 
   &:checked + .toggleActive {
     background-color: $gbsGreen;
-    border: 1px solid $gbsGreen;
+    border: 1.5px solid $gbsGreen;
+
+    &:before {
+      transform: translateX(14px);
+    }
+  }
+
+  &:not(&:checked) + .toggleActive {
+    background-color: $gbsGreenDark;
   }
 }
 
@@ -29,8 +44,21 @@
 .toggleSlide {
   display: inline-block;
   position: relative;
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 15px;
   border-radius: 45px;
-  border: 1px solid $white;
+  border: 2px solid $gbsGreen;
+
+  &:before {
+    content: "";
+    position: absolute;
+    left: -5px;
+    top: -6px;
+    margin: 3px;
+    height: 17px;
+    width: 17px;
+    border-radius: 50%;
+    background-color: $white;
+    transition: 0.2s ease;
+  }
 }

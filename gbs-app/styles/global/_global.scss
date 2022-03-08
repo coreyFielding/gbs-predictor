@@ -57,27 +57,39 @@ section {
     &_right {
       height: 100%;
       padding: 10px;
-    }
 
-    &_left,
-    &_right {
-      &--header {
+      .header {
+        display: flex;
         margin-top: 10px;
-      }
-    }
+        vertical-align: middle;
 
-    &_panel {
-      margin-top: 25px;
+        .filters {
+          display: flex;
+          margin-left: 80px;
 
-      &--left {
-        width: 506px;
-        max-width: 430px;
-        height: 675px;
+          .toggle {
+            margin: auto;
+            margin-right: 20px;
+          }
+
+          .dropdown {
+            width: 183px;
+          }
+        }
       }
-      &--right {
-        width: 506px;
-        max-width: 506px;
-        height: 675px;
+      .panel {
+        margin-top: 25px;
+
+        &_left {
+          width: 506px;
+          max-width: 430px;
+          height: 675px;
+        }
+        &_right {
+          width: 506px;
+          max-width: 506px;
+          height: 675px;
+        }
       }
     }
   }

@@ -1,7 +1,7 @@
 import { useContext, createContext, useState } from "react"
 
 // Components
-import { Heading } from "../../"
+import { Heading, SliderFilter } from "../../"
 import ToggleIcon from "public/images/icons/toggle.svg"
 
 // Styles
@@ -72,7 +72,7 @@ const AccordionItem = ({ label, slider, children, index, ...rest }) => {
         <Heading level={6} className="span--accordionHeading">
           {label}
         </Heading>
-        {!!slider && <></>}
+        {/* {!!slider && <SliderFilter />} */}
 
         <div className={styles.toggle}>{/* <ToggleIcon /> */}</div>
       </div>

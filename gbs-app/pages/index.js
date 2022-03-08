@@ -7,6 +7,7 @@ import {
   Heading,
   Accordion,
   Filter,
+  Button,
 } from "../components"
 
 // import displayComponents from "../functions/wordpress/displayComponents"
@@ -15,6 +16,8 @@ import {
 
 // Styles
 import accordionStyles from "../components/molecules/Accordion/accordion.module.scss"
+import toggleStyles from "../components/atoms/Filters/toggle/toggle.module.scss"
+import Image from "next/image"
 
 //* Example component data which would normally be fetched from an API call
 // import { exampleComponentData } from "../lib/wordpress/pages/exampleComponentData"
@@ -29,15 +32,19 @@ const Home = () => {
             <section>
               <div>
                 <div className="section_left">
-                  <div className="section_left--header">
+                  <div className="header">
                     <Heading level={1} styles="h1--primary">
                       Variables
                     </Heading>
                   </div>
-                  <div className="section_panel section_panel--left">
+                  <div className="panel panel_left">
                     <Panel>
                       <Accordion initial={1}>
-                        <Accordion.Item index={1} label="Event form">
+                        <Accordion.Item
+                          index={1}
+                          label="Event form"
+                          slider={true}
+                        >
                           <Table>
                             <Table.Body>
                               <Table.Row className={accordionStyles.row}>
@@ -114,13 +121,24 @@ const Home = () => {
                   </div>
                 </div>
                 <div className="section_right">
-                  {/* <Filter.Toggle label="DraftKings" /> */}
-                  <div className="section_right--header">
+                  <div className="header">
                     <Heading level={1} styles="h1--primary">
                       Results
                     </Heading>
+                    <div className="filters">
+                      <div className="toggle">
+                        <Filter.Toggle
+                          label="DraftKings"
+                          className={toggleStyles.toggle}
+                        />
+                      </div>
+
+                      <div className="dropdown">
+                        <Filter.Select options={[]} />
+                      </div>
+                    </div>
                   </div>
-                  <div className="section_panel section_panel--right">
+                  <div className="panel panel_right">
                     <Panel>
                       <Table>
                         <Table.Heading
@@ -167,6 +185,20 @@ const Home = () => {
                             <Table.Cell.Text>
                               <span className="span--tableCell">3/1</span>
                             </Table.Cell.Text>
+                            <Table.Cell.Text>
+                              <Button.Pill
+                                url="#"
+                                label="test"
+                                urlExternal={true}
+                              >
+                                <Image
+                                  src={"/public/bookmaker.png"}
+                                  width={500}
+                                  height={500}
+                                />
+                                <span>View Offer</span>
+                              </Button.Pill>
+                            </Table.Cell.Text>
                           </Table.Row>
                           <Table.Row style={{ backgroundColor: "#FFF" }}>
                             <Table.Cell.Text>
@@ -186,24 +218,14 @@ const Home = () => {
                             <Table.Cell.Text>
                               <span className="span--tableCell">3/1</span>
                             </Table.Cell.Text>
-                          </Table.Row>
-                          <Table.Row style={{ backgroundColor: "#FBFFFD" }}>
                             <Table.Cell.Text>
-                              <span className="span--tableCell">3</span>
-                            </Table.Cell.Text>
-                            <Table.Cell.Text>
-                              <span className="span--tableCell">
-                                Patrick Cantlay
-                              </span>
-                            </Table.Cell.Text>
-                            <Table.Cell.Text>
-                              <span className="span--tableCell">1894</span>
-                            </Table.Cell.Text>
-                            <Table.Cell.Text>
-                              <span className="span--tableCell">3/1</span>
-                            </Table.Cell.Text>
-                            <Table.Cell.Text>
-                              <span className="span--tableCell">3/1</span>
+                              <Button.Pill
+                                url="#"
+                                label="test"
+                                urlExternal={true}
+                              >
+                                <span>View Offer</span>
+                              </Button.Pill>
                             </Table.Cell.Text>
                           </Table.Row>
                           <Table.Row style={{ backgroundColor: "#FBFFFD" }}>
@@ -224,24 +246,14 @@ const Home = () => {
                             <Table.Cell.Text>
                               <span className="span--tableCell">3/1</span>
                             </Table.Cell.Text>
-                          </Table.Row>
-                          <Table.Row style={{ backgroundColor: "#FBFFFD" }}>
                             <Table.Cell.Text>
-                              <span className="span--tableCell">3</span>
-                            </Table.Cell.Text>
-                            <Table.Cell.Text>
-                              <span className="span--tableCell">
-                                Patrick Cantlay
-                              </span>
-                            </Table.Cell.Text>
-                            <Table.Cell.Text>
-                              <span className="span--tableCell">1894</span>
-                            </Table.Cell.Text>
-                            <Table.Cell.Text>
-                              <span className="span--tableCell">3/1</span>
-                            </Table.Cell.Text>
-                            <Table.Cell.Text>
-                              <span className="span--tableCell">3/1</span>
+                              <Button.Pill
+                                url="#"
+                                label="test"
+                                urlExternal={true}
+                              >
+                                <span>View Offer</span>
+                              </Button.Pill>
                             </Table.Cell.Text>
                           </Table.Row>
                           <Table.Row style={{ backgroundColor: "#FBFFFD" }}>
@@ -262,24 +274,14 @@ const Home = () => {
                             <Table.Cell.Text>
                               <span className="span--tableCell">3/1</span>
                             </Table.Cell.Text>
-                          </Table.Row>
-                          <Table.Row style={{ backgroundColor: "#FBFFFD" }}>
                             <Table.Cell.Text>
-                              <span className="span--tableCell">3</span>
-                            </Table.Cell.Text>
-                            <Table.Cell.Text>
-                              <span className="span--tableCell">
-                                Patrick Cantlay
-                              </span>
-                            </Table.Cell.Text>
-                            <Table.Cell.Text>
-                              <span className="span--tableCell">1894</span>
-                            </Table.Cell.Text>
-                            <Table.Cell.Text>
-                              <span className="span--tableCell">3/1</span>
-                            </Table.Cell.Text>
-                            <Table.Cell.Text>
-                              <span className="span--tableCell">3/1</span>
+                              <Button.Pill
+                                url="#"
+                                label="test"
+                                urlExternal={true}
+                              >
+                                <span>View Offer</span>
+                              </Button.Pill>
                             </Table.Cell.Text>
                           </Table.Row>
                           <Table.Row style={{ backgroundColor: "#FBFFFD" }}>
@@ -300,24 +302,14 @@ const Home = () => {
                             <Table.Cell.Text>
                               <span className="span--tableCell">3/1</span>
                             </Table.Cell.Text>
-                          </Table.Row>
-                          <Table.Row style={{ backgroundColor: "#FBFFFD" }}>
                             <Table.Cell.Text>
-                              <span className="span--tableCell">3</span>
-                            </Table.Cell.Text>
-                            <Table.Cell.Text>
-                              <span className="span--tableCell">
-                                Patrick Cantlay
-                              </span>
-                            </Table.Cell.Text>
-                            <Table.Cell.Text>
-                              <span className="span--tableCell">1894</span>
-                            </Table.Cell.Text>
-                            <Table.Cell.Text>
-                              <span className="span--tableCell">3/1</span>
-                            </Table.Cell.Text>
-                            <Table.Cell.Text>
-                              <span className="span--tableCell">3/1</span>
+                              <Button.Pill
+                                url="#"
+                                label="test"
+                                urlExternal={true}
+                              >
+                                <span>View Offer</span>
+                              </Button.Pill>
                             </Table.Cell.Text>
                           </Table.Row>
                           <Table.Row style={{ backgroundColor: "#FBFFFD" }}>
@@ -338,24 +330,14 @@ const Home = () => {
                             <Table.Cell.Text>
                               <span className="span--tableCell">3/1</span>
                             </Table.Cell.Text>
-                          </Table.Row>
-                          <Table.Row style={{ backgroundColor: "#FBFFFD" }}>
                             <Table.Cell.Text>
-                              <span className="span--tableCell">3</span>
-                            </Table.Cell.Text>
-                            <Table.Cell.Text>
-                              <span className="span--tableCell">
-                                Patrick Cantlay
-                              </span>
-                            </Table.Cell.Text>
-                            <Table.Cell.Text>
-                              <span className="span--tableCell">1894</span>
-                            </Table.Cell.Text>
-                            <Table.Cell.Text>
-                              <span className="span--tableCell">3/1</span>
-                            </Table.Cell.Text>
-                            <Table.Cell.Text>
-                              <span className="span--tableCell">3/1</span>
+                              <Button.Pill
+                                url="#"
+                                label="test"
+                                urlExternal={true}
+                              >
+                                <span>View Offer</span>
+                              </Button.Pill>
                             </Table.Cell.Text>
                           </Table.Row>
                           <Table.Row style={{ backgroundColor: "#FBFFFD" }}>
@@ -375,6 +357,155 @@ const Home = () => {
                             </Table.Cell.Text>
                             <Table.Cell.Text>
                               <span className="span--tableCell">3/1</span>
+                            </Table.Cell.Text>
+                            <Table.Cell.Text>
+                              <Button.Pill
+                                url="#"
+                                label="test"
+                                urlExternal={true}
+                              >
+                                <span>View Offer</span>
+                              </Button.Pill>
+                            </Table.Cell.Text>
+                          </Table.Row>
+                          <Table.Row style={{ backgroundColor: "#FBFFFD" }}>
+                            <Table.Cell.Text>
+                              <span className="span--tableCell">3</span>
+                            </Table.Cell.Text>
+                            <Table.Cell.Text>
+                              <span className="span--tableCell">
+                                Patrick Cantlay
+                              </span>
+                            </Table.Cell.Text>
+                            <Table.Cell.Text>
+                              <span className="span--tableCell">1894</span>
+                            </Table.Cell.Text>
+                            <Table.Cell.Text>
+                              <span className="span--tableCell">3/1</span>
+                            </Table.Cell.Text>
+                            <Table.Cell.Text>
+                              <span className="span--tableCell">3/1</span>
+                            </Table.Cell.Text>
+                            <Table.Cell.Text>
+                              <Button.Pill
+                                url="#"
+                                label="test"
+                                urlExternal={true}
+                              >
+                                <span>View Offer</span>
+                              </Button.Pill>
+                            </Table.Cell.Text>
+                          </Table.Row>
+                          <Table.Row style={{ backgroundColor: "#FBFFFD" }}>
+                            <Table.Cell.Text>
+                              <span className="span--tableCell">3</span>
+                            </Table.Cell.Text>
+                            <Table.Cell.Text>
+                              <span className="span--tableCell">
+                                Patrick Cantlay
+                              </span>
+                            </Table.Cell.Text>
+                            <Table.Cell.Text>
+                              <span className="span--tableCell">1894</span>
+                            </Table.Cell.Text>
+                            <Table.Cell.Text>
+                              <span className="span--tableCell">3/1</span>
+                            </Table.Cell.Text>
+                            <Table.Cell.Text>
+                              <span className="span--tableCell">3/1</span>
+                            </Table.Cell.Text>
+                            <Table.Cell.Text>
+                              <Button.Pill
+                                url="#"
+                                label="test"
+                                urlExternal={true}
+                              >
+                                <span>View Offer</span>
+                              </Button.Pill>
+                            </Table.Cell.Text>
+                          </Table.Row>
+                          <Table.Row style={{ backgroundColor: "#FBFFFD" }}>
+                            <Table.Cell.Text>
+                              <span className="span--tableCell">3</span>
+                            </Table.Cell.Text>
+                            <Table.Cell.Text>
+                              <span className="span--tableCell">
+                                Patrick Cantlay
+                              </span>
+                            </Table.Cell.Text>
+                            <Table.Cell.Text>
+                              <span className="span--tableCell">1894</span>
+                            </Table.Cell.Text>
+                            <Table.Cell.Text>
+                              <span className="span--tableCell">3/1</span>
+                            </Table.Cell.Text>
+                            <Table.Cell.Text>
+                              <span className="span--tableCell">3/1</span>
+                            </Table.Cell.Text>
+                            <Table.Cell.Text>
+                              <Button.Pill
+                                url="#"
+                                label="test"
+                                urlExternal={true}
+                              >
+                                <span>View Offer</span>
+                              </Button.Pill>
+                            </Table.Cell.Text>
+                          </Table.Row>
+                          <Table.Row style={{ backgroundColor: "#FBFFFD" }}>
+                            <Table.Cell.Text>
+                              <span className="span--tableCell">3</span>
+                            </Table.Cell.Text>
+                            <Table.Cell.Text>
+                              <span className="span--tableCell">
+                                Patrick Cantlay
+                              </span>
+                            </Table.Cell.Text>
+                            <Table.Cell.Text>
+                              <span className="span--tableCell">1894</span>
+                            </Table.Cell.Text>
+                            <Table.Cell.Text>
+                              <span className="span--tableCell">3/1</span>
+                            </Table.Cell.Text>
+                            <Table.Cell.Text>
+                              <span className="span--tableCell">3/1</span>
+                            </Table.Cell.Text>
+                            <Table.Cell.Text>
+                              <Button.Pill
+                                url="#"
+                                label="test"
+                                urlExternal={true}
+                              >
+                                <span>View Offer</span>
+                              </Button.Pill>
+                            </Table.Cell.Text>
+                          </Table.Row>
+                          <Table.Row style={{ backgroundColor: "#FBFFFD" }}>
+                            <Table.Cell.Text>
+                              <span className="span--tableCell">3</span>
+                            </Table.Cell.Text>
+                            <Table.Cell.Text>
+                              <span className="span--tableCell">
+                                Patrick Cantlay
+                              </span>
+                            </Table.Cell.Text>
+                            <Table.Cell.Text>
+                              <span className="span--tableCell">1894</span>
+                            </Table.Cell.Text>
+                            <Table.Cell.Text>
+                              <span className="span--tableCell">3/1</span>
+                            </Table.Cell.Text>
+                            <Table.Cell.Text>
+                              <span className="span--tableCell">3/1</span>
+                            </Table.Cell.Text>
+                            <Table.Cell.Text>
+                              <Button.Pill
+                                url="#"
+                                label="test"
+                                urlExternal={true}
+                              >
+                                <span>View Offer</span>
+                              </Button.Pill>
                             </Table.Cell.Text>
                           </Table.Row>
                         </Table.Body>
