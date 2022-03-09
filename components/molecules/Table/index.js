@@ -10,7 +10,7 @@ const classes = (defaultStyles, userStyles) => cn(defaultStyles, userStyles)
 
 export const TableRow = ({ children, styles: userStyles, ...props }) => {
   return (
-    <tr className={classes(styles.tableRow, userStyles)} {...props}>
+    <tr className={styles.tableRow} {...props}>
       {children}
     </tr>
   )

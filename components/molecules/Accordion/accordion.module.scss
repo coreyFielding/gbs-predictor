@@ -37,17 +37,6 @@
     animation-delay: 0;
     animation-duration: 0.2s;
   }
-
-  .row {
-    padding: 10px;
-    height: 40px;
-    border-bottom: 1px solid $white;
-  }
-
-  .cell {
-    vertical-align: middle;
-    padding-left: 20px;
-  }
 }
 
 @keyframes slideIn {

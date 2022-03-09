@@ -1,4 +1,4 @@
-import Page from "../components/common/Page"
+import { Page } from "../components"
 import displayComponents from "../functions/wordpress/displayComponents"
 import pagesComponentList from "../components/blocks/pages"
 // import getAllPages from "../lib/wordpress/pages/getAllPages";
