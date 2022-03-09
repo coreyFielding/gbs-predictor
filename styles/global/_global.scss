@@ -85,14 +85,14 @@ section {
           border-radius: 20px;
         }
         &_right {
-          .panel_panel__n5TnY {
-            overflow: scroll;
-          }
-
           table {
             border-radius: 20px;
             width: calc(100% - 120px);
           }
+        }
+
+        .panel_panel__n5TnY {
+          overflow: scroll;
         }
       }
     }

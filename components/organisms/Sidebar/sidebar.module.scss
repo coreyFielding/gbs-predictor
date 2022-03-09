@@ -1,8 +1,9 @@
 @import "../../../styles/global/colours";
+@import "../../../styles/global/mixins";
 
 .sidebar {
   position: relative;
-  width: 300px;
+  width: 72px;
   height: 100vh;
   padding: 0 0px 0 20px;
   background-color: $background;
@@ -13,16 +14,34 @@
 
   &_tab {
     position: relative;
-    height: 136px;
+    min-height: 136px;
     background-color: $gbsGreenDark;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
+
+    > div {
+      padding: 22px 15px;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+
+      * {
+        color: $white;
+      }
+
+      h2 {
+        font-size: 17px;
+      }
+    }
+
+    &:first-of-type {
+      padding-top: 70px;
+    }
 
     &:after {
       content: "";
       position: absolute;
       background-color: $background;
-      bottom: -136px;
+      bottom: -100%;
       right: 0;
       height: 100%;
       width: 25px;
@@ -40,7 +59,6 @@
         content: "";
         position: absolute;
         background-color: $background;
-        bottom: -136px;
         right: 0;
         height: 100%;
         width: 25px;
@@ -55,5 +73,29 @@
     bottom: 0;
     height: 85px;
     width: 180px;
+  }
+}
+
+@include mq($from: desktop) {
+  .sidebar {
+    width: 300px;
+
+    &_tab {
+      > div {
+          writing-mode: horizontal-tb;
+          transform: none;
+
+        h2 {
+          font-size: 2rem;
+          writing-mode: horizontal-tb;
+          transform: none;
+        }
+      }
+
+      &:first-of-type {
+        padding-top: 0;
+      }
+
+    }
   }
 }
