@@ -5,14 +5,14 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p ",
     "test": "jest --watch",
     "lint": "next lint"
   },
   "dependencies": {
     "axios": "^0.23.0",
     "classnames": "^2.3.1",
-    "next": "^12.0.1",
+    "next": "11.1.2",
     "next-seo": "^4.28.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
