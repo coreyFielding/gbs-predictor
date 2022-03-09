@@ -4,7 +4,7 @@ import { Panel, Accordion, Table, Heading } from "../../../components"
 // Styles
 import styles from "./variables.module.scss"
 
-export const Variables = () => {
+const Variables = () => {
   return (
     <div className="section_left">
       <div className="header">
@@ -89,3 +89,5 @@ export const Variables = () => {
     </div>
   )
 }
+
+export default Variables

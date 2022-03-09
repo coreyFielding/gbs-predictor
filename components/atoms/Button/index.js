@@ -13,7 +13,13 @@ export const ButtonPill = ({
 
   if (url) {
     return urlExternal ? (
-      <a href={url} className={classes} aria-label={children} target="_blank">
+      <a
+        href={url}
+        className={classes}
+        aria-label={children}
+        target="_blank"
+        rel="noreferrer"
+      >
         {children}
       </a>
     ) : (

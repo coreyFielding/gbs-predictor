@@ -1,7 +1,7 @@
 // Components
 import { Panel, Button, Table, Heading, Filter } from "../../../components"
 
-export const Results = () => {
+const Results = () => {
   return (
     <div className="section_right">
       <div className="header">
@@ -28,16 +28,16 @@ export const Results = () => {
                 //   width={10}
                 //   height={10}
                 // />,
-                <Table.Heading.Text>
+                <Table.Heading.Text key={1}>
                   <span className="span--tableHeading">Player Name</span>
                 </Table.Heading.Text>,
-                <Table.Heading.Text>
+                <Table.Heading.Text key={2}>
                   <span className="span--tableHeading">GBS Score</span>
                 </Table.Heading.Text>,
-                <Table.Heading.Text>
+                <Table.Heading.Text key={3}>
                   <span className="span--tableHeading">Odds</span>
                 </Table.Heading.Text>,
-                <Table.Heading.Text>
+                <Table.Heading.Text key={4}>
                   <span className="span--tableHeading">E/W</span>
                 </Table.Heading.Text>,
               ]}
@@ -319,3 +319,5 @@ export const Results = () => {
     </div>
   )
 }
+
+export default Results

@@ -1,5 +1,6 @@
 // Components
 import { ToggleFilter } from "../.."
+import Image from "next/image"
 
 // Styles
 import cn from "classnames"
@@ -18,7 +19,7 @@ export const TableTextCell = ({ children, cellProps }) => {
 
 export const TableImageCell = ({ cellProps, ...props }) => (
   <TableData {...cellProps}>
-    <img {...props} />
+    <Image {...props} />
   </TableData>
 )
 

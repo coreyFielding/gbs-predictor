@@ -1,14 +1,8 @@
-import ComponentExample from "../flexible-content/ComponentExample"
-
 const pagesComponentList = {
   // exampleComponent: (component, index) => {
   //   return (
   //     !!component && (
-  //       <ComponentExample
-  //         key={index}
-  //         title={component.title}
-  //         text={component.text}
-  //       />
+  //
   //     )
   //   )
   // },

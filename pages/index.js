@@ -1,16 +1,8 @@
 // Components
-import {
-  Sidebar,
-  Panel,
-  Table,
-  Page,
-  Heading,
-  Accordion,
-  Filter,
-  Button,
-} from "../components"
+import { Sidebar, Page } from "../components"
 
-import { Variables, Results } from "./components/"
+import Variables from "./components/Variables"
+import Results from "./components/Results"
 
 // Styles
 import Image from "next/image"
