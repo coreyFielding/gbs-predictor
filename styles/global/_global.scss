@@ -85,17 +85,17 @@ section {
         }
         &_right {
           height: 675px;
-          width: calc(100% - 120px);
+          width: calc(100% - 105px);
         }
       }
     }
 
     &_left {
-      flex: 0 0 45%;
+      flex: 0 0 43%;
     }
 
     &_right {
-      flex: 0 0 55%;
+      flex: 0 0 57%;
     }
   }
 }
