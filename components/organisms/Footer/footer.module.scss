@@ -6,6 +6,8 @@
   left: 320px;
   height: 70px;
   width: calc(100vw - 320px - 30px);
+  background-color: $gbsGreenDark;
+  z-index: 100;
 }
 
 .break {

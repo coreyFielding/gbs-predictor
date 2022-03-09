@@ -47,7 +47,7 @@ section {
     display: flex;
     align-content: center;
     align-items: center;
-    width: calc(100% - 30px);
+    width: calc(100% - 22px);
     height: 100%;
     padding-left: 20px;
   }
@@ -81,21 +81,30 @@ section {
         margin-top: 25px;
 
         &_left {
-          height: 675px;
+          background-color: $white;
+          border-radius: 20px;
         }
         &_right {
-          height: 675px;
-          width: calc(100% - 105px);
+          .panel_panel__n5TnY {
+            overflow: scroll;
+          }
+
+          table {
+            border-radius: 20px;
+            width: calc(100% - 120px);
+          }
         }
       }
     }
 
     &_left {
       flex: 0 0 43%;
+      display: none;
     }
 
     &_right {
       flex: 0 0 57%;
+      padding-right: 0;
     }
   }
 }
@@ -124,4 +133,29 @@ select {
   line-height: inherit;
   outline: none;
   display: grid;
+}
+
+@include mq($from: desktop) {
+  section {
+    .section {
+      &_left {
+        display: block;
+      }
+    }
+  }
+}
+
+@include mq($from: extra-wide) {
+  section {
+    .section {
+      &_left {
+        flex: 0 0 30%;
+        display: block;
+      }
+
+      &_right {
+        flex: 0 0 70%;
+      }
+    }
+  }
 }
