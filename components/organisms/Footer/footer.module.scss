@@ -1,11 +1,11 @@
 @import "../../../styles/global/colours";
+@import "../../../styles/global/mixins";
 
 .footer {
   position: fixed;
   bottom: 0;
-  left: 320px;
   height: 70px;
-  width: calc(100vw - 320px - 30px);
+  width: 100%;
   background-color: $gbsGreenDark;
   z-index: 100;
 }
@@ -13,4 +13,18 @@
 .break {
   border-top: 1px solid $background;
   margin-bottom: 25px;
+}
+
+@include mq($from: tablet) {
+  .footer {
+    left: 92px;
+    width: calc(100vw - 92px - 30px);
+  }
+}
+
+@include mq($from: desktop) {
+  .footer {
+    left: 320px;
+    width: calc(100vw - 320px - 30px);
+  }
 }

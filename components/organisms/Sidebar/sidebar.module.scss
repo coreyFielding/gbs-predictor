@@ -11,6 +11,10 @@
 
   // }
 
+  aside {
+    display: flex;
+  }
+
   &_tab {
     position: relative;
     min-height: 100%;
@@ -30,33 +34,36 @@
       }
     }
 
-    &:after {
-      content: "";
-      position: absolute;
-      background-color: $background;
-      bottom: -100%;
-      right: 0;
-      height: 100%;
-      width: 25px;
-      border-top-right-radius: 25px;
-      box-shadow: 0 -25px 0 $gbsGreenDark;
+    &:first-of-type {
+      flex: 0 0 80%;
+
+      &:after {
+        content: '';
+        width: 30%;
+        height: 100%;
+        top: 0;
+        right: -30%;
+        position: absolute;
+        background-color: $gbsGreenDark;
+      }
     }
 
     &:nth-of-type(2) {
+      flex: 0 0 20%;
+      max-width: 75px;
       background-color: $gbsGreen;
-      border-top-left-radius: 20px;
-      border-top-right-radius: 20px;
-      border-bottom-left-radius: 20px;
+      border-top-left-radius: 50%;
+      border-bottom-left-radius: 50%;
 
       &:after {
-        content: "";
-        position: absolute;
-        background-color: $background;
-        right: 0;
+        content: '';
+        background-color: $gbsGreen;
+        width:100%;
         height: 100%;
-        width: 25px;
-        border-top-right-radius: 25px;
-        box-shadow: 0 -25px 0 $gbsGreen;
+        position: absolute;
+        right: -100%;
+        top: 0;
+        z-index: 0;
       }
     }
   }
@@ -74,7 +81,11 @@
     width: 72px;
     height: 100vh;
     padding: 0 0px 0 20px;
-    
+
+    aside {
+      display: block;
+    }
+
     &_tab {
       position: relative;
       min-height: 136px;
@@ -99,23 +110,27 @@
         padding-top: 70px;
       }
 
-      &:after {
-        content: "";
-        position: absolute;
-        background-color: $background;
-        bottom: -100%;
-        right: 0;
-        height: 100%;
-        width: 25px;
-        border-top-right-radius: 25px;
-        box-shadow: 0 -25px 0 $gbsGreenDark;
-      }
+      &:first-of-type, 
+      &:nth-of-type(2) {
+        &:after {
+          content: "";
+          position: absolute;
+          background-color: $background;
+          bottom: -100%;
+          right: 0;
+          top: auto;
+          height: 100%;
+          width: 25px;
+          border-top-right-radius: 25px;
+          box-shadow: 0 -25px 0 $gbsGreenDark;
+        }
+    }
 
       &:nth-of-type(2) {
-        background-color: $gbsGreen;
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
         border-bottom-left-radius: 20px;
+        max-width: 100%;
 
         &:after {
           content: "";
