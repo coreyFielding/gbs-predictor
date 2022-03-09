@@ -2,7 +2,6 @@ import { useContext, createContext, useState } from "react"
 
 // Components
 import { Heading, SliderFilter } from "../../"
-import ToggleIcon from "public/images/icons/toggle.svg"
 
 // Styles
 import styles from "./accordion.module.scss"
