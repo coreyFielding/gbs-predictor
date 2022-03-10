@@ -1,36 +1,35 @@
+@import "../../../../styles/global/colours";
+
+.container {
+  width: 200px;
+  height: 6px;
+  margin-left: 20px;
+}
 .horizontalSlider {
-  width: 100%;
-  max-width: 500px;
-  margin: auto;
-}
-.exampleThumb {
-  cursor: pointer;
-  position: absolute;
-  z-index: 100;
-  background: #ffffff;
-  border: 5px solid #3774ff;
-  border-radius: 100%;
-  display: block;
-  box-shadow: 0 0 2px 0 rgb(0 0 0 / 44%);
-}
-.exampleThumb.active {
-  background-color: grey;
-}
-.exampleTrack {
   position: relative;
-  background: #ddd;
+  max-width: 200px;
+  margin: auto;
+
+  .thumb {
+    cursor: pointer;
+    outline: none;
+    position: absolute;
+    z-index: 100;
+    border: 7px solid $gbsGreenDark;
+    border-radius: 100%;
+    display: block;
+    top: -5px;
+  }
+
+  .track {
+    background: $white;
+    top: 0px;
+    height: 4px;
+  }
 }
-.exampleTrack.exampleTrack-0 {
-  background: #83a9ff;
-}
-.horizontalSlider .exampleTrack {
-  top: 20px;
-  height: 4px;
-}
-.horizontalSlider .exampleThumb {
-  top: 12px;
-  width: 10px;
-  outline: none;
-  height: 10px;
-  line-height: 38px;
+
+.value {
+  position: absolute;
+  top: -12px;
+  left: -25px;
 }

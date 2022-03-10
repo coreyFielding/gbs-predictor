@@ -1,5 +1,5 @@
 // Components
-import { ToggleFilter } from "../.."
+import { ToggleFilter, SliderFilter } from "../.."
 import Image from "next/image"
 
 // Styles
@@ -13,9 +13,20 @@ export const TableData = ({ children, styles: userStyles, ...props }) => (
     {children}
   </td>
 )
-export const TableTextCell = ({ children, cellProps }) => {
-  return <TableData {...cellProps}>{children}</TableData>
-}
+
+export const TableSliderCell = ({
+  cellProps,
+  styles: userStyles,
+  ...props
+}) => (
+  <TableData {...cellProps} className={styles.cellSlider}>
+    <SliderFilter {...props} />
+  </TableData>
+)
+
+export const TableTextCell = ({ children, cellProps }) => (
+  <TableData {...cellProps}>{children}</TableData>
+)
 
 export const TableImageCell = ({ cellProps, ...props }) => (
   <TableData {...cellProps}>
@@ -36,5 +47,6 @@ const CellComponent = ({ children, ...props }) => {
 CellComponent.Text = TableTextCell
 CellComponent.Image = TableImageCell
 CellComponent.Toggle = TableToggleCell
+CellComponent.Slider = TableSliderCell
 
 export const TableCell = CellComponent
