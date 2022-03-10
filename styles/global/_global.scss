@@ -40,7 +40,7 @@ html {
 
 section {
   display: flex;
-  width: calc(100vw - 200px);
+  width: 100%;
   padding-right: 50px;
   padding-right: 0;
 
@@ -48,25 +48,29 @@ section {
     display: flex;
     align-content: center;
     align-items: center;
-    width: calc(100% - 22px);
     height: 100%;
-    padding-left: 20px;
+    width: 100%;
+    padding: 3px;
   }
 
   .section {
     &_left,
     &_right {
       height: 100%;
-      padding: 10px;
+      width: 100%;
 
       .header {
-        display: flex;
-        margin-top: 10px;
-        vertical-align: middle;
+        h1 {
+          display: none;
+        }
 
         .filters {
+          position: absolute;
+          bottom: 20px;
+          left: 20px;
+          z-index: 999;
           display: flex;
-          margin-left: 80px;
+          right: 20px;
 
           .toggle {
             margin: auto;
@@ -74,7 +78,7 @@ section {
           }
 
           .dropdown {
-            width: 183px;
+            width: 153px;
           }
         }
       }
@@ -88,8 +92,9 @@ section {
         }
         &_right {
           table {
+            width: 100%;
             border-radius: 20px;
-            width: calc(100% - 120px);
+            background-color: $white;
           }
         }
 
@@ -105,7 +110,7 @@ section {
     }
 
     &_right {
-      flex: 0 0 57%;
+      flex: none;
       padding-right: 0;
     }
   }
@@ -137,14 +142,63 @@ select {
   display: grid;
 }
 
+
 @include mq($from: tablet) {
   .main {
     flex-direction: row;
   }
   section {
+    > div {
+      width: calc(100% - 17px);
+      padding-left: 20px;
+    }
+
+    .section {
+      &_left, 
+      &_right {
+        .header {
+          display: flex;
+          margin-top: 10px;
+          vertical-align: middle;
+
+          .filters {
+            margin-left: 80px;
+            position: relative;
+            bottom: 0;
+            left: 0;
+
+            svg {
+              display: none;
+            }
+          }
+
+          h1 {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include mq($from: wide) {
+  section {
+    width: calc(100vw - 200px);
     .section {
       &_left {
         display: block;
+        padding: 10px;
+      }
+
+      &_right {
+        flex: 0 0 57%;
+        padding: 10px;
+
+         .panel_right {
+          table {
+            width: calc(100% - 120px);
+          }
+        }
       }
     }
   }

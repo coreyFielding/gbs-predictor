@@ -9,6 +9,15 @@ const Results = () => {
           Results
         </Heading>
         <div className="filters">
+          <svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line y1="4.16699" x2="23.8" y2="4.16699" stroke="#3CD176"/>
+            <line y1="11.2012" x2="23.8" y2="11.2012" stroke="#3CD176"/>
+            <line y1="18.2363" x2="23.8" y2="18.2363" stroke="#3CD176"/>
+            <circle cx="5.23503" cy="3.33366" r="2.66667" fill="#3CD176"/>
+            <circle cx="18.5671" cy="11.3337" r="2.66667" fill="#3CD176"/>
+            <circle cx="10.5671" cy="18.0007" r="2.66667" fill="#3CD176"/>
+          </svg>
+
           <div className="toggle">
             <Filter.Toggle label="DraftKings" />
           </div>
