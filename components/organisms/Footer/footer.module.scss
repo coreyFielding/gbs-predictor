@@ -59,6 +59,11 @@
     left: 92px;
     width: calc(100vw - 92px - 30px);
   }
+
+  .disclaimer {
+    max-width: 100%;
+    font-size: 8px;
+  }
 }
 
 @include mq($from: desktop) {
