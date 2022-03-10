@@ -4,7 +4,7 @@
 .footer {
   position: fixed;
   bottom: 0;
-  height: 70px;
+  height: 112px;
   width: 100%;
   background-color: $gbsGreenDark;
   z-index: 100;
@@ -17,6 +17,7 @@
 
 @include mq($from: tablet) {
   .footer {
+    height: 70px;
     left: 92px;
     width: calc(100vw - 92px - 30px);
   }

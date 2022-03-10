@@ -22,7 +22,7 @@
     border-top-left-radius: 20px;
 
     > div {
-      padding: 22px 15px;
+      padding: 20px;
 
       * {
         color: $white;
@@ -50,13 +50,14 @@
     &:nth-of-type(2) {
       flex: 0 0 20%;
       max-width: 75px;
-      background-color: $gbsGreen;
+      background-color: $gbsGreenLight;
       border-top-left-radius: 50%;
       border-bottom-left-radius: 50%;
+      margin-top: 3px;
 
       &:after {
         content: '';
-        background-color: $gbsGreen;
+        background-color: $gbsGreenLight;
         width:101%;
         height: 100%;
         position: absolute;
@@ -111,6 +112,7 @@
 
       &:first-of-type, 
       &:nth-of-type(2) {
+        margin-top: 0;
         &:after {
           content: "";
           position: absolute;
@@ -139,7 +141,7 @@
           height: 100%;
           width: 25px;
           border-top-right-radius: 25px;
-          box-shadow: 0 -25px 0 $gbsGreen;
+          box-shadow: 0 -25px 0 $gbsGreenLight;
         }
       }
     }

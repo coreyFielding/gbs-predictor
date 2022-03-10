@@ -60,9 +60,7 @@ section {
       width: 100%;
 
       .header {
-        display: flex;
-        margin-top: 10px;
-        vertical-align: middle;
+        display: none;
 
         .filters {
           display: flex;
@@ -89,6 +87,7 @@ section {
           table {
             width: 100%;
             border-radius: 20px;
+            background-color: $white;
           }
         }
 
@@ -145,6 +144,14 @@ select {
     > div {
       width: calc(100% - 17px);
       padding-left: 20px;
+    }
+
+    .section {
+      .header {
+        display: flex;
+        margin-top: 10px;
+        vertical-align: middle;
+      }
     }
   }
 }

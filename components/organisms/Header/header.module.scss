@@ -1,9 +1,11 @@
 @import "../../../styles/global/colours";
+@import "../../../styles/global/mixins";
 
 .header {
-  height: 70px;
+  height: 73px;
   background-color: $background;
   position: relative;
+
 
   &_inner {
     display: flex;
@@ -12,7 +14,7 @@
     width: calc(100% - 30px);
     background-color: $background;
     border-bottom-right-radius: 20px;
-    padding-right: 30px;
+    padding: 33px 30px 0 20px;
     position: relative;
     z-index: 3;
 
@@ -26,9 +28,13 @@
     // }
   }
 
+  svg {
+    transform: translateY(-40%);
+  }
+
   &_span {
-    margin-top: 18px;
     margin-bottom: 22px;
+    display: none;
   }
 
   &:after {
@@ -42,3 +48,20 @@
     border-right: 1px solid $gbsGreenDark;
   }
 }
+
+@include mq($from: tablet) {
+  .header {
+    height: 70px;
+    &_span {
+      display: block;
+    }
+    &_inner {
+      padding-top: 18px;
+    }
+
+    svg {
+      transform: none;
+    }
+  }
+}
+
