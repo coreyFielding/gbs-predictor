@@ -12,7 +12,7 @@ import Image from "next/image";
 
 const Home = () => {
   return (
-    <Page seo={{ title: "Golf Betting Predictor" }}>
+    <Page seo={{ title: "GBS Predictor" }}>
       <div className="page">
         <div className="wrapper">
           <main className="main">
