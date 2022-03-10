@@ -1,4 +1,10 @@
-import { useContext, createContext, useState } from "react"
+import {
+  useContext,
+  createContext,
+  useState,
+  createRef,
+  useEffect,
+} from "react"
 
 // Components
 import { Heading, SliderFilter } from "../../"
@@ -12,6 +18,7 @@ export const AccordionContext = createContext({})
 const AccordionComponent = ({
   initial,
   children,
+  singular = false,
   styles: userStyles,
   ...rest
 }) => {
@@ -20,7 +27,7 @@ const AccordionComponent = ({
   const open = (index) => {
     setOpenItems((currentOpen) => {
       if (!currentOpen?.includes(index)) {
-        return [...currentOpen, index]
+        return [...(!singular ? currentOpen : []), index]
       }
 
       return currentOpen
@@ -34,7 +41,7 @@ const AccordionComponent = ({
   const toggle = (index) => {
     setOpenItems((currentOpen) => {
       if (!currentOpen?.includes(index)) {
-        return [...currentOpen, index]
+        return [...(!singular ? currentOpen : []), index]
       }
 
       return currentOpen.filter((i) => i !== index)
@@ -50,6 +57,7 @@ const AccordionComponent = ({
         open,
         close,
         toggle,
+        singular,
       }}
     >
       <div className={styles.accordion}>{children}</div>
@@ -65,14 +73,29 @@ const AccordionItem = ({ label, slider, children, index, ...rest }) => {
   const headerClasses = cn(styles.heading, isOpen && styles.toggleOpen)
   const contentClasses = cn(styles.content, isOpen && styles.contentVisible)
 
+  const sliderRef = createRef()
+
+  useEffect(() => {}, [])
+
   return (
     <div {...rest} className={styles.item}>
-      <div className={headerClasses} onClick={() => index && toggle(index)}>
-        <Heading level={6} className="span--accordionHeading">
-          {label}
-        </Heading>
-        {/* {!!slider && <SliderFilter />} */}
+      <div
+        className={headerClasses}
+        onClick={(event) => {
+          index && !sliderRef?.current?.contains(event.target) && toggle(index)
+        }}
+      >
+        <div className={styles.container}>
+          <Heading level={6} className="span--accordionHeading">
+            {label}
+          </Heading>
+        </div>
 
+        {!!slider && (
+          <div ref={sliderRef} className={styles.slider}>
+            <SliderFilter />
+          </div>
+        )}
         <div className={styles.toggle}>{/* <ToggleIcon /> */}</div>
       </div>
 

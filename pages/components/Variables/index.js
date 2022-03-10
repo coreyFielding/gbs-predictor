@@ -14,7 +14,7 @@ const Variables = () => {
       </div>
       <div className="panel panel_left">
         <Panel>
-          <Accordion initial={1}>
+          <Accordion initial={1} singular={true}>
             <Accordion.Item index={1} label="Event form" slider={true}>
               <Table>
                 <Table.Body>
@@ -22,9 +22,7 @@ const Variables = () => {
                     <Table.Cell className={styles.cell}>
                       <span className="span--accordionItem">OWGR</span>
                     </Table.Cell>
-                    <Table.Cell className={styles.cell}>
-                      <span className="span--tableCell">5</span>
-                    </Table.Cell>
+                    <Table.Cell.Slider />
                   </Table.Row>
                   <Table.Row className={styles.row}>
                     <Table.Cell className={styles.cell}>
@@ -32,9 +30,7 @@ const Variables = () => {
                         Last Tournament
                       </span>
                     </Table.Cell>
-                    <Table.Cell className={styles.cell}>
-                      <span className="span--tableCell">5</span>
-                    </Table.Cell>
+                    <Table.Cell.Slider />
                   </Table.Row>
                   <Table.Row className={styles.row}>
                     <Table.Cell className={styles.cell}>
@@ -42,9 +38,7 @@ const Variables = () => {
                         Last But 1 Tournament
                       </span>
                     </Table.Cell>
-                    <Table.Cell className={styles.cell}>
-                      <span className="span--tableCell">5</span>
-                    </Table.Cell>
+                    <Table.Cell.Slider />
                   </Table.Row>
                 </Table.Body>
               </Table>

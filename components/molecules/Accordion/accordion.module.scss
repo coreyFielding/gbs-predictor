@@ -14,9 +14,17 @@
     align-items: center;
     position: relative;
     min-height: 40px;
-    padding: 5px 19px 4px 20px;
     border-radius: 12px;
     background-color: $gbsGreenLight;
+
+    .container {
+      width: 192px;
+      padding: 5px 19px 4px 20px;
+    }
+
+    .slider {
+      padding: 17px 0;
+    }
   }
 
   .toggleOpen {
@@ -33,9 +41,9 @@
     background-color: $gbsGreenLighter;
     border-bottom-left-radius: 12px;
     border-bottom-right-radius: 12px;
-    animation-name: slideIn;
-    animation-delay: 0;
-    animation-duration: 0.2s;
+    // animation-name: slideIn;
+    // animation-delay: 0;
+    // animation-duration: 0.2s;
   }
 }
 
