@@ -23,11 +23,11 @@ const Results = () => {
           <Table>
             <Table.Heading
               headings={[
-                // <Table.Heading.Image
-                //   src="/public/static/images/stats.svg"
-                //   width={10}
-                //   height={10}
-                // />,
+                <Table.Heading.Image
+                  src="/public/static/images/stats.svg"
+                  width={10}
+                  height={10}
+                />,
                 <Table.Heading.Text key={1}>
                   <span className="span--tableHeading">Player Name</span>
                 </Table.Heading.Text>,

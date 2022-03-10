@@ -60,22 +60,24 @@ const AccordionComponent = ({
         singular,
       }}
     >
-      <div className={styles.accordion}>{children}</div>
+      {children}
     </AccordionContext.Provider>
   )
 }
 
-const AccordionItem = ({ label, slider, children, index, ...rest }) => {
+const AccordionItem = ({
+  label,
+  slider,
+  children,
+  index,
+  setFieldValue,
+  ...rest
+}) => {
   const { openItems, toggle } = useContext(AccordionContext)
-
   const isOpen = index && openItems?.includes(index)
-
   const headerClasses = cn(styles.heading, isOpen && styles.toggleOpen)
   const contentClasses = cn(styles.content, isOpen && styles.contentVisible)
-
   const sliderRef = createRef()
-
-  useEffect(() => {}, [])
 
   return (
     <div {...rest} className={styles.item}>
@@ -93,7 +95,7 @@ const AccordionItem = ({ label, slider, children, index, ...rest }) => {
 
         {!!slider && (
           <div ref={sliderRef} className={styles.slider}>
-            <SliderFilter />
+            <SliderFilter name={label} setFieldValue={setFieldValue} />
           </div>
         )}
         <div className={styles.toggle}>{/* <ToggleIcon /> */}</div>
