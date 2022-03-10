@@ -2,6 +2,8 @@
 
 .header {
   height: 70px;
+  background-color: $background;
+  position: relative;
 
   &_inner {
     display: flex;
@@ -11,10 +13,32 @@
     background-color: $background;
     border-bottom-right-radius: 20px;
     padding-right: 30px;
+    position: relative;
+    z-index: 3;
+
+    // &:after {
+    //   content: '';
+    //   position: absolute;
+    //   width: 30%;
+    //   right: -30%;
+    //   height: 105%;
+    //   background-color: $gbsGreenDark;
+    // }
   }
 
   &_span {
     margin-top: 18px;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
+  }
+
+  &:after {
+    content: '';
+    width: 52px;
+    height: 102%;
+    right: 0;
+    top: 0;
+    background-color: $gbsGreenDark;
+    position: absolute;
+    border-right: 1px solid $gbsGreenDark;
   }
 }
