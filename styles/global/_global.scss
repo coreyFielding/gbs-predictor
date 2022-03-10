@@ -60,11 +60,17 @@ section {
       width: 100%;
 
       .header {
-        display: none;
+        h1 {
+          display: none;
+        }
 
         .filters {
+          position: absolute;
+          bottom: 20px;
+          left: 20px;
+          z-index: 999;
           display: flex;
-          margin-left: 80px;
+          right: 20px;
 
           .toggle {
             margin: auto;
@@ -72,7 +78,7 @@ section {
           }
 
           .dropdown {
-            width: 183px;
+            width: 153px;
           }
         }
       }
@@ -147,10 +153,28 @@ select {
     }
 
     .section {
-      .header {
-        display: flex;
-        margin-top: 10px;
-        vertical-align: middle;
+      &_left, 
+      &_right {
+        .header {
+          display: flex;
+          margin-top: 10px;
+          vertical-align: middle;
+
+          .filters {
+            margin-left: 80px;
+            position: relative;
+            bottom: 0;
+            left: 0;
+
+            svg {
+              display: none;
+            }
+          }
+
+          h1 {
+            display: block;
+          }
+        }
       }
     }
   }

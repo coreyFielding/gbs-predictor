@@ -12,7 +12,17 @@ export const Footer = ({ className }) => {
     <footer className={classes}>
       <Container className={styles.container}>
         <div className={styles.break} />
-        {/* <Logo /> */}
+        <div className={styles.row}>
+          <div className={styles.left}>
+            <p className={styles.age}>18+</p>
+            <p className={styles.disclaimer}>© 2022. This website is to be used strictly by those aged 18 or over. Please gamble responsibly.</p>
+          </div>
+          <div className={styles.right}>
+           <a href="https://www.begambleaware.org/">
+            BeGambleAware.org
+           </a>
+          </div>
+        </div>
       </Container>
     </footer>
   )

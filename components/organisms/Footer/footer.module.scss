@@ -8,11 +8,49 @@
   width: 100%;
   background-color: $gbsGreenDark;
   z-index: 100;
+  padding: 0 20px 20px 20px;
+
+  a {
+    color: $white;
+  }
 }
+
+.disclaimer {
+  color: $white;
+  font-size: 7px;
+  display: inline-block;
+  max-width: 118px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+}
+
+.age {
+  background-color: $white;
+  color: black;
+  width: 26px;
+  height: 26px;
+  font-size: 8px;
+  font-weight: bold;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 6px;
+}
+
 
 .break {
   border-top: 1px solid $background;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 @include mq($from: tablet) {
