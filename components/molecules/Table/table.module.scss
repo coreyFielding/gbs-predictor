@@ -3,6 +3,8 @@
 .table {
   position: relative;
   width: 100%;
+  background-color: $white;
+  height: 100%;
 }
 
 .tableHead {
@@ -37,6 +39,7 @@
 }
 
 .tableData {
+  border-radius: 20px;
   &:last-child {
     display: flex;
     position: absolute;
