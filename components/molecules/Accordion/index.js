@@ -39,6 +39,7 @@ const AccordionComponent = ({
   }
 
   const toggle = (index) => {
+    console.log(index)
     setOpenItems((currentOpen) => {
       if (!currentOpen?.includes(index)) {
         return [...(!singular ? currentOpen : []), index]

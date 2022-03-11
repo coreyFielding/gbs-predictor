@@ -1,0 +1,72 @@
+{
+  "filters": [
+    {
+      "key": 1,
+      "name": "eventForm",
+      "label": "Event Form",
+      "value": 0,
+      "children": [
+        { "name": "owgr", "label": "OWGR", "value": 0 },
+        {
+          "name": "lastTournament",
+          "label": "Last Tournament",
+          "value": 0
+        },
+        {
+          "name": "lastBut1Tournament",
+          "label": "Last But 1 Tournament",
+          "value": 0
+        },
+        {
+          "name": "lastBut2Tournament",
+          "label": "Last But 2 Tournament",
+          "value": 0
+        },
+        {
+          "name": "lastBut3Tournament",
+          "label": "Last But 3 Tournament",
+          "value": 0
+        },
+        {
+          "name": "lastBut4Tournament",
+          "label": "Last But 4 Tournament",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "key": 2,
+      "name": "currentForm",
+      "label": "Current Form",
+      "value": 0,
+      "children": [
+        { "name": "owgr1", "label": "OWGR", "value": 0 },
+        {
+          "name": "lastTournament1",
+          "label": "Last Tournament",
+          "value": 0
+        },
+        {
+          "name": "lastBut1Tournament1",
+          "label": "Last But 1 Tournament",
+          "value": 0
+        },
+        {
+          "name": "lastBut2Tournament1",
+          "label": "Last But 2 Tournament",
+          "value": 0
+        },
+        {
+          "name": "lastBut3Tournament1",
+          "label": "Last But 3 Tournament",
+          "value": 0
+        },
+        {
+          "name": "lastBut4Tournament1",
+          "label": "Last But 4 Tournament",
+          "value": 0
+        }
+      ]
+    }
+  ]
+}
