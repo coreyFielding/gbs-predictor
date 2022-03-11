@@ -38,6 +38,21 @@ html {
   flex-direction: column;
 }
 
+.tab-corners {
+  right: 0;
+  transform: translateY(-31%);
+  position: absolute;
+}
+
+.header__left-side {
+  display: flex;
+  align-items: center;
+}
+
+.back-button {
+  margin-right: 17px;
+}
+
 section {
   display: flex;
   width: 100%;
@@ -84,7 +99,7 @@ section {
         }
       }
       .panel {
-        margin-top: 25px;
+        margin-top: 3px;
 
         &_left {
           background-color: $white;
@@ -150,6 +165,11 @@ select {
   .main {
     flex-direction: row;
   }
+
+  .tab-corners {
+    display: none;
+  }
+
   section {
     > div {
       width: calc(100% - 17px);
@@ -180,6 +200,10 @@ select {
             display: block;
           }
         }
+
+        .panel {
+          margin-top: 25px;
+        }
       }
     }
   }
@@ -197,9 +221,6 @@ select {
       &_right {
         flex: 0 2 57%;
         padding: 10px;
-      }
-
-      &_right {
 
         .header {
           .filters {
