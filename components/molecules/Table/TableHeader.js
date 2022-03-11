@@ -34,8 +34,10 @@ export const TableImageHeader = ({
   </th>
 )
 
-export const TableTextHeader = ({ children }) => (
-  <th className={styles.tableHeading}>{children}</th>
+export const TableTextHeader = ({ text }) => (
+  <th className={styles.tableHeading}>
+    <span className="span--tableHeading">{text}</span>
+  </th>
 )
 export const TableDropdownHeader = ({ children }) => (
   <th className={styles.tableHeading}>{children}</th>
