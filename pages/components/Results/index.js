@@ -1,7 +1,49 @@
 // Components
+import { useMemo } from "react"
 import { Panel, Button, Table, Heading, Filter } from "../../../components"
 
 const Results = () => {
+  const table = {
+    headers: [
+      {
+        accessor: "position",
+        devices: ["all"],
+        Component: () => (
+          <Table.Heading.Image
+            key={1}
+            src="/public/static/images/stats.svg"
+            width={10}
+            height={10}
+          />
+        ),
+      },
+      {
+        accessor: "name",
+        devices: ["all"],
+        Component: () => <Table.Heading.Text key={2} text="Player Name" />,
+      },
+      {
+        accessor: "score",
+        devices: ["all"],
+        Component: () => <Table.Heading.Dropdown key={3} label="GBS Score" />,
+      },
+      {
+        accessor: "odds",
+        devices: ["all"],
+        Component: () => <Table.Heading.Dropdown key={4} label="Odds" />,
+      },
+      {
+        accessor: "eachWay",
+        devices: ["all"],
+        Component: () => <Table.Heading.Text key={5} text="E/W" />,
+      },
+      {
+        accessor: "draftKings",
+        Component: () => <Table.Heading.Dropdown key={4} label="DraftKings" />,
+        devices: ["tablet", "mobile"],
+      },
+    ],
+  }
   return (
     <div className="section_right">
       <div className="header">
@@ -9,13 +51,19 @@ const Results = () => {
           Results
         </Heading>
         <div className="filters">
-          <svg width="24" height="21" viewBox="0 0 24 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <line y1="4.16699" x2="23.8" y2="4.16699" stroke="#3CD176"/>
-            <line y1="11.2012" x2="23.8" y2="11.2012" stroke="#3CD176"/>
-            <line y1="18.2363" x2="23.8" y2="18.2363" stroke="#3CD176"/>
-            <circle cx="5.23503" cy="3.33366" r="2.66667" fill="#3CD176"/>
-            <circle cx="18.5671" cy="11.3337" r="2.66667" fill="#3CD176"/>
-            <circle cx="10.5671" cy="18.0007" r="2.66667" fill="#3CD176"/>
+          <svg
+            width="24"
+            height="21"
+            viewBox="0 0 24 21"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line y1="4.16699" x2="23.8" y2="4.16699" stroke="#3CD176" />
+            <line y1="11.2012" x2="23.8" y2="11.2012" stroke="#3CD176" />
+            <line y1="18.2363" x2="23.8" y2="18.2363" stroke="#3CD176" />
+            <circle cx="5.23503" cy="3.33366" r="2.66667" fill="#3CD176" />
+            <circle cx="18.5671" cy="11.3337" r="2.66667" fill="#3CD176" />
+            <circle cx="10.5671" cy="18.0007" r="2.66667" fill="#3CD176" />
           </svg>
 
           <div className="toggle">
@@ -31,25 +79,9 @@ const Results = () => {
         <Panel>
           <Table>
             <Table.Heading
-              headings={[
-                <Table.Heading.Image
-                  src="/public/static/images/stats.svg"
-                  width={10}
-                  height={10}
-                />,
-                <Table.Heading.Text key={1}>
-                  <span className="span--tableHeading">Player Name</span>
-                </Table.Heading.Text>,
-                <Table.Heading.Text key={2}>
-                  <span className="span--tableHeading">GBS Score</span>
-                </Table.Heading.Text>,
-                <Table.Heading.Text key={3}>
-                  <span className="span--tableHeading">Odds</span>
-                </Table.Heading.Text>,
-                <Table.Heading.Text key={4}>
-                  <span className="span--tableHeading">E/W</span>
-                </Table.Heading.Text>,
-              ]}
+              headings={table.headers.map(({ Component }, index) => (
+                <Component key={index} />
+              ))}
             ></Table.Heading>
             <Table.Body>
               <Table.Row style={{ backgroundColor: "#FBFFFD" }}>
