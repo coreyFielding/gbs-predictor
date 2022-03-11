@@ -168,12 +168,30 @@ select {
             left: 0;
 
             svg {
-              display: none;
+              position: absolute;
+              left: -260px;
             }
           }
 
           h1 {
             display: block;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include mq($from: desktop) {
+  section {
+    .section {
+      &_right {
+
+        .header {
+          .filters {
+            svg {
+              display: none;
+            }
           }
         }
       }
@@ -193,6 +211,14 @@ select {
       &_right {
         flex: 0 0 57%;
         padding: 10px;
+
+        .header {
+          .filters {
+            svg {
+              display: none;
+            }
+          }
+        }
 
          .panel_right {
           table {

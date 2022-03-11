@@ -70,9 +70,10 @@
 
   &_socials {
     position: fixed;
-    bottom: 0;
-    height: 85px;
+    bottom: 20px;
+    height: 80px;
     width: 180px;
+    display: none;
   }
 }
 
@@ -145,6 +146,12 @@
         }
       }
     }
+
+    &_socials {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+    }
   }
 }
 
@@ -160,7 +167,7 @@
           transform: none;
 
         h2 {
-          font-size: 2rem;
+          font-size: 17px;
           writing-mode: horizontal-tb;
           transform: none;
         }
@@ -170,6 +177,10 @@
         padding-top: 0;
       }
 
+    }
+
+    &_socials {
+      flex-direction: row;
     }
   }
 }
