@@ -88,7 +88,9 @@ section {
         &_left {
           background-color: $white;
           border-radius: 20px;
-          padding: 10px;
+          > div {
+            padding: 10px;
+          }
         }
         &_right {
           table {
@@ -98,14 +100,14 @@ section {
           }
         }
 
-        .panel_panel__n5TnY {
+        .panel_panel {
           overflow: scroll;
         }
       }
     }
 
     &_left {
-      flex: 0 0 43%;
+      flex: none;
       display: none;
     }
 
@@ -185,6 +187,17 @@ select {
 @include mq($from: desktop) {
   section {
     .section {
+      &_left {
+        flex: 0 0 43%;
+        display: block;
+        padding: 10px;
+      }
+
+      &_right {
+        flex: 0 0 57%;
+        padding: 10px;
+      }
+
       &_right {
 
         .header {

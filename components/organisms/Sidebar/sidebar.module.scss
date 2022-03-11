@@ -177,6 +177,13 @@
         padding-top: 0;
       }
 
+      &:nth-of-type(2) {
+        background-color: $gbsGreen;
+        &:after {
+          box-shadow: 0 -25px 0 $gbsGreen;
+        }
+      }
+
     }
 
     &_socials {
