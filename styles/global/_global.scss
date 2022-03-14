@@ -234,6 +234,13 @@ select {
   }
 }
 
+//If screen is desktop width but shorter than a tablet
+@media screen and (min-width: 740px) and (max-width: 980px) and (max-height: 768px) {
+  .main {
+    flex-direction: column;
+  }
+}
+
 @include mq($from: wide) {
   section {
     width: calc(100vw - 200px);
