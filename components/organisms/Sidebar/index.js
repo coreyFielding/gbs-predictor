@@ -16,7 +16,7 @@ export const Sidebar = () => {
           </div>
         </div>
 
-        <svg className="tab-corners" width="69" height="179" viewBox="0 0 69 179" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg className="tab-corners" width="69" height="178" viewBox="0 0 69 179" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M119 23C119 10.2975 108.703 0 96 0H92C79.2975 0 69 10.2975 69 23V36C69 48.7025 58.7025 59 46 59H31.5C14.103 59 0 73.103 0 90.5C0 107.897 14.103 122 31.5 122H46C58.7025 122 69 132.297 69 145V156C69 168.703 79.2974 179 92 179H96C108.703 179 119 168.703 119 156V23Z" fill="#BCF3D7"/>
         </svg>
 
