@@ -21,14 +21,13 @@
       padding: 20px;
       position: relative;
       z-index: 3;
+      display: flex;
+      flex-direction: column;
 
       * {
         color: $white;
       }
 
-      h2 {
-        font-size: 17px;
-      }
     }
 
     &:first-of-type {
@@ -82,6 +81,31 @@
     }
   }
 
+  &_tour_type_desktop {
+    display: none;
+  }
+
+
+  &_tournament_name {
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 3px;
+  }
+
+  &_tour_type_mobile, 
+  &_updated {
+    font-size: 10px;
+  }
+
+  &_tour_type_mobile {
+    margin-right: 9px;
+  }
+
+  &_date, 
+  &_location {
+    display: none;
+  }
+
   &_socials {
     position: fixed;
     bottom: 20px;
@@ -92,7 +116,8 @@
 
 @include mq($from: tablet) {
   .sidebar {
-    width: 72px;
+    min-width: 72px;
+    width: auto;
     height: 100vh;
     padding: 0 0px 0 20px;
 
@@ -114,10 +139,6 @@
 
         * {
           color: $white;
-        }
-
-        h2 {
-          font-size: 17px;
         }
       }
 
@@ -177,13 +198,24 @@
       }
     }
 
+
+    &_tournament_name {
+      margin-left: 3px;
+      max-height: 190px;
+      font-size: 14px;
+    }
+
+    &_tour_type_mobile {
+      margin-bottom: 9px;
+    }
+
     &_socials {
       display: flex;
       justify-content: space-between;
       flex-direction: column;
 
       svg {
-        margin-top: 45px;
+        margin-top: 15%;
 
         &:first-of-type {
           margin-top: 0;
@@ -204,10 +236,8 @@
           writing-mode: horizontal-tb;
           transform: none;
 
-        h2 {
-          font-size: 17px;
-          writing-mode: horizontal-tb;
-          transform: none;
+        p {
+          font-weight: 400;
         }
       }
 
@@ -237,6 +267,43 @@
         }
       }
 
+    }
+
+    &_tour_type_desktop {
+      display: block;
+    }
+
+    &_tour_type_mobile {
+      display: none;
+    }
+
+    &_tour_type_desktop,
+    &_updated {
+      font-size: 12px;
+      line-height: 14.5px;
+    }
+
+    &_updated {
+      margin-bottom: 15px;
+    }
+
+    &_tournament_name {
+      font-size: 17px;
+      font-weight: bold;
+      writing-mode: horizontal-tb;
+      transform: none;
+      line-height: 20.8px;
+      margin-bottom: 3px;
+    }
+
+    &_date,
+    &_location {
+      font-size: 10px;
+      line-height: 10px;
+    }
+
+    &_date {
+      margin-bottom: 5px;
     }
 
     &_socials {
@@ -299,17 +366,13 @@
         * {
           color: $white;
         }
-
-        h2 {
-          font-size: 17px;
-        }
       }
 
 
       &:first-of-type,
       &:nth-of-type(2),
       &:nth-of-type(3) {
-        flex: 0 0 30%;
+        flex: 0 0 33.33%;
         height: auto;
       }
 
@@ -348,6 +411,30 @@
           display:none;
         }
       }
+    }
+
+    &_date, 
+    &_location {
+      display: none;
+    }
+
+    &_tour_type_desktop {
+      display: none;
+    }
+
+    &_tour_type_mobile, 
+    &_updated {
+      font-size: 10px;
+      display: inline-block;
+    }
+
+    &_tour_type_mobile {
+      margin-right: 7px;
+    }
+
+    &_tournament_name {
+      font-size: 12px;
+      margin-bottom: 3px;
     }
 
     &_socials {

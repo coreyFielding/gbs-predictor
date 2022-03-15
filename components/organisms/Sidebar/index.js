@@ -6,18 +6,29 @@ export const Sidebar = () => {
       <aside className={styles.sidebar_inner}>
         <div className={styles.sidebar_tab}>
           <div>
-            <h2>Genesis International</h2>
-            <p>PGA Tour</p>
+            <p className={styles.sidebar_tour_type_desktop}>PGA Tour</p>
+            <h2 className={styles.sidebar_tournament_name}>Genesis International</h2>
+            <p className={styles.sidebar_updated}><span className={styles.sidebar_tour_type_mobile}>PGA Tour</span>Updated 11:10 GMT 14/2/22</p>
+            <p className={styles.sidebar_date}>Feb 3–6, 2022</p>
+            <p className={styles.sidebar_location}>Pebble Beach Golf Links and others</p>
           </div>
         </div>
         <div className={styles.sidebar_tab}>
           <div>
-            <h2>Honda Classic</h2>
+            <p className={styles.sidebar_tour_type_desktop}>PGA Tour</p>
+            <h2 className={styles.sidebar_tournament_name}>Honda Classic</h2>
+            <p className={styles.sidebar_updated}><span className={styles.sidebar_tour_type_mobile}>PGA Tour</span>Updated 11:10 GMT 14/2/22</p>
+            <p className={styles.sidebar_date}>Feb 3–6, 2022</p>
+            <p className={styles.sidebar_location}>Pebble Beach Golf Links and others</p>
           </div>
         </div>
         <div className={styles.sidebar_tab}>
           <div>
-            <h2>Honda Classic</h2>
+            <p className={styles.sidebar_tour_type_desktop}>PGA Tour</p>
+            <h2 className={styles.sidebar_tournament_name}>Corales Puntacana Resort and Club Championship</h2>
+            <p className={styles.sidebar_updated}><span className={styles.sidebar_tour_type_mobile}>PGA Tour</span>Updated 11:10 GMT 14/2/22</p>
+            <p className={styles.sidebar_date}>Feb 3–6, 2022</p>
+            <p className={styles.sidebar_location}>Pebble Beach Golf Links and others</p>
           </div>
         </div>
 

@@ -1,5 +1,6 @@
 // Components
 import { Sidebar, Page } from "../components";
+import { Header, Footer } from "../components"
 
 import Variables from "./components/Variables";
 import Results from "./components/Results";
@@ -22,6 +23,7 @@ const Home = () => {
                 <Variables />
                 <Results />
               </div>
+              <Footer />
             </section>
           </main>
         </div>
