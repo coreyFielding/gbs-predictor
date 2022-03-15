@@ -22,7 +22,6 @@
       position: relative;
       z-index: 3;
       display: flex;
-      flex-direction: column;
 
       * {
         color: $white;
@@ -112,6 +111,12 @@
     width: 180px;
     display: none;
   }
+
+    &_tab_live {
+    .sidebar_tab_left {
+      margin-right: 10px;
+    }
+  }
 }
 
 @include mq($from: tablet) {
@@ -199,6 +204,23 @@
     }
 
 
+    &_tab_live {
+      .sidebar_tab_left {
+        height: 47px;
+        margin-right: 0;
+
+        svg {
+          transform: rotate(90deg);
+          transform-origin: bottom;
+        }
+      }
+
+      .sidebar_tab_right {
+        margin-top: 10px;
+      }
+    }
+
+
     &_tournament_name {
       margin-left: 3px;
       max-height: 190px;
@@ -269,6 +291,21 @@
 
     }
 
+    &_tab_live {
+      .sidebar_tab_left {
+        margin-right: 20px;
+        height: auto;
+
+        svg {
+          transform: none;
+        }
+      }
+
+      .sidebar_tab_right {
+        margin-top: 0;
+      }
+    }
+
     &_tour_type_desktop {
       display: block;
     }
@@ -294,6 +331,7 @@
       transform: none;
       line-height: 20.8px;
       margin-bottom: 3px;
+      margin-left: 0;
     }
 
     &_date,
@@ -413,6 +451,21 @@
       }
     }
 
+    &_tab_live {
+      .sidebar_tab_left {
+        margin-right: 10px;
+        height: auto;
+
+        svg {
+          transform: none;
+        }
+      }
+
+      .sidebar_tab_right {
+        margin-top: 0;
+      }
+    }
+
     &_date, 
     &_location {
       display: none;
@@ -435,6 +488,7 @@
     &_tournament_name {
       font-size: 12px;
       margin-bottom: 3px;
+      margin-left: 0;
     }
 
     &_socials {

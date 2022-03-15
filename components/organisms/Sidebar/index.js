@@ -4,31 +4,49 @@ export const Sidebar = () => {
   return (
       <div className={styles.sidebar}>
       <aside className={styles.sidebar_inner}>
-        <div className={styles.sidebar_tab}>
+        <div className={styles.sidebar_tab + ' ' + styles.sidebar_tab_live}>
           <div>
+          <div className={styles.sidebar_tab_left}>
+            <svg width="51" height="20" viewBox="0 0 51 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="51" height="20" rx="10" fill="#3CD176"/>
+              <path d="M22.14 7H22.88V13.36H26.8V14H22.14V7ZM27.8787 8.74H28.5887V14H27.8787V8.74ZM28.2387 7.59C28.092 7.59 27.9687 7.54 27.8687 7.44C27.7687 7.34 27.7187 7.22 27.7187 7.08C27.7187 6.94667 27.7687 6.83 27.8687 6.73C27.9687 6.63 28.092 6.58 28.2387 6.58C28.3853 6.58 28.5087 6.63 28.6087 6.73C28.7087 6.82333 28.7587 6.93667 28.7587 7.07C28.7587 7.21667 28.7087 7.34 28.6087 7.44C28.5087 7.54 28.3853 7.59 28.2387 7.59ZM34.9842 8.74L32.6442 14H31.9142L29.5842 8.74H30.3242L32.2942 13.22L34.2842 8.74H34.9842ZM40.4177 11.59H36.0177C36.0577 12.1367 36.2677 12.58 36.6477 12.92C37.0277 13.2533 37.5077 13.42 38.0877 13.42C38.4143 13.42 38.7143 13.3633 38.9877 13.25C39.261 13.13 39.4977 12.9567 39.6977 12.73L40.0977 13.19C39.8643 13.47 39.571 13.6833 39.2177 13.83C38.871 13.9767 38.4877 14.05 38.0677 14.05C37.5277 14.05 37.0477 13.9367 36.6277 13.71C36.2143 13.4767 35.891 13.1567 35.6577 12.75C35.4243 12.3433 35.3077 11.8833 35.3077 11.37C35.3077 10.8567 35.4177 10.3967 35.6377 9.99C35.8643 9.58333 36.171 9.26667 36.5577 9.04C36.951 8.81333 37.391 8.7 37.8777 8.7C38.3643 8.7 38.801 8.81333 39.1877 9.04C39.5743 9.26667 39.8777 9.58333 40.0977 9.99C40.3177 10.39 40.4277 10.85 40.4277 11.37L40.4177 11.59ZM37.8777 9.31C37.371 9.31 36.9443 9.47333 36.5977 9.8C36.2577 10.12 36.0643 10.54 36.0177 11.06H39.7477C39.701 10.54 39.5043 10.12 39.1577 9.8C38.8177 9.47333 38.391 9.31 37.8777 9.31Z" fill="#254933"/>
+              <circle cx="9" cy="10" r="5" fill="#FF1A1A"/>
+            </svg>
+          </div>
+
+          <div className={styles.sidebar_tab_right}>
             <p className={styles.sidebar_tour_type_desktop}>PGA Tour</p>
             <h2 className={styles.sidebar_tournament_name}>Genesis International</h2>
             <p className={styles.sidebar_updated}><span className={styles.sidebar_tour_type_mobile}>PGA Tour</span>Updated 11:10 GMT 14/2/22</p>
             <p className={styles.sidebar_date}>Feb 3–6, 2022</p>
             <p className={styles.sidebar_location}>Pebble Beach Golf Links and others</p>
           </div>
-        </div>
-        <div className={styles.sidebar_tab}>
-          <div>
-            <p className={styles.sidebar_tour_type_desktop}>PGA Tour</p>
-            <h2 className={styles.sidebar_tournament_name}>Honda Classic</h2>
-            <p className={styles.sidebar_updated}><span className={styles.sidebar_tour_type_mobile}>PGA Tour</span>Updated 11:10 GMT 14/2/22</p>
-            <p className={styles.sidebar_date}>Feb 3–6, 2022</p>
-            <p className={styles.sidebar_location}>Pebble Beach Golf Links and others</p>
           </div>
         </div>
         <div className={styles.sidebar_tab}>
           <div>
-            <p className={styles.sidebar_tour_type_desktop}>PGA Tour</p>
-            <h2 className={styles.sidebar_tournament_name}>Corales Puntacana Resort and Club Championship</h2>
-            <p className={styles.sidebar_updated}><span className={styles.sidebar_tour_type_mobile}>PGA Tour</span>Updated 11:10 GMT 14/2/22</p>
-            <p className={styles.sidebar_date}>Feb 3–6, 2022</p>
-            <p className={styles.sidebar_location}>Pebble Beach Golf Links and others</p>
+            <div className={styles.sidebar_tab_left}></div>
+
+            <div className={styles.sidebar_tab_right}>
+              <p className={styles.sidebar_tour_type_desktop}>PGA Tour</p>
+              <h2 className={styles.sidebar_tournament_name}>Honda Classic</h2>
+              <p className={styles.sidebar_updated}><span className={styles.sidebar_tour_type_mobile}>PGA Tour</span>Updated 11:10 GMT 14/2/22</p>
+              <p className={styles.sidebar_date}>Feb 3–6, 2022</p>
+              <p className={styles.sidebar_location}>Pebble Beach Golf Links and others</p>
+            </div>
+          </div>
+        </div>
+        <div className={styles.sidebar_tab}>
+          <div>
+            <div className={styles.sidebar_tab_left}></div>
+
+            <div className={styles.sidebar_tab_right}>
+              <p className={styles.sidebar_tour_type_desktop}>PGA Tour</p>
+              <h2 className={styles.sidebar_tournament_name}>Corales Puntacana Resort and Club Championship</h2>
+              <p className={styles.sidebar_updated}><span className={styles.sidebar_tour_type_mobile}>PGA Tour</span>Updated 11:10 GMT 14/2/22</p>
+              <p className={styles.sidebar_date}>Feb 3–6, 2022</p>
+              <p className={styles.sidebar_location}>Pebble Beach Golf Links and others</p>
+            </div>
           </div>
         </div>
 
