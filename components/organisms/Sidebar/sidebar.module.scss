@@ -310,6 +310,7 @@
       &:nth-of-type(2),
       &:nth-of-type(3) {
         flex: 0 0 30%;
+        height: auto;
       }
 
       &:first-of-type {
@@ -326,11 +327,6 @@
           border-radius:0 ;
           box-shadow: 0 25px 0 $gbsGreenDark;
         }
-      }
-
-      &:nth-of-type(2),
-      &:nth-of-type(3) {
-        height: 100%;
       }
         
       &:nth-of-type(2) {
