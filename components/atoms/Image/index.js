@@ -58,3 +58,5 @@ Img.propTypes = {
 //   height: PropTypes.number,
 //   width: PropTypes.number,
 // }
+
+export default NextImage;

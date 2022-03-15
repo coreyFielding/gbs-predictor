@@ -11,6 +11,10 @@
     display: flex;
   }
 
+  &_logo {
+    display: none;
+  }
+
   &_tab {
     position: relative;
     min-height: 100%;
@@ -253,6 +257,11 @@
     height: 100vh;
     padding: 0 0px 0 20px;
 
+    &_logo {
+      display: block;
+      margin-bottom: 10px;
+    }
+
     &_tab {
       > div {
           writing-mode: horizontal-tb;
@@ -291,10 +300,20 @@
 
     }
 
+    &_tab_left {
+      margin-right: 20px;
+      flex-grow: 1;
+    }
+
+    &_tab_right {
+      flex-grow: 0;
+      flex-shrink: 10;
+    }
+
     &_tab_live {
       .sidebar_tab_left {
-        margin-right: 20px;
         height: auto;
+        margin-right: 20px;
 
         svg {
           transform: none;
@@ -336,6 +355,7 @@
 
     &_date,
     &_location {
+      display: block;
       font-size: 10px;
       line-height: 10px;
     }
@@ -354,24 +374,42 @@
   }
 }
 
-
-@media screen and (max-height: 975px) {
+@media screen and (min-width: 740px) and (max-height: 1060px) {
   .sidebar {
     &_socials {
       display: none;
     }
   }
-  @include mq($from: desktop) {
-    .sidebar {
-      &_socials {
-        display: flex;
-      }
+}
+
+@media screen and (min-width: 740px) and (min-height: 1061px) {
+  .sidebar {
+    &_socials {
+      display: flex;
     }
   }
 }
 
+@media screen and (min-width: 980px) and (max-height: 730px) {
+  .sidebar {
+    &_socials {
+      display: none;
+    }
+  }
+}
+
+@media screen and (min-width: 980px) and (min-height: 731px) {
+  .sidebar {
+    &_socials {
+      display: flex;
+    }
+  }
+}
+
+
+
 //Desktop screens that are too short to show 3 tabs down the side
-@media screen and (min-width: 740px) and (max-width: 980px) and (max-height: 768px) {
+@media screen and (min-width: 740px) and (max-width: 980px) and (max-height: 900px) {
   .sidebar {
     position: relative;
     width: 100%;
