@@ -27,7 +27,7 @@
 
 html,
 body {
-  min-height: 100%;
+  height: -webkit-fill-available;
   width: 100%;
   background-color: $gbsGreenDark;
   position: fixed;
@@ -45,9 +45,6 @@ img {
   object-fit: cover;
 }
 
-body {
-  height: auto;
-}
 
 html {
   max-width: 100%;
