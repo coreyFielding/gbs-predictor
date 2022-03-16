@@ -79,6 +79,15 @@ section {
           display: none;
         }
 
+        .hide_variables {
+          display: none;
+          transform: translateY(25%);
+        }
+
+        .show_variables {
+          display: block;
+        }
+
         .filters {
           position: absolute;
           bottom: 20px;
@@ -106,6 +115,7 @@ section {
           border-radius: 20px;
           > div {
             padding: 10px;
+            background-color: $white;
           }
         }
         &_right {
@@ -158,6 +168,28 @@ select {
   line-height: inherit;
   outline: none;
   display: grid;
+}
+
+@include mq($until: desktop) {
+  .main.variables_open {
+    section .section {
+      &_left {
+        display: block;
+      }
+
+      &_right {
+        .header h1,
+        .panel,
+        .show_variables {
+          display: none;
+        }
+
+        .hide_variables {
+          display: block;
+        }
+      }
+    }
+  }
 }
 
 
@@ -249,7 +281,8 @@ select {
     }
 
     .section {
-      &_right {
+      &_right,
+      &_left {
         .header {
           h1 {
             margin-left: 60px;
