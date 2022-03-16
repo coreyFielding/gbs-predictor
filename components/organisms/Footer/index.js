@@ -6,6 +6,8 @@ import Container from "../../atoms/Container"
 import Logo from "../../atoms/Logo"
 import NextImage from "../../atoms/Image"
 
+const gambleAwareLogo = "/images/gambleaware.png"
+
 export const Footer = ({ className }) => {
   const classes = cn(styles.footer, className)
 
@@ -20,7 +22,7 @@ export const Footer = ({ className }) => {
           </div>
           <div className={styles.right}>
            <a href="https://www.begambleaware.org/" aria-label="Be gamble aware website">
-             <NextImage src="/../public/images/gambleaware.png" width={200} height={26} />
+             <NextImage src={gambleAwareLogo} width={200} height={26} />
            </a>
           </div>
         </div>

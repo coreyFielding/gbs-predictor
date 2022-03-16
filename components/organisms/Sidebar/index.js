@@ -1,5 +1,8 @@
 import styles from "./sidebar.module.scss"
 import NextImage from "../../atoms/Image"
+const genesisLogo = "/images/genesis-logo.png"
+const hondaLogo = "/images/honda-logo.png"
+const gbsLogo = "/images/gbs-logo.png"
 
 export const Sidebar = () => {
   return (
@@ -9,7 +12,7 @@ export const Sidebar = () => {
           <div>
           <div className={styles.sidebar_tab_left}>
             <div className={styles.sidebar_logo}>
-              <NextImage src="/../public/images/genesis-logo.png" width={51} height={11} />
+              <NextImage src={genesisLogo} width={51} height={11} />
             </div>
             <svg width="51" height="20" viewBox="0 0 51 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect width="51" height="20" rx="10" fill="#3CD176"/>
@@ -31,7 +34,7 @@ export const Sidebar = () => {
           <div>
             <div className={styles.sidebar_tab_left}>
               <div className={styles.sidebar_logo}>
-                <NextImage src="/../public/images/honda-logo.png" width={51} height={46} />
+                <NextImage src={hondaLogo} width={51} height={46} />
               </div>
             </div>
 
@@ -48,7 +51,7 @@ export const Sidebar = () => {
           <div>
             <div className={styles.sidebar_tab_left}>
               <div className={styles.sidebar_logo}>
-                <NextImage src="/../public/images/honda-logo.png" width={51} height={46} />
+                <NextImage src={hondaLogo} width={51} height={46} />
               </div>
             </div>
 
@@ -67,7 +70,7 @@ export const Sidebar = () => {
         </svg>
 
         <div className={styles.sidebar_socials}>
-          <NextImage src="/../public/images/gbs-logo.png" width={70} height={55} />
+          <NextImage src={gbsLogo} width={70} height={55} />
 
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M0 16C0 24.8366 7.16344 32 16 32C24.8366 32 32 24.8366 32 16C32 7.16344 24.8366 0 16 0C7.16344 0 0 7.16344 0 16Z" fill="#1DA1F2"/>
