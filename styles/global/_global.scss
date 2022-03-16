@@ -86,6 +86,7 @@ section {
 
         .show_variables {
           display: block;
+          transform: translateY(25%);
         }
 
         .filters {
@@ -225,7 +226,7 @@ select {
 
             svg {
               position: absolute;
-              left: 36px;
+              left: 44px;
             }
           }
 
@@ -286,6 +287,12 @@ select {
         .header {
           h1 {
             margin-left: 60px;
+          }
+
+          .filters {
+            > svg {
+              left: 36px;
+            }
           }
         }
       }
