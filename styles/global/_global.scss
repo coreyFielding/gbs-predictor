@@ -1,4 +1,30 @@
 @import "../global/mixins";
+
+//Scrollbar styles
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: $gbsGreenLight; 
+  border-radius: 20px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $gbsGreen;
+  border-radius: 20px; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+//
+
+
 html,
 body {
   min-height: 100%;
