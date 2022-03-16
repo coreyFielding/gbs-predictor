@@ -12,6 +12,11 @@
 
   a {
     color: $white;
+    max-width: 146px;
+
+    img {
+      max-width: 146px;
+    }
   }
 }
 
@@ -20,6 +25,8 @@
   font-size: 7px;
   display: inline-block;
   max-width: 118px;
+  flex-shrink: 1;
+  flex-grow: 0;
 }
 
 .row {
@@ -31,6 +38,7 @@
 .left {
   display: flex;
   align-items: center;
+  margin-right: 35px;
 }
 
 .age {
@@ -45,6 +53,8 @@
   align-items: center;
   justify-content: center;
   margin-right: 6px;
+  flex-grow: 1;
+  flex-shrink: 0;
 }
 
 

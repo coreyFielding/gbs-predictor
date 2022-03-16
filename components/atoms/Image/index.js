@@ -20,6 +20,7 @@ export const Img = ({ className, src, alt, height, width }) => {
       alt={alt}
       height={height}
       width={width}
+      layout={layout}
     />
   )
 }

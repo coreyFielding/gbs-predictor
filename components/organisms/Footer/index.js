@@ -4,6 +4,7 @@ import styles from "./footer.module.scss"
 
 import Container from "../../atoms/Container"
 import Logo from "../../atoms/Logo"
+import NextImage from "../../atoms/Image"
 
 export const Footer = ({ className }) => {
   const classes = cn(styles.footer, className)
@@ -18,8 +19,8 @@ export const Footer = ({ className }) => {
             <p className={styles.disclaimer}>© 2022. This website is to be used strictly by those aged 18 or over. Please gamble responsibly.</p>
           </div>
           <div className={styles.right}>
-           <a href="https://www.begambleaware.org/">
-            BeGambleAware.org
+           <a href="https://www.begambleaware.org/" aria-label="Be gamble aware website">
+             <NextImage src="/../public/images/gambleaware.png" width={200} height={26} />
            </a>
           </div>
         </div>
