@@ -18,7 +18,7 @@ const Home = () => {
         <div className="wrapper">
           <main className="main">
             <Sidebar />
-            <section>
+            <section className="main-section">
               <div>
                 <Variables />
                 <Results />

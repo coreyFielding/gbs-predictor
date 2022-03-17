@@ -24,10 +24,36 @@
 }
 //
 
+body, 
+html,
+main, 
+.main, 
+#__next,
+.page,
+.wrapper,
+.main-section {
+  height: 100%;
+}
+
+@media screen and (max-height: 840px) {
+  .main-section {
+    > div {
+      height: calc(100% - 253px);
+    }
+  }
+}
+
+@media screen and (min-height: 841px) {
+  .main-section {
+    > div {
+      height: calc(100% - 188px);
+    }
+  }
+}
+
 
 html,
 body {
-  height: 100%;
   width: 100%;
   background-color: $gbsGreenDark;
   position: fixed;
@@ -221,6 +247,12 @@ select {
 
 
 @include mq($from: tablet) {
+  .main-section {
+    > div {
+      height: calc(100% - 145px);
+    }
+  }
+
   .main {
     flex-direction: row;
   }
@@ -233,7 +265,6 @@ select {
     > div {
       width: calc(100% - 17px);
       padding-left: 20px;
-      height: calc(100vh - 141px)
     }
 
     .section {
@@ -304,11 +335,11 @@ select {
     flex-direction: column;
   }
 
-  section {
+  .main-section {
     > div {
       width: calc(100% - 17px);
       padding-left: 20px;
-      height: calc(100vh - 227px)
+      height: calc(100% - 220px);
     }
 
     .section {
