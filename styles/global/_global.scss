@@ -27,7 +27,7 @@
 
 html,
 body {
-  height: -webkit-fill-available;
+  height: 100%;
   width: 100%;
   background-color: $gbsGreenDark;
   position: fixed;
@@ -48,6 +48,7 @@ img {
 
 html {
   max-width: 100%;
+  height: 100%;
 }
 
 .wrapper {
@@ -57,7 +58,7 @@ html {
 .main {
   display: flex;
   width: 100%;
-  height: 50%;
+  height: 100%;
   flex-direction: column;
 }
 
@@ -80,6 +81,7 @@ section {
   width: 100%;
   padding-right: 50px;
   padding-right: 0;
+  height: 100%;
 
   > div {
     display: flex;
@@ -87,7 +89,7 @@ section {
     align-items: center;
     width: 100%;
     padding: 3px;
-    height: calc(100vh - 247px)
+    height: calc(100% - 247px)
   }
 
   .section {
@@ -132,6 +134,7 @@ section {
       }
       .panel {
         margin-top: 3px;
+        height: 100%;
 
         &_left {
           background-color: $white;
@@ -193,6 +196,7 @@ select {
   display: grid;
 }
 
+//Variables toggle
 @include mq($until: desktop) {
   .main.variables_open {
     section .section {
@@ -259,6 +263,10 @@ select {
 
         .panel {
           margin-top: 28px;
+
+          &_left {
+            background-color: transparent;
+          }
         }
       }
     }
