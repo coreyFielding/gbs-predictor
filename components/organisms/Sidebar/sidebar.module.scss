@@ -154,11 +154,12 @@
   .sidebar {
     min-width: 72px;
     width: auto;
-    height: 100vh;
+    height: 100%;
     padding: 0 0px 0 20px;
 
     aside {
       display: block;
+      height: 100%;
     }
 
     &_tab {
