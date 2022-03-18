@@ -18,7 +18,7 @@
   &_tab {
     position: relative;
     min-height: 100%;
-    background-color: $gbsGreenDark;
+    background-color: $gbsGreen;
     border-top-left-radius: 20px;
 
     > div {
@@ -30,56 +30,17 @@
       * {
         color: $white;
       }
-
     }
 
-    &:first-of-type {
-      flex: 0 0 80%;
-
-      &:after {
-        content: '';
-        width: 31%;
-        height: 100%;
-        top: 0;
-        right: -30%;
-        position: absolute;
-        background-color: $gbsGreenDark;
-      }
-    }
-
-    &:nth-of-type(2) {
-      flex: 0 0 20%;
-      max-width: 63px;
-      height: 63px;
+    &:after {
       background-color: $gbsGreen;
-      border-top-left-radius: 50%;
-      border-bottom-left-radius: 50%;
-      margin-top: 3px;
-
-      &:after {
-        content: '';
-        background-color: $gbsGreen;
-        width:140%;
-        height: 100%;
-        position: absolute;
-        right: -135%;
-        top: 0;
-        z-index: 0;
-      }
     }
 
-    &:nth-of-type(3) {
-      background-color: $gbsGreenLight;
+    &.active {
+      background-color: $gbsGreenDark;
 
       &:after {
-        content: '';
-        background-color: $gbsGreenLight;
-        width:140%;
-        height: 100%;
-        position: absolute;
-        right: -135%;
-        top: 0;
-        z-index: 0;
+        background-color: $gbsGreenDark;
       }
     }
   }
@@ -88,14 +49,13 @@
     display: none;
   }
 
-
   &_tournament_name {
     font-size: 17px;
     font-weight: bold;
     margin-bottom: 3px;
   }
 
-  &_tour_type_mobile, 
+  &_tour_type_mobile,
   &_updated {
     font-size: 10px;
   }
@@ -104,7 +64,7 @@
     margin-right: 9px;
   }
 
-  &_date, 
+  &_date,
   &_location {
     display: none;
   }
@@ -117,9 +77,75 @@
     align-items: center;
   }
 
-    &_tab_live {
+  &_tab_live {
     .sidebar_tab_left {
       margin-right: 10px;
+    }
+  }
+}
+
+//Turning tabs into arrows on mobile
+@include mq($until: tablet) {
+  .sidebar {
+    &_tab {
+      background-color: $gbsGreenDark;
+      margin-top: 0;
+      &.active {
+        order: 1;
+        flex: 0 0 66.66%;
+        border-top-left-radius: 0;
+      }
+      &:not(.active) {        
+        flex: 0 0 16.65%;
+
+        .sidebar_tab_left {
+          display: none;
+        }
+        
+        .sidebar_tab_right {
+          p, h2 {
+            display: none;
+          }
+        }
+      }
+
+      &.prev {
+        border-bottom-left-radius: 0;
+        border-top-left-radius: 20px;
+        order: 0;
+
+        .sidebar_tab_right {
+          &:after {
+            content: '';
+            position: absolute;
+            background-image: url("/images/icons/prev-arrow.svg");
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+          }
+        }
+      }
+
+      &.next {
+        border-top-left-radius: 0;
+        order: 2;
+
+        .sidebar_tab_right {
+          &:after {
+            content: '';
+            position: absolute;
+            background-image: url("/images/icons/next-arrow.svg");
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-position: top;
+          }
+        }
+      }
+
+      &:after {
+        display: none;
+      }
     }
   }
 }
@@ -139,7 +165,7 @@
       position: relative;
       min-height: 136px;
       border-top-left-radius: 20px;
-      border-bottom-left-radius: 20px;      
+      border-bottom-left-radius: 20px;
       margin-top: 0;
 
       > div {
@@ -172,20 +198,9 @@
         height: 50px;
         width: 25px;
         border-top-right-radius: 25px;
-        box-shadow: 0 -25px 0 $gbsGreenDark;
+        box-shadow: 0 -25px 0 $gbsGreen;
       }
 
-      &:nth-of-type(2) {
-        &:after {
-          box-shadow: 0 -25px 0 $gbsGreen;
-        }
-      }
-
-      &:nth-of-type(3) {
-        &:after {
-          box-shadow: 0 -25px 0 $gbsGreenLight;
-        }
-      }
 
       &:nth-of-type(2),
       &:nth-of-type(3) {
@@ -207,8 +222,13 @@
           border-top-right-radius: 25px;
         }
       }
-    }
 
+      &.active {
+        &:after {
+          box-shadow: 0 -25px 0 $gbsGreenDark;
+        }
+      }
+    }
 
     &_tab_live {
       .sidebar_tab_left {
@@ -225,7 +245,6 @@
         margin-top: 10px;
       }
     }
-
 
     &_tournament_name {
       margin-left: 3px;
@@ -249,6 +268,155 @@
   }
 }
 
+
+//Desktop screens that are too short to show 3 tabs down the side
+@media screen and (min-width: 740px) and (max-width: 980px) and (max-height: 900px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding-left: 0;
+    background-color: $background;
+
+    aside {
+      display: flex;
+    }
+
+    &_tab {
+      position: relative;
+      height: auto;
+      min-height: 73px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      border-bottom-left-radius: 0;
+
+      > div {
+        padding: 20px;
+        position: relative;
+        z-index: 3;
+        writing-mode: horizontal-tb;
+        transform: none;
+
+        * {
+          color: $white;
+        }
+      }
+
+      &:first-of-type,
+      &:nth-of-type(2),
+      &:nth-of-type(3) {
+        flex: 0 0 33.33%;
+        height: auto;
+      }
+
+      &:after {
+        content: "";
+        position: absolute;
+        background-color: transparent;
+        right: -25px;
+        top: -25px;
+        height: 100%;
+        width: 27px;
+        border-radius: 0;
+        box-shadow: 0 25px 0 $gbsGreen;
+      }
+
+      &.active {
+        &:after {
+          box-shadow: 0 25px 0 $gbsGreenDark;
+        }
+      }
+
+      &:first-of-type {
+        padding-top: 0;
+
+        &:after {
+          content: "";
+          position: absolute;
+          background-color: transparent;
+          right: -25px;
+          top: -25px;
+          height: 100%;
+          width: 27px;
+          border-radius: 0;
+        }
+      }
+
+      &:nth-of-type(2) {
+        &:after {
+          content: "";
+          position: absolute;
+          background-color: transparent;
+          right: -25px;
+          top: -25px;
+          height: 100%;
+          width: 27px;
+          border-radius: 0;
+        }
+      }
+
+      &:nth-of-type(3) {
+        &:after {
+          display: none;
+        }
+      }
+    }
+
+    &_2_tabs {
+      .sidebar_tab:nth-of-type(2) {
+        &:after {
+          display: none;
+        }
+      }
+    }
+
+    &_tab_live {
+      .sidebar_tab_left {
+        margin-right: 10px;
+        height: auto;
+
+        svg {
+          transform: none;
+        }
+      }
+
+      .sidebar_tab_right {
+        margin-top: 0;
+      }
+    }
+
+    &_date,
+    &_location {
+      display: none;
+    }
+
+    &_tour_type_desktop {
+      display: none;
+    }
+
+    &_tour_type_mobile,
+    &_updated {
+      font-size: 10px;
+      margin-bottom: 0;
+      display: inline-block;
+    }
+
+    &_tour_type_mobile {
+      margin-right: 7px;
+    }
+
+    &_tournament_name {
+      font-size: 12px;
+      margin-bottom: 3px;
+      margin-left: 0;
+    }
+
+    &_socials {
+      display: none;
+    }
+  }
+}
+
 @include mq($from: desktop) {
   .sidebar {
     width: 300px;
@@ -262,8 +430,8 @@
 
     &_tab {
       > div {
-          writing-mode: horizontal-tb;
-          transform: none;
+        writing-mode: horizontal-tb;
+        transform: none;
 
         p {
           font-weight: 400;
@@ -276,27 +444,22 @@
         &:after {
           top: 100%;
           right: 0;
-          height:50px;
+          height: 50px;
         }
       }
 
       &:nth-of-type(2) {
-        background-color: $gbsGreen;
         margin-top: 0;
         &:after {
-          box-shadow: 0 -25px 0 $gbsGreen;
           top: 100%;
         }
       }
 
       &:nth-of-type(3) {
-        background-color: $gbsGreenLight;
         &:after {
-          box-shadow: 0 -25px 0 $gbsGreenLight;
           top: 100%;
         }
       }
-
     }
 
     &_tab_left {
@@ -373,7 +536,6 @@
   }
 }
 
-
 //Hide socials when screen is too small
 @media screen and (min-width: 740px) and (max-height: 1110px) {
   .sidebar {
@@ -409,13 +571,13 @@
 
 //Adjusted heights for hiding socials when only two tabs
 .sidebar.sidebar_2_tabs {
-    @media screen and (min-width: 740px) and (max-height: 800px) {
-      .sidebar {
-        &_socials {
-          display: none;
-        }
+  @media screen and (min-width: 740px) and (max-height: 800px) {
+    .sidebar {
+      &_socials {
+        display: none;
       }
     }
+  }
 
   @media screen and (min-width: 740px) and (min-height: 801px) {
     .sidebar {
@@ -440,143 +602,5 @@
       }
     }
   }
-
 }
 
-
-
-//Desktop screens that are too short to show 3 tabs down the side
-@media screen and (min-width: 740px) and (max-width: 980px) and (max-height: 900px) {
-  .sidebar {
-    position: relative;
-    width: 100%;
-    height: auto;
-    padding-left: 0;
-    background-color: $background;
-
-
-    aside {
-      display: flex;
-    }
-
-    &_tab {
-      position: relative;
-      height: auto;
-      min-height: 73px;
-      background-color: $gbsGreenDark;
-      border-top-left-radius: 20px;
-      border-top-right-radius: 20px;
-      border-bottom-left-radius: 0;
-
-      > div {
-        padding: 20px;
-        position: relative;
-        z-index: 3;
-        writing-mode: horizontal-tb;
-        transform: none;
-
-        * {
-          color: $white;
-        }
-      }
-
-
-      &:first-of-type,
-      &:nth-of-type(2),
-      &:nth-of-type(3) {
-        flex: 0 0 33.33%;
-        height: auto;
-      }
-
-      &:first-of-type {
-        padding-top: 0;
-
-        &:after {
-          content: "";
-          position: absolute;
-          background-color: transparent;
-          right: -25px;
-          top: -25px;
-          height: 100%;
-          width: 27px;
-          border-radius:0 ;
-          box-shadow: 0 25px 0 $gbsGreenDark;
-        }
-      }
-        
-      &:nth-of-type(2) {
-        &:after {
-          content: "";
-          position: absolute;
-          background-color: transparent;
-          right: -25px;
-          top: -25px;
-          height: 100%;
-          width: 27px;
-          border-radius:0 ;
-          box-shadow: 0 25px 0 $gbsGreen;
-        }
-      }
-
-      &:nth-of-type(3) {
-        &:after {
-          display:none;
-        }
-      }
-    }
-
-    &_2_tabs {
-      .sidebar_tab:nth-of-type(2) {
-        &:after {
-          display: none;
-        }
-      }
-    }
-
-    &_tab_live {
-      .sidebar_tab_left {
-        margin-right: 10px;
-        height: auto;
-
-        svg {
-          transform: none;
-        }
-      }
-
-      .sidebar_tab_right {
-        margin-top: 0;
-      }
-    }
-
-    &_date, 
-    &_location {
-      display: none;
-    }
-
-    &_tour_type_desktop {
-      display: none;
-    }
-
-    &_tour_type_mobile, 
-    &_updated {
-      font-size: 10px;
-      margin-bottom: 0;
-      display: inline-block;
-    }
-
-    &_tour_type_mobile {
-      margin-right: 7px;
-    }
-
-    &_tournament_name {
-      font-size: 12px;
-      margin-bottom: 3px;
-      margin-left: 0;
-    }
-
-    &_socials {
-      display: none;
-    }
-  }
-
-}
