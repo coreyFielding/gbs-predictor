@@ -266,6 +266,12 @@
         margin-bottom: 50%;
       }
     }
+
+    &_social_links {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+    }
   }
 }
 
@@ -534,13 +540,27 @@
         margin-bottom: 0;
       }
     }
+
+    &_social_links {
+      width: 60%;
+      justify-content: space-between;
+      flex-direction: row;
+    }
   }
 }
 
 //Hide socials when screen is too small
 @media screen and (min-width: 740px) and (max-height: 1110px) {
   .sidebar {
-    &_socials {
+    &_social_links {
+      display: none;
+    }
+  }
+}
+
+@media screen and (min-width: 740px) and (max-height: 960px) {
+  .sidebar {
+    &_golf_logo {
       display: none;
     }
   }
@@ -550,6 +570,9 @@
   .sidebar {
     &_socials {
       display: flex;
+    }
+    &_golf_logo {
+      display: block;
     }
   }
 }
@@ -564,8 +587,11 @@
 
 @media screen and (min-width: 980px) and (min-height: 731px) {
   .sidebar {
-    &_socials {
+    &_social_links {
       display: flex;
+    }
+    &_golf_logo {
+      display: block;
     }
   }
 }
