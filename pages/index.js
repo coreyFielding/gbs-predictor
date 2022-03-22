@@ -1,11 +1,10 @@
 // Components
-import { Sidebar, Page, Form } from "../components"
+import { Sidebar, Page, Header, Footer, Form } from "../components"
 
 import Variables from "./components/Variables"
 import Results from "./components/Results"
 
 // Contexts
-import { useFormContext } from "../components"
 
 // Styles
 import Image from "next/image"
@@ -19,11 +18,12 @@ const Home = () => {
         <div className="wrapper">
           <main className="main">
             <Sidebar />
-            <section>
-              <Form>
+            <section className="main-section">
+              <div>
                 <Variables />
                 <Results />
-              </Form>
+              </div>
+              <Footer />
             </section>
           </main>
         </div>

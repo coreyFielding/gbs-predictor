@@ -2,9 +2,10 @@
 @import "../../../styles/global/mixins";
 
 .footer {
-  position: fixed;
+  position: relative;
   bottom: 0;
-  height: 112px;
+  min-height: 112px;
+  height: auto;
   width: 100%;
   background-color: $gbsGreenDark;
   z-index: 100;
@@ -12,6 +13,11 @@
 
   a {
     color: $white;
+    max-width: 146px;
+
+    img {
+      max-width: 146px;
+    }
   }
 }
 
@@ -20,6 +26,8 @@
   font-size: 7px;
   display: inline-block;
   max-width: 118px;
+  flex-shrink: 1;
+  flex-grow: 0;
 }
 
 .row {
@@ -31,6 +39,7 @@
 .left {
   display: flex;
   align-items: center;
+  margin-right: 35px;
 }
 
 .age {
@@ -45,6 +54,8 @@
   align-items: center;
   justify-content: center;
   margin-right: 6px;
+  flex-grow: 1;
+  flex-shrink: 0;
 }
 
 
@@ -56,19 +67,10 @@
 @include mq($from: tablet) {
   .footer {
     height: 70px;
-    left: 92px;
-    width: calc(100vw - 92px - 30px);
   }
 
   .disclaimer {
     max-width: 100%;
     font-size: 8px;
-  }
-}
-
-@include mq($from: desktop) {
-  .footer {
-    left: 320px;
-    width: calc(100vw - 320px - 30px);
   }
 }

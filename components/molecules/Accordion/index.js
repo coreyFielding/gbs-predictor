@@ -19,6 +19,7 @@ const AccordionComponent = ({
   initial,
   children,
   singular = false,
+  handleVariableChange,
   styles: userStyles,
   ...rest
 }) => {
@@ -67,8 +68,8 @@ const AccordionComponent = ({
 
 const AccordionItem = ({ item, slider, children, ...rest }) => {
   const { openItems, toggle } = useContext(AccordionContext)
-  const { index, title } = item
-  const isOpen = index && openItems?.includes(index)
+  const { id, groupName } = item
+  const isOpen = id && openItems?.includes(id)
   const headerClasses = cn(styles.heading, isOpen && styles.toggleOpen)
   const contentClasses = cn(styles.content, isOpen && styles.contentVisible)
   const sliderRef = createRef()
@@ -78,18 +79,18 @@ const AccordionItem = ({ item, slider, children, ...rest }) => {
       <div
         className={headerClasses}
         onClick={(event) => {
-          index && !sliderRef?.current?.contains(event.target) && toggle(index)
+          id && !sliderRef?.current?.contains(event.target) && toggle(id)
         }}
       >
         <div className={styles.container}>
           <Heading level={6} className="span--accordionHeading">
-            {title}
+            {groupName}
           </Heading>
         </div>
 
         {!!slider && (
           <div ref={sliderRef} className={styles.slider}>
-            <SliderFilter />
+            <SliderFilter item={item} />
           </div>
         )}
         <div className={styles.toggle}>{/* <ToggleIcon /> */}</div>

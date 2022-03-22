@@ -57,14 +57,23 @@ const Results = () => {
             viewBox="0 0 24 21"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            className="show_variables"
           >
-            <line y1="4.16699" x2="23.8" y2="4.16699" stroke="#3CD176" />
-            <line y1="11.2012" x2="23.8" y2="11.2012" stroke="#3CD176" />
-            <line y1="18.2363" x2="23.8" y2="18.2363" stroke="#3CD176" />
-            <circle cx="5.23503" cy="3.33366" r="2.66667" fill="#3CD176" />
-            <circle cx="18.5671" cy="11.3337" r="2.66667" fill="#3CD176" />
-            <circle cx="10.5671" cy="18.0007" r="2.66667" fill="#3CD176" />
+            <line y1="4.16699" x2="23.8" y2="4.16699" stroke="#fff" />
+            <line y1="11.2012" x2="23.8" y2="11.2012" stroke="#fff" />
+            <line y1="18.2363" x2="23.8" y2="18.2363" stroke="#fff" />
+            <circle cx="5.23503" cy="3.33366" r="2.66667" fill="#fff" />
+            <circle cx="18.5671" cy="11.3337" r="2.66667" fill="#fff" />
+            <circle cx="10.5671" cy="18.0007" r="2.66667" fill="#fff" />
           </svg>
+
+          <svg width="24" height="17" viewBox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg" className="hide_variables">
+            <path d="M1.6875 15.2507L22.2182 2.10254" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+            <path d="M1.6875 2.125L22.2184 15.3474" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="7.0105" cy="5.2605" r="2.5105" fill="#fff"/>
+            <circle cx="16.3855" cy="11.5105" r="2.5105" fill="#fff"/>
+          </svg>
+
 
           <div className="toggle">
             <Filter.Toggle label="DraftKings" />

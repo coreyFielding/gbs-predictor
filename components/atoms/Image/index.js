@@ -20,6 +20,7 @@ export const Img = ({ className, src, alt, height, width }) => {
       alt={alt}
       height={height}
       width={width}
+      layout={layout}
     />
   )
 }
@@ -58,3 +59,5 @@ Img.propTypes = {
 //   height: PropTypes.number,
 //   width: PropTypes.number,
 // }
+
+export default NextImage;

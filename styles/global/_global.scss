@@ -1,11 +1,63 @@
 @import "../global/mixins";
 
+//Scrollbar styles
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: $gbsGreenLight; 
+  border-radius: 20px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $gbsGreen;
+  border-radius: 20px; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+//
+
+body, 
+html,
+main, 
+.main, 
+#__next,
+.page,
+.wrapper,
+.main-section {
+  height: 100%;
+}
+
+@media screen and (max-height: 840px) {
+  .main-section {
+    > div {
+      height: calc(100% - 253px);
+    }
+  }
+}
+
+@media screen and (min-height: 841px) {
+  .main-section {
+    > div {
+      height: calc(100% - 188px);
+    }
+  }
+}
+
+
 html,
 body {
-  min-height: 100%;
   width: 100%;
   background-color: $gbsGreenDark;
   position: fixed;
+  font-family: 'Montserrat', sans-serif;
 }
 *,
 *::before,
@@ -19,12 +71,10 @@ img {
   object-fit: cover;
 }
 
-body {
-  height: auto;
-}
 
 html {
   max-width: 100%;
+  height: 100%;
 }
 
 .wrapper {
@@ -34,23 +84,33 @@ html {
 .main {
   display: flex;
   width: 100%;
-  height: 50%;
+  height: 100%;
   flex-direction: column;
 }
 
-section {
+
+.header__left-side {
   display: flex;
+  align-items: center;
+}
+
+.back-button {
+  margin-right: 17px;
+}
+
+section {
   width: 100%;
   padding-right: 50px;
   padding-right: 0;
+  height: 100%;
 
   > div {
     display: flex;
     align-content: center;
     align-items: center;
-    height: 100%;
     width: 100%;
     padding: 3px;
+    height: calc(100% - 247px)
   }
 
   .section {
@@ -62,6 +122,17 @@ section {
       .header {
         h1 {
           display: none;
+          color: $white;
+        }
+
+        .hide_variables {
+          display: none;
+          transform: translateY(25%);
+        }
+
+        .show_variables {
+          display: block;
+          transform: translateY(25%);
         }
 
         .filters {
@@ -78,17 +149,22 @@ section {
           }
 
           .dropdown {
-            width: 153px;
+            width: 80px;
+            position: relative;
           }
         }
       }
       .panel {
-        margin-top: 25px;
+        margin-top: 3px;
+        height: 100%;
 
         &_left {
           background-color: $white;
           border-radius: 20px;
-          padding: 10px;
+          > div {
+            padding: 10px;
+            background-color: $white;
+          }
         }
         &_right {
           table {
@@ -98,14 +174,14 @@ section {
           }
         }
 
-        .panel_panel__n5TnY {
+        .panel_panel {
           overflow: scroll;
         }
       }
     }
 
     &_left {
-      flex: 0 0 43%;
+      flex: none;
       display: none;
     }
 
@@ -142,11 +218,41 @@ select {
   display: grid;
 }
 
+//Variables toggle
+@include mq($until: desktop) {
+  .main.variables_open {
+    section .section {
+      &_left {
+        display: block;
+      }
+
+      &_right {
+        .header h1,
+        .panel,
+        .show_variables {
+          display: none;
+        }
+
+        .hide_variables {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
 
 @include mq($from: tablet) {
+  .main-section {
+    > div {
+      height: calc(100% - 145px);
+    }
+  }
+
   .main {
     flex-direction: row;
   }
+
   section {
     > div {
       width: calc(100% - 17px);
@@ -158,23 +264,31 @@ select {
       &_right {
         .header {
           display: flex;
-          margin-top: 10px;
+          margin-top: 15px;
           vertical-align: middle;
 
           .filters {
-            margin-left: 80px;
-            position: relative;
+            margin-left: 5%;
+            position: static;
             bottom: 0;
             left: 0;
 
             svg {
               position: absolute;
-              left: -260px;
+              left: 44px;
             }
           }
 
           h1 {
             display: block;
+          }
+        }
+
+        .panel {
+          margin-top: 28px;
+
+          &_left {
+            background-color: transparent;
           }
         }
       }
@@ -185,12 +299,52 @@ select {
 @include mq($from: desktop) {
   section {
     .section {
+      &_left {
+        flex: 0 1 43%;
+        display: block;
+        padding: 10px;
+      }
+
       &_right {
+        flex: 0 2 57%;
+        padding: 10px;
 
         .header {
           .filters {
             svg {
               display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//If screen is desktop width but shorter than a tablet
+@media screen and (min-width: 740px) and (max-width: 980px) and (max-height: 900px) {
+  .main {
+    flex-direction: column;
+  }
+
+  .main-section {
+    > div {
+      width: calc(100% - 17px);
+      padding-left: 20px;
+      height: calc(100% - 220px);
+    }
+
+    .section {
+      &_right,
+      &_left {
+        .header {
+          h1 {
+            margin-left: 60px;
+          }
+
+          .filters {
+            > svg {
+              left: 36px;
             }
           }
         }
@@ -209,9 +363,6 @@ select {
       }
 
       &_right {
-        flex: 0 0 57%;
-        padding: 10px;
-
         .header {
           .filters {
             svg {

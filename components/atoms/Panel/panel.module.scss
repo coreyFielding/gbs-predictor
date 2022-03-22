@@ -6,11 +6,20 @@
   width: 100%;
   border-radius: 20px;
   z-index: 98;
-  height: calc(100vh - 305px);
+  height: calc(100% - 10px);
+  overflow-y: scroll;
+  margin-bottom: 10px;
 }
+
 
 @include mq($from: tablet) {
   .panel {
-    height:calc(100vh - 230px);
+    height:calc(100% - 85px);
+  }
+}
+
+@include mq($from: desktop)  {
+    .panel {
+    height:calc(100% - 80px);
   }
 }
