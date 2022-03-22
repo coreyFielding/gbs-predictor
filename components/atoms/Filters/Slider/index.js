@@ -5,16 +5,10 @@ import ReactSlider from "react-slider"
 // Styles
 import styles from "./slider.module.scss"
 
-export const SliderFilter = ({
-  name,
-  setFieldValue,
-  override,
-  children,
-  parentValue,
-  values,
-  ...props
-}) => {
+export const SliderFilter = ({ item, children, parentValue, ...props }) => {
   const [value, setValue] = useState(0)
+
+  const { title, include, range, weight } = item
 
   return (
     <div className={styles.container}>
@@ -24,9 +18,10 @@ export const SliderFilter = ({
         trackClassName={styles.track}
         value={!parentValue ? value : parentValue}
         onAfterChange={() => {
-          setFieldValue(name, !parentValue ? value : parentValue)
+          handleVariableChange(item)
+          // setFieldValue(name, !parentValue ? value : parentValue)
         }}
-        max={5}
+        max={range}
         renderThumb={(props, state) => {
           setValue(state.value)
           return (

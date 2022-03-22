@@ -1,16 +1,58 @@
 // Components
 import { Panel, Accordion, Table, Heading } from "../../../components"
-import { Form } from "@/components/atoms/Form"
 
-// Data
-import { filters } from "./filters.json"
+// Contexts
+import { useVariableContext } from "../../../contexts/VariableProvider"
 
 // Styles
 import styles from "./variables.module.scss"
 
-const initialValues = { ...filters }
-
 const Variables = () => {
+  const { mappedVariables, handleVariableChange } = useVariableContext()
+
+  console.log(values)
+
+  "Long_Game": [
+    {
+      "Filter_Group_Name": "Long Game",
+      "Group_Range": 10
+    },
+    {
+      "id": 10,
+      "Sub_Cat_02_Title": "Last But 1 Tournament",
+      "Sub_Cat_02_Include": true,
+      "filter_group": null,
+      "Sub_Cat_Weight": 7
+    },
+    {
+      "Sub_Cat_02_Title": "Last But 2 Tournament",
+      "Sub_Cat_02_Include": true,
+      "filter_group": null,
+      "Sub_Cat_Weight": null
+    },
+    {
+      "Sub_Cat_02_Title": "Last But 3 Tournament",
+      "Sub_Cat_02_Include": true,
+      "filter_group": null,
+      "Sub_Cat_Weight": null
+    }
+  ]
+    
+    const mappedFilters = {
+        categories: [
+            {
+                long_game: {
+                index: 0,
+                range: 10, 
+                sub_categories: [
+                    { index: 0, title: "Last tournament", include: true, weight: 7, parent: "long_game", parent_index: 0 },
+                    { index: 1, title: "Last but 1 tournament", include: false, weight: 3, parent: "long_game"}
+                ]
+            }
+            }
+        ]
+    }
+  
   return (
     <div className="section_left">
       <div className="header">
@@ -21,43 +63,41 @@ const Variables = () => {
       <div className="panel panel_left">
         <Panel>
           <div className={styles.form}>
-            <Form initialValues={initialValues}>
-              {({ setFieldValue, values }) => (
-                <Accordion initial={1} singular={true}>
-                  {filters.map(({ key, label: group, children }) => (
-                    <Accordion.Item
-                      key={key}
-                      index={key}
-                      label={group}
-                      slider={true}
-                      setFieldValue={setFieldValue}
-                      values={values}
-                    >
-                      <Table>
-                        <Table.Body>
-                          {children?.map(({ name, label }) => {
+            <Accordion initial={1} singular={true}>
+              {categories.map((item) => {
+                return (
+                  <Accordion.Item
+                    key={index}
+                    index={index}
+                    label={title}
+                    item={item}
+                    slider={true}
+                  >
+                    <Table>
+                      <Table.Body>
+                        {item.sub_cats?.map(
+                          (item) => {
                             return (
-                              <Table.Row key={name} className={styles.row}>
+                              <Table.Row key={item.title} className={styles.row}>
                                 <Table.Cell className={styles.cell}>
                                   <span className="span--accordionItem">
-                                    {label}
+                                    {item.title}
                                   </span>
                                 </Table.Cell>
                                 <Table.Cell.Slider
-                                  name={name}
-                                  setFieldValue={setFieldValue}
-                                  parentValue={values[group]}
+                                  item={item}
+                                  // parentValue={values[name]}
                                 />
                               </Table.Row>
                             )
-                          })}
-                        </Table.Body>
-                      </Table>
-                    </Accordion.Item>
-                  ))}
-                </Accordion>
-              )}
-            </Form>
+                          }
+                        )}
+                      </Table.Body>
+                    </Table>
+                  </Accordion.Item>
+                )
+              })}
+            </Accordion>
           </div>
         </Panel>
       </div>

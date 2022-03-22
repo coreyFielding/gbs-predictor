@@ -39,7 +39,6 @@ const AccordionComponent = ({
   }
 
   const toggle = (index) => {
-    console.log(index)
     setOpenItems((currentOpen) => {
       if (!currentOpen?.includes(index)) {
         return [...(!singular ? currentOpen : []), index]
@@ -66,15 +65,9 @@ const AccordionComponent = ({
   )
 }
 
-const AccordionItem = ({
-  label,
-  slider,
-  children,
-  index,
-  setFieldValue,
-  ...rest
-}) => {
+const AccordionItem = ({ item, slider, children, ...rest }) => {
   const { openItems, toggle } = useContext(AccordionContext)
+  const { index, title } = item
   const isOpen = index && openItems?.includes(index)
   const headerClasses = cn(styles.heading, isOpen && styles.toggleOpen)
   const contentClasses = cn(styles.content, isOpen && styles.contentVisible)
@@ -90,13 +83,13 @@ const AccordionItem = ({
       >
         <div className={styles.container}>
           <Heading level={6} className="span--accordionHeading">
-            {label}
+            {title}
           </Heading>
         </div>
 
         {!!slider && (
           <div ref={sliderRef} className={styles.slider}>
-            <SliderFilter name={label} setFieldValue={setFieldValue} />
+            <SliderFilter />
           </div>
         )}
         <div className={styles.toggle}>{/* <ToggleIcon /> */}</div>

@@ -5,68 +5,63 @@
       "name": "eventForm",
       "label": "Event Form",
       "value": 0,
-      "children": [
-        { "name": "owgr", "label": "OWGR", "value": 0 },
-        {
-          "name": "lastTournament",
+      "children": {
+        "owgr": {
+          "name": "eventForm.children.owgr",
+          "label": "OWGR",
+          "value": 0
+        },
+        "lastTournament": {
+          "name": "eventForm.children.lastTournament",
           "label": "Last Tournament",
           "value": 0
         },
-        {
-          "name": "lastBut1Tournament",
+        "eventForm.children.lastBut1Tournament": {
           "label": "Last But 1 Tournament",
           "value": 0
         },
-        {
-          "name": "lastBut2Tournament",
+        "eventForm.children.lastBut2Tournament": {
           "label": "Last But 2 Tournament",
           "value": 0
         },
-        {
-          "name": "lastBut3Tournament",
+        "eventForm.children.lastBut3Tournament": {
           "label": "Last But 3 Tournament",
           "value": 0
         },
-        {
-          "name": "lastBut4Tournament",
+        "eventForm.children.lastBut4Tournament": {
           "label": "Last But 4 Tournament",
           "value": 0
         }
-      ]
+      }
     },
     {
       "key": 2,
       "name": "currentForm",
       "label": "Current Form",
       "value": 0,
-      "children": [
-        { "name": "owgr1", "label": "OWGR", "value": 0 },
-        {
-          "name": "lastTournament1",
+      "children": {
+        "eventForm.children.owgr1": { "label": "OWGR", "value": 0 },
+        "eventForm.lastTournament1": {
           "label": "Last Tournament",
           "value": 0
         },
-        {
-          "name": "lastBut1Tournament1",
-          "label": "Last But 1 Tournament",
-          "value": 0
+        "eventForm.lastBut1Tournament1": {
+          "name": "eventForm.lastBut1Tournament",
+          "label": "Last But 1 Tournament"
         },
-        {
-          "name": "lastBut2Tournament1",
-          "label": "Last But 2 Tournament",
-          "value": 0
+        "eventForm.lastBut2Tournament1": {
+          "name": "eventForm.lastBut2Tournament",
+          "label": "Last But 2 Tournament"
         },
-        {
-          "name": "lastBut3Tournament1",
-          "label": "Last But 3 Tournament",
-          "value": 0
+        "eventForm.lastBut3Tournament1": {
+          "name": "eventForm.lastBut3Tournament",
+          "label": "Last But 3 Tournament"
         },
-        {
-          "name": "lastBut4Tournament1",
-          "label": "Last But 4 Tournament",
-          "value": 0
+        "eventForm.lastBut4Tournament1": {
+          "name": "eventForm.lastBut4Tournament",
+          "label": "Last But 4 Tournament"
         }
-      ]
+      }
     }
   ]
 }
