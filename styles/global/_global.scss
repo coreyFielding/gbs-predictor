@@ -1,29 +1,5 @@
 @import "../global/mixins";
 
-//Scrollbar styles
-/* width */
-::-webkit-scrollbar {
-  width: 5px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: $gbsGreenLight; 
-  border-radius: 20px;
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: $gbsGreen;
-  border-radius: 20px; 
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555; 
-}
-//
-
 body, 
 html,
 main, 
@@ -308,6 +284,13 @@ select {
       &_right {
         flex: 0 2 57%;
         padding: 10px;
+
+        .panel {
+          thead:after {
+            content: '';
+            position: absolute;
+          }
+        }
 
         .header {
           .filters {
