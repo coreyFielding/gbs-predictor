@@ -654,34 +654,30 @@
 //Adjusted heights for hiding socials when only two tabs
 .sidebar.sidebar_2_tabs {
   @media screen and (min-width: 740px) and (max-height: 800px) {
-    .sidebar {
-      &_socials {
-        display: none;
-      }
+    .sidebar_socials {
+      display: none;
     }
   }
 
   @media screen and (min-width: 740px) and (min-height: 801px) {
-    .sidebar {
-      &_socials {
-        display: flex;
-      }
+    .sidebar_socials,
+    .sidebar_social_links,
+    .sidebar_golf_logo {
+      display: flex;
     }
   }
 
   @media screen and (min-width: 980px) and (max-height: 530px) {
-    .sidebar {
-      &_socials {
-        display: none;
-      }
+    .sidebar_socials {
+      display: none;
     }
   }
 
   @media screen and (min-width: 980px) and (min-height: 531px) {
-    .sidebar {
-      &_socials {
-        display: flex;
-      }
+    .sidebar_socials,
+    .sidebar_social_links,
+    .sidebar_golf_logo {
+      display: flex;
     }
   }
 }
