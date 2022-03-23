@@ -48,7 +48,7 @@ export const TournamentProvider = ({ children }) => {
           }),
         }
       })
-      .filter((v) => v.id)
+      .filter((v) => v.groupName)
 
   useEffect(() => {
     setGroups(formattedGroups)
