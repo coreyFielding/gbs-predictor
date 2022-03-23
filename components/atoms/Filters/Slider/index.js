@@ -1,20 +1,15 @@
 // ReactSlider
 import { useEffect, useState } from "react"
 import ReactSlider from "react-slider"
+import { useTournament } from "../../../../hooks/useTournament"
 
 // Styles
 import styles from "./slider.module.scss"
 
-export const SliderFilter = ({
-  name,
-  setFieldValue,
-  override,
-  children,
-  parentValue,
-  values,
-  ...props
-}) => {
+export const SliderFilter = ({ item, children, parentValue, ...props }) => {
   const [value, setValue] = useState(0)
+
+  const { handleVariableChange } = useTournament()
 
   return (
     <div className={styles.container}>
@@ -24,9 +19,10 @@ export const SliderFilter = ({
         trackClassName={styles.track}
         value={!parentValue ? value : parentValue}
         onAfterChange={() => {
-          setFieldValue(name, !parentValue ? value : parentValue)
+          handleVariableChange(item)
+          // setFieldValue(name, !parentValue ? value : parentValue)
         }}
-        max={5}
+        max={item.groupRange || item.variableRange}
         renderThumb={(props, state) => {
           setValue(state.value)
           return (

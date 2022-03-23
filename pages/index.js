@@ -1,15 +1,15 @@
 // Components
-import { Sidebar, Page } from "../components";
-import { Header, Footer } from "../components"
+import { Sidebar, Page, Header, Footer, Form } from "../components"
 
-import Variables from "./components/Variables";
-import Results from "./components/Results";
+import Variables from "./components/Variables"
+import Results from "./components/Results"
+
+// Contexts
 
 // Styles
-import Image from "next/image";
+import Image from "next/image"
 
 //* Example component data which would normally be fetched from an API call
-// import { exampleComponentData } from "../lib/wordpress/pages/exampleComponentData"
 
 const Home = () => {
   return (
@@ -28,12 +28,11 @@ const Home = () => {
           </main>
         </div>
       </div>
-      {/* {displayComponents(exampleComponentData, pagesComponentList)} */}
     </Page>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
 
 export async function getStaticProps(context) {
   //* Example of how to fetch data
@@ -44,17 +43,17 @@ export async function getStaticProps(context) {
   const menus = {
     primary: [{ label: "About", url: "/about" }],
     secondary: [{ label: "Contact", url: "/contact" }],
-  };
+  }
 
   //* Example of how to render 404 on static pages
   if (!menus) {
     return {
       notFound: true,
-    };
+    }
   }
 
   //* This will be passed to the page component as props
   return {
     props: { menus },
-  };
+  }
 }

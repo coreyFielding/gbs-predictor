@@ -91,7 +91,7 @@ const Results = () => {
               headings={table.headers.map(({ Component }, index) => (
                 <Component key={index} />
               ))}
-            ></Table.Heading>
+            />
             <Table.Body>
               <Table.Row style={{ backgroundColor: "#FBFFFD" }}>
                 <Table.Cell.Text>

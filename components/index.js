@@ -6,6 +6,7 @@ export * from "./atoms/Filters"
 export * from "./atoms/Heading"
 export * from "./atoms/Image"
 export * from "./atoms/Body"
+export * from "./atoms/Form"
 
 // Export molecules
 export * from "./molecules/Accordion"
