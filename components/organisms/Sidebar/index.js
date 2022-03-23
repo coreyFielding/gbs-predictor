@@ -8,7 +8,7 @@ export const Sidebar = () => {
   return (
       <div className={styles.sidebar}>
       <aside className={styles.sidebar_inner}>
-        <div className={styles.sidebar_tab + ' ' + styles.prev}>
+        <div className={styles.sidebar_tab + ' ' + styles.active}>
           <div>
           <div className={styles.sidebar_tab_left}>
             <div className={styles.sidebar_logo}>
@@ -25,7 +25,7 @@ export const Sidebar = () => {
           </div>
           </div>
         </div>
-        <div className={styles.sidebar_tab + ' ' + styles.active}>
+        <div className={styles.sidebar_tab + ' ' + styles.prev}>
           <div>
             <div className={styles.sidebar_tab_left}>
               <div className={styles.sidebar_logo}>
