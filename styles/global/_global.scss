@@ -11,10 +11,10 @@ main,
   height: 100%;
 }
 
-@media screen and (max-height: 840px) {
+@media screen and (max-height: 800px) {
   .main-section {
     > div {
-      height: calc(100% - 253px);
+      height: calc(100% - 220px);
     }
   }
 }
@@ -86,7 +86,7 @@ section {
     align-items: center;
     width: 100%;
     padding: 3px;
-    height: calc(100% - 247px)
+    height: calc(100% - 190px)
   }
 
   .section {
