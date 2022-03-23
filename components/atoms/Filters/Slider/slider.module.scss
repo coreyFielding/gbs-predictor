@@ -4,6 +4,14 @@
   width: 150px;
   height: 6px;
   margin-left: 20px;
+
+  &_disabled {
+    width: 150px;
+    height: 6px;
+    margin-left: 20px;
+    opacity: 0.5;
+    pointer-events: none;
+  }
 }
 .horizontalSlider {
   position: relative;

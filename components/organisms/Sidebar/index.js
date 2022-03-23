@@ -1,7 +1,5 @@
 import styles from "./sidebar.module.scss"
 import NextImage from "../../atoms/Image"
-import { useContext } from "react"
-import { TournamentContext } from "contexts/TournamentProvider"
 import { useTournament } from "hooks/useTournament"
 const genesisLogo = "/images/genesis-logo.png"
 const hondaLogo = "/images/honda-logo.png"

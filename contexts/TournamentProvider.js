@@ -6,24 +6,58 @@ import { useQuery } from "react-query"
 export const TournamentContext = createContext({
   tournaments: undefined,
   groups: undefined,
+  setGroups: () => {
+    return
+  },
 })
 
 export const TournamentProvider = ({ children }) => {
   const [activeTournament, setActiveTournament] = useState(1)
+  const [groups, setGroups] = useState(null)
 
   const { data: tournaments, isLoadingTournaments } = useQuery(
     ["tournaments"],
     () => queryAllTournaments()
   )
 
-  const { data: groups, isLoadingGroups } = useQuery(
+  const { data: variableGroups, isLoadingGroups } = useQuery(
     ["groups", activeTournament],
     () => queryAllGroups(activeTournament)
   )
 
+  const formattedGroups =
+    variableGroups &&
+    Object.keys(variableGroups?.attributes)
+      .slice(2)
+      .map((key, index) => {
+        const data = variableGroups?.attributes[key][0]
+
+        return {
+          id: index,
+          groupName: data?.Filter_Group_Name,
+          groupRange: data?.Group_Range,
+          variables: data?.Variables?.map((variable) => {
+            return {
+              id: variable.id,
+              include: variable.Variable_Include,
+              variableName: variable.Variable_Name,
+              variableWeight: variable.Variable_Weight,
+              range: data?.Group_Range,
+              parentId: index,
+            }
+          }),
+        }
+      })
+      .filter((v) => v.id)
+
+  useEffect(() => {
+    setGroups(formattedGroups)
+  }, [variableGroups])
+
   const state = {
     tournaments,
     groups,
+    setGroups,
     setActiveTournament,
   }
 

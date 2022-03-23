@@ -3,38 +3,10 @@ import { useContext } from "react"
 import { TournamentContext } from "../contexts/TournamentProvider"
 
 export const useTournament = () => {
-  const { groups, tournaments, setActiveTournament } =
+  const { tournaments, setActiveTournament, groups, setGroups } =
     useContext(TournamentContext)
 
-  // Map data to formatted object
-  // Map through each category and display accordion item for each
-  // For each accordion item, map through sub_categories
-
-  const filters =
-    groups?.attributes &&
-    Object.keys(groups.attributes)
-      .map((key) => {
-        const data = groups.attributes[key][0]
-
-        return {
-          id: data?.id,
-          groupName: data?.Filter_Group_Name,
-          groupRange: data?.Group_Range,
-          variables: data?.Variables?.map((variable) => {
-            return {
-              id: variable.id,
-              include: variable.Variable_Include,
-              variableName: variable.Variable_Name,
-              variableRange: variable.Variable_Range,
-              variableWeight: variable.Variable_Weight,
-            }
-          }),
-        }
-      })
-      .filter((v) => v.id)
-
   const handleTournamentChange = (id) => {
-    // set activeTournament
     setActiveTournament(id)
   }
 
@@ -43,28 +15,48 @@ export const useTournament = () => {
   // Each variable group (category) will render a TABLE that will include a SLIDER for each variable (sub-category) within that group.
   // Setting a value on the slider will set the value for that sub category in that group
 
+  const groupsClone = groups
+
   /**
    *
-   * @param {number} Group_Index Index of parent category
-   * @param {number} Variable_Index Index of sub-category within parent
+   * @param {object} item Selected variable data
+   * @param {number} Value Value of slider
    * @returns {void}
    */
-  const handleVariableChange = (item) => {
-    // // if selected filter contains 'groupName' it is a parent
-    // // find category from array of categories and set value of parent category or sub category:
-    // // if (item.groupName) {
-    // //   groups[]
-    // // }
-    // variables.filters[Group_Index].Filter_Group[Variable_Index].value = value
-    // // mappedFilters.categories[Group_Index].sub_categories[Variable_Index].value =
-    // value // <-- THIS IS WHEN SETTING SUB_CATEGORY VALUE ONLY
-    // // if it does not contain 'parent' it is a parent category:
-    // mappedFilters.categories[Filter_Group_Name].value = value // <-- THIS IS WHEN SETTING THE PARENT VALUE ONLY
+  const handleVariableChange = (item, value) => {
+    // Handle parent variable
+    if (item.groupName) {
+      const index = groupsClone.findIndex((group) => group.id === item.id)
+
+      groupsClone[index].value = value
+
+      // Parent value overrides child value
+      groupsClone[index].variables.forEach((variable) => {
+        variable.value = value
+      })
+      setGroups(null)
+      setGroups(groupsClone)
+    }
+
+    // Handle child variable
+    if (!item.groupName) {
+      const parentIndex = groups.findIndex(
+        (group) => group.id === item.parentId
+      )
+
+      const childIndex = groups[parentIndex]?.variables.findIndex(
+        (variable) => variable.id === item.id
+      )
+
+      groupsClone[parentIndex].variables[childIndex].value = value
+      setGroups(null)
+      setGroups(groupsClone)
+    }
   }
 
   return {
     tournaments,
-    filters,
+    groups,
     handleTournamentChange,
     handleVariableChange,
   }

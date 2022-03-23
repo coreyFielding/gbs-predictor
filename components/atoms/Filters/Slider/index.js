@@ -12,17 +12,18 @@ export const SliderFilter = ({ item, children, parentValue, ...props }) => {
   const { handleVariableChange } = useTournament()
 
   return (
-    <div className={styles.container}>
+    <div
+      className={!parentValue ? styles.container : styles.container_disabled}
+    >
       <ReactSlider
         className={styles.horizontalSlider}
         thumbClassName={styles.thumb}
         trackClassName={styles.track}
-        value={!parentValue ? value : parentValue}
+        value={!parentValue || parentValue === 0 ? item.value : parentValue}
         onAfterChange={() => {
-          handleVariableChange(item)
-          // setFieldValue(name, !parentValue ? value : parentValue)
+          !parentValue && handleVariableChange(item, value)
         }}
-        max={item.groupRange || item.variableRange}
+        max={item.groupRange || item.range}
         renderThumb={(props, state) => {
           setValue(state.value)
           return (
