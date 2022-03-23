@@ -13,13 +13,6 @@ export const Sidebar = () => {
   return (
     <div className={styles.sidebar}>
       <aside className={styles.sidebar_inner}>
-<<<<<<< HEAD
-        <div className={styles.sidebar_tab + ' ' + styles.active}>
-          <div>
-          <div className={styles.sidebar_tab_left}>
-            <div className={styles.sidebar_logo}>
-              <NextImage src={genesisLogo} width={51} height={11} />
-=======
         {tournaments?.map((tournament, index) => {
           const {
             Tour,
@@ -59,25 +52,11 @@ export const Sidebar = () => {
                   </p>
                 </div>
               </div>
->>>>>>> e5cbda0379fdcf0040dc570fe909f35bf8b9500d
             </div>
           )
         })}
 
-<<<<<<< HEAD
-          <div className={styles.sidebar_tab_right}>
-            <p className={styles.sidebar_tour_type_desktop}>PGA Tour</p>
-            <h2 className={styles.sidebar_tournament_name}>Genesis International</h2>
-            <p className={styles.sidebar_updated}><span className={styles.sidebar_tour_type_mobile}>PGA Tour</span>Updated 11:10 GMT 14/2/22</p>
-            <p className={styles.sidebar_date}>Feb 3–6, 2022</p>
-            <p className={styles.sidebar_location}>Pebble Beach Golf Links and others</p>
-          </div>
-          </div>
-        </div>
-        <div className={styles.sidebar_tab + ' ' + styles.prev}>
-=======
         {/* <div className={styles.sidebar_tab + " " + styles.active}>
->>>>>>> e5cbda0379fdcf0040dc570fe909f35bf8b9500d
           <div>
             <div className={styles.sidebar_tab_left}>
               <div className={styles.sidebar_logo}>
