@@ -6,11 +6,16 @@ import { useTournament } from "hooks/useTournament"
 
 // Styles
 import styles from "./variables.module.scss"
+import { useEffect } from "react"
 
 const Variables = () => {
-  const { filters, handleVariableChange } = useTournament()
+  const { groups } = useTournament()
 
-  return (
+  useEffect(() => {}, [groups])
+
+  return !groups?.length > 0 ? (
+    <></>
+  ) : (
     <div className="section_left">
       <div className="header">
         <Heading level={1} styles="h1--primary">
@@ -20,29 +25,32 @@ const Variables = () => {
       <div className="panel panel_left">
         <Panel>
           <div className={styles.form}>
-            <Accordion initial={1} singular={true}>
-              {filters?.map((item) => {
+            <Accordion initial={groups[0].id} singular={true}>
+              {groups?.map((groupItem) => {
                 return (
                   <Accordion.Item
-                    key={item.id}
-                    index={item.id}
-                    label={item.groupName}
-                    item={item}
+                    key={groupItem.id}
+                    index={groupItem.id}
+                    label={groupItem.groupName}
+                    item={groupItem}
                     slider={true}
                   >
                     <Table>
                       <Table.Body>
-                        {item.variables?.map((item) => {
+                        {groupItem.variables?.map((variableItem) => {
                           return (
-                            <Table.Row key={item.id} className={styles.row}>
+                            <Table.Row
+                              key={variableItem.id}
+                              className={styles.row}
+                            >
                               <Table.Cell className={styles.cell}>
                                 <span className="span--accordionItem">
-                                  {item.variableName}
+                                  {variableItem.variableName}
                                 </span>
                               </Table.Cell>
                               <Table.Cell.Slider
-                                item={item}
-                                // parentValue={values[name]}
+                                item={variableItem}
+                                parentValue={groupItem?.value}
                               />
                             </Table.Row>
                           )
