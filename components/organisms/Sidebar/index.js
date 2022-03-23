@@ -9,7 +9,7 @@ export const Sidebar = () => {
   const { tournaments, handleTournamentChange } = useTournament()
 
   return (
-    <div className={styles.sidebar}>
+    <div className={styles.sidebar + ' ' + styles.sidebar_2_tabs}>
       <aside className={styles.sidebar_inner}>
         {tournaments?.map((tournament, index) => {
           const {

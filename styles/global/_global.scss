@@ -1,29 +1,5 @@
 @import "../global/mixins";
 
-//Scrollbar styles
-/* width */
-::-webkit-scrollbar {
-  width: 5px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: $gbsGreenLight; 
-  border-radius: 20px;
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: $gbsGreen;
-  border-radius: 20px; 
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555; 
-}
-//
-
 body, 
 html,
 main, 
@@ -35,10 +11,10 @@ main,
   height: 100%;
 }
 
-@media screen and (max-height: 840px) {
+@media screen and (max-height: 800px) {
   .main-section {
     > div {
-      height: calc(100% - 253px);
+      height: calc(100% - 220px);
     }
   }
 }
@@ -110,7 +86,7 @@ section {
     align-items: center;
     width: 100%;
     padding: 3px;
-    height: calc(100% - 247px)
+    height: calc(100% - 190px)
   }
 
   .section {
@@ -308,6 +284,13 @@ select {
       &_right {
         flex: 0 2 57%;
         padding: 10px;
+
+        .panel {
+          thead:after {
+            content: '';
+            position: absolute;
+          }
+        }
 
         .header {
           .filters {
