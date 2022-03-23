@@ -48,10 +48,7 @@ const Variables = () => {
                                   {variableItem.variableName}
                                 </span>
                               </Table.Cell>
-                              <Table.Cell.Slider
-                                item={variableItem}
-                                parentValue={groupItem?.value}
-                              />
+                              <Table.Cell.Slider item={variableItem} />
                             </Table.Row>
                           )
                         })}

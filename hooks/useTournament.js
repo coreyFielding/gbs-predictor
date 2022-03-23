@@ -28,11 +28,11 @@ export const useTournament = () => {
     if (item.groupName) {
       const index = groupsClone.findIndex((group) => group.id === item.id)
 
-      groupsClone[index].value = value
+      groupsClone[index].parentValue = value
 
       // Parent value overrides child value
       groupsClone[index].variables.forEach((variable) => {
-        variable.value = value
+        variable.parentValue = value
       })
       setGroups(null)
       setGroups(groupsClone)
@@ -48,7 +48,7 @@ export const useTournament = () => {
         (variable) => variable.id === item.id
       )
 
-      groupsClone[parentIndex].variables[childIndex].value = value
+      groupsClone[parentIndex].variables[childIndex].childValue = value
       setGroups(null)
       setGroups(groupsClone)
     }

@@ -6,22 +6,31 @@ import { useTournament } from "../../../../hooks/useTournament"
 // Styles
 import styles from "./slider.module.scss"
 
-export const SliderFilter = ({ item, children, parentValue, ...props }) => {
+export const SliderFilter = ({ item, children, ...props }) => {
   const [value, setValue] = useState(0)
 
   const { handleVariableChange } = useTournament()
 
+  const variableValue = () => {
+    if (item.parentValue && !item.childValue) return item.parentValue
+
+    if (
+      (!item.parentValue && item.childValue) ||
+      (item.parentValue > 0 && item.childValue)
+    ) {
+      return item.childValue
+    }
+  }
+
   return (
-    <div
-      className={!parentValue ? styles.container : styles.container_disabled}
-    >
+    <div className={styles.container}>
       <ReactSlider
         className={styles.horizontalSlider}
         thumbClassName={styles.thumb}
         trackClassName={styles.track}
-        value={!parentValue || parentValue === 0 ? item.value : parentValue}
+        value={variableValue()}
         onAfterChange={() => {
-          !parentValue && handleVariableChange(item, value)
+          handleVariableChange(item, value)
         }}
         max={item.groupRange || item.range}
         renderThumb={(props, state) => {
