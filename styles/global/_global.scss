@@ -147,6 +147,37 @@ section {
             width: 100%;
             border-radius: 20px;
             background-color: $white;
+
+            thead {
+              position: sticky;
+              top: 0;
+              border-bottom: 0;
+              box-shadow: 0 1px 0 $gbsGreen;
+              background: white;
+              z-index: 3;
+
+              &:before {
+                content: '';
+                background: transparent;
+                position: absolute;
+                right: 0;
+                height: 100%;
+                width: 25px;
+                border-top-right-radius: 20px;
+                box-shadow: 0 -25px 0 $gbsGreenDark;
+                pointer-events: none;
+              }
+
+              &:after {
+                content: '';
+                background: $gbsGreenDark;
+                width: 50%;
+                height: 100%;
+                right: 0;
+                transform: translateX(100%);
+                top: 0;
+              }
+            }
           }
         }
 
