@@ -275,22 +275,23 @@ select {
           margin-top: 15px;
           vertical-align: middle;
 
-          .filters {
-            margin-left: 5%;
-            position: static;
-            bottom: 0;
-            left: 0;
+            h1 {
+              margin-left: 60px;
+              display: block;
+            }
 
-            svg {
-              position: absolute;
-              left: 44px;
+            .filters {
+              margin-left: 5%;
+              position: static;
+              bottom: 0;
+              left: 0;
+              
+              > svg {
+                left: 110px;
+                position: absolute;
+              }
             }
           }
-
-          h1 {
-            display: block;
-          }
-        }
 
         .panel {
           margin-top: 28px;
@@ -330,6 +331,10 @@ select {
         }
 
         .header {
+          h1 {
+            margin-left: 10px;
+          }
+
           .filters {
             svg {
               display: none;
