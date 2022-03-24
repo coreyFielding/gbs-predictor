@@ -11,7 +11,9 @@ import { useEffect } from "react"
 const Variables = () => {
   const { groups } = useTournament()
 
-  useEffect(() => {}, [groups])
+  useEffect(() => {
+    console.log(groups)
+  }, [groups])
 
   return !groups?.length > 0 ? (
     <></>
