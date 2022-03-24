@@ -3,7 +3,7 @@ import NextImage from "../../atoms/Image"
 import { useTournament } from "hooks/useTournament"
 const genesisLogo = "/images/genesis-logo.png"
 const hondaLogo = "/images/honda-logo.png"
-const gbsLogo = "/images/gbs-logo.png"
+const gbsLogo = "/images/gbs-logo.svg"
 
 export const Sidebar = () => {
   const { tournaments, handleTournamentChange } = useTournament()
