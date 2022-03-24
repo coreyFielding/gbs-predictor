@@ -176,6 +176,7 @@ section {
                 right: 0;
                 transform: translateX(100%);
                 top: 0;
+                display: none;
               }
             }
           }
@@ -317,9 +318,14 @@ select {
         padding: 10px;
 
         .panel {
-          thead:after {
-            content: '';
-            position: absolute;
+          table {
+            thead {
+              &:after {
+                content: '';
+                position: absolute;
+                display: block;
+              }
+            } 
           }
         }
 
