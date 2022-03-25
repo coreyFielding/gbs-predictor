@@ -137,6 +137,7 @@ section {
       .panel {
         margin-top: 3px;
         height: 100%;
+        overflow: hidden;
 
         &_left {
           background-color: $white;
