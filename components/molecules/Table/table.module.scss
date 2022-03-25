@@ -82,6 +82,7 @@ $bookmakers: '888_sport', 'bet_365', 'ladbrokes', 'betfair', 'coral', 'william_h
       height: 33px;
       width: 120px;
       padding: 0;
+      border-left: 1px solid $gbsGreenDark;
 
       a {
         border: 1px solid $gbsGreen;
