@@ -152,13 +152,18 @@ section {
             border-radius: 20px;
             background-color: $white;
 
+            * {
+              border-collapse: separate;
+            }
+
             thead {
               position: sticky;
+              position: -webkit-sticky;
+              background: linear-gradient(0deg, $gbsGreen 1.5%, $gbsGreen 0%, white 1%);
               top: 0;
               border-bottom: 0;
-              box-shadow: 0 1px 0 $gbsGreen;
-              background: white;
               z-index: 3;
+              -webkit-appearance: none;
 
               &:before {
                 content: '';
@@ -176,7 +181,7 @@ section {
                 content: '';
                 background: $gbsGreenDark;
                 width: 50%;
-                height: 100%;
+                height: 67px;
                 right: 0;
                 transform: translateX(100%);
                 top: 0;
