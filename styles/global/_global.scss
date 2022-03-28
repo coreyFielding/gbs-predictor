@@ -180,6 +180,7 @@ section {
                 border-top-right-radius: 20px;
                 box-shadow: 0 -25px 0 $gbsGreenDark;
                 pointer-events: none;
+                display: none;
               }
 
               &:after {
@@ -338,6 +339,9 @@ select {
           height: 100%;
           table {
             thead {
+              &:before {
+                display: block;
+              }
               &:after {
                 content: '';
                 position: absolute;
@@ -390,6 +394,12 @@ select {
             }
           }
         }
+      }
+    }
+
+    &_right {
+      .panel {
+        height: calc(100% - 10px);
       }
     }
   }
