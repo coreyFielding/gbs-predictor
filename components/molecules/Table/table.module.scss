@@ -38,6 +38,21 @@
   }
 }
 
+//Bookmaker images
+$bookmakers: '888_sport', 'bet_365', 'ladbrokes', 'betfair', 'coral', 'william_hill';
+
+@each $bookmaker in $bookmakers {
+  .tableRow.tableRow_#{$bookmaker} {
+    .tableData {
+      &:last-child {
+        a {
+          background-image: url('/images/' + #{$bookmaker} + '.svg');
+        }
+      }
+    }
+  }
+}
+
 .tableData {
   border-radius: 20px;
   padding: 5px 10px 5px 10px;
@@ -45,10 +60,13 @@
   &:last-child {
     a {
       border: 0;
-      background: red;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 16px 16px;
+      border-radius: 0;
 
       span {
-        display: none;
+        display: none; 
       }
     }
   }
@@ -61,16 +79,25 @@
       position: absolute;
       margin-top: 5px;
       right: -120px;
-      height: 40px;
+      height: 33px;
       width: 120px;
       padding: 0;
+      border-left: 1px solid $gbsGreenDark;
 
       a {
         border: 1px solid $gbsGreen;
-        background: transparent;
+        border-left: none;
+        background-color: transparent;
+        border-top-right-radius: 30px;
+        border-bottom-right-radius: 30px;
+        background-size: 33px 33px;
+        background-position: left;
 
         span {
           display: block;
+          position: relative;
+          left: 5px;
+          line-height: 2.6;
         }
       }
     }

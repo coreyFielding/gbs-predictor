@@ -11,6 +11,10 @@ main,
   height: 100%;
 }
 
+body {
+  overflow: hidden;
+}
+
 @media screen and (max-height: 800px) {
   .main-section {
     > div {
@@ -133,6 +137,7 @@ section {
       .panel {
         margin-top: 3px;
         height: 100%;
+        overflow: hidden;
 
         &_left {
           background-color: $white;
@@ -143,10 +148,52 @@ section {
           }
         }
         &_right {
+          background: $white;
+          border-radius: 20px;
+          height: calc(100% - 10px);
+
           table {
             width: 100%;
             border-radius: 20px;
             background-color: $white;
+
+            * {
+              border-collapse: separate;
+            }
+
+            thead {
+              position: sticky;
+              position: -webkit-sticky;
+              background: linear-gradient(0deg, $gbsGreen 1.5%, $gbsGreen 0%, white 1%);
+              top: 0;
+              border-bottom: 0;
+              z-index: 3;
+              -webkit-appearance: none;
+
+              &:before {
+                content: '';
+                background: transparent;
+                position: absolute;
+                right: 0;
+                height: 100%;
+                width: 25px;
+                border-top-right-radius: 20px;
+                box-shadow: 0 -25px 0 $gbsGreenDark;
+                pointer-events: none;
+                display: none;
+              }
+
+              &:after {
+                content: '';
+                background: $gbsGreenDark;
+                width: 50%;
+                height: 67px;
+                right: 0;
+                transform: translateX(100%);
+                top: 0;
+                display: none;
+              }
+            }
           }
         }
 
@@ -243,25 +290,27 @@ select {
           margin-top: 15px;
           vertical-align: middle;
 
-          .filters {
-            margin-left: 5%;
-            position: static;
-            bottom: 0;
-            left: 0;
+            h1 {
+              margin-left: 60px;
+              display: block;
+            }
 
-            svg {
-              position: absolute;
-              left: 44px;
+            .filters {
+              margin-left: 5%;
+              position: static;
+              bottom: 0;
+              left: 0;
+              
+              > svg {
+                left: 110px;
+                position: absolute;
+              }
             }
           }
 
-          h1 {
-            display: block;
-          }
-        }
-
         .panel {
           margin-top: 28px;
+          height:calc(100% - 85px);
 
           &_left {
             background-color: transparent;
@@ -286,13 +335,27 @@ select {
         padding: 10px;
 
         .panel {
-          thead:after {
-            content: '';
-            position: absolute;
+          background: transparent;
+          height: 100%;
+          table {
+            thead {
+              &:before {
+                display: block;
+              }
+              &:after {
+                content: '';
+                position: absolute;
+                display: block;
+              }
+            } 
           }
         }
 
         .header {
+          h1 {
+            margin-left: 10px;
+          }
+
           .filters {
             svg {
               display: none;
@@ -331,6 +394,12 @@ select {
             }
           }
         }
+      }
+    }
+
+    &_right {
+      .panel {
+        height: calc(100% - 10px);
       }
     }
   }
