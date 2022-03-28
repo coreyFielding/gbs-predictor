@@ -1,4 +1,4 @@
-import { createContext } from "react"
+import { createContext, useEffect, useState } from "react"
 import { queryAllPlayers } from "lib/wordpress/posts/getImportedData"
 
 import { useQuery } from "react-query"
@@ -8,9 +8,15 @@ export const PlayerContext = createContext({
 })
 
 export const PlayerProvider = ({ children }) => {
-  const { data: players, isLoadingPlayers } = useQuery(["players"], () =>
+  const [players, setPlayers] = useState([])
+
+  const { data, isLoadingPlayers } = useQuery(["players"], () =>
     queryAllPlayers()
   )
+
+  useEffect(() => setPlayers(data?.data), [data])
+
+  // calculate player rankings based on imported variables
 
   const state = {
     players,

@@ -7,7 +7,6 @@ import Results from "./components/Results"
 // Contexts
 
 // Styles
-import Image from "next/image"
 import { VariableProvider } from "contexts/VariableProvider"
 import { PlayerProvider } from "contexts/PlayerProvider"
 
@@ -24,9 +23,11 @@ const Home = () => {
               <div>
                 <VariableProvider>
                   <Variables />
-                  <PlayerProvider>
-                    <Results />
-                  </PlayerProvider>
+                  {({ importedVariables }) => (
+                    <PlayerProvider importedVariables={importedVariables}>
+                      <Results />
+                    </PlayerProvider>
+                  )}
                 </VariableProvider>
               </div>
               <Footer />
