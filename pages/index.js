@@ -1,5 +1,5 @@
 // Components
-import { Sidebar, Page, Header, Footer, Form } from "../components"
+import { Sidebar, Page, Footer } from "../components"
 
 import Variables from "./components/Variables"
 import Results from "./components/Results"
@@ -8,6 +8,8 @@ import Results from "./components/Results"
 
 // Styles
 import Image from "next/image"
+import { VariableProvider } from "contexts/VariableProvider"
+import { PlayerProvider } from "contexts/PlayerProvider"
 
 //* Example component data which would normally be fetched from an API call
 
@@ -20,8 +22,12 @@ const Home = () => {
             <Sidebar />
             <section className="main-section">
               <div>
-                <Variables />
-                <Results />
+                <VariableProvider>
+                  <Variables />
+                  <PlayerProvider>
+                    <Results />
+                  </PlayerProvider>
+                </VariableProvider>
               </div>
               <Footer />
             </section>

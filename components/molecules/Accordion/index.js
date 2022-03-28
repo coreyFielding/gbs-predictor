@@ -18,12 +18,19 @@ export const AccordionContext = createContext({})
 const AccordionComponent = ({
   initial,
   children,
-  singular = false,
+  openVariable,
+  singular = true,
   handleVariableChange,
   styles: userStyles,
   ...rest
 }) => {
   const [openItems, setOpenItems] = useState(initial ? [initial] : [])
+
+  console.log(openVariable)
+
+  useEffect(() => {
+    setOpenItems([openVariable])
+  }, [openVariable])
 
   const open = (index) => {
     setOpenItems((currentOpen) => {
@@ -66,13 +73,15 @@ const AccordionComponent = ({
   )
 }
 
-const AccordionItem = ({ item, slider, children, ...rest }) => {
+const AccordionItem = ({ item, index, slider, children, ...rest }) => {
   const { openItems, toggle } = useContext(AccordionContext)
-  const { id, groupName } = item
+  const { id, parentName } = item
   const isOpen = id && openItems?.includes(id)
   const headerClasses = cn(styles.heading, isOpen && styles.toggleOpen)
   const contentClasses = cn(styles.content, isOpen && styles.contentVisible)
   const sliderRef = createRef()
+
+  // setOpenItems to active accordion item - maybe use sliderRef.current to specify active item
 
   return (
     <div {...rest} className={styles.item}>
@@ -84,7 +93,7 @@ const AccordionItem = ({ item, slider, children, ...rest }) => {
       >
         <div className={styles.container}>
           <Heading level={6} className="span--accordionHeading">
-            {groupName}
+            {parentName}
           </Heading>
         </div>
 

@@ -3,7 +3,6 @@ import PropTypes from "prop-types"
 import { DefaultSeo } from "next-seo"
 import WordPressProvider from "../components/common/WordpressProvider"
 import { TournamentProvider } from "contexts/TournamentProvider"
-
 import { QueryClient, QueryClientProvider } from "react-query"
 import "../styles/app.scss"
 

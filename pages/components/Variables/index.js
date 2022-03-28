@@ -2,18 +2,13 @@
 import { Panel, Accordion, Table, Heading } from "../../../components"
 
 // Contexts
-import { useTournament } from "hooks/useTournament"
+import { useVariable } from "hooks/useVariable"
 
 // Styles
 import styles from "./variables.module.scss"
-import { useEffect } from "react"
 
 const Variables = () => {
-  const { groups } = useTournament()
-
-  useEffect(() => {
-    console.log(groups)
-  }, [groups])
+  const { groups, openVariable } = useVariable(2)
 
   return !groups?.length > 0 ? (
     <></>
@@ -27,19 +22,18 @@ const Variables = () => {
       <div className="panel panel_left">
         <Panel>
           <div className={styles.form}>
-            <Accordion initial={groups[0].id} singular={true}>
+            <Accordion singular={true} initial={1} openVariable={openVariable}>
               {groups?.map((groupItem) => {
                 return (
                   <Accordion.Item
                     key={groupItem.id}
-                    index={groupItem.id}
-                    label={groupItem.groupName}
+                    label={groupItem.parentName}
                     item={groupItem}
                     slider={true}
                   >
                     <Table>
                       <Table.Body>
-                        {groupItem.variables?.map((variableItem) => {
+                        {groupItem.childVariables?.map((variableItem) => {
                           return (
                             <Table.Row
                               key={variableItem.id}
@@ -47,7 +41,7 @@ const Variables = () => {
                             >
                               <Table.Cell className={styles.cell}>
                                 <span className="span--accordionItem">
-                                  {variableItem.variableName}
+                                  {variableItem.Child_Name}
                                 </span>
                               </Table.Cell>
                               <Table.Cell.Slider item={variableItem} />

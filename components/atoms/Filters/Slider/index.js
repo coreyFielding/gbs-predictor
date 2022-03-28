@@ -1,26 +1,19 @@
 // ReactSlider
 import { useEffect, useState } from "react"
 import ReactSlider from "react-slider"
-import { useTournament } from "../../../../hooks/useTournament"
+import { useVariable } from "hooks/useVariable"
 
 // Styles
 import styles from "./slider.module.scss"
 
 export const SliderFilter = ({ item, children, ...props }) => {
-  const [value, setValue] = useState(0)
+  const [value, setValue] = useState(item.parentWeight | item.childWeight)
 
-  const { handleVariableChange } = useTournament()
+  const { handleVariableChange } = useVariable()
 
-  const variableValue = () => {
-    if (item.parentValue && !item.childValue) return item.parentValue
-
-    if (
-      (!item.parentValue && item.childValue) ||
-      (item.parentValue > 0 && item.childValue)
-    ) {
-      return item.childValue
-    }
-  }
+  useEffect(() => {
+    item.childValue ? setValue(item.childValue) : setValue(item.parentValue)
+  }, [item.parentValue, item.childValue])
 
   return (
     <div className={styles.container}>
@@ -28,11 +21,11 @@ export const SliderFilter = ({ item, children, ...props }) => {
         className={styles.horizontalSlider}
         thumbClassName={styles.thumb}
         trackClassName={styles.track}
-        value={variableValue()}
+        value={value}
         onAfterChange={() => {
           handleVariableChange(item, value)
         }}
-        max={item.groupRange || item.range}
+        max={item.parentRange || item.childRange}
         renderThumb={(props, state) => {
           setValue(state.value)
           return (

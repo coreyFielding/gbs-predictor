@@ -1,8 +1,11 @@
 // Components
-import { useMemo } from "react"
 import { Panel, Button, Table, Heading, Filter } from "../../../components"
+import { PlayerContext } from "contexts/PlayerProvider"
+import { useContext } from "react"
 
 const Results = () => {
+  const { players } = useContext(PlayerContext)
+  console.log(players)
   const table = {
     headers: [
       {
@@ -67,13 +70,29 @@ const Results = () => {
             <circle cx="10.5671" cy="18.0007" r="2.66667" fill="#fff" />
           </svg>
 
-          <svg width="24" height="17" viewBox="0 0 24 17" fill="none" xmlns="http://www.w3.org/2000/svg" className="hide_variables">
-            <path d="M1.6875 15.2507L22.2182 2.10254" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
-            <path d="M1.6875 2.125L22.2184 15.3474" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
-            <circle cx="7.0105" cy="5.2605" r="2.5105" fill="#fff"/>
-            <circle cx="16.3855" cy="11.5105" r="2.5105" fill="#fff"/>
+          <svg
+            width="24"
+            height="17"
+            viewBox="0 0 24 17"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="hide_variables"
+          >
+            <path
+              d="M1.6875 15.2507L22.2182 2.10254"
+              stroke="#fff"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+            <path
+              d="M1.6875 2.125L22.2184 15.3474"
+              stroke="#fff"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+            <circle cx="7.0105" cy="5.2605" r="2.5105" fill="#fff" />
+            <circle cx="16.3855" cy="11.5105" r="2.5105" fill="#fff" />
           </svg>
-
 
           <div className="toggle">
             <Filter.Toggle label="DraftKings" />
@@ -93,33 +112,36 @@ const Results = () => {
               ))}
             />
             <Table.Body>
-              <Table.Row style={{ backgroundColor: "#FBFFFD" }}>
-                <Table.Cell.Text>
-                  <span className="span--tableCell">1</span>
-                </Table.Cell.Text>
-                <Table.Cell.Text>
-                  <span className="span--tableCell">Daniel Berger</span>
-                </Table.Cell.Text>
-                <Table.Cell.Text>
-                  <span className="span--tableCell">2084</span>
-                </Table.Cell.Text>
-                <Table.Cell.Text>
-                  <span className="span--tableCell">3/1</span>
-                </Table.Cell.Text>
-                <Table.Cell.Text>
-                  <span className="span--tableCell">3/1</span>
-                </Table.Cell.Text>
-                <Table.Cell.Text>
-                  <Button.Pill url="#" label="test" urlExternal={true}>
-                    {/* <Image
+              {players.data.map((player, index) => (
+                <Table.Row key={index} style={{ backgroundColor: "#FBFFFD" }}>
+                  <Table.Cell.Text>
+                    <span className="span--tableCell">1</span>
+                  </Table.Cell.Text>
+                  <Table.Cell.Text>
+                    <span className="span--tableCell">{player.Player}</span>
+                  </Table.Cell.Text>
+                  <Table.Cell.Text>
+                    <span className="span--tableCell">2084</span>
+                  </Table.Cell.Text>
+                  <Table.Cell.Text>
+                    <span className="span--tableCell">{player.Odds}</span>
+                  </Table.Cell.Text>
+                  <Table.Cell.Text>
+                    <span className="span--tableCell">3/1</span>
+                  </Table.Cell.Text>
+                  <Table.Cell.Text>
+                    <Button.Pill url="#" label="test" urlExternal={true}>
+                      {/* <Image
                       src={"/public/bookmaker.png"}
                       width={500}
                       height={500}
                     /> */}
-                    <span>View Offer</span>
-                  </Button.Pill>
-                </Table.Cell.Text>
-              </Table.Row>
+                      <span>View Offer</span>
+                    </Button.Pill>
+                  </Table.Cell.Text>
+                </Table.Row>
+              ))}
+
               <Table.Row style={{ backgroundColor: "#FFF" }}>
                 <Table.Cell.Text>
                   <span className="span--tableCell">2</span>
