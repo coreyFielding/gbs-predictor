@@ -148,6 +148,10 @@ section {
           }
         }
         &_right {
+          background: $white;
+          border-radius: 20px;
+          height: calc(100% - 10px);
+
           table {
             width: 100%;
             border-radius: 20px;
@@ -305,6 +309,7 @@ select {
 
         .panel {
           margin-top: 28px;
+          height:calc(100% - 85px);
 
           &_left {
             background-color: transparent;
@@ -329,6 +334,8 @@ select {
         padding: 10px;
 
         .panel {
+          background: transparent;
+          height: 100%;
           table {
             thead {
               &:after {
