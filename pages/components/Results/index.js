@@ -116,7 +116,7 @@ const Results = () => {
                 (player, index) => (
                   <Table.Row key={index} style={{ backgroundColor: "#FBFFFD" }}>
                     <Table.Cell.Text>
-                      <span className="span--tableCell">{player.rank}</span>
+                      <span className="span--tableCell">{index + 1}</span>
                     </Table.Cell.Text>
                     <Table.Cell.Text>
                       <span className="span--tableCell">{player.Player}</span>

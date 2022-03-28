@@ -1,9 +1,11 @@
 // Context
 import { useContext } from "react"
 import { PlayerContext } from "contexts/PlayerProvider"
+import { useVariable } from "./useVariable"
 
 export const usePlayers = () => {
   const { players: playerList, variables } = useContext(PlayerContext)
+  const { groups } = useVariable()
 
   let scoredPlayers = []
   let filteredPlayers = []
@@ -22,9 +24,9 @@ export const usePlayers = () => {
   })
 
   // Assign score to each player based on their variable position and weighting
-  scoredPlayers.map((player, index) => {
+  scoredPlayers.map((player) => {
     const pos = (player.Position = Number(player.Position))
-    const playerScore = (51 - pos) * 10
+    const playerScore = (51 - pos) * 6
     player.score = playerScore
     filteredPlayers.push(player)
   })
@@ -33,19 +35,25 @@ export const usePlayers = () => {
     a.score < b.score ? 1 : -1
   )
 
-  sortedByScore.forEach((player, i, arr) => {
-    player.rank =
-      i === 0 || player.score != arr[i - 1].score ? i + 1 : arr[i - 1].rank
-  })
+  if (sortedByScore[0]) sortedByScore[0].rank = 1
+  for (let i = 1; i < scoredPlayers.length; i++) {
+    // Sort players with same score alphabetically
+    if (sortedByScore[i].score === sortedByScore[i - 1].score) {
+      const sortByName = sortedByScore.splice(
+        sortedByScore[i - 1],
+        sortedByScore[i] - sortedByScore[i - 1] + 1
+      )
 
-  //     // Sort players with same rank alphabetically
-  //     // scoredPlayers
-  //     //   .sort((a, b) =>
-  //     //     a.Player.split(" ")[0].localeCompare(b.Player.split(" ")[0])
-  //     //   )
-  //     //   .reverse()
+      sortByName
+        .sort((a, b) =>
+          a.Player.split(" ")[0].localeCompare(b.Player.split(" ")[0])
+        )
+        .reverse()
 
-  console.log(sortedByScore)
+      sortedByScore.splice(sortedByScore[i], 0, ...sortByName)
+    }
+  }
+
   return {
     playerList,
     sortedByScore,
