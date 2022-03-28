@@ -1,11 +1,11 @@
 // Components
+import { useState } from "react"
 import { Panel, Button, Table, Heading, Filter } from "../../../components"
-import { PlayerContext } from "contexts/PlayerProvider"
-import { useContext } from "react"
+import { usePlayers } from "../../../hooks/usePlayers"
 
 const Results = () => {
-  const { players } = useContext(PlayerContext)
-  console.log(players)
+  const { players, sortedByScore } = usePlayers()
+
   const table = {
     headers: [
       {
@@ -112,80 +112,37 @@ const Results = () => {
               ))}
             />
             <Table.Body>
-              {players?.map((player, index) => (
-                <Table.Row key={index} style={{ backgroundColor: "#FBFFFD" }}>
-                  <Table.Cell.Text>
-                    <span className="span--tableCell">1</span>
-                  </Table.Cell.Text>
-                  <Table.Cell.Text>
-                    <span className="span--tableCell">{player.Player}</span>
-                  </Table.Cell.Text>
-                  <Table.Cell.Text>
-                    <span className="span--tableCell">2084</span>
-                  </Table.Cell.Text>
-                  <Table.Cell.Text>
-                    <span className="span--tableCell">{player.Odds}</span>
-                  </Table.Cell.Text>
-                  <Table.Cell.Text>
-                    <span className="span--tableCell">3/1</span>
-                  </Table.Cell.Text>
-                  <Table.Cell.Text>
-                    <Button.Pill url="#" label="test" urlExternal={true}>
-                      {/* <Image
+              {(sortedByScore?.length ? sortedByScore : players)?.map(
+                (player, index) => (
+                  <Table.Row key={index} style={{ backgroundColor: "#FBFFFD" }}>
+                    <Table.Cell.Text>
+                      <span className="span--tableCell">{player.rank}</span>
+                    </Table.Cell.Text>
+                    <Table.Cell.Text>
+                      <span className="span--tableCell">{player.Player}</span>
+                    </Table.Cell.Text>
+                    <Table.Cell.Text>
+                      <span className="span--tableCell">{player?.score}</span>
+                    </Table.Cell.Text>
+                    <Table.Cell.Text>
+                      <span className="span--tableCell">{player.Odds}</span>
+                    </Table.Cell.Text>
+                    <Table.Cell.Text>
+                      <span className="span--tableCell">3/1</span>
+                    </Table.Cell.Text>
+                    <Table.Cell.Text>
+                      <Button.Pill url="#" label="test" urlExternal={true}>
+                        {/* <Image
                       src={"/public/bookmaker.png"}
                       width={500}
                       height={500}
                     /> */}
-                      <span>View Offer</span>
-                    </Button.Pill>
-                  </Table.Cell.Text>
-                </Table.Row>
-              ))}
-
-              <Table.Row style={{ backgroundColor: "#FBFFFD" }}>
-                <Table.Cell.Text>
-                  <span className="span--tableCell">3</span>
-                </Table.Cell.Text>
-                <Table.Cell.Text>
-                  <span className="span--tableCell">Patrick Cantlay</span>
-                </Table.Cell.Text>
-                <Table.Cell.Text>
-                  <span className="span--tableCell">1894</span>
-                </Table.Cell.Text>
-                <Table.Cell.Text>
-                  <span className="span--tableCell">3/1</span>
-                </Table.Cell.Text>
-                <Table.Cell.Text>
-                  <span className="span--tableCell">3/1</span>
-                </Table.Cell.Text>
-                <Table.Cell.Text>
-                  <Button.Pill url="#" label="test" urlExternal={true}>
-                    <span>View Offer</span>
-                  </Button.Pill>
-                </Table.Cell.Text>
-              </Table.Row>
-              <Table.Row style={{ backgroundColor: "#FBFFFD" }}>
-                <Table.Cell.Text>
-                  <span className="span--tableCell">3</span>
-                </Table.Cell.Text>
-                <Table.Cell.Text>
-                  <span className="span--tableCell">Patrick Cantlay</span>
-                </Table.Cell.Text>
-                <Table.Cell.Text>
-                  <span className="span--tableCell">1894</span>
-                </Table.Cell.Text>
-                <Table.Cell.Text>
-                  <span className="span--tableCell">3/1</span>
-                </Table.Cell.Text>
-                <Table.Cell.Text>
-                  <span className="span--tableCell">3/1</span>
-                </Table.Cell.Text>
-                <Table.Cell.Text>
-                  <Button.Pill url="#" label="test" urlExternal={true}>
-                    <span>View Offer</span>
-                  </Button.Pill>
-                </Table.Cell.Text>
-              </Table.Row>
+                        <span>View Offer</span>
+                      </Button.Pill>
+                    </Table.Cell.Text>
+                  </Table.Row>
+                )
+              )}
             </Table.Body>
           </Table>
         </Panel>

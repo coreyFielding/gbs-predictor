@@ -1,6 +1,6 @@
-import { createContext, useEffect, useState } from "react"
+import { createContext, useContext, useEffect, useState } from "react"
 import { queryAllPlayers } from "lib/wordpress/posts/getImportedData"
-
+import { VariableContext } from "./VariableProvider"
 import { useQuery } from "react-query"
 
 export const PlayerContext = createContext({
@@ -8,6 +8,7 @@ export const PlayerContext = createContext({
 })
 
 export const PlayerProvider = ({ children }) => {
+  const { importedVariables } = useContext(VariableContext)
   const [players, setPlayers] = useState([])
 
   const { data, isLoadingPlayers } = useQuery(["players"], () =>
@@ -20,6 +21,7 @@ export const PlayerProvider = ({ children }) => {
 
   const state = {
     players,
+    variables: importedVariables,
   }
 
   return (

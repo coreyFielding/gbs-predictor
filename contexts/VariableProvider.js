@@ -24,6 +24,8 @@ export const VariableProvider = ({ children }) => {
     queryAllImportedVariables()
   )
 
+  console.log(importedVariables)
+
   // Get the names of the imported variables that refer to the active variables of a tournament
 
   const importedVariableKeys =

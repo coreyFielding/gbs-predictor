@@ -23,11 +23,9 @@ const Home = () => {
               <div>
                 <VariableProvider>
                   <Variables />
-                  {({ importedVariables }) => (
-                    <PlayerProvider importedVariables={importedVariables}>
-                      <Results />
-                    </PlayerProvider>
-                  )}
+                  <PlayerProvider>
+                    <Results />
+                  </PlayerProvider>
                 </VariableProvider>
               </div>
               <Footer />
