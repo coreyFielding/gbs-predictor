@@ -26,7 +26,7 @@ export const usePlayers = () => {
         const playerScore = (51 - pos) * weights[index]
       }
 
-      // scoredPlayers.push(player ? player : null)
+      scoredPlayers.push(player ? player : null)
     })
   })
 
