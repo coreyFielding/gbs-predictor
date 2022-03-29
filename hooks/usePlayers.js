@@ -8,7 +8,6 @@ export const usePlayers = () => {
   const { groups } = useVariable()
 
   let scoredPlayers = []
-  let filteredPlayers = []
 
   // Get the dynamic weights from each variable group
   const weights = groups
@@ -17,27 +16,20 @@ export const usePlayers = () => {
     )
     .flat()
 
-  // get position of player for each variable
+  // Assign score to each player based on their variable position and weighting
   variables?.map(({ Variable }, index) => {
-    const data = Variable.data
-    data.map((player) => {
+    Variable.data.map((player) => {
       if (weights && weights[index]) {
         const pos = (player.Position = Number(player.Position))
         const playerScore = (51 - pos) * weights[index]
-      }
 
-      scoredPlayers.push(player ? player : null)
+        player.score = playerScore
+        scoredPlayers.push(player ? player : null)
+      }
     })
   })
 
-  // Assign score to each player based on their variable position and weighting
-  scoredPlayers.map((player) => {
-    const pos = (player.Position = Number(player.Position))
-    const playerScore = (51 - pos) * 6
-
-    player.score = playerScore
-    filteredPlayers.push(player)
-  })
+  console.log(scoredPlayers)
 
   const sortedByScore = scoredPlayers.sort((a, b) =>
     a.score < b.score ? 1 : -1
