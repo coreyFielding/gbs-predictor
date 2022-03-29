@@ -1,10 +1,10 @@
 // Components
-import { useState } from "react"
-import { Panel, Button, Table, Heading, Filter } from "../../../components"
-import { usePlayers } from "../../../hooks/usePlayers"
+import { useState } from "react";
+import { Panel, Button, Table, Heading, Filter } from "../../../components";
+import { usePlayers } from "../../../hooks/usePlayers";
 
 const Results = () => {
-  const { players, sortedByScore } = usePlayers()
+  const { players, sortedByScore } = usePlayers();
 
   const table = {
     headers: [
@@ -46,7 +46,7 @@ const Results = () => {
         devices: ["tablet", "mobile"],
       },
     ],
-  }
+  };
   return (
     <div className="section_right">
       <div className="header">
@@ -114,7 +114,7 @@ const Results = () => {
             <Table.Body>
               {(sortedByScore?.length ? sortedByScore : players)?.map(
                 (player, index) => (
-                  <Table.Row key={index} style={{ backgroundColor: "#FBFFFD" }}>
+                  <Table.Row key={index}>
                     <Table.Cell.Text>
                       <span className="span--tableCell">{index + 1}</span>
                     </Table.Cell.Text>
@@ -148,7 +148,7 @@ const Results = () => {
         </Panel>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Results
+export default Results;
