@@ -12,8 +12,8 @@ export const SliderFilter = ({ item, children, ...props }) => {
   const { handleVariableChange } = useVariable()
 
   useEffect(() => {
-    item.childValue ? setValue(item.childValue) : setValue(item.parentValue)
-  }, [item.parentValue, item.childValue])
+    item.childWeight ? setValue(item.childWeight) : setValue(item.parentWeight)
+  }, [item.parentWeight, item.childWeight])
 
   return (
     <div className={styles.container}>

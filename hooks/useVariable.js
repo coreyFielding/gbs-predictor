@@ -25,11 +25,11 @@ export const useVariable = () => {
     if (item.parentName) {
       const index = groupsClone.findIndex((group) => group.id === item.id)
 
-      groupsClone[index].parentValue = value
+      groupsClone[index].parentWeight = value
 
       // Parent value overrides child value
       groupsClone[index].childVariables.forEach((variable) => {
-        variable.parentValue = value
+        variable.childWeight = groupsClone[index].parentWeight
       })
 
       setGroups(null)
@@ -47,7 +47,7 @@ export const useVariable = () => {
         (variable) => variable.id === item.id
       )
 
-      groupsClone[parentIndex].childVariables[childIndex].childValue = value
+      groupsClone[parentIndex].childVariables[childIndex].childWeight = value
 
       setGroups(null)
       setGroups(groupsClone)
