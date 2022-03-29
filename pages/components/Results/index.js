@@ -114,7 +114,7 @@ const Results = () => {
             <Table.Body>
               {(sortedPlayerList?.length ? sortedPlayerList : [])?.map(
                 (player, index) => (
-                  <Table.Row key={index} style={{ backgroundColor: "#FBFFFD" }}>
+                  <Table.Row key={index}>
                     <Table.Cell.Text>
                       <span className="span--tableCell">{index + 1}</span>
                     </Table.Cell.Text>
