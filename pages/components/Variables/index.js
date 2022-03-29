@@ -22,7 +22,7 @@ const Variables = () => {
       <div className="panel panel_left">
         <Panel>
           <div className={styles.form}>
-            <Accordion singular={true} initial={1} openVariable={openVariable}>
+            <Accordion singular={true} initial={1}>
               {groups?.map((groupItem) => {
                 return (
                   <Accordion.Item

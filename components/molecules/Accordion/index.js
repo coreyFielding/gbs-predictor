@@ -18,19 +18,12 @@ export const AccordionContext = createContext({})
 const AccordionComponent = ({
   initial,
   children,
-  openVariable,
   singular = true,
   handleVariableChange,
   styles: userStyles,
   ...rest
 }) => {
   const [openItems, setOpenItems] = useState(initial ? [initial] : [])
-
-  console.log(openVariable)
-
-  useEffect(() => {
-    setOpenItems([openVariable])
-  }, [openVariable])
 
   const open = (index) => {
     setOpenItems((currentOpen) => {

@@ -4,7 +4,7 @@ import { Panel, Button, Table, Heading, Filter } from "../../../components"
 import { usePlayers } from "../../../hooks/usePlayers"
 
 const Results = () => {
-  const { players, sortedByScore } = usePlayers()
+  const { sortedPlayerList } = usePlayers()
 
   const table = {
     headers: [
@@ -112,7 +112,7 @@ const Results = () => {
               ))}
             />
             <Table.Body>
-              {(sortedByScore?.length ? sortedByScore : players)?.map(
+              {(sortedPlayerList?.length ? sortedPlayerList : [])?.map(
                 (player, index) => (
                   <Table.Row key={index} style={{ backgroundColor: "#FBFFFD" }}>
                     <Table.Cell.Text>
