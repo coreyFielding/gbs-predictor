@@ -10,7 +10,7 @@ export const usePlayers = () => {
   let newPlayerList = []
 
   // Get the dynamic weights from each variable group
-  const playerVariables = groups
+  const variableGroups = groups
     ?.map(({ childVariables }) =>
       childVariables.map((item) => {
         return {
@@ -23,9 +23,7 @@ export const usePlayers = () => {
 
   const findPlayer = (list, item) => {
     const player = list?.find((player) => player.Player === item.Player)
-    const playerIndex = list?.indexOf(player)
-
-    return playerIndex
+    return list?.indexOf(player)
   }
 
   // Set all players initial scores to 0
@@ -39,8 +37,8 @@ export const usePlayers = () => {
       variable.list.map((item) => {
         // Check that player exists in both variable and main player list
         const playerIndex = findPlayer(playerList, item)
-        if (playerIndex > -1 && playerVariables) {
-          playerList[playerIndex].variables = playerVariables.find(
+        if (playerIndex > -1 && variableGroups) {
+          playerList[playerIndex].variables = variableGroups.find(
             (weight) => weight.variable === variable.name
           )
 
@@ -50,7 +48,7 @@ export const usePlayers = () => {
             position: parseFloat(item.Position),
           }
 
-          // Push player to new array with variables attached
+          // Push player to new array with weights attached
           newPlayerList.push({
             ...playerList[playerIndex],
           })
@@ -62,13 +60,12 @@ export const usePlayers = () => {
   // Assign score to each player based on variable position and weighting
   const getPlayerScore = () => {
     newPlayerList?.forEach((player) => {
-      let scoreTotal = 0
-
       //Find player across all variables
       const playerFromAllVariables = newPlayerList.filter(
         (item) => item.Player === player.Player
       )
 
+      let scoreTotal = 0
       playerFromAllVariables.forEach((player) => {
         if (player.variables) {
           scoreTotal +=
@@ -78,7 +75,7 @@ export const usePlayers = () => {
 
       const playerIndex = findPlayer(playerList, player)
 
-      if (playerIndex) playerList[playerIndex].score = scoreTotal
+      playerList[playerIndex].score = scoreTotal
     })
   }
 
