@@ -8,7 +8,9 @@ import { useVariable } from "hooks/useVariable"
 import styles from "./variables.module.scss"
 
 const Variables = () => {
-  const { groups, openVariable } = useVariable(2)
+  const { groups } = useVariable()
+
+  const activeVariable = groups?.find((group) => group.active)
 
   return !groups?.length > 0 ? (
     <></>
@@ -22,7 +24,7 @@ const Variables = () => {
       <div className="panel panel_left">
         <Panel>
           <div className={styles.form}>
-            <Accordion singular={true} initial={1}>
+            <Accordion singular={true} initial={activeVariable?.id || 1}>
               {groups?.map((groupItem) => {
                 return (
                   <Accordion.Item
@@ -30,6 +32,7 @@ const Variables = () => {
                     label={groupItem.parentName}
                     item={groupItem}
                     slider={true}
+                    active={groupItem.active}
                   >
                     <Table>
                       <Table.Body>

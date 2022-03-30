@@ -8,7 +8,8 @@ export const PlayerContext = createContext({
 })
 
 export const PlayerProvider = ({ children }) => {
-  const { importedVariables } = useContext(VariableContext)
+  const { importedVariables, importedVariableKeys } =
+    useContext(VariableContext)
   const [players, setPlayers] = useState([])
 
   const { data, isLoadingPlayers } = useQuery(["players"], () =>
@@ -17,11 +18,16 @@ export const PlayerProvider = ({ children }) => {
 
   useEffect(() => setPlayers(data?.data), [data])
 
-  // calculate player rankings based on imported variables
+  const variables = importedVariables?.map((variable, index) => {
+    return {
+      name: importedVariableKeys[index].split("_").join(" "),
+      list: variable.Variable.data,
+    }
+  })
 
   const state = {
     players,
-    variables: importedVariables,
+    variables,
   }
 
   return (

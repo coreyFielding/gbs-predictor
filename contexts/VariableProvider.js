@@ -36,6 +36,8 @@ export const VariableProvider = ({ children }) => {
       )
       .flat()
 
+  console.log(importedVariableKeys)
+
   const formattedGroups =
     variableGroups &&
     Object.keys(variableGroups)
@@ -69,7 +71,11 @@ export const VariableProvider = ({ children }) => {
     const children = parent.childVariables
 
     importedVariableKeys?.forEach((key) => {
-      if (children?.find((child) => child?.Child_Name === key.toString())) {
+      if (
+        children?.find(
+          (child) => child?.Child_Name === key.split("_").join(" ").toString()
+        )
+      ) {
         !filteredGroups.includes(parent) && filteredGroups.push(parent)
       }
     })
@@ -78,7 +84,9 @@ export const VariableProvider = ({ children }) => {
   // Remove children from parent that are not an imported variable
   filteredGroups?.forEach((group) => {
     const filteredChildren = group.childVariables.filter((child) =>
-      importedVariableKeys.some((key) => key === child.Child_Name)
+      importedVariableKeys.some(
+        (key) => key.split("_").join(" ") === child.Child_Name
+      )
     )
 
     group.childVariables = [...filteredChildren]
@@ -90,6 +98,7 @@ export const VariableProvider = ({ children }) => {
 
   const state = {
     importedVariables,
+    importedVariableKeys,
     groups,
     setGroups,
   }

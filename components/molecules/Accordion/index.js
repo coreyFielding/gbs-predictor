@@ -1,10 +1,6 @@
-import {
-  useContext,
-  createContext,
-  useState,
-  createRef,
-  useEffect,
-} from "react"
+import { useContext, createContext, useState, createRef } from "react"
+
+import { useVariable } from "hooks/useVariable"
 
 // Components
 import { Heading, SliderFilter } from "../../"
@@ -73,8 +69,6 @@ const AccordionItem = ({ item, index, slider, children, ...rest }) => {
   const headerClasses = cn(styles.heading, isOpen && styles.toggleOpen)
   const contentClasses = cn(styles.content, isOpen && styles.contentVisible)
   const sliderRef = createRef()
-
-  // setOpenItems to active accordion item - maybe use sliderRef.current to specify active item
 
   return (
     <div {...rest} className={styles.item}>

@@ -1,11 +1,9 @@
 // Context
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import { VariableContext } from "../contexts/VariableProvider"
 
 export const useVariable = () => {
   const { groups, setGroups } = useContext(VariableContext)
-
-  const [openVariable, setOpenVariable] = useState(1)
 
   // Retrieve list of categories from variable context.
   // Render an ACCORDION ITEM for each variable group (category).
@@ -27,6 +25,9 @@ export const useVariable = () => {
 
       groupsClone[index].parentWeight = value
 
+      groupsClone.map((group) => (group.active = false))
+      groupsClone[index].active = true
+
       // Parent value overrides child value
       groupsClone[index].childVariables.forEach((variable) => {
         variable.childWeight = groupsClone[index].parentWeight
@@ -34,7 +35,6 @@ export const useVariable = () => {
 
       setGroups(null)
       setGroups(groupsClone)
-      setOpenVariable(item.id)
     }
 
     // Handle child variable
@@ -42,6 +42,8 @@ export const useVariable = () => {
       const parentIndex = groups.findIndex(
         (group) => group.id === item.parentId
       )
+
+      groupsClone[parentIndex].active = true
 
       const childIndex = groups[parentIndex]?.childVariables.findIndex(
         (variable) => variable.id === item.id
@@ -51,13 +53,18 @@ export const useVariable = () => {
 
       setGroups(null)
       setGroups(groupsClone)
-      setOpenVariable(item.parentIndex)
     }
   }
 
+  const groupNames = groups?.map(({ parentName }) => {
+    return {
+      parentName,
+    }
+  })
+
   return {
     groups,
-    openVariable,
+    groupNames,
     handleVariableChange,
   }
 }
