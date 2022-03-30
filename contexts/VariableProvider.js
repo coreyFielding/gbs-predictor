@@ -36,8 +36,6 @@ export const VariableProvider = ({ children }) => {
       )
       .flat()
 
-  console.log(importedVariableKeys)
-
   const formattedGroups =
     variableGroups &&
     Object.keys(variableGroups)

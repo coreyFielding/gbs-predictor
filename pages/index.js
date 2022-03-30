@@ -42,7 +42,6 @@ export default Home
 export async function getStaticProps(context) {
   //* Example of how to fetch data
   // const pages = await getAllPages();
-  // console.log(pages);
 
   //* Example of how to pass menu props to the Wordpress Provider in the _app.js
   const menus = {

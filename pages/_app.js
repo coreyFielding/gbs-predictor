@@ -20,13 +20,15 @@ const WebApp = ({ Component, pageProps }) => {
     defaultTitle: process.env.NEXT_PUBLIC_SITE_NAME,
   }
 
+  const twentyFourHoursInMs = 1000 * 60 * 60 * 24
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
         refetchOnWindowFocus: false,
         refetchOnmount: false,
         refetchOnReconnect: false,
-        refetchInterval: 100000,
+        retry: false,
+        staleTime: twentyFourHoursInMs,
       },
     },
   })
@@ -35,15 +37,6 @@ const WebApp = ({ Component, pageProps }) => {
     <QueryClientProvider client={queryClient}>
       <WordPressProvider value={wp}>
         {!!defaultSeoData && <DefaultSeo {...defaultSeoData} />}
-        {/*!!preview && (
-          // TODO -- abstract this to a component.
-          <p>
-            This page is a preview.{" "}
-            <Link href="/api/exit-preview">
-              <a>Exit preview mode</a>
-            </Link>
-          </p>
-        )} */}
         <TournamentProvider>
           <Component {...pageProps} />
         </TournamentProvider>
