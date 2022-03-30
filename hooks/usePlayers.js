@@ -28,7 +28,7 @@ export const usePlayers = () => {
 
   // Set all players initial scores to 0
   playerList?.map(
-    (player) => (playerList[playerList.indexOf(player)].score = 0)
+    (player) => (playerList[findPlayer(playerList, player)].score = 0)
   )
 
   // Assign weights and positions to each player based on variable
@@ -60,12 +60,13 @@ export const usePlayers = () => {
   // Assign score to each player based on variable position and weighting
   const getPlayerScore = () => {
     newPlayerList?.forEach((player) => {
+      let scoreTotal = 0
+
       //Find player across all variables
       const playerFromAllVariables = newPlayerList.filter(
         (item) => item.Player === player.Player
       )
 
-      let scoreTotal = 0
       playerFromAllVariables.forEach((player) => {
         if (player.variables) {
           scoreTotal +=
