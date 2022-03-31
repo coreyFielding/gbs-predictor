@@ -2,9 +2,11 @@
 import { useContext } from "react"
 import { PlayerContext } from "contexts/PlayerProvider"
 import { useVariable } from "./useVariable"
+import { VariableContext } from "contexts/VariableProvider"
 
 export const usePlayers = () => {
-  const { players: playerList, variables } = useContext(PlayerContext)
+  const { players: playerList } = useContext(PlayerContext)
+  const { variables } = useContext(VariableContext)
   const { groups } = useVariable()
 
   let newPlayerList = []

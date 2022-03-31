@@ -42,14 +42,17 @@ export const useVariable = () => {
       const parentIndex = groups.findIndex(
         (group) => group.id === item.parentId
       )
+      console.log("child", groupsClone[parentIndex])
 
-      groupsClone[parentIndex].active = true
+      // groupsClone[parentIndex].active = true
 
       const childIndex = groups[parentIndex]?.childVariables.findIndex(
         (variable) => variable.id === item.id
       )
 
-      groupsClone[parentIndex].childVariables[childIndex].childWeight = value
+      if (groupsClone[parentIndex]) {
+        groupsClone[parentIndex].childVariables[childIndex].childWeight = value
+      }
 
       setGroups(null)
       setGroups(groupsClone)
@@ -64,6 +67,7 @@ export const useVariable = () => {
 
   return {
     groups,
+    setGroups,
     groupNames,
     handleVariableChange,
   }
