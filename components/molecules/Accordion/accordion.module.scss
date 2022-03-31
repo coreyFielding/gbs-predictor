@@ -33,6 +33,27 @@
     border-bottom-right-radius: 0;
   }
 
+  .toggleIconOpen {
+    position: absolute;
+    right: 20px;
+    height: 10px;
+    width: 10px;
+    background-image: url("/images/icons/toggle.svg");
+    background-repeat: no-repeat;
+    background-position: top;
+  }
+
+  .toggleIconClosed {
+    position: absolute;
+    right: 20px;
+    height: 10px;
+    width: 10px;
+    background-image: url("/images/icons/toggle.svg");
+    background-repeat: no-repeat;
+    background-position: top;
+    transform: rotate(180deg);
+  }
+
   .content {
     display: none;
   }

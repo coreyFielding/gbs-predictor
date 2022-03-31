@@ -25,7 +25,7 @@ export const Sidebar = () => {
             <div
               key={index}
               onClick={() => handleTournamentChange(tournament.id)}
-              className={styles.sidebar_tab + " " + styles.prev}
+              className={`${styles.sidebar_tab} ${styles.prev}`}
             >
               <div>
                 <div className={styles.sidebar_tab_left}>

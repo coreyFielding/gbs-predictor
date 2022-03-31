@@ -1,9 +1,10 @@
-import { createContext, useEffect, useState } from "react"
+import { createContext, useContext, useEffect, useState } from "react"
 import queryAllGroups from "lib/wordpress/posts/getAllGroups"
 import { queryAllImportedVariables } from "lib/wordpress/posts/getImportedData"
 import { queryAllPlayers } from "lib/wordpress/posts/getImportedData"
 
 import { useQuery } from "react-query"
+import { TournamentContext } from "./TournamentProvider"
 
 export const VariableContext = createContext({
   groups: undefined,
@@ -13,7 +14,7 @@ export const VariableContext = createContext({
 })
 
 export const VariableProvider = ({ children }) => {
-  const activeTournament = 1 // this will come from tournament provider
+  const { activeTournament } = useContext(TournamentContext)
   const [groups, setGroups] = useState(null)
 
   const { data: variableGroups, isLoadingGroups } = useQuery(
@@ -21,8 +22,9 @@ export const VariableProvider = ({ children }) => {
     () => queryAllGroups(activeTournament)
   )
 
-  const { data: importedVariables } = useQuery(["importedVariables"], () =>
-    queryAllImportedVariables()
+  const { data: importedVariables } = useQuery(
+    ["importedVariables", activeTournament],
+    () => queryAllImportedVariables(activeTournament)
   )
 
   const { data: playerList, isLoadingPlayers } = useQuery(["players"], () =>

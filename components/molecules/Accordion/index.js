@@ -89,7 +89,11 @@ const AccordionItem = ({ item, index, slider, children, ...rest }) => {
             <SliderFilter item={item} />
           </div>
         )}
-        <div className={styles.toggle}>{/* <ToggleIcon /> */}</div>
+        <div
+          className={`${
+            isOpen ? styles.toggleIconOpen : styles.toggleIconClosed
+          }`}
+        />
       </div>
 
       <div className={contentClasses}>{children}</div>
