@@ -1,6 +1,10 @@
-import { useContext, createContext, useState, createRef } from "react"
-
-import { useVariable } from "hooks/useVariable"
+import {
+  useContext,
+  createContext,
+  useState,
+  createRef,
+  useEffect,
+} from "react"
 
 // Components
 import { Heading, SliderFilter } from "../../"
@@ -8,6 +12,7 @@ import { Heading, SliderFilter } from "../../"
 // Styles
 import styles from "./accordion.module.scss"
 import cn from "classnames"
+import { useVariable } from "hooks/useVariable"
 
 export const AccordionContext = createContext({})
 
@@ -62,7 +67,7 @@ const AccordionComponent = ({
   )
 }
 
-const AccordionItem = ({ item, index, slider, children, ...rest }) => {
+const AccordionItem = ({ item, slider, children, ...rest }) => {
   const { openItems, toggle } = useContext(AccordionContext)
   const { id, parentName } = item
   const isOpen = id && openItems?.includes(id)

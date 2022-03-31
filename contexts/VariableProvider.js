@@ -7,6 +7,7 @@ import { useQuery } from "react-query"
 import { TournamentContext } from "./TournamentProvider"
 
 export const VariableContext = createContext({
+  isOpen: undefined,
   groups: undefined,
   setGroups: () => {
     return
@@ -16,6 +17,7 @@ export const VariableContext = createContext({
 export const VariableProvider = ({ children }) => {
   const { activeTournament } = useContext(TournamentContext)
   const [groups, setGroups] = useState(null)
+  const [isOpen, setIsOpen] = useState(false)
 
   const { data: variableGroups, isLoadingGroups } = useQuery(
     ["groups", activeTournament],
@@ -149,6 +151,8 @@ export const VariableProvider = ({ children }) => {
   }, [variableGroups])
 
   const state = {
+    isOpen,
+    setIsOpen,
     variables,
     importedVariableKeys,
     groups,

@@ -9,15 +9,11 @@ import styles from "./slider.module.scss"
 export const SliderFilter = ({ item, children, ...props }) => {
   const [value, setValue] = useState(item.parentWeight | item.childWeight)
 
-  // useEffect(() => {
-  //   setValue(10)
-  // }, [item])
-
   const { handleVariableChange } = useVariable()
 
   useEffect(() => {
     item.childWeight ? setValue(item.childWeight) : setValue(item.parentWeight)
-  }, [item.parentWeight, item.childWeight])
+  }, [])
 
   return (
     <div className={styles.container}>
@@ -31,13 +27,14 @@ export const SliderFilter = ({ item, children, ...props }) => {
         }}
         max={item.parentRange || item.childRange}
         renderThumb={(props, state) => {
-          setValue(state.value)
+          setValue(state.valueNow)
+
           return (
             <>
               <span className={`${styles.value} span--accordionHeading`}>
                 {state.value}
               </span>
-              <div {...props}></div>
+              <div {...props} style={{ marginLeft: `${value * 10}%` }}></div>
             </>
           )
         }}

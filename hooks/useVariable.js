@@ -1,5 +1,5 @@
 // Context
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { VariableContext } from "../contexts/VariableProvider"
 
 export const useVariable = () => {
@@ -12,6 +12,11 @@ export const useVariable = () => {
 
   const groupsClone = groups
 
+  const setActiveVariable = (index) => {
+    groupsClone.map((group) => (group.active = false))
+    groupsClone[index].active = true
+  }
+
   /**
    *
    * @param {object} item Selected variable data
@@ -22,11 +27,7 @@ export const useVariable = () => {
     // Handle parent variable
     if (item.parentName) {
       const index = groupsClone.findIndex((group) => group.id === item.id)
-
       groupsClone[index].parentWeight = value
-
-      groupsClone.map((group) => (group.active = false))
-      groupsClone[index].active = true
 
       // Parent value overrides child value
       groupsClone[index].childVariables.forEach((variable) => {
@@ -35,6 +36,7 @@ export const useVariable = () => {
 
       setGroups(null)
       setGroups(groupsClone)
+      setActiveVariable(index)
     }
 
     // Handle child variable
@@ -53,6 +55,7 @@ export const useVariable = () => {
 
       setGroups(null)
       setGroups(groupsClone)
+      setActiveVariable(parentIndex)
     }
   }
 
