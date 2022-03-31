@@ -6,12 +6,12 @@ const hondaLogo = "/images/honda-logo.png"
 const gbsLogo = "/images/gbs-logo.svg"
 
 export const Sidebar = () => {
-  const { tournaments, handleTournamentChange } = useTournament()
+  const { allTournaments, handleTournamentChange } = useTournament()
 
   return (
-    <div className={styles.sidebar + ' ' + styles.sidebar_2_tabs}>
+    <div className={styles.sidebar + " " + styles.sidebar_2_tabs}>
       <aside className={styles.sidebar_inner}>
-        {tournaments?.map((tournament, index) => {
+        {allTournaments?.map((tournament, index) => {
           const {
             Tour,
             Tournament_Name,
@@ -20,6 +20,7 @@ export const Sidebar = () => {
             updatedAt,
             Live,
           } = tournament.attributes
+
           return (
             <div
               key={index}

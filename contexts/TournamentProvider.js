@@ -1,33 +1,38 @@
-import { createContext, useEffect, useState } from "react"
-import queryAllGroups from "lib/wordpress/posts/getAllGroups"
-import queryAllTournaments from "lib/wordpress/posts/getAllTournaments"
-import { queryAllImportedTournaments } from "lib/wordpress/posts/getImportedData"
+import { createContext, useState } from "react"
+import {
+  queryImportedTournament,
+  queryAllImportedTournaments,
+} from "lib/wordpress/posts/getImportedData"
 
 import { useQuery } from "react-query"
 
 export const TournamentContext = createContext({
-  tournaments: undefined,
-  groups: undefined,
-  setGroups: () => {
-    return
-  },
+  tournament: undefined,
+  allTournaments: undefined,
 })
 
 export const TournamentProvider = ({ children }) => {
   const [activeTournament, setActiveTournament] = useState(1)
 
-  const { data: tournaments, isLoadingTournaments } = useQuery(
-    ["tournaments"],
-    () => queryAllTournaments()
-  )
-
-  const { data: importedTournaments } = useQuery(["importedTournaments"], () =>
+  // Get all tournaments
+  const { data: allTournaments } = useQuery(["importedTournaments"], () =>
     queryAllImportedTournaments()
   )
 
+  console.log(allTournaments)
+
+  // Get tournament based on ID
+  const { data: tournament } = useQuery(
+    ["importedTournament", activeTournament],
+    () => queryImportedTournament(activeTournament)
+  )
+
+  console.log("change", activeTournament, tournament)
+
   const state = {
-    tournaments,
-    importedTournaments,
+    allTournaments,
+    tournament,
+    setActiveTournament,
   }
 
   return (

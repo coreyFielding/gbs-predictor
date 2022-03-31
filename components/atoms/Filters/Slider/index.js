@@ -9,7 +9,9 @@ import styles from "./slider.module.scss"
 export const SliderFilter = ({ item, children, ...props }) => {
   const [value, setValue] = useState(item.parentWeight | item.childWeight)
 
-  useEffect(() => {}, [item])
+  // useEffect(() => {
+  //   setValue(10)
+  // }, [item])
 
   const { handleVariableChange } = useVariable()
 

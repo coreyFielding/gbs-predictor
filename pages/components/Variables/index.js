@@ -10,8 +10,6 @@ import styles from "./variables.module.scss"
 const Variables = () => {
   const { groups } = useVariable()
 
-  console.log(groups)
-
   const activeVariable = groups?.find((group) => group.active)
 
   return !groups?.length > 0 ? (

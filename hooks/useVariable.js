@@ -42,9 +42,6 @@ export const useVariable = () => {
       const parentIndex = groups.findIndex(
         (group) => group.id === item.parentId
       )
-      console.log("child", groupsClone[parentIndex])
-
-      // groupsClone[parentIndex].active = true
 
       const childIndex = groups[parentIndex]?.childVariables.findIndex(
         (variable) => variable.id === item.id
