@@ -34,7 +34,7 @@ export const SliderFilter = ({ item, children, ...props }) => {
               <span className={`${styles.value} span--accordionHeading`}>
                 {state.value}
               </span>
-              <div {...props} style={{ marginLeft: `${value * 10}%` }}></div>
+              <div {...props} style={{ marginLeft: `${value * 9.5}%` }}></div>
             </>
           )
         }}

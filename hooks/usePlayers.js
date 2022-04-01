@@ -1,5 +1,5 @@
 // Context
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import { PlayerContext } from "contexts/PlayerProvider"
 import { useVariable } from "./useVariable"
 import { VariableContext } from "contexts/VariableProvider"
@@ -9,8 +9,34 @@ export const usePlayers = () => {
   const { variables } = useContext(VariableContext)
   const { groups } = useVariable()
 
+  const [bookmaker, setBookmaker] = useState("All")
+
+  let bookmakers = []
   let newPlayerList = []
   let sortedPlayerList = []
+
+  // Get available bookmakers
+  const getBookmakerFromObj = playerList
+    .map((player) => {
+      return Object.keys(player)
+        .map((key) => {
+          return key === "Bookmaker" ? player[key] : null
+        })
+        .filter((v) => v)
+    })
+    .flat()
+
+  bookmakers = ["All", ...new Set(getBookmakerFromObj)]
+
+  const filterPlayersByBookmaker = (bookmaker) => {
+    setBookmaker(bookmaker)
+    // const filteredByBookmaker =
+    //   bookmaker === "All"
+    //     ? playerList
+    //     : playerList?.filter((player) => player.Bookmaker === bookmaker)
+
+    // playerListClone = filteredByBookmaker
+  }
 
   // Get the dynamic weights from each variable group
   const variableGroups = groups
@@ -79,7 +105,6 @@ export const usePlayers = () => {
         })
 
         const playerIndex = findPlayer(playerList, player)
-
         playerList[playerIndex].score = scoreTotal
       })
     }
@@ -87,10 +112,18 @@ export const usePlayers = () => {
     assignWeightsAndPositions()
     getPlayerScore()
 
-    sortedPlayerList = playerList?.sort((a, b) => (a.score < b.score ? 1 : -1))
+    sortedPlayerList = playerList
+      ?.sort((a, b) => (a.score < b.score ? 1 : -1))
+      .filter((player) =>
+        bookmaker === "All" ? player : player.Bookmaker === bookmaker
+      )
+
+    console.log(sortedPlayerList)
 
     return {
       sortedPlayerList,
+      bookmakers,
+      filterPlayersByBookmaker,
     }
   } else {
     return []

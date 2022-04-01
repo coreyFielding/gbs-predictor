@@ -4,7 +4,8 @@ import { Panel, Button, Table, Heading, Filter } from "../../../components"
 import { usePlayers } from "../../../hooks/usePlayers"
 
 const Results = () => {
-  const { sortedPlayerList } = usePlayers()
+  const { sortedPlayerList, bookmakers, filterPlayersByBookmaker } =
+    usePlayers()
 
   const table = {
     headers: [
@@ -99,7 +100,10 @@ const Results = () => {
           </div>
 
           <div className="dropdown">
-            <Filter.Select options={[]} />
+            <Filter.Select
+              options={bookmakers}
+              handlePlayersByBookmaker={filterPlayersByBookmaker}
+            />
           </div>
         </div>
       </div>
