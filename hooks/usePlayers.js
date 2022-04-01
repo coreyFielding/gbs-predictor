@@ -30,12 +30,6 @@ export const usePlayers = () => {
 
   const filterPlayersByBookmaker = (bookmaker) => {
     setBookmaker(bookmaker)
-    // const filteredByBookmaker =
-    //   bookmaker === "All"
-    //     ? playerList
-    //     : playerList?.filter((player) => player.Bookmaker === bookmaker)
-
-    // playerListClone = filteredByBookmaker
   }
 
   // Get the dynamic weights from each variable group
@@ -117,8 +111,6 @@ export const usePlayers = () => {
       .filter((player) =>
         bookmaker === "All" ? player : player.Bookmaker === bookmaker
       )
-
-    console.log(sortedPlayerList)
 
     return {
       sortedPlayerList,

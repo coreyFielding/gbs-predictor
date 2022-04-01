@@ -8,22 +8,12 @@ export const DropdownFilter = ({
   name,
   label,
   options,
-  handleOnChange,
   handlePlayersByBookmaker,
   styles: userStyles,
 }) => {
   const classes = cn(styles.select, userStyles)
 
   const [selectedOption, setSelectedOption] = useState()
-
-  useEffect(() => {
-    if (
-      selectedOption &&
-      !options.some(({ value }) => selectedOption.value === value)
-    ) {
-      setSelectedOption(null)
-    }
-  }, [options])
 
   return (
     <select
