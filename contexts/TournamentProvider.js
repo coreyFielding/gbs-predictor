@@ -12,7 +12,7 @@ export const TournamentContext = createContext({
 })
 
 export const TournamentProvider = ({ children }) => {
-  const [activeTournament, setActiveTournament] = useState(1)
+  const [activeTournament, setActiveTournament] = useState()
 
   // Get all tournaments
   const { data: allTournaments } = useQuery(["importedTournaments"], () =>

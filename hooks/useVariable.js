@@ -1,5 +1,6 @@
 // Context
-import { useContext, useEffect, useState } from "react"
+import { TournamentContext } from "contexts/TournamentProvider"
+import { useContext } from "react"
 import { VariableContext } from "../contexts/VariableProvider"
 
 export const useVariable = () => {

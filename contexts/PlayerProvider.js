@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react"
 import { queryAllImportedPlayersAndVariables } from "lib/wordpress/posts/getImportedData"
 import { useQuery } from "react-query"
+import { TournamentContext } from "./TournamentProvider"
 
 export const PlayerContext = createContext({
   players: undefined,
@@ -8,9 +9,11 @@ export const PlayerContext = createContext({
 
 export const PlayerProvider = ({ children }) => {
   const [players, setPlayers] = useState([])
+  const { activeTournament } = useContext(TournamentContext)
 
-  const { data, isLoadingPlayers } = useQuery(["players"], () =>
-    queryAllImportedPlayersAndVariables(1)
+  const { data, isLoadingPlayers } = useQuery(
+    ["players", activeTournament],
+    () => queryAllImportedPlayersAndVariables(activeTournament)
   )
 
   const { playerList } = data ? data : {}

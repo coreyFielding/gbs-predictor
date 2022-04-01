@@ -2,14 +2,13 @@ import styles from "./sidebar.module.scss"
 import NextImage from "../../atoms/Image"
 import { useTournament } from "hooks/useTournament"
 const genesisLogo = "/images/genesis-logo.png"
-const hondaLogo = "/images/honda-logo.png"
 const gbsLogo = "/images/gbs-logo.svg"
 
 export const Sidebar = () => {
   const { allTournaments, handleTournamentChange } = useTournament()
 
   return (
-    <div className={styles.sidebar + " " + styles.sidebar_2_tabs}>
+    <div className={`${styles.sidebar} ${styles.sidebar_2_tabs}`}>
       <aside className={styles.sidebar_inner}>
         {allTournaments?.map((tournament, index) => {
           const {

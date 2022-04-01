@@ -16,16 +16,20 @@ export const VariableProvider = ({ children }) => {
   const { activeTournament } = useContext(TournamentContext)
   const [groups, setGroups] = useState(null)
 
-  const { data: variableGroups, isLoadingGroups } = useQuery(
-    ["groups", activeTournament],
-    () => queryAllGroups(activeTournament)
-  )
+  const {
+    data: variableGroups,
+    isLoadingGroups,
+    refetch,
+  } = useQuery(["groups"], () => queryAllGroups())
 
-  const { data: importedData } = useQuery(["testData"], () =>
-    queryAllImportedPlayersAndVariables()
+  const { data: importedData } = useQuery(
+    ["importedData", activeTournament],
+    () => queryAllImportedPlayersAndVariables(activeTournament)
   )
 
   const { playerList, importedVariables } = importedData ? importedData : {}
+
+  useEffect(() => refetch(), [activeTournament])
 
   // Get the names of the imported variables that refer to the active variables of a tournament
   const importedVariableKeys =
@@ -139,9 +143,10 @@ export const VariableProvider = ({ children }) => {
   }
 
   useEffect(() => {
+    if (!importedData) return
     removeUnusedVariables()
     setGroups(filteredGroups)
-  }, [variableGroups])
+  }, [importedVariables, variableGroups, activeTournament])
 
   const state = {
     variables,
