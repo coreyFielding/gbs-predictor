@@ -1,13 +1,11 @@
 import { createContext, useContext, useEffect, useState } from "react"
 import queryAllGroups from "lib/wordpress/posts/getAllGroups"
-import { queryAllImportedVariables } from "lib/wordpress/posts/getImportedData"
-import { queryAllPlayers } from "lib/wordpress/posts/getImportedData"
+import { queryAllImportedPlayersAndVariables } from "lib/wordpress/posts/getImportedData"
 
 import { useQuery } from "react-query"
 import { TournamentContext } from "./TournamentProvider"
 
 export const VariableContext = createContext({
-  isOpen: undefined,
   groups: undefined,
   setGroups: () => {
     return
@@ -17,24 +15,19 @@ export const VariableContext = createContext({
 export const VariableProvider = ({ children }) => {
   const { activeTournament } = useContext(TournamentContext)
   const [groups, setGroups] = useState(null)
-  const [isOpen, setIsOpen] = useState(false)
 
   const { data: variableGroups, isLoadingGroups } = useQuery(
     ["groups", activeTournament],
     () => queryAllGroups(activeTournament)
   )
 
-  const { data: importedVariables } = useQuery(
-    ["importedVariables", activeTournament],
-    () => queryAllImportedVariables(activeTournament)
+  const { data: importedData } = useQuery(["testData"], () =>
+    queryAllImportedPlayersAndVariables()
   )
 
-  const { data: playerList, isLoadingPlayers } = useQuery(["players"], () =>
-    queryAllPlayers()
-  )
+  const { playerList, importedVariables } = importedData ? importedData : {}
 
   // Get the names of the imported variables that refer to the active variables of a tournament
-
   const importedVariableKeys =
     importedVariables &&
     importedVariables
@@ -151,8 +144,6 @@ export const VariableProvider = ({ children }) => {
   }, [variableGroups])
 
   const state = {
-    isOpen,
-    setIsOpen,
     variables,
     importedVariableKeys,
     groups,
