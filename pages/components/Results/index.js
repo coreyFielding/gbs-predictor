@@ -1,11 +1,25 @@
 // Components
+import Image from "next/image"
 import { useState } from "react"
 import { Panel, Button, Table, Heading, Filter } from "../../../components"
 import { usePlayers } from "../../../hooks/usePlayers"
 
-const Results = () => {
-  const { sortedPlayerList, bookmakers, filterPlayersByBookmaker } =
-    usePlayers()
+const Results = ({ handleToggleContent, activeContent }) => {
+  const {
+    sortedPlayerList,
+    bookmakers,
+    selectedBookmaker,
+    filterPlayersByBookmaker,
+  } = usePlayers()
+
+  const bookmakerImg = [
+    "888_Sport",
+    "Bet_365",
+    "Ladbrokes",
+    "Betfair",
+    "Coral",
+    "William_Hill",
+  ]
 
   const table = {
     headers: [
@@ -29,12 +43,12 @@ const Results = () => {
       {
         accessor: "score",
         devices: ["all"],
-        Component: () => <Table.Heading.Dropdown key={3} label="GBS Score" />,
+        Component: () => <Table.Heading.Text key={3} text="GBS Score" />,
       },
       {
         accessor: "odds",
         devices: ["all"],
-        Component: () => <Table.Heading.Dropdown key={4} label="Odds" />,
+        Component: () => <Table.Heading.Text key={4} text="Odds" />,
       },
       {
         accessor: "eachWay",
@@ -55,48 +69,11 @@ const Results = () => {
           Results
         </Heading>
         <div className="filters">
-          <svg
-            width="24"
-            height="21"
-            viewBox="0 0 24 21"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="show_variables"
-          >
-            <line y1="4.16699" x2="23.8" y2="4.16699" stroke="#fff" />
-            <line y1="11.2012" x2="23.8" y2="11.2012" stroke="#fff" />
-            <line y1="18.2363" x2="23.8" y2="18.2363" stroke="#fff" />
-            <circle cx="5.23503" cy="3.33366" r="2.66667" fill="#fff" />
-            <circle cx="18.5671" cy="11.3337" r="2.66667" fill="#fff" />
-            <circle cx="10.5671" cy="18.0007" r="2.66667" fill="#fff" />
-          </svg>
-
-          <svg
-            width="24"
-            height="17"
-            viewBox="0 0 24 17"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="hide_variables"
-          >
-            <path
-              d="M1.6875 15.2507L22.2182 2.10254"
-              stroke="#fff"
-              stroke-width="3"
-              stroke-linecap="round"
-            />
-            <path
-              d="M1.6875 2.125L22.2184 15.3474"
-              stroke="#fff"
-              stroke-width="3"
-              stroke-linecap="round"
-            />
-            <circle cx="7.0105" cy="5.2605" r="2.5105" fill="#fff" />
-            <circle cx="16.3855" cy="11.5105" r="2.5105" fill="#fff" />
-          </svg>
-
           <div className="toggle">
-            <Filter.Toggle label="DraftKings" />
+            <Filter.Toggle
+              label="DraftKings"
+              handlePlayersByBookmaker={filterPlayersByBookmaker}
+            />
           </div>
 
           <div className="dropdown">
@@ -135,12 +112,19 @@ const Results = () => {
                       <span className="span--tableCell">3/1</span>
                     </Table.Cell.Text>
                     <Table.Cell.Text>
-                      <Button.Pill url="#" label="test" urlExternal={true}>
-                        {/* <Image
-                      src={"/public/bookmaker.png"}
-                      width={500}
-                      height={500}
-                    /> */}
+                      <Button.Pill
+                        url="#"
+                        label="test"
+                        urlExternal={true}
+                        image={
+                          selectedBookmaker === "All"
+                            ? player.Bookmaker.split(" ").join("_")
+                            : bookmakerImg.find(
+                                (v) =>
+                                  v === selectedBookmaker.split(" ").join("_")
+                              )
+                        }
+                      >
                         <span>View Offer</span>
                       </Button.Pill>
                     </Table.Cell.Text>

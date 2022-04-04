@@ -5,7 +5,8 @@ const genesisLogo = "/images/genesis-logo.png"
 const gbsLogo = "/images/gbs-logo.svg"
 
 export const Sidebar = () => {
-  const { allTournaments, handleTournamentChange } = useTournament()
+  const { allTournaments, handleTournamentChange, activeTournament } =
+    useTournament()
 
   return (
     <div className={`${styles.sidebar} ${styles.sidebar_2_tabs}`}>
@@ -23,14 +24,23 @@ export const Sidebar = () => {
           return (
             <div
               key={index}
-              onClick={() => handleTournamentChange(tournament.id)}
-              className={`${styles.sidebar_tab} ${styles.prev}`}
+              onClick={() => {
+                handleTournamentChange(tournament.id)
+              }}
+              className={`${styles.sidebar_tab} ${styles.prev} ${
+                activeTournament === tournament.id ? styles.active : {}
+              }`}
             >
               <div>
                 <div className={styles.sidebar_tab_left}>
                   <div className={styles.sidebar_logo}>
                     <NextImage src={genesisLogo} width={51} height={11} />
                   </div>
+                  {Live && (
+                    <div className={styles.livePill}>
+                      <span>Live</span>
+                    </div>
+                  )}
                 </div>
 
                 <div className={styles.sidebar_tab_right}>
@@ -38,16 +48,23 @@ export const Sidebar = () => {
                   <h2 className={styles.sidebar_tournament_name}>
                     {Tournament_Name}
                   </h2>
-                  <p className={styles.sidebar_updated}>
-                    <span className={styles.sidebar_tour_type_mobile}>
-                      PGA Tour
-                    </span>
-                    Updated 11:10 GMT 14/2/22
-                  </p>
-                  <p className={styles.sidebar_date}>Feb 3–6, 2022</p>
-                  <p className={styles.sidebar_location}>
-                    Pebble Beach Golf Links and others
-                  </p>
+
+                  <div
+                    className={
+                      activeTournament !== tournament.id && styles.hideInfo
+                    }
+                  >
+                    <p className={styles.sidebar_updated}>
+                      <span className={styles.sidebar_tour_type_mobile}>
+                        PGA Tour
+                      </span>
+                      Updated 11:10 GMT 14/2/22
+                    </p>
+                    <p className={styles.sidebar_date}>Feb 3–6, 2022</p>
+                    <p className={styles.sidebar_location}>
+                      Pebble Beach Golf Links and others
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

@@ -1,5 +1,6 @@
 // Components
 import { Sidebar, Page, Footer } from "../components"
+import Image from "next/image"
 
 import Variables from "./components/Variables"
 import Results from "./components/Results"
@@ -9,10 +10,17 @@ import Results from "./components/Results"
 // Styles
 import { VariableProvider } from "contexts/VariableProvider"
 import { PlayerProvider } from "contexts/PlayerProvider"
+import { useEffect, useState } from "react"
 
 //* Example component data which would normally be fetched from an API call
 
 const Home = () => {
+  const [activeContent, setActiveContent] = useState("results")
+
+  useEffect(() => {
+    console.log(activeContent)
+  }, [activeContent])
+
   return (
     <Page seo={{ title: "GBS Predictor" }}>
       <div className="page">
@@ -21,10 +29,36 @@ const Home = () => {
             <Sidebar />
             <section className="main-section">
               <div>
+                <div className="content-toggle">
+                  <Image
+                    src="/images/toggle.svg"
+                    alt="bookmaker"
+                    width={24}
+                    height={21}
+                    onClick={() =>
+                      setActiveContent((prev) =>
+                        prev === "results" ? "variables" : "results"
+                      )
+                    }
+                  />
+                </div>
                 <VariableProvider>
-                  <Variables />
+                  <div
+                    className={`section_left ${
+                      activeContent === "variables" ? "show" : "hide"
+                    }`}
+                  >
+                    <Variables />
+                  </div>
+
                   <PlayerProvider>
-                    <Results />
+                    <div
+                      className={`section_right ${
+                        activeContent === "results" ? "show" : "hide"
+                      }`}
+                    >
+                      <Results />
+                    </div>
                   </PlayerProvider>
                 </VariableProvider>
               </div>

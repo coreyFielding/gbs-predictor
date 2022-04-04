@@ -2,11 +2,13 @@ import cn from "classnames"
 import Link from "next/link"
 import PropTypes from "prop-types"
 import styles from "./button.module.scss"
+import Image from "next/image"
 
 export const ButtonPill = ({
   children,
   url,
   urlExternal,
+  image,
   styles: userStyles,
 }) => {
   const classes = cn(styles.button, styles.pill, userStyles)
@@ -20,6 +22,16 @@ export const ButtonPill = ({
         target="_blank"
         rel="noreferrer"
       >
+        {image && (
+          <div className={styles.pill_img}>
+            <Image
+              src={`/images/${image}.svg`}
+              alt={image}
+              width={30}
+              height={30}
+            />
+          </div>
+        )}
         {children}
       </a>
     ) : (

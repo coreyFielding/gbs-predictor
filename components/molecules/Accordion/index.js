@@ -7,6 +7,7 @@ import {
 } from "react"
 
 // Components
+import Image from "next/image"
 import { Heading, SliderFilter } from "../../"
 
 // Styles
@@ -94,11 +95,15 @@ const AccordionItem = ({ item, slider, children, ...rest }) => {
             <SliderFilter item={item} />
           </div>
         )}
-        <div
-          className={`${
-            isOpen ? styles.toggleIconOpen : styles.toggleIconClosed
-          }`}
-        />
+        <div className={styles.toggle}>
+          <Image
+            src="/images/accordionToggle.svg"
+            alt="toggle"
+            width={13}
+            height={10}
+            className={isOpen ? styles.toggleIconOpen : styles.toggleIconClosed}
+          />
+        </div>
       </div>
 
       <div className={contentClasses}>{children}</div>

@@ -1,9 +1,9 @@
 // Context
-import { useContext, useEffect } from "react"
+import { useContext } from "react"
 import { TournamentContext } from "../contexts/TournamentProvider"
 
 export const useTournament = () => {
-  const { tournament, allTournaments, setActiveTournament } =
+  const { tournament, allTournaments, activeTournament, setActiveTournament } =
     useContext(TournamentContext)
 
   const handleTournamentChange = (id) => {
@@ -13,6 +13,7 @@ export const useTournament = () => {
   return {
     tournament,
     allTournaments,
+    activeTournament,
     handleTournamentChange,
   }
 }

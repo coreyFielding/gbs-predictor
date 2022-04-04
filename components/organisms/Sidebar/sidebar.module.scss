@@ -21,6 +21,34 @@
     background-color: $gbsGreen;
     border-top-left-radius: 20px;
 
+    .livePill {
+      position: relative;
+      height: 50px;
+      width: 20px;
+      background: $gbsGreen;
+      border-radius: 34px;
+      font-size: 10px;
+
+      > span {
+        color: $gbsGreenDark;
+        position: absolute;
+        top: 20px;
+        right: 8px;
+        margin-left: 20px;
+      }
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        height: 10px;
+        width: 10px;
+        border-radius: 100%;
+        background-color: red;
+      }
+    }
+
     > div {
       padding: 20px;
       position: relative;
@@ -95,15 +123,18 @@
         flex: 0 0 66.66%;
         border-top-left-radius: 0;
       }
-      &:not(.active) {        
+      &:not(.active) {
         flex: 0 0 16.65%;
 
         .sidebar_tab_left {
+          margin: auto;
           display: none;
         }
-        
+
         .sidebar_tab_right {
-          p, h2 {
+          margin: auto;
+          p,
+          h2 {
             display: none;
           }
         }
@@ -116,7 +147,7 @@
 
         .sidebar_tab_right {
           &:after {
-            content: '';
+            content: "";
             position: absolute;
             background-image: url("/images/icons/prev-arrow.svg");
             width: 100%;
@@ -132,7 +163,7 @@
 
         .sidebar_tab_right {
           &:after {
-            content: '';
+            content: "";
             position: absolute;
             background-image: url("/images/icons/next-arrow.svg");
             width: 100%;
@@ -169,6 +200,17 @@
       border-bottom-left-radius: 20px;
       margin-top: 0;
 
+      .livePill {
+        height: 50px;
+        width: 20px;
+        margin-bottom: 10px;
+
+        > span {
+          top: 20px;
+          right: 6px;
+        }
+      }
+
       > div {
         padding: 22px 15px;
         writing-mode: vertical-rl;
@@ -201,7 +243,6 @@
         border-top-right-radius: 25px;
         box-shadow: 0 -25px 0 $gbsGreen;
       }
-
 
       &:nth-of-type(2),
       &:nth-of-type(3) {
@@ -251,19 +292,9 @@
       }
     }
 
-    &_tab_live {
-      .sidebar_tab_left {
-        height: 47px;
-        margin-right: 0;
-
-        svg {
-          transform: rotate(90deg);
-          transform-origin: bottom;
-        }
-      }
-
-      .sidebar_tab_right {
-        margin-top: 10px;
+    .sidebar_tab_right {
+      .hideInfo {
+        display: none;
       }
     }
 
@@ -294,7 +325,6 @@
     }
   }
 }
-
 
 //Desktop screens that are too short to show 3 tabs down the side
 @media screen and (min-width: 740px) and (max-width: 980px) and (max-height: 900px) {
@@ -348,7 +378,6 @@
         box-shadow: 0 25px 0 $gbsGreen;
       }
 
-
       &:nth-of-type(2) {
         &:before {
           display: none;
@@ -356,7 +385,7 @@
       }
 
       &.active:nth-of-type(2) {
-        border-bottom-left-radius:0;
+        border-bottom-left-radius: 0;
         &:before {
           top: auto;
           left: -23px;
@@ -414,21 +443,6 @@
       }
     }
 
-    &_tab_live {
-      .sidebar_tab_left {
-        margin-right: 10px;
-        height: auto;
-
-        svg {
-          transform: none;
-        }
-      }
-
-      .sidebar_tab_right {
-        margin-top: 0;
-      }
-    }
-
     &_date,
     &_location {
       display: none;
@@ -467,12 +481,28 @@
     height: 100vh;
     padding: 0 0px 0 20px;
 
+    .sidebar_tab_right {
+      .hideInfo {
+        display: block;
+      }
+    }
+
     &_logo {
       display: block;
       margin-bottom: 10px;
     }
 
     &_tab {
+      .livePill {
+        height: 20px;
+        width: 50px;
+        margin-bottom: 10px;
+
+        > span {
+          top: 5px;
+          right: 6px;
+        }
+      }
       > div {
         writing-mode: horizontal-tb;
         transform: none;
@@ -681,4 +711,3 @@
     }
   }
 }
-

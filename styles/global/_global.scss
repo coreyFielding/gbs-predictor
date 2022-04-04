@@ -1,14 +1,19 @@
 @import "../global/mixins";
 
-body, 
+body,
 html,
-main, 
-.main, 
+main,
+.main,
 #__next,
 .page,
 .wrapper,
 .main-section {
   height: 100%;
+}
+
+.content-toggle {
+  position: absolute;
+  top: 100px;
 }
 
 body {
@@ -31,13 +36,12 @@ body {
   }
 }
 
-
 html,
 body {
   width: 100%;
   background-color: $gbsGreenDark;
   position: fixed;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 *,
 *::before,
@@ -50,7 +54,6 @@ img {
   max-height: 100%;
   object-fit: cover;
 }
-
 
 html {
   max-width: 100%;
@@ -68,7 +71,6 @@ html {
   flex-direction: column;
 }
 
-
 .header__left-side {
   display: flex;
   align-items: center;
@@ -77,12 +79,15 @@ html {
 .back-button {
   margin-right: 17px;
 }
-
 section {
   width: 100%;
   padding-right: 50px;
   padding-right: 0;
   height: 100%;
+
+  .content-toggle {
+    position: absolute;
+  }
 
   > div {
     display: flex;
@@ -90,10 +95,19 @@ section {
     align-items: center;
     width: 100%;
     padding: 3px;
-    height: calc(100% - 190px)
+    height: calc(100% - 190px);
   }
 
   .section {
+    .hide_variables {
+      display: none;
+      transform: translateY(25%);
+    }
+
+    .show_variables {
+      display: block;
+      transform: translateY(25%);
+    }
     &_left,
     &_right {
       height: 100%;
@@ -103,16 +117,6 @@ section {
         h1 {
           display: none;
           color: $white;
-        }
-
-        .hide_variables {
-          display: none;
-          transform: translateY(25%);
-        }
-
-        .show_variables {
-          display: block;
-          transform: translateY(25%);
         }
 
         .filters {
@@ -142,6 +146,7 @@ section {
         &_left {
           background-color: $white;
           border-radius: 20px;
+
           > div {
             padding: 10px;
             background-color: $white;
@@ -150,7 +155,7 @@ section {
         &_right {
           background: $white;
           border-radius: 20px;
-          height: calc(100% - 10px);
+          height: calc(100% - 40px);
 
           table {
             width: 100%;
@@ -164,14 +169,19 @@ section {
             thead {
               position: sticky;
               position: -webkit-sticky;
-              background: linear-gradient(0deg, $gbsGreen 1.5%, $gbsGreen 0%, white 1%);
+              background: linear-gradient(
+                0deg,
+                $gbsGreen 1.5%,
+                $gbsGreen 0%,
+                white 1%
+              );
               top: 0;
               border-bottom: 0;
               z-index: 3;
               -webkit-appearance: none;
 
               &:before {
-                content: '';
+                content: "";
                 background: transparent;
                 position: absolute;
                 right: 0;
@@ -184,7 +194,7 @@ section {
               }
 
               &:after {
-                content: '';
+                content: "";
                 background: $gbsGreenDark;
                 width: 50%;
                 height: 67px;
@@ -205,7 +215,7 @@ section {
 
     &_left {
       flex: none;
-      display: none;
+      // display: none;
     }
 
     &_right {
@@ -241,12 +251,38 @@ select {
   display: grid;
 }
 
+.section {
+  &_left {
+    display: block;
+
+    .panel {
+      > div {
+        height: 100%;
+      }
+    }
+  }
+}
+
 //Variables toggle
 @include mq($until: desktop) {
+  .show {
+    display: block;
+  }
+
+  .hide {
+    display: none;
+  }
   .main.variables_open {
     section .section {
       &_left {
         display: block;
+
+        .panel {
+          margin-top: 28px;
+          &_left {
+            background-color: transparent;
+          }
+        }
       }
 
       &_right {
@@ -255,15 +291,10 @@ select {
         .show_variables {
           display: none;
         }
-
-        .hide_variables {
-          display: block;
-        }
       }
     }
   }
 }
-
 
 @include mq($from: tablet) {
   .main-section {
@@ -283,38 +314,46 @@ select {
     }
 
     .section {
-      &_left, 
+      &_left,
       &_right {
         .header {
           display: flex;
           margin-top: 15px;
           vertical-align: middle;
 
-            h1 {
-              margin-left: 60px;
-              display: block;
-            }
+          h1 {
+            display: block;
+          }
 
-            .filters {
-              margin-left: 5%;
-              position: static;
-              bottom: 0;
-              left: 0;
-              
-              > svg {
-                left: 110px;
-                position: absolute;
-              }
+          .filters {
+            margin-left: 5%;
+            position: static;
+            bottom: 0;
+            left: 0;
+
+            > svg {
+              left: 110px;
+              position: absolute;
             }
           }
+        }
 
         .panel {
           margin-top: 28px;
-          height:calc(100% - 85px);
+          height: calc(100% - 85px);
 
           &_left {
             background-color: transparent;
           }
+        }
+      }
+
+      &_right {
+        .header {
+          padding-left: 400px;
+          display: flex;
+          margin-top: 15px;
+          vertical-align: middle;
         }
       }
     }
@@ -323,6 +362,9 @@ select {
 
 @include mq($from: desktop) {
   section {
+    .content-toggle {
+      display: none;
+    }
     .section {
       &_left {
         flex: 0 1 43%;
@@ -343,20 +385,24 @@ select {
                 display: block;
               }
               &:after {
-                content: '';
+                content: "";
                 position: absolute;
                 display: block;
               }
-            } 
+            }
           }
         }
 
         .header {
+          display: flex;
+          justify-content: space-between;
+          padding-left: 0;
           h1 {
             margin-left: 10px;
           }
 
           .filters {
+            margin-right: 220px;
             svg {
               display: none;
             }
@@ -423,7 +469,7 @@ select {
           }
         }
 
-         .panel_right {
+        .panel_right {
           table {
             width: calc(100% - 120px);
           }

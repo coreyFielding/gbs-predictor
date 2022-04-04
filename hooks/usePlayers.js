@@ -9,7 +9,7 @@ export const usePlayers = () => {
   const { variables } = useContext(VariableContext)
   const { groups } = useVariable()
 
-  const [bookmaker, setBookmaker] = useState("All")
+  const [selectedBookmaker, setSelectedBookmaker] = useState("All")
 
   let bookmakers = []
   let newPlayerList = []
@@ -29,7 +29,7 @@ export const usePlayers = () => {
   bookmakers = ["All", ...new Set(getBookmakerFromObj)]
 
   const filterPlayersByBookmaker = (bookmaker) => {
-    setBookmaker(bookmaker)
+    setSelectedBookmaker(bookmaker)
   }
 
   // Get the dynamic weights from each variable group
@@ -106,15 +106,19 @@ export const usePlayers = () => {
     assignWeightsAndPositions()
     getPlayerScore()
 
+    // Sort players by score and filter by bookmaker
     sortedPlayerList = playerList
       ?.sort((a, b) => (a.score < b.score ? 1 : -1))
       .filter((player) =>
-        bookmaker === "All" ? player : player.Bookmaker === bookmaker
+        selectedBookmaker === "All"
+          ? player
+          : player.Bookmaker === selectedBookmaker
       )
 
     return {
       sortedPlayerList,
       bookmakers,
+      selectedBookmaker,
       filterPlayersByBookmaker,
     }
   } else {

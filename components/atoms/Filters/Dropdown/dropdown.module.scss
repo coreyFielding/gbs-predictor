@@ -2,6 +2,7 @@
 
 .select {
   position: relative;
+  width: 183px;
   padding: 5px 10px;
   border: 1px solid $gbsGreen;
   cursor: pointer;
@@ -9,10 +10,11 @@
   position: relative;
   font-size: 12px;
   background-color: $gbsGreenDark;
-  //   background-image: url("../../../../public/images/icons/toggle.svg");
+  // background-image: url("../../../../public/images/icons/next-arrow.svg");
   background-repeat: no-repeat, repeat;
   background-position: right 0.7em top 50%, 0 0;
   border-radius: 12px;
+  color: #fff;
 }
 
 .option {

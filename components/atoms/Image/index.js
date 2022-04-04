@@ -1,6 +1,6 @@
 import cn from "classnames"
 import PropTypes from "prop-types"
-import NextImage from "next/image"
+import Image from "next/image"
 import Link from "next/link"
 import styles from "./image.module.scss"
 
@@ -10,11 +10,11 @@ import styles from "./image.module.scss"
 //   return `https://example.com/${src}?w=${width}&q=${quality || 75}`;
 // };
 
-export const Img = ({ className, src, alt, height, width }) => {
+export const NextImage = ({ className, src, alt, height, width, layout }) => {
   const classes = cn(styles.image, className)
 
   return (
-    <NextImage
+    <Image
       className={classes}
       src={src}
       alt={alt}
@@ -25,7 +25,7 @@ export const Img = ({ className, src, alt, height, width }) => {
   )
 }
 
-Img.propTypes = {
+NextImage.propTypes = {
   className: PropTypes.string,
   src: PropTypes.string,
   alt: PropTypes.string,
@@ -60,4 +60,4 @@ Img.propTypes = {
 //   width: PropTypes.number,
 // }
 
-export default NextImage;
+export default NextImage
