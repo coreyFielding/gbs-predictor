@@ -13,7 +13,7 @@ main,
 
 .content-toggle {
   position: absolute;
-  top: 100px;
+  top: 90px;
 }
 
 body {
@@ -323,6 +323,7 @@ select {
 
           h1 {
             display: block;
+            margin-left: 50px;
           }
 
           .filters {
@@ -370,6 +371,12 @@ select {
         flex: 0 1 43%;
         display: block;
         padding: 10px;
+
+        .header {
+          h1 {
+            margin-left: 0px;
+          }
+        }
       }
 
       &_right {
