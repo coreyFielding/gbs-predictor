@@ -10,16 +10,12 @@ import Results from "./components/Results"
 // Styles
 import { VariableProvider } from "contexts/VariableProvider"
 import { PlayerProvider } from "contexts/PlayerProvider"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 //* Example component data which would normally be fetched from an API call
 
 const Home = () => {
   const [activeContent, setActiveContent] = useState("results")
-
-  useEffect(() => {
-    console.log(activeContent)
-  }, [activeContent])
 
   return (
     <Page seo={{ title: "GBS Predictor" }}>

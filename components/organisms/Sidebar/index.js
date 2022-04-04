@@ -9,7 +9,7 @@ export const Sidebar = () => {
     useTournament()
 
   return (
-    <div className={`${styles.sidebar} ${styles.sidebar_2_tabs}`}>
+    <div className={`${styles.sidebar} ${styles.sidebar_3_tabs}`}>
       <aside className={styles.sidebar_inner}>
         {allTournaments?.map((tournament, index) => {
           const {

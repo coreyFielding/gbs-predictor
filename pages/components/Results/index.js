@@ -1,10 +1,8 @@
 // Components
-import Image from "next/image"
-import { useState } from "react"
 import { Panel, Button, Table, Heading, Filter } from "../../../components"
 import { usePlayers } from "../../../hooks/usePlayers"
 
-const Results = ({ handleToggleContent, activeContent }) => {
+const Results = ({}) => {
   const {
     sortedPlayerList,
     bookmakers,
@@ -19,6 +17,7 @@ const Results = ({ handleToggleContent, activeContent }) => {
     "Betfair",
     "Coral",
     "William_Hill",
+    "DraftKings",
   ]
 
   const table = {
