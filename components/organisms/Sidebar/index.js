@@ -1,12 +1,22 @@
 import styles from "./sidebar.module.scss"
 import NextImage from "../../atoms/Image"
 import { useTournament } from "hooks/useTournament"
+import { useEffect } from "react"
 const genesisLogo = "/images/genesis-logo.png"
 const gbsLogo = "/images/gbs-logo.svg"
 
 export const Sidebar = () => {
   const { allTournaments, handleTournamentChange, activeTournament } =
     useTournament()
+
+  // Set Live tournament as active tournament by default
+  useEffect(() => {
+    const liveTournament = allTournaments?.find(
+      (tournament) => tournament.attributes.Live
+    )
+
+    handleTournamentChange(liveTournament?.id)
+  }, [allTournaments])
 
   return (
     <div className={`${styles.sidebar} ${styles.sidebar_3_tabs}`}>
