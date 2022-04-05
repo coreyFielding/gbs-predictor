@@ -1,0 +1,23 @@
+
+          <svg
+            width="24"
+            height="17"
+            viewBox="0 0 24 17"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1.6875 15.2507L22.2182 2.10254"
+              stroke="#fff"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+            <path
+              d="M1.6875 2.125L22.2184 15.3474"
+              stroke="#fff"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+            <circle cx="7.0105" cy="5.2605" r="2.5105" fill="#fff" />
+            <circle cx="16.3855" cy="11.5105" r="2.5105" fill="#fff" />
+          </svg>

@@ -327,7 +327,7 @@
 }
 
 //Desktop screens that are too short to show 3 tabs down the side
-@media screen and (min-width: 740px) and (max-width: 980px) and (max-height: 900px) {
+@media screen and (min-width: 740px) and (max-width: 1280px) and (max-height: 900px) {
   .sidebar {
     position: relative;
     width: 100%;
@@ -475,7 +475,7 @@
   }
 }
 
-@include mq($from: desktop) {
+@media screen and (min-width: 1280px) {
   .sidebar {
     width: 300px;
     height: 100vh;

@@ -5,8 +5,6 @@ import Image from "next/image"
 import Variables from "./components/Variables"
 import Results from "./components/Results"
 
-// Contexts
-
 // Styles
 import { VariableProvider } from "contexts/VariableProvider"
 import { PlayerProvider } from "contexts/PlayerProvider"
@@ -27,7 +25,11 @@ const Home = () => {
               <div>
                 <div className="content-toggle">
                   <Image
-                    src="/images/toggle.svg"
+                    src={
+                      activeContent === "variables"
+                        ? "/images/variablesOpen.svg"
+                        : "/images/variablesClosed.svg"
+                    }
                     alt="bookmaker"
                     width={24}
                     height={21}
@@ -48,13 +50,7 @@ const Home = () => {
                   </div>
 
                   <PlayerProvider>
-                    <div
-                      className={`section_right ${
-                        activeContent === "results" ? "show" : "hide"
-                      }`}
-                    >
-                      <Results />
-                    </div>
+                    <Results show={activeContent === "results"} />
                   </PlayerProvider>
                 </VariableProvider>
               </div>

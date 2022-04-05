@@ -2,7 +2,7 @@
 import { Panel, Button, Table, Heading, Filter } from "../../../components"
 import { usePlayers } from "../../../hooks/usePlayers"
 
-const Results = ({}) => {
+const Results = ({ show }) => {
   const {
     sortedPlayerList,
     bookmakers,
@@ -64,9 +64,10 @@ const Results = ({}) => {
   return (
     <div className="section_right">
       <div className="header">
-        <Heading level={1} styles="h1--primary">
+        <Heading level={1} className={`h1--primary ${show ? "show" : "hide"}`}>
           Results
         </Heading>
+
         <div className="filters">
           <div className="toggle">
             <Filter.Toggle
@@ -83,7 +84,7 @@ const Results = ({}) => {
           </div>
         </div>
       </div>
-      <div className="panel panel_right">
+      <div className={`panel panel_right ${show ? "show" : "hide"}`}>
         <Panel>
           <Table>
             <Table.Heading

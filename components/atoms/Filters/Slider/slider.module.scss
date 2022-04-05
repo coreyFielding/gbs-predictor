@@ -1,4 +1,5 @@
 @import "../../../../styles/global/colours";
+@import "../../../../styles/global/mixins";
 
 .container {
   width: 150px;
@@ -32,4 +33,10 @@
   position: absolute;
   top: -12px;
   left: -25px;
+}
+
+@media screen and (max-width: 478px) {
+  .horizontalSlider {
+    max-width: 100px;
+  }
 }

@@ -11,11 +11,6 @@ main,
   height: 100%;
 }
 
-.content-toggle {
-  position: absolute;
-  top: 90px;
-}
-
 body {
   overflow: hidden;
 }
@@ -31,7 +26,7 @@ body {
 @media screen and (min-height: 841px) {
   .main-section {
     > div {
-      height: calc(100% - 188px);
+      height: calc(100% - 250px);
     }
   }
 }
@@ -87,6 +82,9 @@ section {
 
   .content-toggle {
     position: absolute;
+    left: 20px;
+    bottom: 20px;
+    z-index: 999;
   }
 
   > div {
@@ -122,11 +120,9 @@ section {
         .filters {
           position: absolute;
           bottom: 20px;
-          left: 20px;
-          z-index: 999;
+          right: 120px;
+          z-index: 900;
           display: flex;
-          right: 20px;
-
           .toggle {
             margin: auto;
             margin-right: 20px;
@@ -272,6 +268,7 @@ select {
   .hide {
     display: none;
   }
+
   .main.variables_open {
     section .section {
       &_left {
@@ -313,6 +310,11 @@ select {
       padding-left: 20px;
     }
 
+    .content-toggle {
+      left: 95px;
+      top: 95px;
+    }
+
     .section {
       &_left,
       &_right {
@@ -351,10 +353,9 @@ select {
 
       &_right {
         .header {
-          padding-left: 400px;
           display: flex;
-          margin-top: 15px;
-          vertical-align: middle;
+          justify-content: flex-end;
+          margin-right: 100px;
         }
       }
     }
@@ -373,6 +374,9 @@ select {
         padding: 10px;
 
         .header {
+          display: flex;
+          justify-content: space-between;
+          padding-left: 0;
           h1 {
             margin-left: 0px;
           }
