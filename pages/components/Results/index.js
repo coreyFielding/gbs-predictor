@@ -42,7 +42,7 @@ const Results = ({ show }) => {
       {
         accessor: "score",
         devices: ["all"],
-        Component: () => <Table.Heading.Text key={3} text="GBS Score" />,
+        Component: () => <Table.Heading.Text key={3} text="Score" />,
       },
       {
         accessor: "odds",
@@ -64,7 +64,10 @@ const Results = ({ show }) => {
   return (
     <div className="section_right">
       <div className="header">
-        <Heading level={1} className={`h1--primary ${show ? "show" : "hide"}`}>
+        <Heading
+          level={1}
+          className={`h1--primary ${!show && "minimiseResults"}`}
+        >
           Results
         </Heading>
 
@@ -84,7 +87,11 @@ const Results = ({ show }) => {
           </div>
         </div>
       </div>
-      <div className={`panel panel_right ${show ? "show" : "hide"}`}>
+      <div
+        className={`panel panel_right ${
+          show ? "showResults" : "minimiseResults"
+        }`}
+      >
         <Panel>
           <Table>
             <Table.Heading

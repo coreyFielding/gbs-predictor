@@ -43,7 +43,9 @@ const Home = () => {
                 <VariableProvider>
                   <div
                     className={`section_left ${
-                      activeContent === "variables" ? "show" : "hide"
+                      activeContent === "variables"
+                        ? "showVariables"
+                        : "hideVariables"
                     }`}
                   >
                     <Variables />

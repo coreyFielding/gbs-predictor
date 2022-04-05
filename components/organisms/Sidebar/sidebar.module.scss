@@ -384,21 +384,21 @@
         }
       }
 
-      &.active:nth-of-type(2) {
-        border-bottom-left-radius: 0;
-        &:before {
-          top: auto;
-          left: -23px;
-          bottom: 0;
-          display: block;
-        }
-      }
+      // &.active:nth-of-type(2) {
+      //   border-bottom-left-radius: 0;
+      //   &:before {
+      //     top: auto;
+      //     left: -23px;
+      //     bottom: 0;
+      //     display: block;
+      //   }
+      // }
 
-      &.active {
-        &:after {
-          box-shadow: 0 25px 0 $gbsGreenDark;
-        }
-      }
+      // &.active {
+      //   &:after {
+      //     box-shadow: 0 25px 0 $gbsGreenDark;
+      //   }
+      // }
 
       &:first-of-type {
         padding-top: 0;

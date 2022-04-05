@@ -97,19 +97,9 @@ section {
   }
 
   .section {
-    .hide_variables {
-      display: none;
-      transform: translateY(25%);
-    }
-
-    .show_variables {
-      display: block;
-      transform: translateY(25%);
-    }
     &_left,
     &_right {
       height: 100%;
-      width: 100%;
 
       .header {
         h1 {
@@ -211,10 +201,10 @@ section {
 
     &_left {
       flex: none;
-      // display: none;
     }
 
     &_right {
+      width: 100%;
       flex: none;
       padding-right: 0;
     }
@@ -260,33 +250,46 @@ select {
 }
 
 //Variables toggle
-@include mq($until: desktop) {
-  .show {
-    display: block;
+.showVariables {
+  width: 100%;
+  margin-right: 10px;
+}
+.hideVariables {
+  display: none;
+}
+
+@media screen and (min-width: 650px) {
+  .showVariables {
+    width: 50%;
   }
 
-  .hide {
-    display: none;
-  }
+  section {
+    > div {
+      width: calc(100% - 17px);
+      padding-left: 20px;
+    }
 
-  .main.variables_open {
-    section .section {
+    .content-toggle {
+      left: 25px;
+      bottom: 20px;
+    }
+
+    .section {
       &_left {
-        display: block;
-
         .panel {
-          margin-top: 28px;
           &_left {
-            background-color: transparent;
+            height: calc(100% - 35px);
           }
         }
       }
 
       &_right {
-        .header h1,
-        .panel,
-        .show_variables {
-          display: none;
+        .minimiseResults {
+          width: 75%;
+        }
+
+        .showResults {
+          width: 100%;
         }
       }
     }
@@ -325,7 +328,7 @@ select {
 
           h1 {
             display: block;
-            margin-left: 50px;
+            margin-left: 0px;
           }
 
           .filters {
@@ -344,10 +347,12 @@ select {
         .panel {
           margin-top: 28px;
           height: calc(100% - 85px);
+        }
+      }
 
-          &_left {
-            background-color: transparent;
-          }
+      &_left {
+        .header {
+          margin-left: 50px;
         }
       }
 
@@ -356,6 +361,14 @@ select {
           display: flex;
           justify-content: flex-end;
           margin-right: 100px;
+        }
+
+        .minimiseResults {
+          width: 50%;
+        }
+
+        .showResults {
+          width: 100%;
         }
       }
     }
@@ -375,11 +388,12 @@ select {
 
         .header {
           display: flex;
-          justify-content: space-between;
-          padding-left: 0;
-          h1 {
-            margin-left: 0px;
-          }
+          margin-left: 0px;
+        }
+
+        .panel {
+          margin-top: 20px;
+          height: calc(100% - 60px);
         }
       }
 
@@ -407,17 +421,16 @@ select {
         .header {
           display: flex;
           justify-content: space-between;
-          padding-left: 0;
-          h1 {
-            margin-left: 10px;
-          }
-
           .filters {
-            margin-right: 220px;
+            margin-right: 120px;
             svg {
               display: none;
             }
           }
+        }
+
+        .panel {
+          width: 100%;
         }
       }
     }
@@ -441,10 +454,6 @@ select {
       &_right,
       &_left {
         .header {
-          h1 {
-            margin-left: 60px;
-          }
-
           .filters {
             > svg {
               left: 36px;

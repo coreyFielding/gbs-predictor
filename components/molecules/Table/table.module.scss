@@ -40,35 +40,35 @@
   }
 }
 
-//Bookmaker images
-// $bookmakers: "888_sport", "bet_365", "ladbrokes", "betfair", "coral",
-//   "william_hill";
-
-// @each $bookmaker in $bookmakers {
-//   .tableRow.tableRow_#{$bookmaker} {
-//     .tableData {
-//       &:last-child {
-//         a {
-//           background-image: url('/images/' + #{$bookmaker} + '.svg');
-//         }
-//       }
-//     }
-//   }
-// }
-
 .tableData {
-  padding: 5px 10px 5px 10px;
+  padding: 0px 10px 0px 10px;
+
+  > span {
+    line-height: 1.5;
+  }
 
   &:last-child {
     a {
       border: 0;
       background-position: center;
       background-repeat: no-repeat;
-      background-size: 16px 16px;
+      // background-size: 16px 16px;
       border-radius: 0;
 
       span {
         display: none;
+      }
+    }
+  }
+}
+
+@include mq($until: tablet) {
+  .tableData {
+    padding: 0px 10px 0px 10px;
+
+    &:last-child {
+      a {
+        margin-right: 5px;
       }
     }
   }

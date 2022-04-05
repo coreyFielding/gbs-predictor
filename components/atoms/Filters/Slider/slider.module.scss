@@ -35,8 +35,20 @@
   left: -25px;
 }
 
-@media screen and (max-width: 478px) {
+@media screen and (max-width: 550px) {
   .horizontalSlider {
-    max-width: 100px;
+    max-width: 200px;
+  }
+}
+
+@media screen and (min-width: 550px) {
+  .horizontalSlider {
+    max-width: 80px;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .horizontalSlider {
+    max-width: 200px;
   }
 }
