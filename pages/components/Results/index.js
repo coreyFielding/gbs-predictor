@@ -95,12 +95,12 @@ const Results = ({ show }) => {
         <Panel>
           <Table>
             <Table.Heading
-              headings={table.headers.map(({ Component }, index) => (
+              headings={table.headers?.map(({ Component }, index) => (
                 <Component key={index} />
               ))}
             />
             <Table.Body>
-              {(sortedPlayerList?.length ? sortedPlayerList : [])?.map(
+              {(sortedPlayerList ? sortedPlayerList : [])?.map(
                 (player, index) => (
                   <Table.Row key={index}>
                     <Table.Cell.Text>

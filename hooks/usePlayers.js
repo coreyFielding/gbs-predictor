@@ -17,7 +17,7 @@ export const usePlayers = () => {
 
   // Get available bookmakers
   const getBookmakerFromObj = playerList
-    .map((player) => {
+    ?.map((player) => {
       return Object.keys(player)
         .map((key) => {
           return key === "Bookmaker" ? player[key] : null
@@ -33,23 +33,25 @@ export const usePlayers = () => {
   }
 
   // Get the dynamic weights from each variable group
-  const variableGroups = groups
-    ?.map(({ childVariables }) =>
-      childVariables.map((item) => {
-        return {
-          variable: item.Child_Name,
-          weight: item.childWeight,
-        }
-      })
-    )
-    .flat()
+  const variableGroups =
+    groups &&
+    groups
+      ?.map(({ childVariables }) =>
+        childVariables.map((item) => {
+          return {
+            variable: item.Child_Name,
+            weight: item.childWeight,
+          }
+        })
+      )
+      .flat()
 
   const findPlayer = (list, item) => {
     const player = list?.find((player) => player.Player === item.Player)
     return list?.indexOf(player)
   }
 
-  if (playerList.length) {
+  if (playerList?.length) {
     // Set all players initial scores to 0
     playerList?.map(
       (player) => (playerList[findPlayer(playerList, player)].score = 0)
@@ -58,7 +60,7 @@ export const usePlayers = () => {
     // Assign weights and positions to each player based on variable
     const assignWeightsAndPositions = () => {
       variables?.forEach((variable) => {
-        variable.list.map((item) => {
+        variable.list?.map((item) => {
           // Check that player exists in both variable and main player list
           const playerIndex = findPlayer(playerList, item)
           if (playerIndex > -1 && variableGroups) {
