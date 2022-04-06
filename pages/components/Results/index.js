@@ -113,7 +113,7 @@ const Results = ({ show }) => {
                       <span className="span--tableCell">{player?.score}</span>
                     </Table.Cell.Text>
                     <Table.Cell.Text>
-                      <span className="span--tableCell">{player.Odds}</span>
+                      <span className="span--tableCell">{player.odds}</span>
                     </Table.Cell.Text>
                     <Table.Cell.Text>
                       <span className="span--tableCell">3/1</span>
@@ -123,14 +123,14 @@ const Results = ({ show }) => {
                         url="#"
                         label="test"
                         urlExternal={true}
-                        image={
-                          selectedBookmaker === "All"
-                            ? player.Bookmaker.split(" ").join("_")
-                            : bookmakerImg.find(
-                                (v) =>
-                                  v === selectedBookmaker.split(" ").join("_")
-                              )
-                        }
+                        // image={
+                        //   selectedBookmaker === "All"
+                        //     ? player.Bookmaker.split(" ").join("_")
+                        //     : bookmakerImg.find(
+                        //         (v) =>
+                        //           v === selectedBookmaker.split(" ").join("_")
+                        //       )
+                        // }
                       >
                         <span>View Offer</span>
                       </Button.Pill>

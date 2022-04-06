@@ -1,5 +1,5 @@
 // Context
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import { PlayerContext } from "contexts/PlayerProvider"
 import { useVariable } from "./useVariable"
 import { VariableContext } from "contexts/VariableProvider"
@@ -15,18 +15,17 @@ export const usePlayers = () => {
   let newPlayerList = []
   let sortedPlayerList = []
 
-  // Get available bookmakers
-  const getBookmakerFromObj = playerList
-    ?.map((player) => {
-      return Object.keys(player)
-        .map((key) => {
-          return key === "Bookmaker" ? player[key] : null
-        })
-        .filter((v) => v)
-    })
-    .flat()
+  const bookmakersFromPlayer = playerList[0]
 
-  bookmakers = ["All", ...new Set(getBookmakerFromObj)]
+  bookmakersFromPlayer &&
+    ["Player", "row_id", "score", "variables"].forEach(
+      (k) => delete bookmakersFromPlayer[k]
+    )
+
+  // Get available bookmakers
+  bookmakers = bookmakersFromPlayer
+    ? [...Object.keys(bookmakersFromPlayer)]
+    : []
 
   const filterPlayersByBookmaker = (bookmaker) => {
     setSelectedBookmaker(bookmaker)
@@ -105,17 +104,25 @@ export const usePlayers = () => {
       })
     }
 
+    // Assign odds to each player based on selected bookmaker
+    const getPlayerOdds = () => {
+      newPlayerList?.forEach((player) => {
+        const playerBookmaker = Object.keys(player).find(
+          (k) => k === selectedBookmaker
+        )
+
+        const playerIndex = findPlayer(playerList, player)
+        const odds = player[playerBookmaker]
+        playerList[playerIndex].odds = odds
+      })
+    }
+
     assignWeightsAndPositions()
+    getPlayerOdds()
     getPlayerScore()
 
     // Sort players by score and filter by bookmaker
-    sortedPlayerList = playerList
-      ?.sort((a, b) => (a.score < b.score ? 1 : -1))
-      .filter((player) =>
-        selectedBookmaker === "All"
-          ? player
-          : player.Bookmaker === selectedBookmaker
-      )
+    sortedPlayerList = playerList?.sort((a, b) => (a.score < b.score ? 1 : -1))
 
     return {
       sortedPlayerList,

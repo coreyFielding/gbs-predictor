@@ -119,7 +119,7 @@ section {
         .filters {
           position: absolute;
           bottom: 20px;
-          right: 140px;
+          right: 110px;
           z-index: 900;
           display: flex;
           .toggle {
@@ -261,7 +261,7 @@ select {
 
 //Variables toggle
 .showVariables {
-  width: calc(100% - 20px - 20px);
+  width: 100%;
   margin-right: 10px;
 }
 .hideVariables {
@@ -368,7 +368,6 @@ select {
         }
 
         .panel {
-          margin-right: 10px;
           margin-top: 60px;
         }
       }
@@ -401,10 +400,10 @@ select {
   //Variables toggle
   .showVariables {
     width: 100%;
-    margin-right: 10px;
   }
   .hideVariables {
     display: none;
+    margin: 0;
   }
   section {
     .content-toggle {
@@ -420,6 +419,7 @@ select {
           display: flex;
           margin-top: 5px;
           margin-left: 0px;
+
           .hideHeading {
             display: block;
           }
