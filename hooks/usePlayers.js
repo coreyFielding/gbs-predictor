@@ -9,16 +9,16 @@ export const usePlayers = () => {
   const { variables } = useContext(VariableContext)
   const { groups } = useVariable()
 
-  const [selectedBookmaker, setSelectedBookmaker] = useState("All")
+  const [selectedBookmaker, setSelectedBookmaker] = useState("Bet365")
 
   let bookmakers = []
   let newPlayerList = []
   let sortedPlayerList = []
 
-  const bookmakersFromPlayer = playerList[0]
+  const bookmakersFromPlayer = Object.assign({}, playerList[0])
 
   bookmakersFromPlayer &&
-    ["Player", "row_id", "score", "variables"].forEach(
+    ["Player", "row_id", "score", "variables", "odds"].forEach(
       (k) => delete bookmakersFromPlayer[k]
     )
 
@@ -122,7 +122,9 @@ export const usePlayers = () => {
     getPlayerScore()
 
     // Sort players by score and filter by bookmaker
-    sortedPlayerList = playerList?.sort((a, b) => (a.score < b.score ? 1 : -1))
+    sortedPlayerList = playerList
+      ?.sort((a, b) => (a.score < b.score ? 1 : -1))
+      .filter((player) => player)
 
     return {
       sortedPlayerList,

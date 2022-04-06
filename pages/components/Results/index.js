@@ -12,7 +12,7 @@ const Results = ({ show }) => {
 
   const bookmakerImg = [
     "888_Sport",
-    "Bet_365",
+    "Bet365",
     "Ladbrokes",
     "Betfair",
     "Coral",
@@ -123,14 +123,9 @@ const Results = ({ show }) => {
                         url="#"
                         label="test"
                         urlExternal={true}
-                        // image={
-                        //   selectedBookmaker === "All"
-                        //     ? player.Bookmaker.split(" ").join("_")
-                        //     : bookmakerImg.find(
-                        //         (v) =>
-                        //           v === selectedBookmaker.split(" ").join("_")
-                        //       )
-                        // }
+                        image={bookmakerImg.find(
+                          (v) => v === selectedBookmaker.split(" ").join("_")
+                        )}
                       >
                         <span>View Offer</span>
                       </Button.Pill>
