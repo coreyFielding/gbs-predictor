@@ -439,7 +439,8 @@ select {
         .panel {
           background: transparent;
           height: 100%;
-          width: 98%;
+          width: 97%;
+          margin-left: 10px;
           table {
             thead {
               &:before {
