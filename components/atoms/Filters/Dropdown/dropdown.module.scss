@@ -11,9 +11,9 @@
   position: relative;
   font-size: 12px;
   background-color: $gbsGreenDark;
-  // background-image: url("../../../../public/images/dropdown-toggle.svg");
   background-repeat: no-repeat, repeat;
   background-position: right 0.7em top 50%, 0 0;
+  background-image: url("../../../../public/images/icons/toggle.svg");
   border-radius: 12px;
   color: $gbsGreen;
 }
