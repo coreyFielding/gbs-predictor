@@ -47,7 +47,7 @@ export const Sidebar = () => {
       .Live
   }
 
-  const PrevLink = () => (
+  const MobilePrevLink = () => (
     <div
       onClick={() => {
         prevTournament(activeTournament) &&
@@ -59,7 +59,7 @@ export const Sidebar = () => {
     />
   )
 
-  const NextLink = ({ hasNext }) => (
+  const MobileNextLink = ({ hasNext }) => (
     <div
       onClick={() => {
         nextTournament(activeTournament) &&
@@ -69,7 +69,7 @@ export const Sidebar = () => {
     />
   )
 
-  const ActiveLink = ({ tournament }) => {
+  const MobileActiveLink = ({ tournament }) => {
     const { Tour } = tournament.attributes
     return (
       <div
@@ -111,21 +111,23 @@ export const Sidebar = () => {
         {allTournaments?.length < 3
           ? allTournaments?.map((tournament, index) => {
               return index === 0 ? (
-                <PrevLink key={index} />
+                <MobilePrevLink key={index} />
               ) : (
                 <>
-                  <ActiveLink tournament={tournament} />
-                  <NextLink hasNext={!!nextTournament(activeTournament)} />
+                  <MobileActiveLink tournament={tournament} />
+                  <MobileNextLink
+                    hasNext={!!nextTournament(activeTournament)}
+                  />
                 </>
               )
             })
           : allTournaments?.map((tournament, index) => {
               return index === 0 ? (
-                <PrevLink />
+                <MobilePrevLink />
               ) : index === allTournaments.length - 1 ? (
-                <NextLink />
+                <MobileNextLink />
               ) : (
-                <ActiveLink tournament={tournament} />
+                <MobileActiveLink tournament={tournament} />
               )
             })}
       </div>
