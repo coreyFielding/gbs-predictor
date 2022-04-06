@@ -1,12 +1,16 @@
 // Styles
 import styles from "./toggle.module.scss"
 import cn from "classnames"
+import { usePlayers } from "hooks/usePlayers"
+import { useEffect } from "react"
 
 export const ToggleFilter = ({
   label,
   handlePlayersByBookmaker,
   styles: userStyles,
 }) => {
+  const { selectedBookmaker } = usePlayers()
+
   const slideClasses = cn(styles.toggleActive, styles.toggleSlide)
   return (
     <div className={userStyles}>
@@ -16,7 +20,9 @@ export const ToggleFilter = ({
           type="checkbox"
           role="switch"
           onChange={(e) =>
-            handlePlayersByBookmaker(e.target.checked ? "DraftKings" : "All")
+            handlePlayersByBookmaker(
+              e.target.checked ? "DraftKings" : "William Hill"
+            )
           }
           className={styles.input}
         />

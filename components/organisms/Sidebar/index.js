@@ -18,6 +18,8 @@ export const Sidebar = () => {
     handleTournamentChange(liveTournament?.id)
   }, [allTournaments])
 
+  // Mobile navigation handlers
+
   const prevTournament = (current) => {
     const currentTournament = allTournaments.find(
       (tournament) => tournament.id === current
@@ -45,65 +47,87 @@ export const Sidebar = () => {
       .Live
   }
 
+  const PrevLink = () => (
+    <div
+      onClick={() => {
+        prevTournament(activeTournament) &&
+          handleTournamentChange(prevTournament(activeTournament))
+      }}
+      className={
+        prevTournament(activeTournament) ? styles.prev : styles.hidePrev
+      }
+    />
+  )
+
+  const NextLink = ({ hasNext }) => (
+    <div
+      onClick={() => {
+        nextTournament(activeTournament) &&
+          handleTournamentChange(nextTournament(activeTournament))
+      }}
+      className={`${styles.next} ${!hasNext && styles.disable}`}
+    />
+  )
+
+  const ActiveLink = ({ tournament }) => {
+    const { Tour } = tournament.attributes
+    return (
+      <div
+        className={`${styles.current}
+                ${!prevTournament(activeTournament) && styles.noPrev}`}
+      >
+        <div className={styles.current_header}>
+          {isLive(activeTournament) && (
+            <div className={styles.livePill}>
+              <span>Live</span>
+            </div>
+          )}
+          <h2 className={styles.sidebar_tournament_name}>
+            {
+              allTournaments.find(
+                (tournament) => tournament.id === activeTournament
+              )?.attributes.Tournament_Name
+            }
+          </h2>
+        </div>
+        <div className={styles.current_info}>
+          <p className={styles.sidebar_updated}>
+            <span className={styles.sidebar_tour_type_mobile}>{Tour}</span>
+            Updated 11:10 GMT 14/2/22
+          </p>
+          <p className={styles.sidebar_date}>Feb 3–6, 2022</p>
+          <p className={styles.sidebar_location}>
+            Pebble Beach Golf Links and others
+          </p>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div>
       <div className={styles.mobileNav}>
-        {allTournaments?.map((tournament, index) => {
-          const { Tour, Tournament_Start, Tournament_End, updatedAt } =
-            tournament.attributes
-          return index === 0 ? (
-            <div
-              key={index}
-              onClick={() => {
-                prevTournament(activeTournament) &&
-                  handleTournamentChange(prevTournament(activeTournament))
-              }}
-              className={
-                prevTournament(activeTournament) ? styles.prev : styles.hidePrev
-              }
-            />
-          ) : index === allTournaments.length - 1 ? (
-            <div
-              onClick={() => {
-                nextTournament(activeTournament) &&
-                  handleTournamentChange(nextTournament(activeTournament))
-              }}
-              className={styles.next}
-            />
-          ) : (
-            <div
-              className={`${styles.current}
-                ${!prevTournament(activeTournament) && styles.noPrev}`}
-            >
-              <div className={styles.current_header}>
-                {isLive(activeTournament) && (
-                  <div className={styles.livePill}>
-                    <span>Live</span>
-                  </div>
-                )}
-                <h2 className={styles.sidebar_tournament_name}>
-                  {
-                    allTournaments.find(
-                      (tournament) => tournament.id === activeTournament
-                    )?.attributes.Tournament_Name
-                  }
-                </h2>
-              </div>
-              <div className={styles.current_info}>
-                <p className={styles.sidebar_updated}>
-                  <span className={styles.sidebar_tour_type_mobile}>
-                    {Tour}
-                  </span>
-                  Updated 11:10 GMT 14/2/22
-                </p>
-                <p className={styles.sidebar_date}>Feb 3–6, 2022</p>
-                <p className={styles.sidebar_location}>
-                  Pebble Beach Golf Links and others
-                </p>
-              </div>
-            </div>
-          )
-        })}
+        {/* Handle mobile navigation with less than three links */}
+        {allTournaments?.length < 3
+          ? allTournaments?.map((tournament, index) => {
+              return index === 0 ? (
+                <PrevLink key={index} />
+              ) : (
+                <>
+                  <ActiveLink tournament={tournament} />
+                  <NextLink hasNext={!!nextTournament(activeTournament)} />
+                </>
+              )
+            })
+          : allTournaments?.map((tournament, index) => {
+              return index === 0 ? (
+                <PrevLink />
+              ) : index === allTournaments.length - 1 ? (
+                <NextLink />
+              ) : (
+                <ActiveLink tournament={tournament} />
+              )
+            })}
       </div>
 
       <div className={`${styles.sidebar} ${styles.sidebar_2_tabs}`}>
@@ -117,7 +141,6 @@ export const Sidebar = () => {
               updatedAt,
               Live,
             } = tournament.attributes
-
             return (
               <div
                 key={index}

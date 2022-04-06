@@ -1,5 +1,5 @@
 // Context
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { PlayerContext } from "contexts/PlayerProvider"
 import { useVariable } from "./useVariable"
 import { VariableContext } from "contexts/VariableProvider"
