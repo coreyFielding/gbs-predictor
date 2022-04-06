@@ -71,7 +71,10 @@ export const Sidebar = () => {
               className={styles.next}
             />
           ) : (
-            <div className={styles.current}>
+            <div
+              className={`${styles.current}
+                ${!prevTournament(activeTournament) && styles.noPrev}`}
+            >
               <div className={styles.current_header}>
                 {isLive(activeTournament) && (
                   <div className={styles.livePill}>

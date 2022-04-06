@@ -120,7 +120,7 @@
     width: 100%;
     .prev {
       position: relative;
-      width: 15%;
+      width: 33%;
       height: 70px;
       &:after {
         content: "";
@@ -139,33 +139,43 @@
     .current {
       display: flex;
       flex-direction: column;
-      width: calc(100% - 15% - 15%);
+      width: calc(100% - 33% - 33%);
       height: 70px;
+      padding-top: 20px;
       font-size: 17px;
+      align-items: center;
       color: $background;
       text-align: center;
 
       &_header {
         display: flex;
         align-items: center;
-        margin: auto;
-        margin-bottom: 5px;
+        margin: 0px 0 5px 0px;
+        white-space: nowrap;
       }
 
       &_info {
         margin-bottom: 10px;
+        white-space: nowrap;
       }
+    }
+    .noPrev {
+      padding-top: 20px;
+      width: 50%;
+      align-items: flex-start;
+      margin-left: 10px;
+      text-align: left;
     }
     .next {
       position: absolute;
       right: 0;
       top: 70px;
-      width: 100px;
-      height: 90px;
+      width: 33%;
+      height: 70px;
       align-content: center;
       align-items: center;
-      border-top-left-radius: 60px;
-      border-bottom-left-radius: 60px;
+      // border-top-left-radius: 60px;
+      // border-bottom-left-radius: 60px;
       // background-color: $gbsGreenLight;
 
       &:before {
