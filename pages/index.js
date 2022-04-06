@@ -48,7 +48,7 @@ const Home = () => {
                         : "hideVariables"
                     }`}
                   >
-                    <Variables />
+                    <Variables hideHeading={true} />
                   </div>
 
                   <PlayerProvider>

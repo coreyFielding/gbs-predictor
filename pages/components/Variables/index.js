@@ -7,7 +7,7 @@ import { useVariable } from "hooks/useVariable"
 // Styles
 import styles from "./variables.module.scss"
 
-const Variables = () => {
+const Variables = ({ hideHeading }) => {
   const { groups } = useVariable()
 
   const activeVariable = groups?.find((group) => group.active)
@@ -17,7 +17,11 @@ const Variables = () => {
   ) : (
     <div className="section_left">
       <div className="header">
-        <Heading level={1} styles="h1--primary">
+        <Heading
+          level={1}
+          styles="h1--primary"
+          className={`h1--primary ${hideHeading && "hideHeading"}`}
+        >
           Variables
         </Heading>
       </div>
