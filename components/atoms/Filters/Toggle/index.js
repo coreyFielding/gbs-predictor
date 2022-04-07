@@ -2,7 +2,7 @@
 import styles from "./toggle.module.scss"
 import cn from "classnames"
 import { usePlayers } from "hooks/usePlayers"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 export const ToggleFilter = ({
   label,
@@ -19,11 +19,9 @@ export const ToggleFilter = ({
         <input
           type="checkbox"
           role="switch"
-          onChange={(e) =>
-            handlePlayersByBookmaker(
-              e.target.checked ? "DraftKings" : "William Hill"
-            )
-          }
+          onChange={(e) => {
+            handlePlayersByBookmaker(e.target.checked ? "DraftKings" : "Bet365")
+          }}
           className={styles.input}
         />
         <span className={slideClasses} />
