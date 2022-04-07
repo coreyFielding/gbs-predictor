@@ -5,6 +5,7 @@
   position: relative;
   width: 100%;
   height: 100%;
+  transition: all 300ms;
 }
 
 .tableHead {
@@ -16,8 +17,20 @@
   border-bottom: 1px solid $gbsGreen;
 }
 
+.sortHeading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  > span {
+    margin-right: 5px;
+  }
+}
+
 .tableBody {
   width: 100%;
+  transition: all 300ms;
 }
 
 .tableRow {

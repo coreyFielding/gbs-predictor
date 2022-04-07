@@ -1,6 +1,9 @@
 // Components
-import { Img } from "../../"
+import { usePlayers } from "hooks/usePlayers"
+import NextImage from "../../atoms/Image"
 import styles from "./table.module.scss"
+
+const dropdownIcon = "/images/icons/table-sort.svg"
 
 export const TableHead = ({ children }) => (
   <thead className={styles.tableHead}>
@@ -39,9 +42,19 @@ export const TableTextHeader = ({ text }) => (
     <span className="span--tableHeading">{text}</span>
   </th>
 )
-export const TableDropdownHeader = ({ children }) => (
-  <th className={styles.tableHeading}>{children}</th>
-)
+export const TableSortHeader = ({ text, handleSortByColumn }) => {
+  return (
+    <th className={styles.tableHeading}>
+      <div
+        onClick={() => handleSortByColumn(text)}
+        className={styles.sortHeading}
+      >
+        <span className="span--tableHeading">{text}</span>
+        <NextImage src={dropdownIcon} width={13} height={8} />
+      </div>
+    </th>
+  )
+}
 
 const TableHeadingComponent = ({ headings }) => (
   <TableHead>{headings}</TableHead>
@@ -49,6 +62,5 @@ const TableHeadingComponent = ({ headings }) => (
 
 TableHeadingComponent.Image = TableImageHeader
 TableHeadingComponent.Text = TableTextHeader
-TableHeadingComponent.Dropdown = TableDropdownHeader
-
+TableHeadingComponent.Sort = TableSortHeader
 export const TableHeading = TableHeadingComponent

@@ -27,7 +27,7 @@ export const DropdownFilter = ({
       }}
       className={classes}
     >
-      <option value="" disabled selected>
+      <option disabled selected>
         Filter By Bookmaker
       </option>
       {options?.map((option) => (

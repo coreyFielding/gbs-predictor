@@ -1,5 +1,5 @@
 // Context
-import { useContext, useEffect, useState } from "react"
+import { useContext, useState } from "react"
 import { PlayerContext } from "contexts/PlayerProvider"
 import { useVariable } from "./useVariable"
 import { VariableContext } from "contexts/VariableProvider"
@@ -10,10 +10,9 @@ export const usePlayers = () => {
   const { groups } = useVariable()
 
   const [selectedBookmaker, setSelectedBookmaker] = useState("Bet365")
-
+  const [sortedPlayerList, setSortedPlayerList] = useState()
   let bookmakers = []
   let newPlayerList = []
-  let sortedPlayerList = []
 
   const bookmakersFromPlayer =
     playerList?.length && Object.assign({}, playerList[0])
@@ -118,19 +117,44 @@ export const usePlayers = () => {
       })
     }
 
+    const sortPlayersByColumn = (column) => {
+      switch (column) {
+        case "Score":
+          setSortedPlayerList(
+            playerList
+              ?.sort((a, b) =>
+                a[column.toLowerCase()] < b[column.toLowerCase()] ? 1 : -1
+              )
+              .filter((player) => player)
+          )
+          break
+        case "Player":
+          setSortedPlayerList(
+            playerList
+              ?.sort((a, b) =>
+                a[column].split(" ")[0] > b[column].split(" ")[0] ? 1 : -1
+              )
+              .filter((player) => player)
+          )
+          break
+        default:
+          console.log("default")
+      }
+    }
+
     assignWeightsAndPositions()
     getPlayerOdds()
     getPlayerScore()
 
-    // Sort players by score and filter by bookmaker
-    sortedPlayerList = playerList
-      ?.sort((a, b) => (a.score < b.score ? 1 : -1))
-      .filter((player) => player)
+    console.log(sortedPlayerList)
+    // sortPlayersByColumn("Score")
 
     return {
+      playerList,
       sortedPlayerList,
       bookmakers,
       selectedBookmaker,
+      sortPlayersByColumn,
       filterPlayersByBookmaker,
     }
   } else {

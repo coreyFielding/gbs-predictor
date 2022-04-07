@@ -1,14 +1,21 @@
 // Components
+import { useEffect } from "react"
 import { Panel, Button, Table, Heading, Filter } from "../../../components"
 import { usePlayers } from "../../../hooks/usePlayers"
 
 const Results = ({ show }) => {
   const {
+    playerList,
     sortedPlayerList,
+    sortPlayersByColumn,
     bookmakers,
     selectedBookmaker,
     filterPlayersByBookmaker,
   } = usePlayers()
+
+  useEffect(() => {
+    console.log(sortedPlayerList)
+  }, [sortedPlayerList])
 
   const bookmakerImg = [
     "888_Sport",
@@ -37,12 +44,24 @@ const Results = ({ show }) => {
       {
         accessor: "Player",
         devices: ["all"],
-        Component: () => <Table.Heading.Text key={2} text="Player Name" />,
+        Component: () => (
+          <Table.Heading.Sort
+            key={2}
+            text="Player"
+            handleSortByColumn={sortPlayersByColumn}
+          />
+        ),
       },
       {
         accessor: "score",
         devices: ["all"],
-        Component: () => <Table.Heading.Text key={3} text="Score" />,
+        Component: () => (
+          <Table.Heading.Sort
+            key={3}
+            text="Score"
+            handleSortByColumn={sortPlayersByColumn}
+          />
+        ),
       },
       {
         accessor: "odds",
@@ -110,7 +129,7 @@ const Results = ({ show }) => {
               ))}
             />
             <Table.Body>
-              {(sortedPlayerList ? sortedPlayerList : [])?.map(
+              {(sortedPlayerList?.length ? sortedPlayerList : playerList)?.map(
                 (player, index) => (
                   <Table.Row key={index}>
                     <Table.Cell.Text>
