@@ -13,10 +13,6 @@ const Results = ({ show }) => {
     filterPlayersByBookmaker,
   } = usePlayers()
 
-  useEffect(() => {
-    console.log(sortedPlayerList)
-  }, [sortedPlayerList])
-
   const bookmakerImg = [
     "888_Sport",
     "Bet365",

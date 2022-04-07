@@ -42,7 +42,7 @@ export const TableTextHeader = ({ text }) => (
     <span className="span--tableHeading">{text}</span>
   </th>
 )
-export const TableSortHeader = ({ text, handleSortByColumn }) => {
+export const TableSortHeader = ({ text, setColumn, handleSortByColumn }) => {
   return (
     <th className={styles.tableHeading}>
       <div

@@ -123,10 +123,17 @@ export const usePlayers = () => {
           setSortedPlayerList(
             playerList
               ?.sort((a, b) =>
-                a[column.toLowerCase()] < b[column.toLowerCase()] ? 1 : -1
+                playerList[0].score > playerList[1].score
+                  ? a[column.toLowerCase()] > b[column.toLowerCase()]
+                    ? 1
+                    : -1
+                  : a[column.toLowerCase()] < b[column.toLowerCase()]
+                  ? 1
+                  : -1
               )
               .filter((player) => player)
           )
+
           break
         case "Player":
           setSortedPlayerList(
@@ -145,9 +152,7 @@ export const usePlayers = () => {
     assignWeightsAndPositions()
     getPlayerOdds()
     getPlayerScore()
-
-    console.log(sortedPlayerList)
-    // sortPlayersByColumn("Score")
+    sortPlayersByColumn("score")
 
     return {
       playerList,
