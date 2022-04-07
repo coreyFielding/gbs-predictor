@@ -50,15 +50,13 @@ export const Sidebar = () => {
       .Live
   }
 
-  const MobilePrevLink = () => (
+  const MobilePrevLink = ({ hasPrev }) => (
     <div
       onClick={() => {
         prevTournament(activeTournament) &&
           handleTournamentChange(prevTournament(activeTournament))
       }}
-      className={
-        prevTournament(activeTournament) ? styles.prev : styles.hidePrev
-      }
+      className={`${styles.prev} ${!hasPrev && styles.disable}`}
     />
   )
 
@@ -75,10 +73,7 @@ export const Sidebar = () => {
   const MobileActiveLink = ({ tournament }) => {
     const { Tour } = tournament.attributes
     return (
-      <div
-        className={`${styles.current}
-                ${!prevTournament(activeTournament) && styles.noPrev}`}
-      >
+      <div className={styles.current}>
         <div className={styles.current_header}>
           {isLive(activeTournament) && (
             <div className={styles.livePill}>
@@ -114,7 +109,10 @@ export const Sidebar = () => {
         {allTournaments?.length < 3
           ? allTournaments?.map((tournament, index) => {
               return index === 0 ? (
-                <MobilePrevLink key={index} />
+                <MobilePrevLink
+                  key={index}
+                  hasPrev={!!prevTournament(activeTournament)}
+                />
               ) : (
                 <>
                   <MobileActiveLink tournament={tournament} />
@@ -126,9 +124,9 @@ export const Sidebar = () => {
             })
           : allTournaments?.map((tournament, index) => {
               return index === 0 ? (
-                <MobilePrevLink />
+                <MobilePrevLink hasPrev={!!prevTournament(activeTournament)} />
               ) : index === allTournaments.length - 1 ? (
-                <MobileNextLink />
+                <MobileNextLink hasNext={!!nextTournament(activeTournament)} />
               ) : (
                 <MobileActiveLink tournament={tournament} />
               )

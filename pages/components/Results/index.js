@@ -10,6 +10,8 @@ const Results = ({ show }) => {
     filterPlayersByBookmaker,
   } = usePlayers()
 
+  console.log(selectedBookmaker)
+
   const bookmakerImg = [
     "888_Sport",
     "Bet365",
@@ -23,7 +25,7 @@ const Results = ({ show }) => {
   const table = {
     headers: [
       {
-        accessor: "position",
+        accessor: "Position",
         devices: ["all"],
         Component: () => (
           <Table.Heading.Image
@@ -35,7 +37,7 @@ const Results = ({ show }) => {
         ),
       },
       {
-        accessor: "name",
+        accessor: "Player",
         devices: ["all"],
         Component: () => <Table.Heading.Text key={2} text="Player Name" />,
       },
@@ -47,16 +49,25 @@ const Results = ({ show }) => {
       {
         accessor: "odds",
         devices: ["all"],
-        Component: () => <Table.Heading.Text key={4} text="Odds" />,
+        Component: () =>
+          selectedBookmaker !== "DraftKings" && (
+            <Table.Heading.Text key={4} text="Odds" />
+          ),
       },
       {
         accessor: "eachWay",
         devices: ["all"],
-        Component: () => <Table.Heading.Text key={5} text="E/W" />,
+        Component: () =>
+          selectedBookmaker !== "DraftKings" && (
+            <Table.Heading.Text key={5} text="E/W" />
+          ),
       },
       {
         accessor: "draftKings",
-        Component: () => <Table.Heading.Dropdown key={4} label="DraftKings" />,
+        Component: () =>
+          selectedBookmaker === "DraftKings" && (
+            <Table.Heading.Text key={4} text="DraftKings" />
+          ),
         devices: ["tablet", "mobile"],
       },
     ],
@@ -112,12 +123,21 @@ const Results = ({ show }) => {
                     <Table.Cell.Text>
                       <span className="span--tableCell">{player?.score}</span>
                     </Table.Cell.Text>
-                    <Table.Cell.Text>
-                      <span className="span--tableCell">{player.odds}</span>
-                    </Table.Cell.Text>
-                    <Table.Cell.Text>
-                      <span className="span--tableCell">3/1</span>
-                    </Table.Cell.Text>
+                    {selectedBookmaker !== "DraftKings" ? (
+                      <>
+                        <Table.Cell.Text>
+                          <span className="span--tableCell">{player.odds}</span>
+                        </Table.Cell.Text>
+                        <Table.Cell.Text>
+                          <span className="span--tableCell">3/1</span>
+                        </Table.Cell.Text>
+                      </>
+                    ) : (
+                      <Table.Cell.Text>
+                        <span className="span--tableCell">{player.odds}</span>
+                      </Table.Cell.Text>
+                    )}
+
                     <Table.Cell.Text>
                       <Button.Pill
                         url="#"
