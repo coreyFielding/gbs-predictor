@@ -482,29 +482,35 @@ select {
     flex-direction: column;
   }
 
-  .main-section {
-    > div {
-      width: calc(100% - 17px);
-      padding-left: 20px;
-      height: calc(100% - 220px);
+  section {
+    .content-toggle {
+      top: 167px;
+      left: 20px;
     }
+    .main-section {
+      > div {
+        width: calc(100% - 17px);
+        padding-left: 20px;
+        height: calc(100% - 220px);
+      }
 
-    .section {
-      &_right,
-      &_left {
-        .header {
-          .filters {
-            > svg {
-              left: 36px;
+      .section {
+        &_right,
+        &_left {
+          .header {
+            .filters {
+              > svg {
+                left: 36px;
+              }
             }
           }
         }
       }
-    }
 
-    &_right {
-      .panel {
-        height: calc(100% - 10px);
+      &_right {
+        .panel {
+          height: calc(100% - 10px);
+        }
       }
     }
   }

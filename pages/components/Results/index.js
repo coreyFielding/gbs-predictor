@@ -121,7 +121,6 @@ const Results = ({ show }) => {
                     <Table.Cell.Text>
                       <Button.Pill
                         url="#"
-                        label="test"
                         urlExternal={true}
                         image={bookmakerImg.find(
                           (v) => v === selectedBookmaker.split(" ").join("_")
