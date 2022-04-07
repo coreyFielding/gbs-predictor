@@ -15,7 +15,8 @@ export const usePlayers = () => {
   let newPlayerList = []
   let sortedPlayerList = []
 
-  const bookmakersFromPlayer = Object.assign({}, playerList[0])
+  const bookmakersFromPlayer =
+    playerList?.length && Object.assign({}, playerList[0])
 
   bookmakersFromPlayer &&
     ["Player", "row_id", "score", "variables", "odds"].forEach(

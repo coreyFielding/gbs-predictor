@@ -397,7 +397,6 @@
     width: auto;
     height: 100%;
     padding: 0 0px 0 20px;
-    border: 1px solid black;
 
     aside {
       display: block;
@@ -550,173 +549,173 @@
 
 //Desktop screens that are too short to show 3 tabs down the side
 @media screen and (min-width: 740px) and (max-width: 1280px) and (max-height: 900px) {
-//   .sidebar {
-//     position: relative;
-//     width: 100%;
-//     height: auto;
-//     padding-left: 0;
-//     background-color: $background;
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding-left: 0;
+    background-color: $background;
 
-//     aside {
-//       display: flex;
-//     }
+    aside {
+      display: flex;
+    }
 
-//     &_tab {
-//       position: relative;
-//       height: auto;
-//       min-height: 73px;
-//       border-top-left-radius: 20px;
-//       border-top-right-radius: 20px;
-//       border-bottom-left-radius: 0;
+    &_tab {
+      position: relative;
+      height: auto;
+      min-height: 73px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      border-bottom-left-radius: 0;
 
-//       .livePill {
-//         top: 0px;
-//         left: 0px;
-//         height: 20px;
-//         width: 50px;
-//         font-size: 10px;
+      .livePill {
+        top: 0px;
+        left: 0px;
+        height: 20px;
+        width: 50px;
+        font-size: 10px;
 
-//         > span {
-//           top: 5px;
-//           right: 5px;
-//           margin-left: 20px;
-//         }
+        > span {
+          top: 5px;
+          right: 5px;
+          margin-left: 20px;
+        }
 
-//         &:before {
-//           top: 3px;
-//           left: 5px;
-//           height: 10px;
-//           width: 10px;
-//         }
-//       }
+        &:before {
+          top: 3px;
+          left: 5px;
+          height: 10px;
+          width: 10px;
+        }
+      }
 
-//       > div {
-//         padding: 20px;
-//         position: relative;
-//         z-index: 3;
-//         writing-mode: horizontal-tb;
-//         transform: none;
+      > div {
+        padding: 20px;
+        position: relative;
+        z-index: 3;
+        writing-mode: horizontal-tb;
+        transform: none;
 
-//         * {
-//           color: $white;
-//         }
-//       }
+        * {
+          color: $white;
+        }
+      }
 
-//       &:first-of-type,
-//       &:nth-of-type(2),
-//       &:nth-of-type(3) {
-//         flex: 0 0 33.33%;
-//         height: auto;
-//       }
+      &:first-of-type,
+      &:nth-of-type(2),
+      &:nth-of-type(3) {
+        flex: 0 0 33.33%;
+        height: auto;
+      }
 
-//       &:after {
-//         content: "";
-//         position: absolute;
-//         background-color: transparent;
-//         right: -25px;
-//         top: -25px;
-//         height: 100%;
-//         width: 27px;
-//         border-radius: 0;
-//         box-shadow: 0 25px 0 $gbsGreen;
-//       }
+      &:after {
+        content: "";
+        position: absolute;
+        background-color: transparent;
+        right: -25px;
+        top: -25px;
+        height: 100%;
+        width: 27px;
+        border-radius: 0;
+        box-shadow: 0 25px 0 $gbsGreen;
+      }
 
-//       &:nth-of-type(2) {
-//         &:before {
-//           display: none;
-//         }
-//       }
+      &:nth-of-type(2) {
+        &:before {
+          display: none;
+        }
+      }
 
-//       &.active:nth-of-type(2) {
-//         border-bottom-left-radius: 0;
-//         &:before {
-//           top: auto;
-//           left: -23px;
-//           bottom: 0;
-//           display: block;
-//         }
-//       }
+      &.active:nth-of-type(2) {
+        border-bottom-left-radius: 0;
+        &:before {
+          top: auto;
+          left: -23px;
+          bottom: 0;
+          display: block;
+        }
+      }
 
-//       &.active {
-//         &:after {
-//           box-shadow: 0 25px 0 $gbsGreenDark;
-//         }
-//       }
+      &.active {
+        &:after {
+          box-shadow: 0 25px 0 $gbsGreenDark;
+        }
+      }
 
-//       &:first-of-type {
-//         padding-top: 0;
+      &:first-of-type {
+        padding-top: 0;
 
-//         &:after {
-//           content: "";
-//           position: absolute;
-//           background-color: transparent;
-//           right: -25px;
-//           top: -25px;
-//           height: 100%;
-//           width: 27px;
-//           border-radius: 0;
-//         }
-//       }
+        &:after {
+          content: "";
+          position: absolute;
+          background-color: transparent;
+          right: -25px;
+          top: -25px;
+          height: 100%;
+          width: 27px;
+          border-radius: 0;
+        }
+      }
 
-//       &:nth-of-type(2) {
-//         &:after {
-//           content: "";
-//           position: absolute;
-//           background-color: transparent;
-//           right: -25px;
-//           top: -25px;
-//           height: 100%;
-//           width: 27px;
-//           border-radius: 0;
-//         }
-//       }
+      &:nth-of-type(2) {
+        &:after {
+          content: "";
+          position: absolute;
+          background-color: transparent;
+          right: -25px;
+          top: -25px;
+          height: 100%;
+          width: 27px;
+          border-radius: 0;
+        }
+      }
 
-//       &:nth-of-type(3) {
-//         &:after {
-//           display: none;
-//         }
-//       }
-//     }
+      &:nth-of-type(3) {
+        &:after {
+          display: none;
+        }
+      }
+    }
 
-//     &_2_tabs {
-//       .sidebar_tab:nth-of-type(2) {
-//         &:after {
-//           display: none;
-//         }
-//       }
-//     }
+    &_2_tabs {
+      .sidebar_tab:nth-of-type(2) {
+        &:after {
+          display: none;
+        }
+      }
+    }
 
-//     &_date,
-//     &_location {
-//       display: none;
-//     }
+    &_date,
+    &_location {
+      display: none;
+    }
 
-//     &_tour_type_desktop {
-//       display: none;
-//     }
+    &_tour_type_desktop {
+      display: none;
+    }
 
-//     &_tour_type_mobile,
-//     &_updated {
-//       font-size: 10px;
-//       margin-bottom: 0;
-//       display: inline-block;
-//     }
+    &_tour_type_mobile,
+    &_updated {
+      font-size: 10px;
+      margin-bottom: 0;
+      display: inline-block;
+    }
 
-//     &_tour_type_mobile {
-//       margin-right: 7px;
-//     }
+    &_tour_type_mobile {
+      margin-right: 7px;
+    }
 
-//     &_tournament_name {
-//       font-size: 12px;
-//       margin-bottom: 3px;
-//       margin-left: 0;
-//     }
+    &_tournament_name {
+      font-size: 12px;
+      margin-bottom: 3px;
+      margin-left: 0;
+    }
 
-//     &_socials {
-//       display: none;
-//     }
-//   }
-// }
+    &_socials {
+      display: none;
+    }
+  }
+}
 
 @media screen and (min-width: 1280px) {
   .sidebar {
