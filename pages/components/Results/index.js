@@ -134,7 +134,9 @@ const Results = ({ show }) => {
                       </>
                     ) : (
                       <Table.Cell.Text>
-                        <span className="span--tableCell">{player.odds}</span>
+                        <span className="span--tableCell">
+                          {Intl.NumberFormat().format(player.odds)}
+                        </span>
                       </Table.Cell.Text>
                     )}
 
