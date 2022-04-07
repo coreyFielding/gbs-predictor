@@ -10,8 +10,6 @@ const Results = ({ show }) => {
     filterPlayersByBookmaker,
   } = usePlayers()
 
-  console.log(selectedBookmaker)
-
   const bookmakerImg = [
     "888_Sport",
     "Bet365",
@@ -86,6 +84,7 @@ const Results = ({ show }) => {
           <div className="toggle">
             <Filter.Toggle
               label="DraftKings"
+              selectedBookmaker={selectedBookmaker}
               handlePlayersByBookmaker={filterPlayersByBookmaker}
             />
           </div>

@@ -1,5 +1,5 @@
 // Context
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { PlayerContext } from "contexts/PlayerProvider"
 import { useVariable } from "./useVariable"
 import { VariableContext } from "contexts/VariableProvider"
@@ -19,7 +19,7 @@ export const usePlayers = () => {
     playerList?.length && Object.assign({}, playerList[0])
 
   bookmakersFromPlayer &&
-    ["Player", "row_id", "score", "variables", "odds"].forEach(
+    ["Player", "row_id", "score", "variables", "odds", "DraftKings"].forEach(
       (k) => delete bookmakersFromPlayer[k]
     )
 

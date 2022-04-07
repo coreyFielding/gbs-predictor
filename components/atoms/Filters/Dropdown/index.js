@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { usePlayers } from "hooks/usePlayers"
 
 // Styles
 import styles from "./dropdown.module.scss"
