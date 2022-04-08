@@ -79,7 +79,11 @@ const Results = ({ show }) => {
         accessor: "draftKings",
         Component: () =>
           selectedBookmaker === "DraftKings" && (
-            <Table.Heading.Text key={4} text="DraftKings" />
+            <Table.Heading.Sort
+              key={4}
+              text="DraftKings"
+              handleSortByColumn={sortPlayersByColumn}
+            />
           ),
         devices: ["tablet", "mobile"],
       },

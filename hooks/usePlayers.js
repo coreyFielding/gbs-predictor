@@ -1,8 +1,12 @@
+import { useContext, useEffect, useState } from "react"
+
 // Context
-import { useContext, useState } from "react"
 import { PlayerContext } from "contexts/PlayerProvider"
 import { useVariable } from "./useVariable"
 import { VariableContext } from "contexts/VariableProvider"
+
+// Helpers
+import { sortBy } from "functions/sorted"
 
 export const usePlayers = () => {
   const { players: playerList } = useContext(PlayerContext)
@@ -11,6 +15,7 @@ export const usePlayers = () => {
 
   const [selectedBookmaker, setSelectedBookmaker] = useState("Bet365")
   const [sortedPlayerList, setSortedPlayerList] = useState()
+  const [sort, setSort] = useState()
   let bookmakers = []
   let newPlayerList = []
 
@@ -113,57 +118,34 @@ export const usePlayers = () => {
 
         const playerIndex = findPlayer(playerList, player)
         const odds = player[playerBookmaker]
-        playerList[playerIndex].odds = odds
+        playerList[playerIndex].odds = player[playerBookmaker].includes("/")
+          ? odds
+          : player[playerBookmaker] === "TBC"
+          ? "TBC"
+          : parseFloat(odds)
       })
     }
 
-    const sorted = (arr, key) => {
-      for (let i = 0; i < arr.length; i++) {
-        if (typeof arr[i][key] === "string") {
-          return arr[i + 1][key].split(" ")[0] > arr[i][key].split(" ")[0]
-            ? false
-            : true
-        }
-        if (typeof arr[i][key] === "number") {
-          return arr[i + 1][key] - arr[i][key] < 0 ? false : true
-        }
-      }
+    const sortPlayers = (key) => {
+      setSort(sort === "asc" ? "desc" : "asc")
+
+      setSortedPlayerList(
+        playerList?.sort((a, b) =>
+          sortBy(key, sort === "asc" ? "desc" : "asc", a, b)
+        )
+      )
     }
 
     const sortPlayersByColumn = (column) => {
       switch (column) {
         case "Score":
-          const isScoreSorted = sorted(playerList, "score")
-          setSortedPlayerList(
-            playerList
-              ?.sort((a, b) =>
-                isScoreSorted
-                  ? a[column.toLowerCase()] < b[column.toLowerCase()]
-                    ? 1
-                    : -1
-                  : a[column.toLowerCase()] > b[column.toLowerCase()]
-                  ? 1
-                  : -1
-              )
-              .filter((player) => player)
-          )
+          sortPlayers("score")
           break
         case "Player":
-          const isPlayerSorted = sorted(playerList, "Player")
-          setSortedPlayerList(
-            playerList
-              ?.sort((a, b) =>
-                isPlayerSorted
-                  ? a[column].split(" ")[0] > b[column].split(" ")[0]
-                    ? 1
-                    : -1
-                  : a[column].split(" ")[0] < b[column].split(" ")[0]
-                  ? 1
-                  : -1
-              )
-              .filter((player) => player)
-          )
+          sortPlayers("Player")
           break
+        case "DraftKings":
+          sortPlayers("odds")
         default:
           console.log("default")
       }

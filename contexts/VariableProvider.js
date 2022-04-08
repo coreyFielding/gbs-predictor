@@ -59,6 +59,7 @@ export const VariableProvider = ({ children }) => {
         })
 
         return {
+          tournament: activeTournament,
           id: index + 1,
           parentName: parent?.Parent_Name,
           parentRange: parent?.Parent_Range,

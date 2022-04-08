@@ -1,9 +1,11 @@
 // Context
-import { useContext } from "react"
+import { TournamentContext } from "contexts/TournamentProvider"
+import { useContext, useEffect, useState } from "react"
 import { VariableContext } from "../contexts/VariableProvider"
 
 export const useVariable = () => {
   const { groups, setGroups } = useContext(VariableContext)
+  const { activeTournament } = useContext(TournamentContext)
 
   // Retrieve list of categories from variable context.
   // Render an ACCORDION ITEM for each variable group (category).
@@ -12,10 +14,27 @@ export const useVariable = () => {
 
   const groupsClone = groups
 
-  const setActiveVariable = (index) => {
-    groupsClone.map((group) => (group.active = false))
-    groupsClone[index].active = true
-  }
+  // Used for saving variable state when switching between tournaments
+  // const VARIABLE_CACHE = "VARIABLE_CACHE"
+
+  // const cacheVariableState = () => {
+  //   try {
+  //     localStorage.setItem(VARIABLE_CACHE, groupsClone)
+
+  //     return localStorage.getItem(VARIABLE_CACHE)
+  //   } catch (e) {
+  //     console.log(e)
+  //   }
+  // }
+
+  // const setActiveVariable = (index) => {
+  //   groupsClone.map((group) => (group.active = false))
+  //   groupsClone[index].active = true
+  // }
+
+  // useEffect(() => {
+  //   cacheVariableState()
+  // }, [activeTournament])
 
   /**
    *

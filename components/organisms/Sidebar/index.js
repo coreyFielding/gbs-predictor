@@ -2,6 +2,7 @@ import styles from "./sidebar.module.scss"
 import NextImage from "../../atoms/Image"
 import { useTournament } from "hooks/useTournament"
 import { useEffect } from "react"
+
 const genesisLogo = "/images/genesis-logo.png"
 const gbsLogo = "/images/gbs-logo.svg"
 const twitterIcon = "/images/icons/twitter.svg"
@@ -22,7 +23,6 @@ export const Sidebar = () => {
   }, [allTournaments])
 
   // Mobile navigation handlers
-
   const prevTournament = (current) => {
     const currentTournament = allTournaments.find(
       (tournament) => tournament.id === current
