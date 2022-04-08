@@ -1,5 +1,4 @@
 // Context
-import { TournamentContext } from "contexts/TournamentProvider"
 import { useContext } from "react"
 import { VariableContext } from "../contexts/VariableProvider"
 

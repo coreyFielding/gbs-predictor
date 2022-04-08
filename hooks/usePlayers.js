@@ -117,29 +117,49 @@ export const usePlayers = () => {
       })
     }
 
+    const sorted = (arr, key) => {
+      for (let i = 0; i < arr.length; i++) {
+        if (typeof arr[i][key] === "string") {
+          return arr[i + 1][key].split(" ")[0] > arr[i][key].split(" ")[0]
+            ? false
+            : true
+        }
+        if (typeof arr[i][key] === "number") {
+          return arr[i + 1][key] - arr[i][key] < 0 ? false : true
+        }
+      }
+    }
+
     const sortPlayersByColumn = (column) => {
       switch (column) {
         case "Score":
+          const isScoreSorted = sorted(playerList, "score")
           setSortedPlayerList(
             playerList
               ?.sort((a, b) =>
-                playerList[0].score > playerList[1].score
-                  ? a[column.toLowerCase()] > b[column.toLowerCase()]
+                isScoreSorted
+                  ? a[column.toLowerCase()] < b[column.toLowerCase()]
                     ? 1
                     : -1
-                  : a[column.toLowerCase()] < b[column.toLowerCase()]
+                  : a[column.toLowerCase()] > b[column.toLowerCase()]
                   ? 1
                   : -1
               )
               .filter((player) => player)
           )
-
           break
         case "Player":
+          const isPlayerSorted = sorted(playerList, "Player")
           setSortedPlayerList(
             playerList
               ?.sort((a, b) =>
-                a[column].split(" ")[0] > b[column].split(" ")[0] ? 1 : -1
+                isPlayerSorted
+                  ? a[column].split(" ")[0] > b[column].split(" ")[0]
+                    ? 1
+                    : -1
+                  : a[column].split(" ")[0] < b[column].split(" ")[0]
+                  ? 1
+                  : -1
               )
               .filter((player) => player)
           )
@@ -152,7 +172,6 @@ export const usePlayers = () => {
     assignWeightsAndPositions()
     getPlayerOdds()
     getPlayerScore()
-    sortPlayersByColumn("score")
 
     return {
       playerList,

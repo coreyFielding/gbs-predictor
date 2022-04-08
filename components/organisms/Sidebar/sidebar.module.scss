@@ -363,6 +363,33 @@
       }
     }
 
+    .livePill {
+      position: relative;
+      left: 10px;
+      height: 50px;
+      width: 20px;
+      border-radius: 34px;
+      font-size: 10px;
+      margin-bottom: 10px;
+
+      > span {
+        color: $gbsGreenDark;
+        position: absolute;
+        top: 20px;
+        right: 6px;
+        margin-left: 20px;
+      }
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 7px;
+        left: 6px;
+        height: 8px;
+        width: 8px;
+      }
+    }
+
     &_tournament_name {
       margin-left: 3px;
       max-height: 190px;
@@ -523,6 +550,32 @@
       }
     }
 
+    .livePill {
+      position: relative;
+      height: 50px;
+      width: 20px;
+      border-radius: 34px;
+      font-size: 10px;
+      margin-right: 10px;
+
+      > span {
+        color: $gbsGreenDark;
+        position: absolute;
+        top: 5px;
+        right: 8px;
+        margin-left: 20px;
+      }
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        height: 10px;
+        width: 10px;
+      }
+    }
+
     &_date,
     &_location {
       display: none;
@@ -640,6 +693,32 @@
 
       .sidebar_tab_right {
         margin-top: 0;
+      }
+    }
+
+    .livePill {
+      position: relative;
+      left: 2px;
+      height: 20px;
+      width: 50px;
+      border-radius: 34px;
+      font-size: 10px;
+
+      > span {
+        color: $gbsGreenDark;
+        position: absolute;
+        top: 5px;
+        right: 8px;
+        margin-left: 20px;
+      }
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        height: 10px;
+        width: 10px;
       }
     }
 
