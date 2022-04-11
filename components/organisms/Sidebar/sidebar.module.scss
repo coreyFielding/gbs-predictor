@@ -118,11 +118,13 @@
   .mobileNav {
     display: flex;
     width: 100%;
+
     .prev {
       position: relative;
       width: 33%;
       height: 70px;
       cursor: pointer;
+
       &:after {
         content: "";
         position: absolute;
@@ -137,8 +139,8 @@
     .current {
       display: flex;
       flex-direction: column;
-      width: calc(100% - 33% - 33%);
       height: 70px;
+      width: 100%;
       padding-top: 20px;
       font-size: 17px;
       align-items: center;
@@ -158,23 +160,18 @@
       }
     }
     .next {
-      position: absolute;
-      right: 0;
-      top: 70px;
+      position: relative;
       width: 33%;
       height: 70px;
-      align-content: center;
-      align-items: center;
       cursor: pointer;
       // border-top-left-radius: 60px;
       // border-bottom-left-radius: 60px;
       // background-color: $gbsGreenLight;
 
-      &:before {
+      &:after {
         content: "";
         position: absolute;
-        left: 15px;
-        top: 32px;
+        top: 30px;
         background-image: url("/images/icons/next-arrow.svg");
         width: 100%;
         height: 100%;

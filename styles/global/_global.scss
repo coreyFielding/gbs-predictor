@@ -406,6 +406,18 @@ select {
   }
 }
 
+@media screen and (min-width: 1250px) {
+  section {
+    .section {
+      &_right {
+        .panel {
+          width: 50%;
+        }
+      }
+    }
+  }
+}
+
 @include mq($from: desktop) {
   //Variables toggle
   .showVariables {
@@ -449,7 +461,7 @@ select {
         .panel {
           background: transparent;
           height: 100%;
-          width: 98%;
+          width: 93%;
           margin-left: 10px;
           table {
             thead {

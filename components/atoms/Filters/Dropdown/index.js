@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-import { usePlayers } from "hooks/usePlayers"
 
 // Styles
 import styles from "./dropdown.module.scss"
@@ -9,12 +8,18 @@ export const DropdownFilter = ({
   name,
   label,
   options,
+  selectedBookmaker,
   handlePlayersByBookmaker,
   styles: userStyles,
 }) => {
   const classes = cn(styles.select, userStyles)
 
-  const [selectedOption, setSelectedOption] = useState()
+  const [selectedOption, setSelectedOption] = useState("")
+
+  // Reset dropdown when DraftKings toggle is true
+  useEffect(() => {
+    selectedBookmaker === "DraftKings" && setSelectedOption("")
+  }, [selectedBookmaker])
 
   return (
     <select
@@ -27,9 +32,7 @@ export const DropdownFilter = ({
       }}
       className={classes}
     >
-      <option disabled selected>
-        Filter By Bookmaker
-      </option>
+      <option>Filter By Bookmaker</option>
       {options?.map((option) => (
         <option key={option}>{option}</option>
       ))}

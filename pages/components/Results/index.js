@@ -111,6 +111,7 @@ const Results = ({ show }) => {
           <div className="dropdown">
             <Filter.Select
               options={bookmakers}
+              selectedBookmaker={selectedBookmaker}
               handlePlayersByBookmaker={filterPlayersByBookmaker}
             />
           </div>
