@@ -580,6 +580,12 @@ select {
       &_right {
         flex: 0 0 70%;
 
+        .header {
+          .filters {
+            margin-right: 120px;
+          }
+        }
+
         .panel_right {
           table {
             width: calc(100% - 160px);
