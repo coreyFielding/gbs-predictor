@@ -1,9 +1,5 @@
 // Components
-import { usePlayers } from "hooks/usePlayers"
-import NextImage from "../../atoms/Image"
 import styles from "./table.module.scss"
-
-const dropdownIcon = "/images/icons/table-sort.svg"
 
 export const TableHead = ({ children }) => (
   <thead className={styles.tableHead}>
@@ -42,15 +38,40 @@ export const TableTextHeader = ({ text }) => (
     <span className="span--tableHeading">{text}</span>
   </th>
 )
-export const TableSortHeader = ({ text, setColumn, handleSortByColumn }) => {
+export const TableSortHeader = ({ text, sortOrder, handleSortByColumn }) => {
   return (
-    <th className={styles.tableHeading}>
-      <div
-        onClick={() => handleSortByColumn(text)}
-        className={styles.sortHeading}
-      >
+    <th
+      onClick={() => handleSortByColumn(text)}
+      className={styles.tableHeading}
+    >
+      <div className={styles.sortHeading}>
         <span className="span--tableHeading">{text}</span>
-        <NextImage src={dropdownIcon} width={13} height={8} />
+        <div
+          className={
+            sortOrder.key === text.toLowerCase() && sortOrder.order === "asc"
+              ? styles.asc
+              : styles.desc
+          }
+        >
+          <svg
+            width="13"
+            height="8"
+            viewBox="0 0 12 8"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M1 1L6 6L11 1"
+              stroke={
+                sortOrder.key === text.toLowerCase() &&
+                sortOrder.order === "asc"
+                  ? "red"
+                  : "#3cd176"
+              }
+              strokeWidth="2"
+            />
+          </svg>
+        </div>
       </div>
     </th>
   )
@@ -63,4 +84,5 @@ const TableHeadingComponent = ({ headings }) => (
 TableHeadingComponent.Image = TableImageHeader
 TableHeadingComponent.Text = TableTextHeader
 TableHeadingComponent.Sort = TableSortHeader
+
 export const TableHeading = TableHeadingComponent

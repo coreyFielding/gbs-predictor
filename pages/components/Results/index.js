@@ -7,9 +7,10 @@ const Results = ({ show }) => {
   const {
     playerList,
     sortedPlayerList,
-    sortPlayersByColumn,
     bookmakers,
     selectedBookmaker,
+    sortOrder,
+    sortPlayersByColumn,
     filterPlayersByBookmaker,
   } = usePlayers()
 
@@ -44,6 +45,7 @@ const Results = ({ show }) => {
           <Table.Heading.Sort
             key={2}
             text="Player"
+            sortOrder={sortOrder}
             handleSortByColumn={sortPlayersByColumn}
           />
         ),
@@ -55,6 +57,7 @@ const Results = ({ show }) => {
           <Table.Heading.Sort
             key={3}
             text="Score"
+            sortOrder={sortOrder}
             handleSortByColumn={sortPlayersByColumn}
           />
         ),
@@ -82,6 +85,7 @@ const Results = ({ show }) => {
             <Table.Heading.Sort
               key={4}
               text="DraftKings"
+              sortOrder={sortOrder}
               handleSortByColumn={sortPlayersByColumn}
             />
           ),

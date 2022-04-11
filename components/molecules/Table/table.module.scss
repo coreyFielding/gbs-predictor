@@ -22,9 +22,26 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  transition: transform 0.3s;
 
   > span {
     margin-right: 5px;
+  }
+
+  .asc {
+    margin-top: -3px;
+
+    > svg {
+      transform: rotate(0deg);
+    }
+  }
+
+  .desc {
+    margin-top: -3px;
+
+    > svg {
+      transform: rotate(180deg);
+    }
   }
 }
 
