@@ -16,11 +16,9 @@ export const VariableProvider = ({ children }) => {
   const { activeTournament } = useContext(TournamentContext)
   const [groups, setGroups] = useState(null)
 
-  const {
-    data: variableGroups,
-    isLoadingGroups,
-    refetch,
-  } = useQuery(["groups"], () => queryAllGroups())
+  const { data: variableGroups, refetch } = useQuery(["groups"], () =>
+    queryAllGroups()
+  )
 
   const { data: importedData } = useQuery(
     ["importedData", activeTournament],

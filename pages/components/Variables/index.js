@@ -27,7 +27,7 @@ const Variables = ({ hideHeading }) => {
       </div>
       <div className="panel panel_left">
         <Panel>
-          <div className={styles.form}>
+          <div>
             <Accordion singular={true} initial={activeVariable?.id || 1}>
               {groups?.map((groupItem) => {
                 return (

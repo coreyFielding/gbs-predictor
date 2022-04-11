@@ -15,8 +15,9 @@ export const TournamentProvider = ({ children }) => {
   const [activeTournament, setActiveTournament] = useState()
 
   // Get all tournaments
-  const { data: allTournaments } = useQuery(["importedTournaments"], () =>
-    queryAllImportedTournaments()
+  const { data: allTournaments, isLoading } = useQuery(
+    ["importedTournaments"],
+    () => queryAllImportedTournaments()
   )
 
   // Get tournament based on ID
@@ -29,6 +30,7 @@ export const TournamentProvider = ({ children }) => {
     allTournaments,
     tournament,
     activeTournament,
+    isLoading,
     setActiveTournament,
   }
 

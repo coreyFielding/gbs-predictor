@@ -7,13 +7,13 @@ import Results from "./components/Results"
 
 // Styles
 import { VariableProvider } from "contexts/VariableProvider"
-import { PlayerProvider } from "contexts/PlayerProvider"
-import { useState } from "react"
-
-//* Example component data which would normally be fetched from an API call
+import { PlayerProvider, PlayerContext } from "contexts/PlayerProvider"
+import { useContext, useState } from "react"
+import { Loading } from "@/components/atoms/Loading"
 
 const Home = () => {
   const [activeContent, setActiveContent] = useState("results")
+  const { isLoading } = useContext(PlayerContext)
 
   return (
     <Page seo={{ title: "GBS Predictor" }}>
@@ -48,7 +48,7 @@ const Home = () => {
                         : "hideVariables"
                     }`}
                   >
-                    <Variables hideHeading={true} />
+                    {isLoading ? <Loading /> : <Variables hideHeading={true} />}
                   </div>
 
                   <PlayerProvider>
@@ -56,6 +56,7 @@ const Home = () => {
                   </PlayerProvider>
                 </VariableProvider>
               </div>
+
               <Footer />
             </section>
           </main>

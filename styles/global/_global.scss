@@ -83,6 +83,12 @@ html {
 .back-button {
   margin-right: 17px;
 }
+
+.bookmaker {
+  border: 1px solid;
+  display: none;
+}
+
 section {
   width: 100%;
   padding-right: 50px;
@@ -406,18 +412,6 @@ select {
   }
 }
 
-@media screen and (min-width: 1250px) {
-  section {
-    .section {
-      &_right {
-        .panel {
-          width: 50%;
-        }
-      }
-    }
-  }
-}
-
 @include mq($from: desktop) {
   //Variables toggle
   .showVariables {
@@ -449,7 +443,6 @@ select {
 
         .panel {
           margin-top: 30px;
-          width: 100%;
           height: calc(100% - 60px);
         }
       }
@@ -461,8 +454,8 @@ select {
         .panel {
           background: transparent;
           height: 100%;
-          width: 93%;
           margin-left: 10px;
+
           table {
             thead {
               &:before {
@@ -487,11 +480,27 @@ select {
           }
 
           .filters {
-            margin-right: 150px;
+            margin-right: 80px;
             svg {
               display: none;
             }
           }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1230px) {
+  section {
+    .content-toggle {
+      top: 170px;
+      left: 20px;
+    }
+    .main-section {
+      &_right {
+        .panel {
+          width: calc(100% - 100px);
         }
       }
     }
@@ -506,7 +515,7 @@ select {
 
   section {
     .content-toggle {
-      top: 167px;
+      top: 170px;
       left: 20px;
     }
     .main-section {
@@ -528,19 +537,13 @@ select {
           }
         }
       }
-
-      &_right {
-        .panel {
-          height: calc(100% - 10px);
-        }
-      }
     }
   }
 }
 
 @include mq($from: wide) {
   section {
-    width: calc(100vw - 200px);
+    // width: calc(100vw - 200px);
     .section {
       &_left {
         display: block;
@@ -558,7 +561,7 @@ select {
 
         .panel_right {
           table {
-            width: calc(100% - 120px);
+            width: calc(100% - 180px);
           }
         }
       }
@@ -576,6 +579,12 @@ select {
 
       &_right {
         flex: 0 0 70%;
+
+        .panel_right {
+          table {
+            width: calc(100% - 160px);
+          }
+        }
       }
     }
   }

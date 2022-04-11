@@ -172,6 +172,7 @@
         content: "";
         position: absolute;
         top: 30px;
+        right: -10px;
         background-image: url("/images/icons/next-arrow.svg");
         width: 100%;
         height: 100%;
@@ -527,19 +528,19 @@
       &.active:nth-of-type(3) {
         border-bottom-left-radius: 0;
 
-        &:before {
-          content: "";
-          position: absolute;
-          background-color: transparent;
-          left: -20px;
-          top: 38px;
-          height: 50%;
-          width: 27px;
-          transform: rotate(0deg);
-          transform: scaleX(-1);
-          border-bottom-left-radius: 20px;
-          background-color: $gbsGreen;
-        }
+        // &:before {
+        //   content: "";
+        //   position: absolute;
+        //   background-color: transparent;
+        //   left: -27px;
+        //   top: 10px;
+        //   height: 80%;
+        //   width: 27px;
+        //   transform: rotate(0deg);
+        //   transform: scaleX(-1);
+        //   border-bottom-left-radius: 20px;
+        //   background-color: $gbsGreen;
+        // }
       }
     }
 

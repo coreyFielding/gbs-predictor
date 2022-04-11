@@ -1,5 +1,4 @@
 // Components
-import { useEffect } from "react"
 import { Panel, Button, Table, Heading, Filter } from "../../../components"
 import { usePlayers } from "../../../hooks/usePlayers"
 
@@ -28,7 +27,6 @@ const Results = ({ show }) => {
     headers: [
       {
         accessor: "Position",
-        devices: ["all"],
         Component: () => (
           <Table.Heading.Image
             key={1}
@@ -40,7 +38,6 @@ const Results = ({ show }) => {
       },
       {
         accessor: "Player",
-        devices: ["all"],
         Component: () => (
           <Table.Heading.Sort
             key={2}
@@ -52,7 +49,6 @@ const Results = ({ show }) => {
       },
       {
         accessor: "score",
-        devices: ["all"],
         Component: () => (
           <Table.Heading.Sort
             key={3}
@@ -64,7 +60,6 @@ const Results = ({ show }) => {
       },
       {
         accessor: "odds",
-        devices: ["all"],
         Component: () =>
           selectedBookmaker !== "DraftKings" && (
             <Table.Heading.Text key={4} text="Odds" />
@@ -72,7 +67,6 @@ const Results = ({ show }) => {
       },
       {
         accessor: "eachWay",
-        devices: ["all"],
         Component: () =>
           selectedBookmaker !== "DraftKings" && (
             <Table.Heading.Text key={5} text="E/W" />
@@ -89,7 +83,10 @@ const Results = ({ show }) => {
               handleSortByColumn={sortPlayersByColumn}
             />
           ),
-        devices: ["tablet", "mobile"],
+      },
+      {
+        accessor: "draftKings",
+        Component: () => <Table.Heading.Text key={5} text="" />,
       },
     ],
   }
