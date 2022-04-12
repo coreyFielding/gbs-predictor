@@ -34,7 +34,6 @@ body {
 @media screen and (max-width: 739px) {
   .main-section {
     > div {
-      padding: 5px;
       height: calc(100% - 250px);
     }
   }
@@ -267,45 +266,39 @@ select {
 //Variables toggle
 .showVariables {
   width: 100%;
-  margin-right: 10px;
 }
 .hideVariables {
   display: none;
 }
 
-@media screen and (min-width: 650px) {
-  .showVariables {
-    width: 50%;
+section {
+  > div {
+    width: calc(100% - 17px);
+    padding-left: 20px;
   }
 
-  section {
-    > div {
-      width: calc(100% - 17px);
-      padding-left: 20px;
-    }
+  .content-toggle {
+    left: 25px;
+    bottom: 20px;
+  }
 
-    .content-toggle {
-      left: 25px;
-      bottom: 20px;
-    }
-
-    .section {
-      &_left {
-        .panel {
-          &_left {
-            height: calc(100% - 35px);
-          }
+  .section {
+    &_left {
+      .panel {
+        &_left {
+          width: 100%;
+          height: calc(100% - 35px);
         }
       }
+    }
 
-      &_right {
-        .minimiseResults {
-          width: 70%;
-        }
+    &_right {
+      .minimiseResults {
+        width: 0%;
+      }
 
-        .showResults {
-          width: 100%;
-        }
+      .showResults {
+        width: 100%;
       }
     }
   }
@@ -320,6 +313,11 @@ select {
 
   .main {
     flex-direction: row;
+  }
+
+  // Variables toggle
+  .showVariables {
+    width: calc(100% - 60px);
   }
 
   section {
@@ -361,6 +359,8 @@ select {
       }
 
       &_left {
+        margin-right: 10px;
+
         .header {
           .hideHeading {
             display: none;
@@ -388,10 +388,6 @@ select {
           width: 100%;
         }
 
-        .minimiseResults {
-          width: 50%;
-        }
-
         .showResults {
           width: 100%;
         }
@@ -403,11 +399,7 @@ select {
 @include mq($from: desktop) {
   //Variables toggle
   .showVariables {
-    width: 100%;
-  }
-  .hideVariables {
-    display: none;
-    margin: 0;
+    width: 40%;
   }
   section {
     .content-toggle {
@@ -415,7 +407,7 @@ select {
     }
     .section {
       &_left {
-        flex: 0 1 50%;
+        flex: 0 1 40%;
         display: block;
         padding: 10px 0;
 
@@ -431,8 +423,13 @@ select {
 
         .panel {
           margin-top: 30px;
+          width: 100%;
           height: calc(100% - 60px);
         }
+      }
+
+      &_left {
+        margin-right: 0;
       }
 
       &_right {
@@ -456,6 +453,14 @@ select {
               }
             }
           }
+        }
+
+        .minimiseResults {
+          width: 50%;
+        }
+
+        .showResults {
+          width: 55%;
         }
 
         .header {
@@ -506,17 +511,19 @@ select {
       }
 
       &_right {
+        flex: 0 0 75%;
+
         .header {
           .filters {
-            margin-right: 240px;
+            margin-right: 160px;
           }
         }
 
         .panel_right {
-          width: calc(100% - 100px);
+          width: calc(100% - 50px);
 
           table {
-            width: calc(100% - 180px);
+            width: calc(100% - 150px);
           }
         }
       }
@@ -524,20 +531,105 @@ select {
   }
 }
 
-@include mq($from: extra-wide) {
+@media screen and (min-width: 980px) and (max-width: 1150px) {
   section {
     .section {
       &_left {
-        flex: 0 0 30%;
-        display: block;
+        .header {
+          > h1 {
+            font-size: 14px;
+          }
+        }
+        .panel_left {
+          margin-top: 50px;
+          min-width: calc(100% - 50px);
+          max-width: calc(100% - 50px);
+        }
       }
-
       &_right {
-        flex: 0 0 70%;
+        .header {
+          display: flex;
+          flex-direction: row;
 
+          > h1 {
+            font-size: 14px;
+            margin-left: -30px;
+          }
+          .filters {
+            margin-top: 10px;
+            margin-left: -65px;
+          }
+        }
+        .panel_right {
+          width: 100%;
+          margin-left: -30px;
+
+          table {
+            width: calc(100% - 200px);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1150px) and (max-width: 1290px) {
+  section {
+    .section {
+      &_left {
+        .panel_left {
+          min-width: calc(100% - 50px);
+          max-width: calc(100% - 50px);
+        }
+      }
+      &_right {
+        .header {
+          display: flex;
+          flex-direction: row;
+
+          > h1 {
+            margin-left: -30px;
+          }
+          .filters {
+            margin-left: 10px;
+          }
+        }
+        .panel_right {
+          width: 100%;
+          margin-left: -30px;
+
+          table {
+            width: calc(100% - 220px);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1290px) and (max-width: 1500px) {
+  section {
+    .section {
+      &_left,
+      &_right {
+        .header {
+          > h1 {
+            font-size: 28px;
+          }
+        }
+      }
+      &_right {
         .header {
           .filters {
-            margin-right: 240px;
+            margin-right: 100px;
+          }
+        }
+
+        .panel_right {
+          width: calc(100% - 110px);
+
+          table {
+            width: calc(100% - 150px);
           }
         }
       }

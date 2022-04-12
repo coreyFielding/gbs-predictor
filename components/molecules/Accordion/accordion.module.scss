@@ -1,10 +1,6 @@
 @import "../../../styles/global/colours";
 @import "../../../styles/global/mixins";
 
-.accordion {
-  padding: 10px;
-}
-
 .item {
   &:not(:first-child) {
     margin: 10px 0;
@@ -22,7 +18,7 @@
 
     .container {
       width: 150px;
-      padding: 5px 19px 4px 20px;
+      padding: 5px 1px 4px 20px;
 
       > h6 {
         line-height: 1.5;
@@ -42,7 +38,7 @@
   .toggle {
     position: absolute;
     right: 15px;
-    width: 20px;
+    width: 10px;
   }
 
   .toggleIconOpen {

@@ -1,13 +1,12 @@
 @import "../../../styles/global/colours";
 
 .row {
-  padding: 10px;
   height: 40px;
   border-bottom: 1px solid $white;
+  width: 100px;
 }
 
 .cell {
   vertical-align: middle;
-  padding-left: 20px;
   width: 150px;
 }
