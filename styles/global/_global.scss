@@ -144,12 +144,6 @@ section {
         margin-top: 3px;
         height: 100%;
         overflow: hidden;
-        -ms-overflow-style: none; /* IE and Edge */
-        scrollbar-width: none; /* Firefox */
-
-        &::-webkit-scrollbar {
-          display: none;
-        }
 
         &_left {
           background-color: $white;
@@ -358,11 +352,6 @@ select {
             position: static;
             bottom: 0;
             left: 0;
-
-            > svg {
-              left: 110px;
-              position: absolute;
-            }
           }
         }
 
@@ -448,8 +437,8 @@ select {
       }
 
       &_right {
-        flex: 0 2 50%;
         padding: 10px 0;
+        width: 60%;
 
         .panel {
           background: transparent;
@@ -480,27 +469,8 @@ select {
           }
 
           .filters {
-            margin-right: 80px;
-            svg {
-              display: none;
-            }
+            margin-right: 320px;
           }
-        }
-      }
-    }
-  }
-}
-
-@media screen and (min-width: 1230px) {
-  section {
-    .content-toggle {
-      top: 170px;
-      left: 20px;
-    }
-    .main-section {
-      &_right {
-        .panel {
-          width: calc(100% - 100px);
         }
       }
     }
@@ -515,27 +485,14 @@ select {
 
   section {
     .content-toggle {
-      top: 170px;
+      top: 95px;
       left: 20px;
     }
     .main-section {
       > div {
-        width: calc(100% - 17px);
         padding-left: 20px;
+        width: calc(100% - 17px);
         height: calc(100% - 220px);
-      }
-
-      .section {
-        &_right,
-        &_left {
-          .header {
-            .filters {
-              > svg {
-                left: 36px;
-              }
-            }
-          }
-        }
       }
     }
   }
@@ -543,7 +500,6 @@ select {
 
 @include mq($from: wide) {
   section {
-    // width: calc(100vw - 200px);
     .section {
       &_left {
         display: block;
@@ -553,13 +509,13 @@ select {
       &_right {
         .header {
           .filters {
-            svg {
-              display: none;
-            }
+            margin-right: 240px;
           }
         }
 
         .panel_right {
+          width: calc(100% - 100px);
+
           table {
             width: calc(100% - 180px);
           }
@@ -582,13 +538,7 @@ select {
 
         .header {
           .filters {
-            margin-right: 120px;
-          }
-        }
-
-        .panel_right {
-          table {
-            width: calc(100% - 160px);
+            margin-right: 240px;
           }
         }
       }

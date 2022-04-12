@@ -39,7 +39,6 @@ export const TableTextHeader = ({ text }) => (
   </th>
 )
 export const TableSortHeader = ({ text, sortOrder, handleSortByColumn }) => {
-  console.log(sortOrder, text)
   return (
     <th
       onClick={() => handleSortByColumn(text)}
