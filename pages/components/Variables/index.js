@@ -6,15 +6,14 @@ import { useVariable } from "hooks/useVariable"
 
 // Styles
 import styles from "./variables.module.scss"
+import { Loading } from "@/components/atoms/Loading"
 
 const Variables = ({ hideHeading }) => {
   const { groups } = useVariable()
 
   const activeVariable = groups?.find((group) => group.active)
 
-  return !groups?.length > 0 ? (
-    <></>
-  ) : (
+  return (
     <div className="section_left">
       <div className="header">
         <Heading
@@ -25,45 +24,49 @@ const Variables = ({ hideHeading }) => {
           Variables
         </Heading>
       </div>
-      <div className="panel panel_left">
-        <Panel>
-          <div>
-            <Accordion singular={true} initial={activeVariable?.id || 1}>
-              {groups?.map((groupItem) => {
-                return (
-                  <Accordion.Item
-                    key={groupItem.id}
-                    label={groupItem.parentName}
-                    item={groupItem}
-                    slider={true}
-                    active={groupItem.active}
-                  >
-                    <Table>
-                      <Table.Body>
-                        {groupItem.childVariables?.map((variableItem) => {
-                          return (
-                            <Table.Row
-                              key={variableItem.id}
-                              className={styles.row}
-                            >
-                              <Table.Cell className={styles.cell}>
-                                <span className="span--accordionItem">
-                                  {variableItem.Child_Name}
-                                </span>
-                              </Table.Cell>
-                              <Table.Cell.Slider item={variableItem} />
-                            </Table.Row>
-                          )
-                        })}
-                      </Table.Body>
-                    </Table>
-                  </Accordion.Item>
-                )
-              })}
-            </Accordion>
-          </div>
-        </Panel>
-      </div>
+      {!groups?.length > 0 ? (
+        <Loading />
+      ) : (
+        <div className="panel panel_left">
+          <Panel>
+            <div>
+              <Accordion singular={true} initial={activeVariable?.id || 1}>
+                {groups?.map((groupItem) => {
+                  return (
+                    <Accordion.Item
+                      key={groupItem.id}
+                      label={groupItem.parentName}
+                      item={groupItem}
+                      slider={true}
+                      active={groupItem.active}
+                    >
+                      <Table>
+                        <Table.Body>
+                          {groupItem.childVariables?.map((variableItem) => {
+                            return (
+                              <Table.Row
+                                key={variableItem.id}
+                                className={styles.row}
+                              >
+                                <Table.Cell className={styles.cell}>
+                                  <span className="span--accordionItem">
+                                    {variableItem.Child_Name}
+                                  </span>
+                                </Table.Cell>
+                                <Table.Cell.Slider item={variableItem} />
+                              </Table.Row>
+                            )
+                          })}
+                        </Table.Body>
+                      </Table>
+                    </Accordion.Item>
+                  )
+                })}
+              </Accordion>
+            </div>
+          </Panel>
+        </div>
+      )}
     </div>
   )
 }

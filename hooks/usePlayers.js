@@ -9,13 +9,14 @@ import { VariableContext } from "contexts/VariableProvider"
 import { sortBy } from "functions/sorted"
 
 export const usePlayers = () => {
-  const { players: playerList } = useContext(PlayerContext)
+  const { players: playerList, isLoadingPlayers } = useContext(PlayerContext)
   const { variables } = useContext(VariableContext)
   const { groups } = useVariable()
 
   const [selectedBookmaker, setSelectedBookmaker] = useState("Bet365")
   const [sortedPlayerList, setSortedPlayerList] = useState()
   const [sortOrder, setSortOrder] = useState({ key: "score", order: "desc" })
+  const [isLoading, setIsLoading] = useState(true)
 
   let bookmakers = []
   let newPlayerList = []
@@ -149,13 +150,17 @@ export const usePlayers = () => {
       case "DraftKings":
         sortPlayers("odds")
       default:
-        console.log("default")
+        return
     }
   }
 
   assignWeightsAndPositions()
   getPlayerOdds()
   getPlayerScore()
+
+  useEffect(() => {
+    sortedPlayerList?.length && setIsLoading(false)
+  }, [sortedPlayerList])
 
   // Sort players by score on initial render
   useEffect(() => {
@@ -177,6 +182,7 @@ export const usePlayers = () => {
     bookmakers,
     selectedBookmaker,
     sortOrder,
+    isLoading,
     sortPlayersByColumn,
     filterPlayersByBookmaker,
   }

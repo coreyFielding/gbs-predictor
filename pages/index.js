@@ -6,59 +6,66 @@ import Variables from "./components/Variables"
 import Results from "./components/Results"
 
 // Styles
-import { VariableProvider } from "contexts/VariableProvider"
+import { VariableContext, VariableProvider } from "contexts/VariableProvider"
 import { PlayerProvider, PlayerContext } from "contexts/PlayerProvider"
 import { useContext, useState } from "react"
 import { Loading } from "@/components/atoms/Loading"
+import { TournamentContext } from "contexts/TournamentProvider"
 
 const Home = () => {
   const [activeContent, setActiveContent] = useState("results")
-  const { isLoading } = useContext(PlayerContext)
+  const { isLoadingTournaments } = useContext(TournamentContext)
 
   return (
     <Page seo={{ title: "GBS Predictor" }}>
       <div className="page">
         <div className="wrapper">
           <main className="main">
-            <Sidebar />
-            <section className="main-section">
-              <div>
-                <div className="content-toggle">
-                  <Image
-                    src={
-                      activeContent === "variables"
-                        ? "/images/variablesOpen.svg"
-                        : "/images/variablesClosed.svg"
-                    }
-                    alt="bookmaker"
-                    width={24}
-                    height={21}
-                    onClick={() =>
-                      setActiveContent((prev) =>
-                        prev === "results" ? "variables" : "results"
-                      )
-                    }
-                  />
-                </div>
-                <VariableProvider>
-                  <div
-                    className={`section_left ${
-                      activeContent === "variables"
-                        ? "showVariables"
-                        : "hideVariables"
-                    }`}
-                  >
-                    {isLoading ? <Loading /> : <Variables hideHeading={true} />}
+            {isLoadingTournaments ? (
+              <Loading message="Getting Tournaments" />
+            ) : (
+              <>
+                <Sidebar />
+                <section className="main-section">
+                  <div>
+                    <div className="content-toggle">
+                      <Image
+                        src={
+                          activeContent === "variables"
+                            ? "/images/variablesOpen.svg"
+                            : "/images/variablesClosed.svg"
+                        }
+                        alt="bookmaker"
+                        width={24}
+                        height={21}
+                        onClick={() =>
+                          setActiveContent((prev) =>
+                            prev === "results" ? "variables" : "results"
+                          )
+                        }
+                      />
+                    </div>
+                    <VariableProvider>
+                      <div
+                        className={`section_left ${
+                          activeContent === "variables"
+                            ? "showVariables"
+                            : "hideVariables"
+                        }`}
+                      >
+                        <Variables hideHeading={true} />
+                      </div>
+
+                      <PlayerProvider>
+                        <Results show={activeContent === "results"} />
+                      </PlayerProvider>
+                    </VariableProvider>
                   </div>
 
-                  <PlayerProvider>
-                    <Results show={activeContent === "results"} />
-                  </PlayerProvider>
-                </VariableProvider>
-              </div>
-
-              <Footer />
-            </section>
+                  <Footer />
+                </section>
+              </>
+            )}
           </main>
         </div>
       </div>

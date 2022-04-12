@@ -1,4 +1,4 @@
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 import {
   queryImportedTournament,
   queryAllImportedTournaments,
@@ -15,7 +15,7 @@ export const TournamentProvider = ({ children }) => {
   const [activeTournament, setActiveTournament] = useState()
 
   // Get all tournaments
-  const { data: allTournaments, isLoading } = useQuery(
+  const { data: allTournaments, isLoading: isLoadingTournaments } = useQuery(
     ["importedTournaments"],
     () => queryAllImportedTournaments()
   )
@@ -30,7 +30,7 @@ export const TournamentProvider = ({ children }) => {
     allTournaments,
     tournament,
     activeTournament,
-    isLoading,
+    isLoadingTournaments,
     setActiveTournament,
   }
 

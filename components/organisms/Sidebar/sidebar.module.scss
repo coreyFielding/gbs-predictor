@@ -419,7 +419,6 @@
 //Desktop screens that are too short to show 3 tabs down the side
 @media screen and (min-width: 740px) and (max-width: 980px) and (max-height: 900px) {
   .sidebar {
-    border: 1px solid;
     position: relative;
     width: 100%;
     height: auto;
@@ -619,7 +618,6 @@
 
     &_socials {
       &_links {
-        border: 1px solid;
         display: none;
       }
     }
@@ -630,7 +628,6 @@
   .sidebar {
     &_socials {
       &_links {
-        border: 1px solid;
         display: none;
       }
     }

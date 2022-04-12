@@ -1,11 +1,9 @@
 // Context
-import { TournamentContext } from "contexts/TournamentProvider"
-import { useContext, useEffect, useState } from "react"
+import { useContext } from "react"
 import { VariableContext } from "../contexts/VariableProvider"
 
 export const useVariable = () => {
   const { groups, setGroups } = useContext(VariableContext)
-  const { activeTournament } = useContext(TournamentContext)
 
   // Retrieve list of categories from variable context.
   // Render an ACCORDION ITEM for each variable group (category).

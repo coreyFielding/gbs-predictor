@@ -5,14 +5,13 @@ import { TournamentContext } from "./TournamentProvider"
 
 export const PlayerContext = createContext({
   players: undefined,
-  isLoading: undefined,
 })
 
 export const PlayerProvider = ({ children }) => {
   const [players, setPlayers] = useState([])
   const { activeTournament } = useContext(TournamentContext)
 
-  const { data, isLoading } = useQuery(["players", activeTournament], () =>
+  const { data } = useQuery(["players", activeTournament], () =>
     queryAllImportedPlayersAndVariables(activeTournament)
   )
 
@@ -22,7 +21,6 @@ export const PlayerProvider = ({ children }) => {
 
   const state = {
     players,
-    isLoading,
   }
 
   return (

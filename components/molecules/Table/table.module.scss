@@ -113,26 +113,16 @@
 
 @include mq($from: tablet) {
   .tableData {
-    &:first-child {
-      padding: 0;
-    }
-    &:nth-child(3) {
-      wwidth: 20%;
+    &:nth-child(2) {
+      width: 30%;
     }
     &:nth-child(4) {
-      width: 5%;
+      width: 30%;
     }
   }
 }
 
 @include mq($from: desktop) {
-  .tableHead {
-    > tr > th {
-      &:last-child {
-        display: none;
-      }
-    }
-  }
   .tableRow {
     position: relative;
     > tr {
@@ -167,18 +157,31 @@
 }
 
 @include mq($from: wide) {
+  .tableHead {
+    > tr > th {
+      &:last-child {
+        display: none;
+      }
+    }
+  }
   .tableData {
+    &:first-child {
+      width: 10%;
+    }
     &:nth-child(2) {
-      width: 50%;
+      width: 40%;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
+    &:nth-child(3) {
+      width: 10%;
+    }
     &:nth-child(4) {
-      width: 50%;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      width: 30%;
+    }
+    &:nth-child(5) {
+      width: 10%;
     }
 
     &:last-child {

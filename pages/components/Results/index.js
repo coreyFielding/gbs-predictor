@@ -1,4 +1,5 @@
 // Components
+import { Loading } from "@/components/atoms/Loading"
 import { Panel, Button, Table, Heading, Filter } from "../../../components"
 import { usePlayers } from "../../../hooks/usePlayers"
 
@@ -9,6 +10,7 @@ const Results = ({ show }) => {
     bookmakers,
     selectedBookmaker,
     sortOrder,
+    isLoading,
     sortPlayersByColumn,
     filterPlayersByBookmaker,
   } = usePlayers()
@@ -118,21 +120,26 @@ const Results = ({ show }) => {
           </div>
         </div>
       </div>
-      <div
-        className={`panel panel_right ${
-          show ? "showResults" : "minimiseResults"
-        }`}
-      >
-        <Panel>
-          <Table>
-            <Table.Heading
-              headings={table.headers?.map(({ Component }, index) => (
-                <Component key={index} />
-              ))}
-            />
-            <Table.Body>
-              {(sortedPlayerList?.length ? sortedPlayerList : playerList)?.map(
-                (player, index) => (
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <div
+          className={`panel panel_right ${
+            show ? "showResults" : "minimiseResults"
+          }`}
+        >
+          <Panel>
+            <Table>
+              <Table.Heading
+                headings={table.headers?.map(({ Component }, index) => (
+                  <Component key={index} />
+                ))}
+              />
+              <Table.Body>
+                {(sortedPlayerList?.length
+                  ? sortedPlayerList
+                  : playerList
+                )?.map((player, index) => (
                   <Table.Row key={index}>
                     <Table.Cell.Text>
                       <span className="span--tableCell">{index + 1}</span>
@@ -172,12 +179,12 @@ const Results = ({ show }) => {
                       </Button.Pill>
                     </Table.Cell.Text>
                   </Table.Row>
-                )
-              )}
-            </Table.Body>
-          </Table>
-        </Panel>
-      </div>
+                ))}
+              </Table.Body>
+            </Table>
+          </Panel>
+        </div>
+      )}
     </div>
   )
 }
