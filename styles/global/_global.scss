@@ -789,18 +789,24 @@ section {
           }
         }
       }
+      &_left {
+        .panel_left {
+          min-width: 100%;
+          max-width: 100%;
+        }
+      }
       &_right {
         .header {
           > h1 {
             margin-top: 0;
           }
           .filters {
-            margin-right: 200px;
+            margin-right: 160px;
           }
         }
 
         .panel_right {
-          width: calc(100% - 40px);
+          width: calc(100% - 0px);
 
           table {
             width: calc(100% - 200px);
