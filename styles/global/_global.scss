@@ -89,7 +89,6 @@ html {
 
 section {
   width: 100%;
-  padding-right: 50px;
   padding-right: 0;
   height: 100%;
 
@@ -521,13 +520,6 @@ section {
     .content-toggle {
       top: 165px;
       left: 20px;
-    }
-    .main-section {
-      > div {
-        padding-left: 20px;
-        width: calc(100% - 17px);
-        height: calc(100% - 220px);
-      }
     }
   }
 }

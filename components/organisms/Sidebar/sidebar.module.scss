@@ -20,6 +20,7 @@
     min-height: 100%;
     background-color: $gbsGreen;
     border-top-left-radius: 20px;
+    cursor: pointer;
 
     > div {
       padding: 20px;
@@ -80,6 +81,7 @@
 
 .livePill {
   position: relative;
+  top: -2px;
   height: 12px;
   width: 35px;
   background: $gbsGreen;
