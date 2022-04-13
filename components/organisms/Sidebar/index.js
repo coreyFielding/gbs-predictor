@@ -133,7 +133,11 @@ export const Sidebar = () => {
             })}
       </div>
 
-      <div className={`${styles.sidebar} ${styles.sidebar_2_tabs}`}>
+      <div
+        className={`${styles.sidebar} ${
+          allTournaments?.length <= 2 && styles.sidebar_2_tabs
+        }`}
+      >
         <aside className={styles.sidebar_inner}>
           {allTournaments?.map((tournament, index) => {
             const {

@@ -156,7 +156,42 @@
   }
 }
 
-@include mq($from: wide) {
+@media screen and (min-width: 730px) and (max-width: 980px) {
+  .tableData {
+    &:first-child,
+    &:nth-child(2),
+    &:nth-child(3),
+    &:nth-child(4),
+    &:nth-child(5),
+    &:last-child {
+      width: 2%;
+    }
+  }
+}
+@media screen and (min-width: 1150px) and (max-width: 1290px) {
+  .tableData {
+    &:first-child {
+      width: 5%;
+    }
+    &:nth-child(2) {
+      width: 50%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    &:nth-child(3) {
+      width: 15%;
+    }
+    &:nth-child(4) {
+      width: 15%;
+    }
+    &:nth-child(5) {
+      width: 5%;
+    }
+  }
+}
+
+@media screen and (min-width: 1300px) {
   .tableHead {
     > tr > th {
       &:last-child {

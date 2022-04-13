@@ -481,27 +481,6 @@ section {
   }
 }
 
-//If screen is desktop width but shorter than a tablet
-@media screen and (min-width: 740px) and (max-width: 980px) and (max-height: 900px) {
-  .main {
-    flex-direction: column;
-  }
-
-  section {
-    .content-toggle {
-      top: 95px;
-      left: 20px;
-    }
-    .main-section {
-      > div {
-        padding-left: 20px;
-        width: calc(100% - 17px);
-        height: calc(100% - 220px);
-      }
-    }
-  }
-}
-
 @include mq($from: wide) {
   section {
     .section {
@@ -531,7 +510,118 @@ section {
   }
 }
 
-@media screen and (min-width: 980px) and (max-width: 1150px) {
+//If screen is desktop width but shorter than a tablet
+@media screen and (min-width: 740px) and (max-width: 980px) and (max-height: 900px) {
+  .main {
+    flex-direction: column;
+  }
+
+  section {
+    .content-toggle {
+      top: 167px;
+      left: 20px;
+    }
+    .main-section {
+      > div {
+        padding-left: 20px;
+        width: calc(100% - 17px);
+        height: calc(100% - 220px);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 980px) and (max-width: 980px) and (max-height: 900px) {
+  section {
+    .section {
+      &_left {
+        .header {
+          > h1 {
+            font-size: 14px;
+          }
+        }
+        .panel_left {
+          height: calc(100% - 100px);
+
+          margin-top: 50px;
+          min-width: calc(100% - 20px);
+          max-width: calc(100% - 50px);
+        }
+      }
+      &_right {
+        .header {
+          display: flex;
+          flex-direction: row;
+
+          > h1 {
+            font-size: 14px;
+            margin-left: 0px;
+          }
+          .filters {
+            margin-top: 10px;
+            margin-left: -65px;
+          }
+        }
+        .panel_right {
+          height: calc(100% - 40px);
+          width: 100%;
+          margin-left: 0px;
+
+          table {
+            width: calc(100% - 0px);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 981px) and (max-width: 1000px) and (max-height: 900px) {
+  section {
+    .section {
+      &_left {
+        .header {
+          > h1 {
+            font-size: 14px;
+          }
+        }
+        .panel_left {
+          height: calc(100% - 100px);
+
+          margin-top: 50px;
+          min-width: calc(100% - 50px);
+          max-width: calc(100% - 50px);
+        }
+      }
+      &_right {
+        .header {
+          display: flex;
+          flex-direction: row;
+
+          > h1 {
+            font-size: 14px;
+            margin-left: -40px;
+          }
+          .filters {
+            margin-top: 10px;
+            margin-left: -65px;
+          }
+        }
+        .panel_right {
+          height: calc(100% - 40px);
+          width: 100%;
+          margin-left: -40px;
+
+          table {
+            width: calc(100% - 230px);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1000px) and (max-width: 1150px) {
   section {
     .section {
       &_left {
@@ -565,7 +655,7 @@ section {
           margin-left: -30px;
 
           table {
-            width: calc(100% - 200px);
+            width: calc(100% - 150px);
           }
         }
       }
@@ -573,7 +663,7 @@ section {
   }
 }
 
-@media screen and (min-width: 1150px) and (max-width: 1290px) {
+@media screen and (min-width: 1150px) and (max-width: 1200px) {
   section {
     .section {
       &_left {
@@ -581,8 +671,44 @@ section {
           margin-top: 3px;
         }
         .panel_left {
-          min-width: calc(100% - 50px);
-          max-width: calc(100% - 50px);
+          min-width: calc(100% - 90px);
+          max-width: calc(100% - 90px);
+        }
+      }
+      &_right {
+        .header {
+          display: flex;
+
+          > h1 {
+            margin-left: -70px;
+          }
+          .filters {
+            margin-left: 20px;
+          }
+        }
+        .panel_right {
+          width: 100%;
+          margin-left: -70px;
+
+          table {
+            width: calc(100% - 140px);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1300px) {
+  section {
+    .section {
+      &_left {
+        .header {
+          margin-top: 3px;
+        }
+        .panel_left {
+          min-width: calc(100% - 30px);
+          max-width: calc(100% - 30px);
         }
       }
       &_right {
@@ -599,10 +725,10 @@ section {
         }
         .panel_right {
           width: 100%;
-          margin-left: -20px;
+          margin-left: -30px;
 
           table {
-            width: calc(100% - 220px);
+            width: calc(100% - 160px);
           }
         }
       }
@@ -610,7 +736,7 @@ section {
   }
 }
 
-@media screen and (min-width: 1290px) and (max-width: 1500px) {
+@media screen and (min-width: 1300px) and (max-width: 1500px) {
   section {
     .section {
       &_left,
