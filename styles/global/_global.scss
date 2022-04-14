@@ -42,7 +42,7 @@ body {
 html,
 body {
   width: 100%;
-  background-color: $gbsGreenDark;
+  background-color: $gbsGreenDarkest;
   position: fixed;
   font-family: "Montserrat", sans-serif;
 }
@@ -64,7 +64,7 @@ html {
 }
 
 .wrapper {
-  background-color: $gbsGreenDark;
+  background-color: $gbsGreenDarkest;
 }
 
 .main {
@@ -188,14 +188,14 @@ section {
                 height: 100%;
                 width: 25px;
                 border-top-right-radius: 20px;
-                box-shadow: 0 -25px 0 $gbsGreenDark;
+                box-shadow: 0 -25px 0 $gbsGreenDarkest;
                 pointer-events: none;
                 display: none;
               }
 
               &:after {
                 content: "";
-                background: $gbsGreenDark;
+                background: $gbsGreenDarkest;
                 width: 50%;
                 height: 67px;
                 right: 0;
@@ -520,6 +520,16 @@ section {
     .content-toggle {
       top: 165px;
       left: 20px;
+    }
+
+    .section {
+      &_right {
+        .header {
+          .filters {
+            margin-top: 5px;
+          }
+        }
+      }
     }
   }
 }

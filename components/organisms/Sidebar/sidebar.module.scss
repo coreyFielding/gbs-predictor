@@ -18,30 +18,40 @@
   &_tab {
     position: relative;
     min-height: 100%;
-    background-color: $gbsGreen;
     border-top-left-radius: 20px;
+    color: $white;
     cursor: pointer;
+
+    &:first-of-type {
+      background-color: $gbsGreenDark;
+    }
+
+    &:nth-of-type(2) {
+      background-color: $gbsGreen;
+    }
+
+    &:nth-of-type(3) {
+      background-color: $gbsGreenLight;
+      color: $gbsGreenDark;
+    }
 
     > div {
       padding: 20px;
       position: relative;
       z-index: 3;
       display: flex;
-
-      * {
-        color: $white;
-      }
     }
 
     &:after {
-      background-color: $gbsGreen;
+      background-color: $gbsGreenDark;
     }
 
     &.active {
-      background-color: $gbsGreenDark;
+      background-color: $gbsGreenDarkest;
+      color: #fff;
 
       &:after {
-        background-color: $gbsGreenDark;
+        background-color: $gbsGreenDarkest;
       }
     }
   }
@@ -90,7 +100,7 @@
   margin-right: 10px;
 
   > span {
-    color: $gbsGreenDark;
+    color: $gbsGreenDarkest;
     position: absolute;
     top: 1px;
     right: 4px;
@@ -187,7 +197,7 @@
     margin-right: 10px;
 
     > span {
-      color: $gbsGreenDark;
+      color: $gbsGreenDarkest;
       position: absolute;
       top: 1px;
       right: 4px;
@@ -206,7 +216,7 @@
   .sidebar {
     display: none;
     &_tab {
-      background-color: $gbsGreenDark;
+      background-color: $gbsGreenDarkest;
       margin-top: 0;
       &.active {
         order: 1;
@@ -261,10 +271,6 @@
         padding: 22px 15px;
         writing-mode: vertical-rl;
         transform: rotate(180deg);
-
-        * {
-          color: $white;
-        }
       }
 
       &:first-of-type {
@@ -287,7 +293,7 @@
         height: 50px;
         width: 25px;
         border-top-right-radius: 25px;
-        box-shadow: 0 -25px 0 $gbsGreen;
+        box-shadow: 0 -25px 0 $gbsGreenDark;
       }
 
       &:nth-of-type(2),
@@ -298,17 +304,6 @@
         max-width: 100%;
         margin-top: 0;
         height: auto;
-
-        &:after {
-          content: "";
-          position: absolute;
-          background-color: $background;
-          right: 0;
-          top: 100%;
-          height: 50px;
-          width: 25px;
-          border-top-right-radius: 25px;
-        }
       }
 
       &:nth-of-type(2) {
@@ -324,16 +319,59 @@
           height: 50px;
           border-top-left-radius: 20px;
         }
+
+        &:after {
+          content: "";
+          position: absolute;
+          background-color: $background;
+          right: 0;
+          top: 100%;
+          height: 50px;
+          width: 25px;
+          border-top-right-radius: 25px;
+          box-shadow: 0 -25px 0 $gbsGreen;
+        }
       }
 
       &.active:nth-of-type(2):before {
-        box-shadow: 0 -36px 0 $gbsGreenDark;
+        box-shadow: 0 -36px 0 $gbsGreenDarkest;
+        right: -1px;
+      }
+
+      &:nth-of-type(3) {
+        &:before {
+          content: "";
+          position: absolute;
+          background: transparent;
+          box-shadow: 0 -36px 0 $gbsGreenLight;
+          width: 25px;
+          right: 0px;
+          transform: rotate(180deg);
+          top: -50px;
+          height: 50px;
+          border-top-left-radius: 20px;
+        }
+        &:after {
+          content: "";
+          position: absolute;
+          background-color: $background;
+          right: 0;
+          top: 100%;
+          height: 50px;
+          width: 25px;
+          border-top-right-radius: 25px;
+          box-shadow: 0 -25px 0 $gbsGreenLight;
+        }
+      }
+
+      &.active:nth-of-type(3):before {
+        box-shadow: 0 -36px 0 $gbsGreenDarkest;
         right: -1px;
       }
 
       &.active {
         &:after {
-          box-shadow: 0 -25px 0 $gbsGreenDark;
+          box-shadow: 0 -25px 0 $gbsGreenDarkest;
         }
       }
     }
@@ -348,7 +386,7 @@
       margin-bottom: 10px;
 
       > span {
-        color: $gbsGreenDark;
+        color: $gbsGreenDarkest;
         position: absolute;
         top: 20px;
         right: 6px;
@@ -445,7 +483,7 @@
       }
 
       &.active:nth-of-type(2):before {
-        box-shadow: 0 -36px 0 $gbsGreenDark;
+        box-shadow: 0 -36px 0 $gbsGreenDarkest;
         right: -1px;
       }
 
@@ -475,7 +513,7 @@
       font-size: 10px;
 
       > span {
-        color: $gbsGreenDark;
+        color: $gbsGreenDarkest;
         position: absolute;
         top: 5px;
         right: 8px;
@@ -570,10 +608,6 @@
         z-index: 3;
         writing-mode: horizontal-tb;
         transform: none;
-
-        * {
-          color: $white;
-        }
       }
 
       &:first-of-type,
@@ -583,9 +617,7 @@
         height: auto;
       }
 
-      &:first-of-type,
-      &:nth-of-type(2),
-      &:nth-of-type(3) {
+      &:first-of-type {
         &:after {
           content: "";
           position: absolute;
@@ -599,15 +631,29 @@
         }
       }
 
-      &.active {
-        &:after {
-          box-shadow: 0 25px 0 $gbsGreenDark;
-        }
-      }
-
       &:first-of-type {
         padding-top: 0;
 
+        &:after {
+          box-shadow: 0 25px 0 $gbsGreenDarkest;
+        }
+      }
+
+      &.active:first-child {
+        border-bottom-left-radius: 0;
+        &:before {
+          top: auto;
+          left: -25px;
+          bottom: 0;
+          display: block;
+          background-color: $gbsGreenDarkest;
+        }
+      }
+
+      &:nth-of-type(2) {
+        &:before {
+          display: none;
+        }
         &:after {
           content: "";
           position: absolute;
@@ -617,12 +663,7 @@
           height: 100%;
           width: 27px;
           border-radius: 0;
-        }
-      }
-
-      &:nth-of-type(2) {
-        &:before {
-          display: none;
+          box-shadow: 0 25px 0 $gbsGreen;
         }
       }
 
@@ -630,18 +671,42 @@
         border-bottom-left-radius: 0;
         &:before {
           top: auto;
-          left: -23px;
+          left: -25px;
           bottom: 0;
           display: block;
+          background-color: $gbsGreenDark;
+        }
+
+        &:after {
+          box-shadow: 0 25px 0 $gbsGreenDarkest;
+        }
+      }
+
+      &:nth-of-type(3) {
+        &:after {
+          content: "";
+          position: absolute;
+          background-color: transparent;
+          right: -25px;
+          top: -25px;
+          height: 100%;
+          width: 27px;
+          border-radius: 0;
+          box-shadow: 0 25px 0 $gbsGreenLight;
         }
       }
 
       &.active:nth-of-type(3) {
+        border-bottom-left-radius: 0;
+
         &:before {
           top: auto;
           left: -23px;
           bottom: 0;
           display: block;
+        }
+        &:after {
+          display: none;
         }
       }
     }

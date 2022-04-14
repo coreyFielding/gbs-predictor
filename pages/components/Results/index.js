@@ -4,6 +4,7 @@ import { Panel, Button, Table, Heading, Filter } from "../../../components"
 import { usePlayers } from "../../../hooks/usePlayers"
 
 const Results = ({ show }) => {
+  const bookmakerUrl = "https://www.golfbettingsystem.co.uk/bookmakers/Bet365"
   const {
     playerList,
     sortedPlayerList,
@@ -67,13 +68,13 @@ const Results = ({ show }) => {
             <Table.Heading.Text key={4} text="Odds" />
           ),
       },
-      // {
-      //   accessor: "eachWay",
-      //   Component: () =>
-      //     selectedBookmaker !== "DraftKings" && (
-      //       <Table.Heading.Text key={5} text="E/W" />
-      //     ),
-      // },
+      {
+        accessor: "eachWay",
+        Component: () =>
+          selectedBookmaker !== "DraftKings" && (
+            <Table.Heading.Text key={5} text="E/W" />
+          ),
+      },
       {
         accessor: "draftKings",
         Component: () =>
@@ -155,9 +156,9 @@ const Results = ({ show }) => {
                         <Table.Cell.Text>
                           <span className="span--tableCell">{player.odds}</span>
                         </Table.Cell.Text>
-                        {/* <Table.Cell.Text>
-                          <span className="span--tableCell">3/1</span>
-                        </Table.Cell.Text> */}
+                        <Table.Cell.Text>
+                          <span className={`span--tableCell`}>3/1</span>
+                        </Table.Cell.Text>
                       </>
                     ) : (
                       <Table.Cell.Text>
@@ -169,7 +170,9 @@ const Results = ({ show }) => {
 
                     <Table.Cell.Text>
                       <Button.Pill
-                        url="#"
+                        url={`${bookmakerUrl}${selectedBookmaker
+                          ?.split(" ")
+                          .join()}`}
                         urlExternal={true}
                         image={bookmakerImg.find(
                           (v) => v === selectedBookmaker.split(" ").join("_")

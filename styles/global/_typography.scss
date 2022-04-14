@@ -15,7 +15,7 @@ span {
 }
 
 .h2--primary {
-  color: #fff;
+  color: $white;
   font-size: 17px;
   font-style: normal;
   font-weight: 700;
@@ -23,7 +23,7 @@ span {
 }
 
 .span--heading {
-  color: $gbsGreenDark;
+  color: $gbsGreenDarkest;
   font-size: 12px;
   font-style: normal;
   font-weight: 400;
@@ -36,14 +36,14 @@ span {
   font-weight: 700;
   font-size: 12px;
   line-height: 30px;
-  color: $gbsGreenDark;
+  color: $gbsGreenDarkest;
 }
 
 .span--accordionItem {
   font-weight: 400;
   font-size: 12px;
   line-height: 30px;
-  color: $gbsGreenDark;
+  color: $gbsGreenDarkest;
 }
 
 .span--tableHeading {
@@ -51,7 +51,7 @@ span {
   font-weight: 600;
   font-size: 12px;
   line-height: 30px;
-  color: $gbsGreenDark;
+  color: $gbsGreenDarkest;
 }
 
 .span--tableCell {
@@ -60,7 +60,7 @@ span {
   font-size: 12px;
   line-height: 38px;
   text-align: right;
-  color: $gbsGreenDark;
+  color: $gbsGreenDarkest;
 }
 
 .span--label {
@@ -73,13 +73,13 @@ span {
   text-align: left;
 }
 .span--primary {
-  color: #fff;
+  color: $white;
   font-size: 12px;
   font-weight: 400;
   line-height: 14.63px;
 }
 .span--secondary {
-  color: #fff;
+  color: $white;
   font-size: 10px;
   font-style: normal;
   font-weight: 400;
@@ -88,7 +88,7 @@ span {
 }
 
 .span--footer {
-  color: #fff;
+  color: $white;
   font-size: 8px;
   font-style: normal;
   font-weight: 400;

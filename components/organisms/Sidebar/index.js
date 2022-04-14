@@ -70,6 +70,8 @@ export const Sidebar = () => {
     />
   )
 
+  console.log(allTournaments)
+
   const MobileActiveLink = ({ tournament }) => {
     const { Tour } = tournament.attributes
     return (
@@ -145,6 +147,7 @@ export const Sidebar = () => {
               Tournament_Name,
               Tournament_Start,
               Tournament_End,
+              Tournament_Icon,
               updatedAt,
               Live,
             } = tournament.attributes
