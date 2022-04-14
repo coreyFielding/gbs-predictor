@@ -5,6 +5,7 @@ import { useEffect } from "react"
 
 const genesisLogo = "/images/genesis-logo.png"
 const gbsLogo = "/images/gbs-logo.svg"
+
 const twitterIcon = "/images/icons/twitter.svg"
 const youtubeIcon = "/images/icons/youtube.svg"
 const facebookIcon = "/images/icons/facebook.svg"
@@ -69,8 +70,6 @@ export const Sidebar = () => {
       className={`${styles.next} ${!hasNext && styles.disable}`}
     />
   )
-
-  console.log(allTournaments)
 
   const MobileActiveLink = ({ tournament }) => {
     const { Tour } = tournament.attributes
