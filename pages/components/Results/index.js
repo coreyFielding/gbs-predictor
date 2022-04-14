@@ -4,7 +4,7 @@ import { Panel, Button, Table, Heading, Filter } from "../../../components"
 import { usePlayers } from "../../../hooks/usePlayers"
 
 const Results = ({ show }) => {
-  const bookmakerUrl = "https://www.golfbettingsystem.co.uk/bookmakers/Bet365"
+  const bookmakerUrl = "https://www.golfbettingsystem.co.uk/bookmakers/"
   const {
     playerList,
     sortedPlayerList,
@@ -25,6 +25,8 @@ const Results = ({ show }) => {
     "William_Hill",
     "DraftKings",
   ]
+
+  console.log(`${bookmakerUrl}${selectedBookmaker}`)
 
   const table = {
     headers: [
@@ -157,7 +159,9 @@ const Results = ({ show }) => {
                           <span className="span--tableCell">{player.odds}</span>
                         </Table.Cell.Text>
                         <Table.Cell.Text>
-                          <span className={`span--tableCell`}>3/1</span>
+                          <span className={`span--tableCell hideEachWay`}>
+                            3/1
+                          </span>
                         </Table.Cell.Text>
                       </>
                     ) : (
@@ -172,7 +176,7 @@ const Results = ({ show }) => {
                       <Button.Pill
                         url={`${bookmakerUrl}${selectedBookmaker
                           ?.split(" ")
-                          .join()}`}
+                          .join("-")}`}
                         urlExternal={true}
                         image={bookmakerImg.find(
                           (v) => v === selectedBookmaker.split(" ").join("_")

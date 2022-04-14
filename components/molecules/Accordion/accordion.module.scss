@@ -13,20 +13,17 @@
     min-height: 40px;
     border-radius: 12px;
     background-color: $gbsGreenLight;
-    padding-right: 20px;
     cursor: pointer;
 
     .container {
-      width: 150px;
-      padding: 5px 1px 4px 20px;
+      width: 45%;
+      padding: 5px 1px 4px 10px;
 
       > h6 {
+        font-size: 10px;
+        width: 100%;
         line-height: 1.5;
       }
-    }
-
-    .slider {
-      padding: 0 0 0 10px;
     }
   }
 
@@ -38,7 +35,6 @@
   .toggle {
     position: absolute;
     right: 15px;
-    width: 10px;
   }
 
   .toggleIconOpen {
@@ -57,28 +53,228 @@
 
     > table > tbody > tr > td {
       padding: 0;
-      padding-left: 10px;
+      width: 50%;
 
       &:nth-of-type(1) {
-        padding-left: 20px;
+        padding-left: 10px;
+        width: 41%;
+        margin: 0;
       }
     }
 
     > table > tbody > tr > td > span {
+      font-size: 10px;
       line-height: 1.5;
     }
   }
 }
 
-@include mq($until: tablet) {
+@media screen and (min-width: 450px) and (max-width: 740px) {
+  .item {
+    .heading {
+      width: 100%;
+
+      .container {
+        width: 31%;
+        padding: 5px 1px 4px 10px;
+
+        > h6 {
+          width: 100%;
+          line-height: 1.5;
+        }
+      }
+    }
+
+    .contentVisible {
+      display: block;
+      background-color: $gbsGreenLighter;
+      border-bottom-left-radius: 12px;
+      border-bottom-right-radius: 12px;
+
+      > table > tbody > tr > td {
+        padding: 0;
+        width: 70%;
+
+        &:nth-of-type(1) {
+          padding-left: 10px;
+          width: 31%;
+          margin: 0;
+        }
+      }
+    }
+  }
   .slider {
     margin-right: 50px;
   }
 }
 
-@include mq($from: desktop) {
+@media screen and (min-width: 740px) and (max-width: 980px) {
+  .item {
+    .heading {
+      width: 100%;
+
+      .container {
+        width: 30%;
+        padding: 5px 1px 4px 10px;
+
+        > h6 {
+          width: 100%;
+          font-size: 12px;
+          line-height: 1.5;
+        }
+      }
+    }
+
+    .contentVisible {
+      > table > tbody > tr > td {
+        padding: 0;
+        width: 100%;
+
+        &:nth-of-type(1) {
+          padding-left: 10px;
+          width: 30%;
+          margin: 0;
+        }
+      }
+
+      > table > tbody > tr > td > span {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 980px) and (max-width: 1200px) {
+  .item {
+    .heading {
+      width: 100%;
+
+      .container {
+        width: 50%;
+        padding: 5px 1px 4px 10px;
+
+        > h6 {
+          width: 100%;
+          font-size: 12px;
+          line-height: 1.5;
+        }
+      }
+    }
+
+    .contentVisible {
+      > table > tbody > tr > td {
+        padding: 0;
+        width: 100%;
+
+        &:nth-of-type(1) {
+          padding-left: 10px;
+          width: 30%;
+          margin: 0;
+        }
+      }
+
+      > table > tbody > tr > td > span {
+        font-size: 12px;
+      }
+    }
+  }
   .slider {
     margin-right: 50px;
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1300px) {
+  .item {
+    padding-right: 50px;
+    .heading {
+      width: 250px;
+
+      .container {
+        > h6 {
+          width: 100%;
+          font-size: 12px;
+          line-height: 1.5;
+        }
+      }
+    }
+
+    .contentVisible {
+      width: 250px;
+      > table > tbody > tr > td {
+        &:nth-of-type(1) {
+          padding-left: 10px;
+          width: 30%;
+          margin: 0;
+        }
+      }
+
+      > table > tbody > tr > td > span {
+        font-size: 12px;
+      }
+    }
+  }
+  .slider {
+    margin-right: 50px;
+  }
+}
+
+@media screen and (min-width: 1300px) and (max-width: 1400px) {
+  .item {
+    padding-right: 20px;
+    .heading {
+      width: 300px;
+
+      .container {
+        width: 45%;
+
+        > h6 {
+          width: 100%;
+        }
+      }
+    }
+
+    .contentVisible {
+      width: 300px;
+      > table > tbody > tr > td {
+        width: 100%;
+
+        &:nth-of-type(1) {
+          width: 45%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .item {
+    .heading {
+      width: 300px;
+
+      .container {
+        width: 45%;
+
+        > h6 {
+          width: 100%;
+          font-size: 12px;
+        }
+      }
+    }
+
+    .contentVisible {
+      width: 300px;
+      > table > tbody > tr > td {
+        width: 100%;
+
+        &:nth-of-type(1) {
+          width: 45%;
+        }
+      }
+      > table > tbody > tr > td > span {
+        font-size: 12px;
+        line-height: 1.5;
+      }
+    }
   }
 }
 
