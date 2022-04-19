@@ -118,7 +118,7 @@ export const usePlayers = () => {
 
       const playerIndex = findPlayer(playerList, player)
       const odds = player[playerBookmaker]
-      playerList[playerIndex].odds = player[playerBookmaker].includes("/")
+      playerList[playerIndex].odds = player[playerBookmaker]?.includes("/")
         ? odds
         : player[playerBookmaker] === "TBC"
         ? "TBC"
