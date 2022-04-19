@@ -593,6 +593,12 @@ section {
 @media screen and (min-width: 981px) and (max-width: 1000px) and (max-height: 900px) {
   section {
     .section {
+      &_left,
+      &_right {
+        .header {
+          height: 20px;
+        }
+      }
       &_left {
         .header {
           > h1 {
@@ -600,7 +606,7 @@ section {
           }
         }
         .panel_left {
-          margin-top: 50px;
+          margin-top: 30px;
           min-width: calc(100% - 50px);
           max-width: calc(100% - 50px);
         }
@@ -632,7 +638,7 @@ section {
   }
 }
 
-@media screen and (min-width: 1000px) and (max-width: 1050px) {
+@media screen and (min-width: 1001px) and (max-width: 1050px) {
   section {
     .section {
       &_left {
@@ -642,7 +648,6 @@ section {
           }
         }
         .panel_left {
-          margin-top: 50px;
           min-width: calc(100% - 50px);
           max-width: calc(100% - 50px);
         }
@@ -664,6 +669,7 @@ section {
         .panel_right {
           width: 100%;
           margin-left: -30px;
+          margin-top: 10px;
 
           table {
             width: calc(100% - 12vw);
@@ -674,12 +680,14 @@ section {
   }
 }
 
-@media screen and (min-width: 1050px) and (max-width: 1130px) {
+@media screen and (min-width: 1051px) and (max-width: 1130px) {
   section {
     .section {
       &_left,
       &_right {
         .header {
+          height: 20px;
+
           > h1 {
             font-size: 14px;
           }
@@ -687,7 +695,7 @@ section {
       }
       &_left {
         .panel_left {
-          margin-top: 50px;
+          margin-top: 30px;
           min-width: calc(100% - 50px);
           max-width: calc(100% - 50px);
         }
