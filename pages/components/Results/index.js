@@ -26,8 +26,6 @@ const Results = ({ show }) => {
     "DraftKings",
   ]
 
-  console.log(`${bookmakerUrl}${selectedBookmaker}`)
-
   const table = {
     headers: [
       {

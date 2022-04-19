@@ -760,6 +760,9 @@
       font-size: 10px;
       margin-bottom: 0;
       display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     &_tour_type_mobile {
