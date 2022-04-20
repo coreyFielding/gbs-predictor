@@ -32,7 +32,6 @@
 
     &:nth-of-type(3) {
       background-color: $gbsGreenLight;
-      color: $gbsGreenDark;
     }
 
     > div {
@@ -54,6 +53,11 @@
         background-color: $gbsGreenDarkest;
       }
     }
+  }
+
+  a {
+    text-decoration: none;
+    color: $white;
   }
 
   &_tour_type_desktop {
@@ -231,6 +235,7 @@
         }
 
         .sidebar_tab_right {
+          text-decoration: none;
           p,
           h2 {
             display: none;

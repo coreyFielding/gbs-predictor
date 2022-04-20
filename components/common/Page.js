@@ -1,7 +1,7 @@
 import { BlogJsonLd, NextSeo } from "next-seo"
-import { Layout } from ".."
+import { Layout } from "../"
 
-export const Page = ({ children, seo, hasJsonLd }) => {
+const Page = ({ allTournaments, seo, hasJsonLd }) => {
   return (
     <>
       <NextSeo
@@ -28,7 +28,11 @@ export const Page = ({ children, seo, hasJsonLd }) => {
           description={seo?.description}
         />
       )}
-      <Layout>{children}</Layout>
+      <div className="page">
+        <Layout allTournaments={allTournaments} />
+      </div>
     </>
   )
 }
+
+export default Page

@@ -1,6 +1,9 @@
 import styles from "./sidebar.module.scss"
 import NextImage from "../../atoms/Image"
 import { useTournament } from "hooks/useTournament"
+import Link from "next/link"
+import Router from "next/router"
+
 import { useEffect } from "react"
 
 const genesisLogo = "/images/genesis-logo.png"
@@ -20,7 +23,25 @@ export const Sidebar = () => {
       (tournament) => tournament.attributes.Live
     )
 
-    handleTournamentChange(liveTournament?.id)
+    if (liveTournament) {
+      const { pathname } = Router
+
+      if (pathname === "/") {
+        Router.push({
+          pathname: `tournament/${liveTournament.attributes.Tournament_Name.toLowerCase()
+            .split(" ")
+            .join("-")}`,
+        })
+      } else {
+        Router.push({
+          pathname: liveTournament.attributes.Tournament_Name.toLowerCase()
+            .split(" ")
+            .join("-"),
+        })
+      }
+
+      handleTournamentChange(liveTournament?.id)
+    }
   }, [allTournaments])
 
   // Mobile navigation handlers
@@ -51,24 +72,36 @@ export const Sidebar = () => {
       .Live
   }
 
-  const MobilePrevLink = ({ hasPrev }) => (
-    <div
-      onClick={() => {
-        prevTournament(activeTournament) &&
-          handleTournamentChange(prevTournament(activeTournament))
-      }}
-      className={`${styles.prev} ${!hasPrev && styles.disable}`}
-    />
+  const MobilePrevLink = ({ tournament, hasPrev }) => (
+    <Link
+      href={`/tournament/${tournament?.attributes.Tournament_Name.toLowerCase()
+        .split(" ")
+        .join("-")}`}
+    >
+      <a
+        onClick={() => {
+          prevTournament(activeTournament) &&
+            handleTournamentChange(prevTournament(activeTournament))
+        }}
+        className={`${styles.prev} ${!hasPrev && styles.disable}`}
+      />
+    </Link>
   )
 
-  const MobileNextLink = ({ hasNext }) => (
-    <div
-      onClick={() => {
-        nextTournament(activeTournament) &&
-          handleTournamentChange(nextTournament(activeTournament))
-      }}
-      className={`${styles.next} ${!hasNext && styles.disable}`}
-    />
+  const MobileNextLink = ({ tournament, hasNext }) => (
+    <Link
+      href={`/tournament/${tournament?.attributes.Tournament_Name.toLowerCase()
+        .split(" ")
+        .join("-")}`}
+    >
+      <a
+        onClick={() => {
+          nextTournament(activeTournament) &&
+            handleTournamentChange(nextTournament(activeTournament))
+        }}
+        className={`${styles.next} ${!hasNext && styles.disable}`}
+      />
+    </Link>
   )
 
   const MobileActiveLink = ({ tournament }) => {
@@ -112,6 +145,7 @@ export const Sidebar = () => {
               return index === 0 ? (
                 <MobilePrevLink
                   key={index}
+                  tournament={tournament}
                   hasPrev={!!prevTournament(activeTournament)}
                 />
               ) : (
@@ -125,9 +159,15 @@ export const Sidebar = () => {
             })
           : allTournaments?.map((tournament, index) => {
               return index === 0 ? (
-                <MobilePrevLink hasPrev={!!prevTournament(activeTournament)} />
+                <MobilePrevLink
+                  tournament={tournament}
+                  hasPrev={!!prevTournament(activeTournament)}
+                />
               ) : index === allTournaments.length - 1 ? (
-                <MobileNextLink hasNext={!!nextTournament(activeTournament)} />
+                <MobileNextLink
+                  tournament={tournament}
+                  hasNext={!!nextTournament(activeTournament)}
+                />
               ) : (
                 <MobileActiveLink tournament={tournament} />
               )
@@ -172,29 +212,39 @@ export const Sidebar = () => {
                     )}
                   </div>
 
-                  <div className={styles.sidebar_tab_right}>
-                    <p className={styles.sidebar_tour_type_desktop}>{Tour}</p>
-                    <h2 className={styles.sidebar_tournament_name}>
-                      {Tournament_Name}
-                    </h2>
+                  <Link
+                    key={index}
+                    href={`/tournament/${Tournament_Name.toLowerCase()
+                      .split(" ")
+                      .join("-")}`}
+                    onClick={() => {
+                      handleTournamentChange(tournament.id)
+                    }}
+                  >
+                    <a className={styles.sidebar_tab_right}>
+                      <p className={styles.sidebar_tour_type_desktop}>{Tour}</p>
+                      <h2 className={styles.sidebar_tournament_name}>
+                        {Tournament_Name}
+                      </h2>
 
-                    <div
-                      className={
-                        activeTournament !== tournament.id && styles.hideInfo
-                      }
-                    >
-                      <p className={styles.sidebar_updated}>
-                        <span className={styles.sidebar_tour_type_mobile}>
-                          PGA Tour
-                        </span>
-                        Updated 11:10 GMT 14/2/22
-                      </p>
-                      <p className={styles.sidebar_date}>Feb 3–6, 2022</p>
-                      <p className={styles.sidebar_location}>
-                        Pebble Beach Golf Links and others
-                      </p>
-                    </div>
-                  </div>
+                      <div
+                        className={
+                          activeTournament !== tournament.id && styles.hideInfo
+                        }
+                      >
+                        <p className={styles.sidebar_updated}>
+                          <span className={styles.sidebar_tour_type_mobile}>
+                            PGA Tour
+                          </span>
+                          Updated 11:10 GMT 14/2/22
+                        </p>
+                        <p className={styles.sidebar_date}>Feb 3–6, 2022</p>
+                        <p className={styles.sidebar_location}>
+                          Pebble Beach Golf Links and others
+                        </p>
+                      </div>
+                    </a>
+                  </Link>
                 </div>
               </div>
             )
