@@ -1,7 +1,7 @@
 import { useState } from "react"
 import Variables from "../components/Variables"
 import Results from "../components/Results"
-// import { Image } from "../../components/atoms/Image"
+import Image from "next/image"
 import { Layout } from "../../components/common/Layout"
 import { Footer } from "../../components/"
 import { VariableProvider } from "contexts/VariableProvider"
@@ -22,7 +22,7 @@ const TournamentPage = (props) => {
       <section className="main-section">
         <div>
           <div className="content-toggle">
-            {/* <Image
+            <Image
               src={
                 activeContent === "variables"
                   ? "/images/variablesOpen.svg"
@@ -36,7 +36,7 @@ const TournamentPage = (props) => {
                   prev === "results" ? "variables" : "results"
                 )
               }
-            /> */}
+            />
           </div>
           <VariableProvider>
             <div

@@ -145,13 +145,14 @@ export const Sidebar = () => {
               return index === 0 ? (
                 <MobilePrevLink
                   key={index}
-                  tournament={tournament}
+                  tournament={allTournaments[index]}
                   hasPrev={!!prevTournament(activeTournament)}
                 />
               ) : (
                 <>
                   <MobileActiveLink tournament={tournament} />
                   <MobileNextLink
+                    tournament={allTournaments[index]}
                     hasNext={!!nextTournament(activeTournament)}
                   />
                 </>
@@ -160,12 +161,12 @@ export const Sidebar = () => {
           : allTournaments?.map((tournament, index) => {
               return index === 0 ? (
                 <MobilePrevLink
-                  tournament={tournament}
+                  tournament={allTournaments[index]}
                   hasPrev={!!prevTournament(activeTournament)}
                 />
               ) : index === allTournaments.length - 1 ? (
                 <MobileNextLink
-                  tournament={tournament}
+                  tournament={allTournaments[index]}
                   hasNext={!!nextTournament(activeTournament)}
                 />
               ) : (
