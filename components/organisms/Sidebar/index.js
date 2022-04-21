@@ -185,12 +185,14 @@ export const Sidebar = () => {
             const {
               Tour,
               Tournament_Name,
+              Tournament_Icon,
               Tournament_Start,
               Tournament_End,
-              Tournament_Icon,
               updatedAt,
               Live,
             } = tournament.attributes
+
+            console.log(tournament)
             return (
               <div
                 key={index}
@@ -204,7 +206,11 @@ export const Sidebar = () => {
                 <div>
                   <div className={styles.sidebar_tab_left}>
                     <div className={styles.sidebar_logo}>
-                      <NextImage src={genesisLogo} width={51} height={11} />
+                      <NextImage
+                        src={`/${Tournament_Icon.data}`}
+                        width={51}
+                        height={11}
+                      />
                     </div>
                     {Live && (
                       <div className={styles.livePill}>

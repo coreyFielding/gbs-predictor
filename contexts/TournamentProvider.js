@@ -20,6 +20,8 @@ export const TournamentProvider = ({ children }) => {
     () => queryAllImportedTournaments()
   )
 
+  console.log(allTournaments)
+
   // Get tournament based on ID
   const { data: tournament } = useQuery(
     ["importedTournament", activeTournament],
