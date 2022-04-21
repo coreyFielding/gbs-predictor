@@ -31,7 +31,7 @@
     }
 
     &:nth-of-type(3) {
-      background-color: $gbsGreenLight;
+      background-color: $gbsTabLight;
     }
 
     > div {
@@ -348,7 +348,7 @@
           content: "";
           position: absolute;
           background: transparent;
-          box-shadow: 0 -36px 0 $gbsGreenLight;
+          box-shadow: 0 -36px 0 $gbsTabLight;
           width: 25px;
           right: 0px;
           transform: rotate(180deg);
@@ -365,7 +365,7 @@
           height: 50px;
           width: 25px;
           border-top-right-radius: 25px;
-          box-shadow: 0 -25px 0 $gbsGreenLight;
+          box-shadow: 0 -25px 0 $gbsTabLight;
         }
       }
 
@@ -711,7 +711,7 @@
           height: 100%;
           width: 27px;
           border-radius: 0;
-          box-shadow: 0 25px 0 $gbsGreenLight;
+          box-shadow: 0 25px 0 $gbsTabLight;
         }
       }
 
