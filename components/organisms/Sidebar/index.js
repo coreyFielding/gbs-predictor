@@ -1,12 +1,12 @@
+import { useEffect, useState } from "react"
+
 import styles from "./sidebar.module.scss"
-import NextImage from "../../atoms/Image"
+import Image from "next/image"
 import { useTournament } from "hooks/useTournament"
 import Link from "next/link"
 import Router from "next/router"
+import moment from "moment"
 
-import { useEffect } from "react"
-
-const genesisLogo = "/images/genesis-logo.png"
 const gbsLogo = "/images/gbs-logo.svg"
 
 const twitterIcon = "/images/icons/twitter.svg"
@@ -14,10 +14,24 @@ const youtubeIcon = "/images/icons/youtube.svg"
 const facebookIcon = "/images/icons/facebook.svg"
 
 export const Sidebar = () => {
+  const [liveTournaments, setLiveTournaments] = useState()
+
   const { allTournaments, handleTournamentChange, activeTournament } =
     useTournament()
 
-  // Set Live tournament as active tournament by default
+  // Only display tournaments that are live and contain bat least one variable and a player list
+  const displayLiveTournaments = () => {
+    const isLive = allTournaments?.filter(
+      ({ attributes }) =>
+        attributes.Live &&
+        attributes.Imported_Variables.length > 0 &&
+        attributes.Player_List.data.length > 0
+    )
+
+    setLiveTournaments(isLive)
+  }
+
+  // Set first Live tournament as active tournament by default
   useEffect(() => {
     const liveTournament = allTournaments?.find(
       (tournament) => tournament.attributes.Live
@@ -44,33 +58,37 @@ export const Sidebar = () => {
     }
   }, [allTournaments])
 
+  useEffect(() => {
+    displayLiveTournaments()
+  }, [allTournaments])
+
   // Mobile navigation handlers
   const prevTournament = (current) => {
-    const currentTournament = allTournaments.find(
+    const currentTournament = liveTournaments.find(
       (tournament) => tournament.id === current
     )
 
-    return allTournaments[allTournaments.indexOf(currentTournament) - 1]?.id
+    return liveTournaments[liveTournaments.indexOf(currentTournament) - 1]?.id
   }
 
   const nextTournament = (current) => {
-    const currentTournament = allTournaments.find(
+    const currentTournament = liveTournaments.find(
       (tournament) => tournament.id === current
     )
 
     const next =
-      allTournaments[allTournaments.indexOf(currentTournament) + 1]?.id
+      liveTournaments[liveTournaments.indexOf(currentTournament) + 1]?.id
 
     return next ? next : null
   }
 
-  const isLive = (current) => {
-    const currentTournament = allTournaments.find(
-      (tournament) => tournament.id === current
-    )
-    return allTournaments[allTournaments.indexOf(currentTournament)]?.attributes
-      .Live
-  }
+  // const isLive = (current) => {
+  //   const currentTournament = allTournaments.find(
+  //     (tournament) => tournament.id === current
+  //   )
+  //   return allTournaments[allTournaments.indexOf(currentTournament)]?.attributes
+  //     .Live
+  // }
 
   const MobilePrevLink = ({ tournament, hasPrev }) => (
     <Link
@@ -104,33 +122,39 @@ export const Sidebar = () => {
     </Link>
   )
 
-  const MobileActiveLink = ({ tournament }) => {
-    const { Tour } = tournament.attributes
+  const MobileActiveLink = () => {
+    const {
+      Tournament_Name,
+      Tournament_Info,
+      Tournament_Start,
+      Tournament_End,
+      updatedAt,
+      Tour,
+    } = liveTournaments?.find(
+      (tournament) => tournament.id === activeTournament
+    )?.attributes
+
     return (
       <div className={styles.current}>
         <div className={styles.current_header}>
-          {isLive(activeTournament) && (
+          {/* {isLive(activeTournament) && (
             <div className={styles.livePill}>
               <span>Live</span>
             </div>
-          )}
-          <h2 className={styles.sidebar_tournament_name}>
-            {
-              allTournaments.find(
-                (tournament) => tournament.id === activeTournament
-              )?.attributes.Tournament_Name
-            }
-          </h2>
+          )} */}
+          <h2 className={styles.sidebar_tournament_name}>{Tournament_Name}</h2>
         </div>
         <div className={styles.current_info}>
           <p className={styles.sidebar_updated}>
             <span className={styles.sidebar_tour_type_mobile}>{Tour}</span>
-            Updated 11:10 GMT 14/2/22
+            {`Updated ${moment(updatedAt).format("h:mm a, DD/MM/YY")}`}
           </p>
-          <p className={styles.sidebar_date}>Feb 3–6, 2022</p>
-          <p className={styles.sidebar_location}>
-            Pebble Beach Golf Links and others
-          </p>
+          <p className={styles.sidebar_date}>{`${moment(
+            Tournament_Start
+          ).format("MMM Do")}-${moment(Tournament_End).format(
+            "MMM Do"
+          )}, ${moment(Tournament_End).format("YYYY")}`}</p>
+          <p className={styles.sidebar_location}>{Tournament_Info}</p>
         </div>
       </div>
     )
@@ -140,33 +164,33 @@ export const Sidebar = () => {
     <div>
       <div className={styles.mobileNav}>
         {/* Handle mobile navigation with less than three links */}
-        {allTournaments?.length < 3
-          ? allTournaments?.map((tournament, index) => {
+        {liveTournaments?.length < 3
+          ? liveTournaments?.map((tournament, index) => {
               return index === 0 ? (
                 <MobilePrevLink
                   key={index}
-                  tournament={allTournaments[index]}
+                  tournament={liveTournaments[index]}
                   hasPrev={!!prevTournament(activeTournament)}
                 />
               ) : (
                 <>
                   <MobileActiveLink tournament={tournament} />
                   <MobileNextLink
-                    tournament={allTournaments[index]}
+                    tournament={liveTournaments[index]}
                     hasNext={!!nextTournament(activeTournament)}
                   />
                 </>
               )
             })
-          : allTournaments?.map((tournament, index) => {
+          : liveTournaments?.map((tournament, index) => {
               return index === 0 ? (
                 <MobilePrevLink
-                  tournament={allTournaments[index]}
+                  tournament={liveTournaments[index]}
                   hasPrev={!!prevTournament(activeTournament)}
                 />
-              ) : index === allTournaments.length - 1 ? (
+              ) : index === liveTournaments.length - 1 ? (
                 <MobileNextLink
-                  tournament={allTournaments[index]}
+                  tournament={liveTournaments[index]}
                   hasNext={!!nextTournament(activeTournament)}
                 />
               ) : (
@@ -177,22 +201,26 @@ export const Sidebar = () => {
 
       <div
         className={`${styles.sidebar} ${
-          allTournaments?.length <= 2 && styles.sidebar_2_tabs
+          liveTournaments?.length === 1
+            ? styles.sidebar_1_tab
+            : liveTournaments?.length === 2
+            ? styles.sidebar_2_tabs
+            : ""
         }`}
       >
         <aside className={styles.sidebar_inner}>
-          {allTournaments?.map((tournament, index) => {
+          {liveTournaments?.slice(0, 3).map((tournament, index) => {
             const {
               Tour,
               Tournament_Name,
               Tournament_Icon,
               Tournament_Start,
               Tournament_End,
+              Tournament_Info,
               updatedAt,
               Live,
             } = tournament.attributes
 
-            console.log(tournament)
             return (
               <div
                 key={index}
@@ -206,17 +234,19 @@ export const Sidebar = () => {
                 <div>
                   <div className={styles.sidebar_tab_left}>
                     <div className={styles.sidebar_logo}>
-                      <NextImage
-                        src={`/${Tournament_Icon.data}`}
-                        width={51}
-                        height={11}
+                      <Image
+                        src={`${process.env.NEXT_PUBLIC_IMAGE_DOMAINS}/uploads/${Tournament_Icon?.data?.attributes?.hash}${Tournament_Icon?.data?.attributes?.ext}`}
+                        alt="Tournament Image"
+                        width={50}
+                        height={50}
+                        objectFit="contain"
                       />
                     </div>
-                    {Live && (
-                      <div className={styles.livePill}>
-                        <span>Live</span>
-                      </div>
-                    )}
+                    {/* {Live && (
+                        <div className={styles.livePill}>
+                          <span>Live</span>
+                        </div>
+                      )} */}
                   </div>
 
                   <Link
@@ -243,11 +273,19 @@ export const Sidebar = () => {
                           <span className={styles.sidebar_tour_type_mobile}>
                             PGA Tour
                           </span>
-                          Updated 11:10 GMT 14/2/22
+                          {`Updated ${moment(updatedAt).format(
+                            "h:mm a, DD/MM/YY"
+                          )}`}
                         </p>
-                        <p className={styles.sidebar_date}>Feb 3–6, 2022</p>
+                        <p className={styles.sidebar_date}>
+                          {`${moment(Tournament_Start).format(
+                            "MMM Do"
+                          )}-${moment(Tournament_End).format(
+                            "MMM Do"
+                          )}, ${moment(Tournament_End).format("YYYY")}`}
+                        </p>
                         <p className={styles.sidebar_location}>
-                          Pebble Beach Golf Links and others
+                          {Tournament_Info}
                         </p>
                       </div>
                     </a>
@@ -258,30 +296,20 @@ export const Sidebar = () => {
           })}
           <div className={styles.sidebar_socials}>
             <div className={styles.sidebar_golf_logo}>
-              <NextImage src={gbsLogo} width={70} height={55} />
+              <Image src={gbsLogo} alt="logo" width={70} height={55} />
             </div>
 
             <div className={styles.sidebar_social_links}>
               <a href="#">
-                <NextImage
-                  src={twitterIcon}
-                  alt="twitter"
-                  width={32}
-                  height={32}
-                />
+                <Image src={twitterIcon} alt="twitter" width={32} height={32} />
               </a>
 
               <a href="#">
-                <NextImage
-                  src={youtubeIcon}
-                  alt="youtube"
-                  width={32}
-                  height={32}
-                />
+                <Image src={youtubeIcon} alt="youtube" width={32} height={32} />
               </a>
 
               <a href="#">
-                <NextImage
+                <Image
                   src={facebookIcon}
                   alt="facebook"
                   width={32}

@@ -11,10 +11,6 @@
     display: flex;
   }
 
-  &_logo {
-    display: none;
-  }
-
   &_tab {
     position: relative;
     min-height: 100%;
@@ -260,6 +256,10 @@
     height: 100%;
     padding: 0 0px 0 20px;
 
+    &_logo {
+      display: none;
+    }
+
     aside {
       display: block;
       height: 100%;
@@ -444,7 +444,6 @@
 
     &_logo {
       display: block;
-      margin-bottom: 10px;
     }
 
     &_tab {
@@ -506,6 +505,14 @@
       &:nth-of-type(3) {
         &:after {
           top: 100%;
+        }
+      }
+    }
+
+    &_1_tab {
+      .sidebar_tab:first-child {
+        &:after {
+          display: none;
         }
       }
     }

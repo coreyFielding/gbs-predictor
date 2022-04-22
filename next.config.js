@@ -1,7 +1,7 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: process.env.NEXT_PUBLIC_IMAGE_DOMAINS.split(", "),
+    domains: ["api.golfbettingsystem.com"],
   },
   env: {
     BASE_URL: process.env.NEXT_PUBLIC_STRAPI_API_URL,
