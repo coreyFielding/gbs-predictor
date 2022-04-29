@@ -1,8 +1,8 @@
 import cn from "classnames"
 import PropTypes from "prop-types"
 import styles from "./header.module.scss"
-
 import Container from "../../atoms/Container"
+import Router from "next/router"
 
 export const Header = ({ className }) => {
   const classes = cn(styles.header, className)
@@ -13,7 +13,7 @@ export const Header = ({ className }) => {
         {/* <Logo /> */}
         <div className={styles.header_inner}>
           <div className="header__left-side">
-            <a href="#">
+            <button onClick={() => Router.push("/golfbettingsystem.co.uk")}>
               <svg
                 className="back-button"
                 width="30"
@@ -31,7 +31,7 @@ export const Header = ({ className }) => {
                 />
                 <path d="M18 9L12 15L18 21" stroke="#254933" />
               </svg>
-            </a>
+            </button>
 
             <svg
               className="header-logo"
@@ -128,9 +128,12 @@ export const Header = ({ className }) => {
           <div className={styles.header_span}>
             <span className="span--heading">
               Brought to you by{" "}
-              <a href="golfbettingsystem.co.uk" className={styles.header_link}>
+              <button
+                onClick={() => Router.push("/golfbettingsystem.co.uk")}
+                className={styles.header_link}
+              >
                 golfbettingsystem.co.uk
-              </a>
+              </button>
             </span>
           </div>
         </div>
