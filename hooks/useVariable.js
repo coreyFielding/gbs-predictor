@@ -1,9 +1,44 @@
 // Context
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { VariableContext } from "../contexts/VariableProvider"
+import { useTournament } from "./useTournament"
 
 export const useVariable = () => {
+  const [localVariableState, setLocalVariableState] = useState()
+
   const { groups, setGroups } = useContext(VariableContext)
+  const { allTournaments, activeTournament } = useTournament()
+
+  // const setVariablesForActiveTournament = (id) => {
+  //   // Initialise local storage
+  //   localStorage.setItem(
+  //     "variables",
+  //     JSON.stringify(
+  //       allTournaments &&
+  //         allTournaments.map((tournament) => {
+  //           return {
+  //             id: tournament.id,
+  //             variables: [],
+  //           }
+  //         })
+  //     )
+  //   )
+
+  //   const active = JSON.parse(localStorage.getItem("variables"))?.filter(
+  //     (item) => item.id === id
+  //   )
+
+  //   const variables = active?.variables?.length
+  //     ? active?.variables
+  //     : groupsClone
+
+  //   setLocalVariableState(variables)
+
+  //   let updatedArr = variables?.filter((item) => item.id !== id)
+  //   // updatedArr = [...updatedArr, variables]
+
+  //   localStorage.setItem("variables", JSON.stringify(updatedArr))
+  // }
 
   // Retrieve list of categories from variable context.
   // Render an ACCORDION ITEM for each variable group (category).
@@ -53,11 +88,19 @@ export const useVariable = () => {
         groupsClone[parentIndex].childVariables[childIndex].childWeight = value
       }
 
-      setGroups(null)
       setGroups(groupsClone)
       setActiveVariable(parentIndex)
     }
   }
+
+  // Persist variable state when switching tournament (DOES NOT WORK)
+  // useEffect(() => {
+  //   activeTournament && setVariablesForActiveTournament(activeTournament)
+  // }, [groups])
+
+  // useEffect(() => {
+  //   // setGroups(localVariableState)
+  // }, [localVariableState])
 
   const groupNames = groups?.map(({ parentName }) => {
     return {

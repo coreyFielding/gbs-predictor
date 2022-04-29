@@ -127,7 +127,10 @@ export const Header = ({ className }) => {
 
           <div className={styles.header_span}>
             <span className="span--heading">
-              Brought to you by golfbettingsystem.co.uk
+              Brought to you by{" "}
+              <a href="golfbettingsystem.co.uk" className={styles.header_link}>
+                golfbettingsystem.co.uk
+              </a>
             </span>
           </div>
         </div>

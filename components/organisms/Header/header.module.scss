@@ -17,15 +17,6 @@
     padding: 0 30px 0 20px;
     position: relative;
     z-index: 3;
-
-    // &:after {
-    //   content: '';
-    //   position: absolute;
-    //   width: 30%;
-    //   right: -30%;
-    //   height: 105%;
-    //   background-color: $gbsGreenDark;
-    // }
   }
 
   &_span {
@@ -41,6 +32,15 @@
     background-color: $gbsGreenDarkest;
     position: absolute;
     border-right: 1px solid $gbsGreenDarkest;
+  }
+
+  &_link {
+    color: $gbsGreenDarkest;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }
 

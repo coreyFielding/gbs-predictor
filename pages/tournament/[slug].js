@@ -73,7 +73,7 @@ export async function getStaticProps({ params }) {
 export async function getStaticPaths() {
   const tournaments = await queryAllImportedTournaments()
 
-  const paths = tournaments.length
+  const paths = tournaments?.length
     ? tournaments.map((tournament) => {
         const { id, Tournament_Name } = tournament.attributes
         return {

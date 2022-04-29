@@ -296,7 +296,9 @@ export const Sidebar = () => {
           })}
           <div className={styles.sidebar_socials}>
             <div className={styles.sidebar_golf_logo}>
-              <Image src={gbsLogo} alt="logo" width={70} height={55} />
+              <a href="golfbettingsystem.co.uk">
+                <Image src={gbsLogo} alt="logo" width={70} height={55} />
+              </a>
             </div>
 
             <div className={styles.sidebar_social_links}>

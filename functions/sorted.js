@@ -15,7 +15,5 @@ export const sortBy = (column, currentOrder, a, b) => {
     return descCondition ? 1 : -1
   } else if (currentOrder === "desc") {
     return ascCondition ? 1 : -1
-  } else {
-    return ascCondition ? 1 : -1
   }
 }
