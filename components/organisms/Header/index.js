@@ -10,7 +10,6 @@ export const Header = ({ className }) => {
   return (
     <header className={classes}>
       <Container className={styles.container}>
-        {/* <Logo /> */}
         <div className={styles.header_inner}>
           <div className="header__left-side">
             <button onClick={() => Router.push("/golfbettingsystem.co.uk")}>

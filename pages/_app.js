@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import { DefaultSeo } from "next-seo"
 import WordPressProvider from "../components/common/WordpressProvider"
 import { QueryClient, QueryClientProvider } from "react-query"
+import { Provider } from "react-redux"
 import "../styles/app.scss"
 
 const WebApp = ({ Component, pageProps }) => {
@@ -33,12 +34,14 @@ const WebApp = ({ Component, pageProps }) => {
   })
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <WordPressProvider value={wp}>
-        {!!defaultSeoData && <DefaultSeo {...defaultSeoData} />}
-        <Component {...pageProps} />
-      </WordPressProvider>
-    </QueryClientProvider>
+    <Provider>
+      <QueryClientProvider client={queryClient}>
+        <WordPressProvider value={wp}>
+          {!!defaultSeoData && <DefaultSeo {...defaultSeoData} />}
+          <Component {...pageProps} />
+        </WordPressProvider>
+      </QueryClientProvider>
+    </Provider>
   )
 }
 
